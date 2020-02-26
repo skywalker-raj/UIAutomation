@@ -1,0 +1,15 @@
+{
+  "usernameplaceholder": "Enter User Name",
+  "passwordplaceholder": "Enter Password",
+  "invalidusernamepassword": "Sorry, your username and password does not match.",
+  "invalidusername": "Sorry, your username does not match.",
+  "invalidpassword": "Sorry, your password does not match.",
+  "username": "raj.thapa@zakipoint.com",
+  "password": "Sound`123",
+  "QuickLinks": "Dashboard;Population;Pharmacy;ER;Inpatient;Outpatient;Office Visit;All Diseases;Gaps in Care;Provider Analytics;Procedure Analytics;Biometric",
+  "Menu": "Home;Identify;Act;Track;My Story;Help",
+  "DashboardItem": "Spend;Condition Cost Drivers;Updates;Prospective Population Risk Stratification;Cost Matrix",
+  "ConditionBySpend": "Conditions;% Spend;Spend;% Change (Spend);Members",
+  "DefaultClient": "Z5 Demo B"
+
+}

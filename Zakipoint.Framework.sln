@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zakipoint.Framework", "Zakipoint.Framework\Zakipoint.Framework.csproj", "{FEDE25FC-5014-4A4E-9522-61EE1B6A2E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zakipoint.UIAutomation", "Zakipoint.UIAutomation\Zakipoint.UIAutomation.csproj", "{A1E20591-F618-4BFF-AD87-3D1968F0B6B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zakipoint.Tests", "Zakipoint.Tests\Zakipoint.Tests.csproj", "{6886A936-128E-4386-BF68-A3328FAC8B1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEDE25FC-5014-4A4E-9522-61EE1B6A2E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEDE25FC-5014-4A4E-9522-61EE1B6A2E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEDE25FC-5014-4A4E-9522-61EE1B6A2E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEDE25FC-5014-4A4E-9522-61EE1B6A2E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E20591-F618-4BFF-AD87-3D1968F0B6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E20591-F618-4BFF-AD87-3D1968F0B6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E20591-F618-4BFF-AD87-3D1968F0B6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E20591-F618-4BFF-AD87-3D1968F0B6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6886A936-128E-4386-BF68-A3328FAC8B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6886A936-128E-4386-BF68-A3328FAC8B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6886A936-128E-4386-BF68-A3328FAC8B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6886A936-128E-4386-BF68-A3328FAC8B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E82CEED-AD31-4299-A282-905CD811FE73}
+	EndGlobalSection
+EndGlobal
