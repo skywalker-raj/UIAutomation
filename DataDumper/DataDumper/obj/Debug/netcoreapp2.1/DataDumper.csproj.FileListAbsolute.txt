@@ -1,0 +1,9 @@
+C:\Users\DELL\source\repos\DataDumper\DataDumper\bin\Debug\netcoreapp2.1\DataDumper.deps.json
+C:\Users\DELL\source\repos\DataDumper\DataDumper\bin\Debug\netcoreapp2.1\DataDumper.runtimeconfig.json
+C:\Users\DELL\source\repos\DataDumper\DataDumper\bin\Debug\netcoreapp2.1\DataDumper.runtimeconfig.dev.json
+C:\Users\DELL\source\repos\DataDumper\DataDumper\bin\Debug\netcoreapp2.1\DataDumper.dll
+C:\Users\DELL\source\repos\DataDumper\DataDumper\obj\Debug\netcoreapp2.1\DataDumper.csprojAssemblyReference.cache
+C:\Users\DELL\source\repos\DataDumper\DataDumper\obj\Debug\netcoreapp2.1\DataDumper.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\DataDumper\DataDumper\obj\Debug\netcoreapp2.1\DataDumper.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\DataDumper\DataDumper\obj\Debug\netcoreapp2.1\DataDumper.AssemblyInfo.cs
+C:\Users\DELL\source\repos\DataDumper\DataDumper\bin\Debug\netcoreapp2.1\Data\config.json

@@ -1,0 +1,9 @@
+{
+  "username": "testuser1@zakipoint.com",
+  "password": "Test123$",
+  "Server": "172.31.16.204",
+  "Port": "3306",
+  "Database": "zph_appconfig",
+  "DbUiD": "raj.thapa",
+  "DbPassword": "Sound`123"
+}

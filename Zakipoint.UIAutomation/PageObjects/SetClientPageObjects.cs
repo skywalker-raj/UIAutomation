@@ -6,7 +6,7 @@
 
         #region CssSelector 
 
-        public string GoButtonCssSelector = "button[value=Go]";
+        public string GoButtonCssSelector = "button[value=Go] span";
         public string SelectClientDropdownCssSelector = "button[data-id=client]";
         public string DropDownSelectedCssSelector = "ul.dropdown-menu li.selected";
         public string UserManagementLinkCssSelector = "a[title='User Management and Security']";

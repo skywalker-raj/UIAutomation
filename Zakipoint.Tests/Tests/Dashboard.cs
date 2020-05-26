@@ -52,18 +52,18 @@ namespace Zakipoint.Tests.Tests
         #endregion
 
         #region TestMethods
-
+        
         [Test, Category("Dashboard Page Verification")]
         public void Verify_Dashboard_Page()
         {
-            //var expectedMenuList = CommonFunction.Data["Menu"].Split(';').ToList();
-            //var expectedQuickLinksList = CommonFunction.Data["QuickLinks"].Split(';').ToList();
+            var expectedMenuList = CommonFunction.Data["Menu"].Split(';').ToList();
+            var expectedQuickLinksList = CommonFunction.Data["QuickLinks"].Split(';').ToList();
             var expectedConditionSpendTableHeaderList = CommonFunction.Data["ConditionBySpend"].Split(';').ToList();
             try
             {
-                //Assert.AreEqual(_dashboard.GetMenuList(), expectedMenuList);
-                //Assert.AreEqual(CommonFunction.GetNavBarQuickLinks(), expectedQuickLinksList);
-                //var groupDetailsList = _dashboard.GetGroupID();
+                Assert.AreEqual(_dashboard.GetMenuList(), expectedMenuList);
+                Assert.AreEqual(CommonFunction.GetNavBarQuickLinks(), expectedQuickLinksList);
+                var groupDetailsList = _dashboard.GetGroupID();
                 //_dashboard.ClickDownloadReport();
                 //CommonMethods.CheckFileDownloaded(_dashboard.GetDownloadReportName());
                 Assert.AreEqual(_dashboard.GetTableHeaderList(How.CssSelector, DashboardPageObjects.TopConditionTableHeaderCssSelector), expectedConditionSpendTableHeaderList);

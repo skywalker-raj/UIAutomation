@@ -44,7 +44,7 @@ namespace Zakipoint.Tests.Tests
         }
 
         #endregion
-
+        
         #region TestMethods
 
         [Test, Category("Login_Page_Verification")]
