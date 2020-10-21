@@ -4,27 +4,22 @@ using System.Collections.Generic;
 using Zakipoint.Framework.Driver;
 using System.IO;
 using OpenQA.Selenium.Support.PageObjects;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace Zakipoint.Framework.Common
 {
-    class CommonMethods
+    public static class CommonMethods
     {
 
         #region Private Properties
 
         #endregion
 
-        #region Constructor
-
-        public CommonMethods()
-        {
-        }
-
-        #endregion
 
         #region Public Properties
 
-        public List<string> GetAllUrls()
+        public static List<string> GetAllUrls()
         {
             var links = Browser.FindElements(How.TagName, "a");
             List<string> urls = new List<string>();
@@ -36,7 +31,7 @@ namespace Zakipoint.Framework.Common
             return urls;
         }
 
-        public List<string> CheckBrokenLinks(List<string> urls)
+        public static List<string> CheckBrokenLinks(List<string> urls)
         {
             List<string> brokenlinks = new List<string>();
             try
@@ -98,6 +93,40 @@ namespace Zakipoint.Framework.Common
                 rangeNumbersArr[count] = minValue + count;
                 LstRndNumbers.Add(rangeNumbersArr[count]);
             }
+        }
+
+        public static string RemoveComma(string value)
+        {
+            return value.Replace(",", "").Trim();
+        }
+        public static decimal CurrencyIntermOfThousandWithRoudValue(decimal value)
+        {
+
+            return Math.Round(value / 1000, 0);
+        }
+        public static string[] SplitByNewLine(string textLine)
+        {
+
+            return textLine.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+        }
+        public static string[] SplitByString(string SplitFor, string SplitBy)
+        {
+
+            return SplitFor.Split(new string[] { SplitBy }, StringSplitOptions.None);
+        }
+        public static decimal Percentages(decimal CurrentYearvale, decimal LastYearvale)
+        {
+            decimal ChangePercentage = ((LastYearvale - CurrentYearvale) / LastYearvale) * 100;
+            return ChangePercentage;
+        }
+        public static string ObjectToXml<T>(T obj)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+            StringWriter stringWriter = new StringWriter();
+            XmlTextWriter xmlWriter = new XmlTextWriter(stringWriter);
+            xmlWriter.Formatting = Formatting.Indented;
+            xmlSerializer.Serialize(xmlWriter, obj);
+            return stringWriter.ToString();
         }
         #endregion
     }

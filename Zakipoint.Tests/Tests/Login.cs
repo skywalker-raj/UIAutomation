@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using static System.String;
+﻿using NUnit.Framework;
+using OpenQA.Selenium.Support.PageObjects;
+using System;
 using Zakipoint.Framework.Driver;
+using Zakipoint.Tests.Common;
 using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.PageServices;
-using Zakipoint.Tests.Common;
-using NUnit.Framework;
-using OpenQA.Selenium.Support.PageObjects;
+using static System.String;
 
 namespace Zakipoint.Tests.Tests
 {
@@ -31,13 +30,13 @@ namespace Zakipoint.Tests.Tests
 
         #region Base Methods
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             Browser.Open(Browser.Config["url"]);
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void Dispose()
         {
             Browser.Dispose();
@@ -55,8 +54,8 @@ namespace Zakipoint.Tests.Tests
                 Assert.IsTrue(Browser.IsElementPresent(How.CssSelector, _loginPage.LoginTitleCssSelector), "Login Title should be present.");
                 Assert.IsTrue(Browser.IsElementPresent(How.XPath, Format(_loginPage.LabelXPath, "username")), "User Name label should be present.");
                 Assert.IsTrue(Browser.IsElementPresent(How.XPath, Format(_loginPage.LabelXPath, "password")), "Password label should be present.");
-                Assert.AreEqual(Browser.GetAttribute(How.CssSelector, Format(_loginPage.TextBoxCssSelector, "username"), "placeholder"), CommonFunction.Data["usernameplaceholder"]);
-                Assert.AreEqual(Browser.GetAttribute(How.CssSelector, Format(_loginPage.TextBoxCssSelector, "password"), "placeholder"), CommonFunction.Data["passwordplaceholder"]);
+                Assert.AreEqual(Browser.GetAttribute(How.CssSelector, Format(_loginPage.TextBoxCssSelector, "username"), "placeholder"), JsonDataReader.Data["usernameplaceholder"]);
+                Assert.AreEqual(Browser.GetAttribute(How.CssSelector, Format(_loginPage.TextBoxCssSelector, "password"), "placeholder"), JsonDataReader.Data["passwordplaceholder"]);
                 Assert.IsTrue(Browser.IsElementPresent(How.XPath, _loginPage.ForgotPasswordXPath), "Forgot Password link should be present.");
                 Assert.IsTrue(Browser.IsElementPresent(How.CssSelector, _loginPage.LoginButtonCssSelector), "Login Button should be present.");
                 //_login.Login("", "");
@@ -69,14 +68,14 @@ namespace Zakipoint.Tests.Tests
                 //{
                 //    Assert.AreEqual(Browser.GetElementText(How.CssSelector, _loginPage.ErrorMessageCssSelector), CommonFunction.Data["invalidusername"]);
                 //}
-                _login.Login(CommonFunction.Data["username"], "");
+                _login.Login(JsonDataReader.Data["username"], "");
                 if (Browser.IsElementDisplayed(How.CssSelector, _loginPage.ErrorMessageCssSelector))
                 {
-                    Assert.AreEqual(Browser.GetElementText(How.CssSelector, _loginPage.ErrorMessageCssSelector), CommonFunction.Data["invalidusernamepassword"]);
+                    Assert.AreEqual(Browser.GetElementText(How.CssSelector, _loginPage.ErrorMessageCssSelector), JsonDataReader.Data["invalidusernamepassword"]);
                 }
-                _login.Login(CommonFunction.Data["username"], CommonFunction.Data["password"]);
+                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
                 Browser.WaitToLoadNew(3000);
-                Assert.IsTrue(Browser.IsElementPresent(How.CssSelector, _loginPage.LoginButtonCssSelector), "Login Button should be present.");
+                //Assert.IsTrue(Browser.IsElementPresent(How.CssSelector, _loginPage.LoginButtonCssSelector), "Login Button should be present.");
             }
             catch (Exception e)
             {
@@ -84,7 +83,6 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(e);
             }
         }
-
         #endregion
     }
 }

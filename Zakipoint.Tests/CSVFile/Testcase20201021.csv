@@ -1,0 +1,32 @@
+Page Name,	Method Name,	Expected Result,	Actual Result,	Status,	Remarks
+Dashboard,	Active_PMPM_Change_Percentages,	Error,	Error,	Unknown,	element not interactable
+  (Session info: chrome=86.0.4240.75)
+Dashboard,	Active Medical PMPM Change Percentages,	35.72,	35.72,	Pass,	Expected PMPM  change shold be equal to actual PMPM change
+Dashboard,	Active Pharmacy PMPM Change Percentages,	23.16,	23.16,	Pass,	Expected PMPM change shold be equal to actual PMPM change
+Dashboard,	Medical PMPM Change Percentages,	15.98,	15.98,	Pass,	Expected PMPM  change shold be equal to actual PMPM change
+Dashboard,	Pharmacy PMPM Change Percentages,	18.01,	18.01,	Pass,	Expected PMPM change shold be equal to actual PMPM change
+Dashboard,	Active_PMPM,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (277 193). Other element would receive the click: <div class="aap-info">...</div>
+  (Session info: chrome=86.0.4240.75)
+Dashboard,	Active_PMPM,	Error,	Error,	Unknown,	Object reference not set to an instance of an object.
+Dashboard,	Active_PMPM,	Error,	Error,	Unknown,	Input string was not in a correct format.
+Dashboard,	Active_PMPM,	Error,	Error,	Unknown,	Input string was not in a correct format.
+Dashboard,	Active_PMPM,	Error,	Error,	Unknown,	stale element reference: element is not attached to the page document
+  (Session info: chrome=86.0.4240.75)
+Dashboard,	Active medical PMPM,	307,	307,	Pass,	Expected PMPM shold be equal to actual PMPM
+Dashboard,	Active pharmacy PMPM,	85,	85,	Pass,	Expected PMPM shold be equal to actual PMPM
+Dashboard,	 Active Medical Spend Change ,	37.67,	37.67,	Pass,	Expected medical change spend should be equal to actual medical change spend
+Dashboard,	Active Pharmacy Spend Change,	25.45,	25.49,	Fail,	Expected pharmacy change spend should be equal to actual pharmacy change spend
+Dashboard,	 Medical Spend Change,	17.30,	17.31,	Fail,	Expected medical change spend should be equal to actual medical change spend
+Dashboard,	Pharmacy Spend Change,	19.35,	19.3,	Fail,	Expected pharmacy change spend should be equal to actual pharmacy change spend
+Dashboard,	Total_Active_Medical_Pharmacy_Spend,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (312 193). Other element would receive the click: <div class="aap-info">...</div>
+  (Session info: chrome=86.0.4240.75)
+Dashboard,	Total Active Medical Spend,	$3155K,	$3155K,	Pass,	Expected total active medical spend should be equal to actual total active medical spend 
+Dashboard,	Total Active Pharmacy Spend,	$876K,	$876K,	Pass,	Expected total active pharmacy spend should be equal to actual total active pharmacy spend 
+Dashboard,	Total Active Spend,	$4031K,	$4031K,	Pass,	Expected total active spend should be equal to actual total active spend 
+Dashboard,	Total Medical Spend,	$4732K,	$4732K,	Pass,	Expected total medical spend should be equal to total actual medical spend 
+Dashboard,	Total Pharmacy Spend,	$1059K,	$1059K,	Pass,	Expected total pharmacy spend should be equal to actual total pharmacy spend 
+Dashboard,	Total  Spend,	$5791K,	$5791K,	Pass,	Expected total spend should be equal to actual total spend 
+Dashboard,	Toatal Member,	0,	1495,	Fail,	Acutal toatl member shoud be equal to expected total member
+DashBoard,	Total employee,	0,	907,	Fail,	Actual toal employee shoud be equal to expected total employee
+DashBoard,	Active member,	0,	965,	Fail,	Acutal active member shoud be equal to expected active member
+DashBoard,	Active employee,	0,	576,	Fail,	Acutal active employee shoud be equal to expected active employee

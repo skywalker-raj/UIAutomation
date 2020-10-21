@@ -1,0 +1,11 @@
+{
+  "url": "https://ssouat.zakipointhealth.com/login/auth",
+  "adminurl": "https://admin-uat.zakipointhealth.com/",
+  "username": "testuser1@zakipoint.com",
+  "password": "Test123$",
+  "Server": "172.19.0.70",
+  "Port": "3306",
+  "Database": "importscrub",
+  "DbUiD": "raj.thapa",
+  "DbPassword": "P?dhHL3$w)Zs4Dz"
+}
