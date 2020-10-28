@@ -2,7 +2,7 @@
 {
     public class SetClientScripts
     {
-        public static string GetClientList = @"SELECT grp.group_name
+        public string GetClientList = @"SELECT grp.group_name
         FROM app_groups grp
         JOIN app_user_groups usr_grp on grp.group_key=usr_grp.app_groups_id
         JOIN app_dates dts on grp.group_id=dts.group_id

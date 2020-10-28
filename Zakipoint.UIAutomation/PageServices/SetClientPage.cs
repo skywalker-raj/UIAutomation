@@ -14,7 +14,8 @@ namespace Zakipoint.UIAutomation.PageServices
     {
         #region Private Fields
 
-        private SetClientPageObjects _setClientPage;
+        private readonly SetClientPageObjects _setClientPage;
+        private readonly SetClientScripts _setClientScripts;
         private readonly MySqlStatementExecutor _executor;
 
         #endregion
@@ -24,6 +25,7 @@ namespace Zakipoint.UIAutomation.PageServices
         public SetClientPage()
         {
             _setClientPage = new SetClientPageObjects();
+            _setClientScripts = new SetClientScripts();
             _executor = new MySqlStatementExecutor();
         }
 
@@ -33,7 +35,7 @@ namespace Zakipoint.UIAutomation.PageServices
 
         public List<string> GetClientListFromDb(string user)
         {
-            return _executor.GetTableSingleColumn(Format(SetClientScripts.GetClientList, user));
+            return _executor.GetTableSingleColumn(Format(_setClientScripts.GetClientList, user));
         }
 
         #endregion
@@ -70,7 +72,6 @@ namespace Zakipoint.UIAutomation.PageServices
             Browser.WaitForPageToLoad();
         }
 
-        #endregion
-       
+        #endregion     
     }
 }

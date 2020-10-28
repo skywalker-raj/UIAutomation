@@ -9,7 +9,7 @@ namespace Zakipoint.UIAutomation.PageServices
     {
         #region Private Fields
 
-        private LoginPageObjects _loginPage;
+        private readonly LoginPageObjects _loginPage;
 
         #endregion
 

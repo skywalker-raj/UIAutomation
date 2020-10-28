@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Zakipoint.Framework.Driver;
-using Zakipoint.Tests.Common;
+using Zakipoint.UIAutomation.Common;
 using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.PageServices;
 using static System.String;
+using Zakipoint.Tests.Common;
 
 namespace Zakipoint.Tests.Tests
 {
@@ -38,7 +39,7 @@ namespace Zakipoint.Tests.Tests
         public void Init()
         {
             Browser.Open(Browser.Config["url"]);
-            _login.Login(CommonFunction.Data["username"], CommonFunction.Data["password"]);
+            _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
         }
 
         [TearDown]
@@ -54,15 +55,15 @@ namespace Zakipoint.Tests.Tests
         [Test, Category("Set Client Page Verification")]
         public void Verify_SetClient_Page()
         {
-            var clientListFromDb = _setClient.GetClientListFromDb(CommonFunction.Data["username"]);
+            var clientListFromDb = _setClient.GetClientListFromDb(JsonDataReader.Data["username"]);
             var clientList = new List<string>();
             Assert.True(Browser.IsElementPresent(How.XPath, Format(_setClientPage.LabelByTextXPath, "Select Client To View") ));
             Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.UserManagementLinkCssSelector));
             Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.GoButtonCssSelector));
             if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
             {
-                Assert.AreEqual(Browser.FindElement(How.CssSelector, _setClientPage.DropDownSelectedCssSelector).Text, "Select One");
                 Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector).Click();
+                Assert.AreEqual(Browser.FindElement(How.CssSelector, _setClientPage.DropDownSelectedCssSelector).Text, "Select One");                
                 var clientListElements = Browser.FindElements(How.XPath, _setClientPage.ClientListXPath);
                 foreach(var client in clientListElements)
                 {

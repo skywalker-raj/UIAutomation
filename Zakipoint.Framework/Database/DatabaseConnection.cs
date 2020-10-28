@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySqlConnector;
 using System;
 using System.Data;
 using Zakipoint.Framework.Driver;
@@ -54,7 +54,7 @@ namespace Zakipoint.Framework.Database
             MySqlConnectionStringBuilder _mySqlServer = new MySqlConnectionStringBuilder
             {
                 Server = Browser.Config["Server"],
-                Port = Convert.ToUInt32(Browser.Config["Port"]),
+                //Port = Convert.ToUInt32(Browser.Config["Port"]),
                 Database = Browser.Config["Database"],
                 UserID = Browser.Config["DbUiD"],
                 Password = Browser.Config["DbPassword"]

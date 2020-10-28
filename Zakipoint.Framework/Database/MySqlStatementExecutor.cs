@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace Zakipoint.Framework.Database
 {
@@ -180,6 +180,29 @@ namespace Zakipoint.Framework.Database
                         Console.WriteLine(ex.Message);
                     }
                 });
+        }
+
+        public DataTable GetDataTable(string sqlstring)
+        {
+            _objData = new DataSet();
+            try
+            {
+                var con = _connection.GetConnection();
+                var command = new MySqlCommand(sqlstring, con)
+                {
+                    CommandType = CommandType.Text
+                };
+                var dataAdapter = new MySqlDataAdapter(command);
+                dataAdapter.Fill(_objData);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            if (_objData != null)
+                return _objData.Tables[0];
+            else return null;
         }
 
         public void CloseConnection()

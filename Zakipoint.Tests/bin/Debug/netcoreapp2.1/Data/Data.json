@@ -1,0 +1,15 @@
+{
+  "usernameplaceholder": "Enter User Name",
+  "passwordplaceholder": "Enter Password",
+  "invalidusernamepassword": "Sorry, your username and password does not match.",
+  "invalidusername": "Sorry, your username does not match.",
+  "invalidpassword": "Sorry, your password does not match.",
+  "username": "raj.thapa@zakipoint.com",
+  "password": "Sound`123",
+  "QuickLinks": "Home;Population;Pharmacy;ER;Inpatient;Outpatient;Office Visit;Telemedicine;All Diseases;Gaps in Care;Provider Analytics;Procedure Analytics;TCOR;Biometric;High Cost Claimaints;Stop Loss;Report Management",
+  "Menu": "Home;Identify;Act;Track;My Story;Outreach;Help",
+  "DashboardItem": "Spend;Condition Cost Drivers;Updates;Prospective Population Risk Stratification;Cost Matrix",
+  "ConditionBySpend": "Conditions;% Spend;Spend;% Change (Spend);Members",
+  "DefaultClient": "Rue Gilt Groupe",
+  "DefaultClientSuffix": "RUEGILT"
+}

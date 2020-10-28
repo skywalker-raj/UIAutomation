@@ -1,0 +1,46 @@
+Page Name,	Method Name,	Expected Result,	Actual Result,	Status,	Remarks
+Dashboard,	Conditions,	Covid-19,	Covid-19,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	29,	29,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1706,	1706,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	2.89,	2.89,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	160,	160,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Anxiety disorders,	Anxiety Disorders,	Fail,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	29,	29,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1697,	1697,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	14.93,	14.93,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	97,	97,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Blood Disorders,	Blood Disorders,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	28,	28,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1638,	1638,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	51.96,	51.96,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	26,	26,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Liver Diseases,	Liver Diseases,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	25,	25,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1460,	1460,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	63.22,	63.22,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	18,	18,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Moderate Risk Pregnancy,	Moderate Risk Pregnancy,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	25,	25,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1423,	1423,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	26.59,	26.59,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	41,	41,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Diabetes,	Diabetes,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	21,	21,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1196,	1196,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	26.77,	26.77,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	38,	38,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Depression,	Depression,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	20,	20,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1143,	1143,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	-1.08,	-1.08,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	48,	48,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Substance-related disorders,	Substance-related disorders,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	19,	19,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1079,	1079,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	22.30,	22.3,	Fail,	Expected value shold be equal to actual value
+Dashboard,	Members,	20,	20,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Back Pain,	Back Pain,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	18,	18,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1048,	1048,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	92.39,	92.39,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	98,	98,	Pass,	Expected value shold be equal to actual value

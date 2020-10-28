@@ -23,31 +23,17 @@ namespace Zakipoint.Framework.Driver
         #region Private Properties
 
         public static readonly IConfiguration Config = new ConfigurationBuilder().AddJsonFile(@"Data/config.json").Build();
-
         private static IBrowserOptions _browserOptions;
-
         private static IWebDriver WebDriver = GetWebDriver();
-        //ChromeDriver("./");
-        //private const string path = "Executables/";
-
         private static DriverService _driverService;
-
         private static WebDriverWait _waitPageLoad;
-
         private static WebDriverWait _waitAjaxLoad;
-
         private static IJavaScriptExecutor _javaScriptExecutor;
-
-        private static ICapabilities _capabilities;
-
         private static ScreenshotRemoteWebDriver _screenshotRemoteWebDriver;
-
+        private static ICapabilities _capabilities;
         private static Uri _remoteAddress;
-
         private static bool IsInitalized { get; set; }
-
         private static IWebDriver _primaryWebDriver;
-
         private const string PATH = @"Executables/";
 
         #endregion
@@ -69,7 +55,6 @@ namespace Zakipoint.Framework.Driver
                     jScript = "return $telerik.radControls[0]._manager._isRequestInProgress;";
                     break;
             }
-
             _waitAjaxLoad.Until(d =>
             {
                 try
@@ -82,7 +67,6 @@ namespace Zakipoint.Framework.Driver
                 }
             });
         }
-
         /// <summary>
         /// Instructs the driver to send future commands to a different frame or window. 
         /// </summary>
@@ -91,60 +75,53 @@ namespace Zakipoint.Framework.Driver
         {
             WebDriver.SwitchTo().Window(windowName);
         }
-
         public static string Title
         {
             get { return WebDriver.Title; }
         }
-
         public static string PreviousPageTitle { get; set; }
-
         public static string PageSource
         {
             get { return WebDriver.PageSource; }
         }
-
         public static string Url
         {
             get { return WebDriver.Url; }
         }
-
         public static IJavaScriptExecutor JsExecutor
         {
             get { return WebDriver as IJavaScriptExecutor; }
         }
-
         public static ICapabilities Capabilites
         {
             get { return _capabilities; }
         }
-
         public static string BaseUrl
         {
             get;
             set;
         }
-
         public static int SleepInterval
         {
             get { return _browserOptions.SleepInterval; }
         }
-
         public static int ElementTimeOut
         {
             get { return _browserOptions.ElementLoadTimeout; }
         }
-
         public static string CurrentWindowHandle
         {
             get { return WebDriver.CurrentWindowHandle; }
         }
-
         public static List<string> WindowHandles
         {
             get { return WebDriver.WindowHandles.ToList(); }
         }
-
+        public static WebDriverWait WaitForExpectedConditions(int second = 60)
+        {
+            WebDriverWait wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(second));
+            return wait;
+        }
         public static void WaitForCondition(Func<bool> f, int milliSec = 0)
         {
             milliSec = (int)((milliSec == 0) ? _browserOptions.PageLoadTimeout * 1000 : milliSec);
@@ -173,7 +150,6 @@ namespace Zakipoint.Framework.Driver
                 Console.Out.WriteLine(ex.Message);
             }
         }
-
         /// <summary>
         /// Waits for the correct page to load.
         /// </summary>
@@ -233,13 +209,11 @@ namespace Zakipoint.Framework.Driver
             {
                 if (string.Compare(readyState, "complete", StringComparison.OrdinalIgnoreCase) == 0)
                 {
-                    Console.Out.WriteLine("Expected to find a page title of <{0}>, but found <{1}>.",
-                                                    pageTitle, Title);
+                    Console.Out.WriteLine("Expected to find a page title of <{0}>, but found <{1}>.", pageTitle, Title);
                 }
+                Console.Out.WriteLine(ex);
             }
         }
-
-      
         /// A generic method, that finds the first <see cref="IWebElement"/>  in the page that matches with in a document.
         /// </summary>
         /// <param name="select">The element to be found.</param>
@@ -250,7 +224,6 @@ namespace Zakipoint.Framework.Driver
         //{
         //    return (T)Activator.CreateInstance(typeof(T), cache, selector, select);
         //}
-
         ///// <summary>
         ///// A generic method, that Finds the first <see cref="IWebElement"/>  in the page that matches with in a document.
         ///// </summary>
@@ -291,8 +264,7 @@ namespace Zakipoint.Framework.Driver
         //                .ToList();
         //    data.Add(FindElements(select, selector, WebDriver).Where(x => x.Displayed).First().Text.Trim());
         //    return data;
-        //}
-        
+        //}    
         public static IEnumerable<IWebElement> WaitandReturnElementsExists(By locator, ISearchContext context, int elementTimeOut = 2000)
         {
             if (elementTimeOut == 0)
@@ -314,7 +286,6 @@ namespace Zakipoint.Framework.Driver
             });
             return webElement;
         }
-
         public static int FindElementsCount(string select, How selector)
         {
             return FindElements(select, selector, WebDriver).Count();
@@ -371,22 +342,18 @@ namespace Zakipoint.Framework.Driver
         {
             WebDriver.Navigate().Refresh();
         }
-
         public static void Back()
         {
             WebDriver.Navigate().Back();
         }
-
         public static void Forward()
         {
             WebDriver.Navigate().Forward();
         }
-
         public static string GetAlertBoxText()
         {
             return WebDriver.SwitchTo().Alert().Text;
         }
-
         public static bool IsAlertBoxPresent()
         {
             try
@@ -399,12 +366,10 @@ namespace Zakipoint.Framework.Driver
                 return false;
             }
         }
-
         public static void AcceptAlertBox()
         {
             WebDriver.SwitchTo().Alert().Accept();
         }
-
         public static void DismissAlert()
         {
             try
@@ -417,7 +382,6 @@ namespace Zakipoint.Framework.Driver
                 return;
             }
         }
-
         public static void ClickAndHold(How locator, string value)
         {
             var action = new Actions(WebDriver);
@@ -425,7 +389,6 @@ namespace Zakipoint.Framework.Driver
             action.MoveToElement(webElement).Click();
             action.MoveToElement(webElement).ClickAndHold().Build().Perform();
         }
-
         public static void WaitForPageToLoad()
         {
             const string jScript = "return document.readyState;";
@@ -447,7 +410,6 @@ namespace Zakipoint.Framework.Driver
                 }
             });
         }
-
         public static void WaitForAjaxToLoad(string ajaxLibrary)
         {
             string script = string.Format("return {0};", ajaxLibrary);
@@ -468,27 +430,22 @@ namespace Zakipoint.Framework.Driver
                 }
             });
         }
-
         public static void WaitToLoadNew(int millisecondsTimeout)
         {
             WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(millisecondsTimeout);
         }
-
         public static void CaptureScreenShot(string name)
         {
             _screenshotRemoteWebDriver.CaptureScreenShot(name);
         }
-
         public static void CaptureScreenShot(string dirPath, string name)
         {
             _screenshotRemoteWebDriver.CaptureScreenShot(dirPath, name);
         }
-
         public static bool IsHandlePresent(string argHandle)
         {
             return WebDriver.WindowHandles.Contains(argHandle);
         }
-
         public static string GetHandleByTitle(string title)
         {
             string currentHandle = WebDriver.CurrentWindowHandle;
@@ -501,7 +458,6 @@ namespace Zakipoint.Framework.Driver
             }
             return currentHandle;
         }
-
         public static void LocalFileDetect()
         {
             IAllowsFileDetection allowsDetection = WebDriver as IAllowsFileDetection;
@@ -510,7 +466,6 @@ namespace Zakipoint.Framework.Driver
                 allowsDetection.FileDetector = new LocalFileDetector();
             }
         }
-
         public static void ScreenShot(string screenShotName)
         {
             if (WebDriver is ITakesScreenshot ssdriver)
@@ -519,7 +474,6 @@ namespace Zakipoint.Framework.Driver
                 screenShot.SaveAsFile(screenShotName, ScreenshotImageFormat.Png);
             }
         }
-
         public static IWebElement FindElement(How locator, string value)
         {
             try
@@ -558,7 +512,6 @@ namespace Zakipoint.Framework.Driver
                 return null;
             }
         }
-
         public static IList<IWebElement> FindElements(How locator, string value)
         {
             try
@@ -597,7 +550,6 @@ namespace Zakipoint.Framework.Driver
                 return null;
             }
         }
-
         public static bool IsElementPresent(How locator, string value)
         {
             try
@@ -628,7 +580,6 @@ namespace Zakipoint.Framework.Driver
                         element = WebDriver.FindElement(By.CssSelector(value));
                         break;
                 }
-
                 if (element != null)
                 {
                     return true;
@@ -644,7 +595,6 @@ namespace Zakipoint.Framework.Driver
                 return false;
             }
         }
-
         public static bool IsElementEnabled(How locator, string value)
         {
             try
@@ -683,7 +633,6 @@ namespace Zakipoint.Framework.Driver
                 return false;
             }
         }
-
         public static bool IsElementDisplayed(How locator, string value)
         {
             try
@@ -722,29 +671,24 @@ namespace Zakipoint.Framework.Driver
                 return false;
             }
         }
-
         public static string GetElementText(How locator, string value)
         {
             IWebElement element = FindElement(locator, value);
             return element.Text;
         }
-
         public static string GetAttribute(How locator, string value, string attribute)
         {
             IWebElement element = FindElement(locator, value);
             return element.GetAttribute(attribute);
         }
-
         public static void ClearTextBox(How locator, string value)
         {
             FindElement(locator, value).Clear();
         }
-
         public static void EnterValueInTextBox(How locator, string value, string text)
         {
             FindElement(locator, value).SendKeys(text);
         }
-
         public static bool CloseWindowAndSwitchTo(string windowName)
         {
             if (!WebDriver.CurrentWindowHandle.Equals(windowName))
@@ -755,7 +699,6 @@ namespace Zakipoint.Framework.Driver
             }
             return false;
         }
-
         public static bool SwitchWindowByUrl(string windowUrl)
         {
             foreach (string handle in WebDriver.WindowHandles)
@@ -765,47 +708,38 @@ namespace Zakipoint.Framework.Driver
             }
             return false;
         }
-
         public static void CloseWindow(string windowName)
         {
             WebDriver.SwitchTo().Window(windowName).Close();
         }
-
         public static void CloseWindow()
         {
             WebDriver.Close();
         }
-
         public static void SwitchFrame(string frameName)
         {
             WebDriver.SwitchTo().Frame(frameName);
         }
-
         public static void SwitchBackToMainFrame()
         {
             WebDriver.SwitchTo().DefaultContent();
         }
-
         public static void CloseModalPopup()
         {
             WebDriver.SwitchTo().ActiveElement().SendKeys(Keys.Escape);
         }
-
         public static void CloseFrame(string frameName)
         {
             WebDriver.SwitchTo().Frame(frameName).Close();
         }
-
         public static void CloseFrameAndSwitchTo(String frameName)
         {
             WebDriver.SwitchTo().DefaultContent().SwitchTo().Frame(frameName);
         }
-
         public static void MaximizeWindow()
         {
             WebDriver.Manage().Window.Maximize();
         }
-
         public static void Stop()
         {
             if (WebDriver != null)
@@ -819,12 +753,10 @@ namespace Zakipoint.Framework.Driver
                 }
             }
         }
-
         public static void ElementToBeClickable(IWebElement element, int elementTimeOut = 3000)
         {
             //elementTimeOut = _browserOptions.ElementLoadTimeout;
             var wait = new WebDriverWait(new SystemClock(), WebDriver, TimeSpan.FromMilliseconds(ElementTimeOut), TimeSpan.FromMilliseconds(SleepInterval));
-
             try
             {
                 wait.Until(driver =>
@@ -835,7 +767,7 @@ namespace Zakipoint.Framework.Driver
                     }
                     catch (Exception ex)
                     {
-                        //Console.Out.WriteLine("unhandled exception clickable" + ex.Message);
+                        Console.Out.WriteLine("unhandled exception clickable" + ex.Message);
                         return false;
                     }
                 });
@@ -844,7 +776,6 @@ namespace Zakipoint.Framework.Driver
             {
             }
         }
-
         public static void WaitTillClear(IWebElement element, int elementTimeOut = 500)
         {
             var wait = new WebDriverWait(new SystemClock(), WebDriver, TimeSpan.FromMilliseconds(ElementTimeOut), TimeSpan.FromMilliseconds(SleepInterval));
@@ -858,7 +789,7 @@ namespace Zakipoint.Framework.Driver
                     }
                     catch (Exception ex)
                     {
-                        //Console.Out.WriteLine("unhandled exception clear" + ex.Message);
+                        Console.Out.WriteLine("unhandled exception clear" + ex.Message);
                         return false;
                     }
                 });
@@ -867,7 +798,6 @@ namespace Zakipoint.Framework.Driver
             {
             }
         }
-
         public static IWebElement WaitandReturnElementExists(By locator, ISearchContext context, int elementTimeOut = 2000)
         {
             if (elementTimeOut == 0)
