@@ -49,22 +49,22 @@ namespace Zakipoint.UIAutomation.PageServices
         }
         public string ExpectedTotalEmployee()
         {
-            var _expectedTotalEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Employee);
+            var _expectedTotalEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Employee());
             return _expectedTotalEmployee.ToString();
         }
         public string ExpectedTotalMember()
         {
-            long _expectedTotalEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Member);
+            long _expectedTotalEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Member());
             return _expectedTotalEmployee.ToString();
         }
         public string ExpectedTotalActiveEmployee()
         {
-            long _expectedTotalActiveEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Active_Employee);
+            long _expectedTotalActiveEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Active_Employee());
             return _expectedTotalActiveEmployee.ToString();
         }
         public string ExpectedTotalActiveMember()
         {
-            long _expectedTotalActiveEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Active_Member);
+            long _expectedTotalActiveEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Active_Member());
             return _expectedTotalActiveEmployee.ToString();
         }
         public List<decimal> Expected_Total_Medical_Pharmacy_Spend(string active_flag, int period)
@@ -200,11 +200,21 @@ namespace Zakipoint.UIAutomation.PageServices
             if (Browser.FindElements(How.XPath, _dashboardPage.ClientBoxLabelTextByXPath)[1].Text != "Active Members")
             {
                 Browser.FindElement(How.XPath, _dashboardPage.ApplicationSettinsgByXPath).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.MemberStatusChangeXPath))).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed01")))).Click();
+                Console.WriteLine("Click setting icon");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
+                Console.WriteLine("conditional wait");
+                Browser.FindElement(How.XPath, _dashboardPage.MemberStatusChangeXPath).Click();
+                Console.WriteLine("Member status: change link text ");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed01"))));
+                Console.WriteLine("Conditional wait");
+                Browser.FindElement(How.CssSelector, Format(_dashboardPage.RadioMemberByCssSelector, "termed01")).Click();
+                Console.WriteLine("Choose radio button Active Members ");
                 Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ApplySettingXPath)));
+                Console.WriteLine("conditional wait");
                 Browser.FindElement(How.XPath, _dashboardPage.ApplySettingXPath).Click();
-                Browser.FindElements(How.XPath, _dashboardPage.ClientBoxLabelTextByXPath)[1].Text.Equals("Active Members");
+                Console.WriteLine("Click on Apply Setting button");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ClientBoxLabelTextByXPath + "[contains(text(),'Active Employees')]")));
+                Console.WriteLine("conditional wait");
             }
         }
         public void ChooseAllMember()
@@ -212,11 +222,21 @@ namespace Zakipoint.UIAutomation.PageServices
             if (Browser.FindElements(How.XPath, _dashboardPage.ClientBoxLabelTextByXPath)[1].Text != "All Members")
             {
                 Browser.FindElement(How.XPath, _dashboardPage.ApplicationSettinsgByXPath).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.MemberStatusChangeXPath))).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed02")))).Click();
+                Console.WriteLine("Click setting icon");
+                Console.WriteLine("conditional wait");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
+                Browser.FindElement(How.XPath,_dashboardPage.MemberStatusChangeXPath).Click();
+                Console.WriteLine("Member status: change link text ");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed02"))));
+                Console.WriteLine("conditional wait");
+                Browser.FindElement(How.CssSelector,Format(_dashboardPage.RadioMemberByCssSelector, "termed02")).Click();
+                Console.WriteLine("Choose radio button All Members ");
                 Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ApplySettingXPath)));
+                Console.WriteLine("conditional wait");
                 Browser.FindElement(How.XPath, _dashboardPage.ApplySettingXPath).Click();
-                Browser.FindElements(How.XPath, _dashboardPage.ClientBoxLabelTextByXPath)[1].Text.Equals("All Members");
+                Console.WriteLine("Click on Apply Setting button");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ClientBoxLabelTextByXPath + "[contains(text(),'All Employees')]")));
+                Console.WriteLine("conditional wait");
             }
         }
         public string TotalEmployee(bool Active)
@@ -252,7 +272,9 @@ namespace Zakipoint.UIAutomation.PageServices
                 if (Browser.FindElement(How.LinkText, "SPEND").GetAttribute("class").Contains("inactive"))
                 {
                     Browser.FindElement(How.LinkText, "SPEND").Click();
-                    Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(Format(_dashboardPage.SpendByLabelXPath, "Medical"))));
+                    Console.WriteLine("Click on SPEND link");
+                    Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.SpendByLabelXPath, "Medical"))));
+                    Console.WriteLine("Conditional wait");
                 }
             }
             else
@@ -260,7 +282,9 @@ namespace Zakipoint.UIAutomation.PageServices
                 if (Browser.FindElement(How.LinkText, "PMPM").GetAttribute("class").Contains("inactive"))
                 {
                     Browser.FindElement(How.LinkText, "PMPM").Click();
-                    Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(Format(_dashboardPage.PMPMByLabelXPath, "Medical"))));
+                    Console.WriteLine("click on PMPM link");
+                    Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.PMPMByLabelXPath, "Medical"))));
+                    Console.WriteLine("Conditional wait");
                 }
             }           
         }
@@ -351,6 +375,7 @@ namespace Zakipoint.UIAutomation.PageServices
         }
 
         #endregion
+
         #region Reporting Period
 
         public string StartDate()

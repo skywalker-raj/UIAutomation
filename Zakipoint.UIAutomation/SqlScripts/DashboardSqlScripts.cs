@@ -3,30 +3,37 @@
 namespace Zakipoint.UIAutomation.SqlScripts
 {
     public class DashboardSqlScripts
-    {      
+    {
         public string GetAppGroupsValueList = @"select * from app_groups";
 
-        public string Expected_Total_Active_Employee = string.Format(@"SELECT
+        public string Expected_Total_Active_Employee() {  
+            return string.Format(@"SELECT
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1 And p1_active_flag=1 
             AND mbr_relationship_class = 'Employee'", CommonObject.DefaultClientSuffix);
-
-        public string Expected_Total_Active_Member = string.Format(@"SELECT
+        }
+        public string Expected_Total_Active_Member() {  
+            return string.Format(@"SELECT
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1 And p1_active_flag=1", CommonObject.DefaultClientSuffix);
+    }
 
-        public string Expected_Total_Employee = string.Format(@"SELECT
+        public string Expected_Total_Employee() { 
+            return string.Format(@"SELECT
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1 
             AND mbr_relationship_class = 'Employee'", CommonObject.DefaultClientSuffix);
+    }
 
-        public string Expected_Total_Member = string.Format(@"SELECT
+        public string Expected_Total_Member() {
+            return string.Format(@"SELECT
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1", CommonObject.DefaultClientSuffix);
+        }
 
         public string Expected_Total_Medical_Pharmacy_Sepnd(int period)
         {
