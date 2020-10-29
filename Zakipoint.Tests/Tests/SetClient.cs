@@ -9,10 +9,11 @@ using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.PageServices;
 using static System.String;
 using Zakipoint.Tests.Common;
+using Zakipoint.Tests.Base;
 
 namespace Zakipoint.Tests.Tests
 {
-    public class SetClient
+    public class SetClient : AbstractBase
     {
         #region Private Methods
 
@@ -35,17 +36,17 @@ namespace Zakipoint.Tests.Tests
 
         #region Base Methods
 
-        [SetUp]
-        public void Init()
+        //[SetUp]
+        public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
             _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
         }
 
-        [TearDown]
-        public void Dispose()
+        //[TearDown]
+        public override void Dispose()
         {
-            Browser.Dispose();
+            //Browser.Dispose();
         }
 
         #endregion

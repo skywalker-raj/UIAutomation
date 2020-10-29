@@ -280,7 +280,7 @@ namespace Zakipoint.Framework.Driver
                 }
                 catch (Exception ex)
                 {
-                    //Console.Out.WriteLine("unhandled exception" + ex.Message);
+                    Console.Out.WriteLine("unhandled exception" + ex.Message);
                     return false;
                 }
             });
@@ -814,11 +814,20 @@ namespace Zakipoint.Framework.Driver
                 }
                 catch (Exception ex)
                 {
-                    //Console.Out.WriteLine("unhandled exception" + ex.Message);
+                    Console.Out.WriteLine("unhandled exception" + ex.Message);
                     return false;
                 }
             });
             return webElement;
+        }
+
+        /// <summary>
+        /// Gets a screenshot filename.
+        /// </summary>
+        /// <returns>A screenshot file name.</returns>
+        public static string GetScreenshotFilename()
+        {
+            return ScreenshotRemoteWebDriver.FullQualifiedFileName;
         }
 
         #endregion
