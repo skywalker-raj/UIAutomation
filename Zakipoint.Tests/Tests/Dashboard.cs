@@ -8,10 +8,11 @@ using Zakipoint.UIAutomation.Common;
 using Zakipoint.UIAutomation.Model;
 using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.PageServices;
+using Zakipoint.Tests.Base;
 
 namespace Zakipoint.Tests.Tests
 {
-    public class Dashboard
+    public class Dashboard : AbstractBase
     {
         #region Private Methods
 
@@ -40,8 +41,8 @@ namespace Zakipoint.Tests.Tests
 
         #region Base Methods
 
-        [OneTimeSetUp]
-        public void Init()
+        //[SetUp]
+        public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
             _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
@@ -50,13 +51,14 @@ namespace Zakipoint.Tests.Tests
             _dashboard.DashboardPageLoad();
         }
 
-        [OneTimeTearDown]
-        public void Dispose()
+        //[TearDown]
+        public override void Dispose()
         {
-            Browser.Dispose();
+            //Browser.Dispose();
         }
 
         #endregion
+
 
         #region TestMethods
         

@@ -6,10 +6,10 @@ using Zakipoint.Tests.Common;
 using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.PageServices;
 using static System.String;
-
+using Zakipoint.Tests.Base;
 namespace Zakipoint.Tests.Tests
 {
-    public class Login
+    public class Login : AbstractBase
     {
         #region Private Methods
 
@@ -30,16 +30,16 @@ namespace Zakipoint.Tests.Tests
 
         #region Base Methods
 
-        [OneTimeSetUp]
-        public void Init()
+        //[SetUp]
+        public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
         }
 
-        [OneTimeTearDown]
-        public void Dispose()
+        //[TearDown]
+        public override void Dispose()
         {
-            Browser.Dispose();
+            //Browser.Dispose();
         }
 
         #endregion
