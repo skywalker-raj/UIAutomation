@@ -10,6 +10,7 @@
   "Menu": "Home;Identify;Act;Track;My Story;Outreach;Help",
   "DashboardItem": "Spend;Condition Cost Drivers;Updates;Prospective Population Risk Stratification;Cost Matrix",
   "ConditionBySpend": "Conditions;% Spend;Spend;% Change (Spend);Members",
-  "DefaultClient": "Rue Gilt Groupe",
-  "DefaultClientSuffix": "RUEGILT"
+  "DefaultClient": "Blackhawk Mining, LLC",
+  "DefaultClientSuffix": "Blackhawk",
+  "clientList": "Select One;Arc Administrators;Asbury University;Beacon Health Options;Big Ass Fans;Blackhawk Mining, LLC;Cabarrus County;Cape Associates;City of Asheboro;City of Sanford;Cleveland County;DentaQuest;Edgecombe;Feeney Brothers;Halifax County;Harlan Bakeries;MacLellan;Mitsui & Co.;Mom's Organic Market;Onslow County;Price Chopper Supermarkets;RJ Corman;RogersGray;Rue Gilt Groupe;Z5 Demo B"
 }

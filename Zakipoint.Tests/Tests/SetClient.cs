@@ -62,7 +62,8 @@ namespace Zakipoint.Tests.Tests
         [Test, Category("Set Client Page Verification")]
         public void Verify_SetClient_Page()
         {
-            var clientListFromDb = _setClient.GetClientListFromDb(JsonDataReader.Data["username"]);
+            
+            var clientListFromDb = JsonDataReader.Data["clientList"].Split(";");
             var clientList = new List<string>();
             Assert.True(Browser.IsElementPresent(How.XPath, Format(_setClientPage.LabelByTextXPath, "Select Client To View") ));
             Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.UserManagementLinkCssSelector));
