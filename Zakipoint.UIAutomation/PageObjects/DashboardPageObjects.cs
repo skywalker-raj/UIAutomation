@@ -7,6 +7,7 @@
         #region CssSelectors
 
         public string UserLinkDropdownCssSelector = "nav.navbar div.m-wrapper a.dropdown-toggle";
+        public string UserLinkDropdownListCssSelector = "nav.navbar div.m-wrapper div.dropdown.user-login div.dropdown-menu > a:nth-child{0}";   //"(1)" :change password || "(2)": logout
         public string UserSettingsCssSelector = "nav.navbar div.m-wrapper a:not(.nav-link)";
         public string LogoImageCssSelector = "nav.navbar img.logo__img";
         public string MenuLinkCssSelector = "nav.navbar ul.navbar-nav li a.nav-link";

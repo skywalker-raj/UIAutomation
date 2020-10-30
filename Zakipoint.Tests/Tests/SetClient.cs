@@ -20,6 +20,7 @@ namespace Zakipoint.Tests.Tests
         private readonly SetClientPageObjects _setClientPage;
         private readonly SetClientPage _setClient;
         private readonly LoginPage _login;
+        private readonly CommonFunction _commonFunction;
 
         #endregion
 
@@ -30,7 +31,10 @@ namespace Zakipoint.Tests.Tests
             _setClientPage = new SetClientPageObjects();
             _setClient = new SetClientPage();
             _login = new LoginPage();
-        }
+            _commonFunction = new CommonFunction();
+
+
+    }
 
         #endregion
 
@@ -44,10 +48,12 @@ namespace Zakipoint.Tests.Tests
         }
 
         //[TearDown]
-        public override void Dispose()
-        {
-            //Browser.Dispose();
-        }
+        //public override void Dispose()
+        //{
+        //    //_commonFunction.Logout();
+           
+            
+        //}
 
         #endregion
 
@@ -70,7 +76,7 @@ namespace Zakipoint.Tests.Tests
                 {
                     clientList.Add(client.Text);
                 }
-                Assert.AreEqual(clientList, clientListFromDb);
+                Assert.AreEqual(clientListFromDb,clientList);
             }
         }
       

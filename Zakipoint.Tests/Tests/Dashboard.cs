@@ -10,7 +10,6 @@ using Zakipoint.UIAutomation.Model;
 using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.PageServices;
 using Zakipoint.Tests.Base;
-
 namespace Zakipoint.Tests.Tests
 {
     public class Dashboard : AbstractBase
@@ -52,9 +51,10 @@ namespace Zakipoint.Tests.Tests
             _dashboard.DashboardPageLoad();
         }
 
-        //[TearDown]
+        [TearDown]
         public override void Dispose()
         {
+            _commonFunction.Logout();
             //Browser.Dispose();
         }
 
@@ -62,7 +62,7 @@ namespace Zakipoint.Tests.Tests
 
 
         #region TestMethods
-        
+
         //[Test, Category("Dashboard Page Verification")]
         public void Verify_Dashboard_Page()
         {
@@ -71,12 +71,12 @@ namespace Zakipoint.Tests.Tests
             var expectedConditionSpendTableHeaderList = JsonDataReader.Data["ConditionBySpend"].Split(';').ToList();
             try
             {
-                ////Assert.AreEqual(_dashboard.GetMenuList(), expectedMenuList);
-                ////Assert.AreEqual(_commonFunction.GetNavBarQuickLinks(), expectedQuickLinksList);
+                //Assert.AreEqual(_dashboard.GetMenuList(), expectedMenuList);
+                //Assert.AreEqual(_commonFunction.GetNavBarQuickLinks(), expectedQuickLinksList);
                 var groupDetailsList = _dashboard.GetGroupID();
                 //_dashboard.ClickDownloadReport();
                 //CommonMethods.CheckFileDownloaded(_dashboard.GetDownloadReportName());
-                ////Assert.AreEqual(_dashboard.GetTableHeaderList(How.CssSelector, _dashboardPage.TopConditionTableHeaderCssSelector), expectedConditionSpendTableHeaderList);
+                //Assert.AreEqual(_dashboard.GetTableHeaderList(How.CssSelector, _dashboardPage.TopConditionTableHeaderCssSelector), expectedConditionSpendTableHeaderList);
                 var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector);
             }
             catch (Exception e)
@@ -100,20 +100,24 @@ namespace Zakipoint.Tests.Tests
                 for (int i = 0; i < objectLength; i++)
                 {
                     _saveToCsv.SaveTestCase(Expected_Result[i].Conditions, Actual_Result[i].Conditions, "Dashboard", "Conditions(all)", "Expected value shold be equal to actual value");
-                   //Assert.IsTrue(Expected_Result[i].Conditions== Actual_Result[i].Conditions);
                     _saveToCsv.SaveTestCase(String.Format("{0:0.##}",Expected_Result[i].P_Spend), String.Format("{0:0.##}",Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value shold be equal to actual value");
-                   //Assert.IsTrue(String.Format("{0:0.##}", Expected_Result[i].P_Spend) == String.Format("{0:0.##}", Actual_Result[i].P_Spend));
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend", "Expected value shold be equal to actual value");
-                   //Assert.IsTrue(Expected_Result[i].Spend == Actual_Result[i].Spend);
+                     _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend", "Expected value shold be equal to actual value");
                     _saveToCsv.SaveTestCase(String.Format("{0:0.##}",Expected_Result[i].P_Change), String.Format("{0:0.##}",Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value shold be equal to actual value");
-                   //Assert.IsTrue(String.Format("{0:0.##}", Expected_Result[i].P_Change) == String.Format("{0:0.##}", Actual_Result[i].P_Change));
                     _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(all)", "Expected value shold be equal to actual value");
-                   //Assert.IsTrue(Expected_Result[i].Members== Actual_Result[i].Members);
+                   
                 }
+                  for (int i = 0; i < objectLength; i++)
+                   {
+                    Assert.IsTrue(String.Format("{0:0.##}", Expected_Result[i].P_Change) == String.Format("{0:0.##}", Actual_Result[i].P_Change));
+                    Assert.IsTrue(Expected_Result[i].Spend == Actual_Result[i].Spend);
+                    Assert.IsTrue(String.Format("{0:0.##}", Expected_Result[i].P_Spend) == String.Format("{0:0.##}", Actual_Result[i].P_Spend));
+                    Assert.IsTrue(Expected_Result[i].Conditions == Actual_Result[i].Conditions);
+                    Assert.IsTrue(Expected_Result[i].Members == Actual_Result[i].Members);
+                   }
             }
             catch (Exception ex)
             {
-                Browser.ScreenShot("Top_Condition_By_Total_Spend");
+                Browser.ScreenShot("Top_Condition_By_Total_Spend_Shot");
                 Console.Out.WriteLine(ex);
             }
         }
@@ -132,17 +136,16 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Medical PMPM Change(active) % from UI: " + Actual_Medical_PMPM_Change.ToString());
                 decimal Actual_Pharmacy_PMPM_Change = _dashboard.PMPM_Change(false); //false for pharmacy pmpm tile
                 Console.WriteLine("Pharmacy PMPM Change(active) % from UI: " + Actual_Pharmacy_PMPM_Change.ToString());
-                
                 _saveToCsv.SaveTestCase(Expected_Medical_PMPM_Change.ToString(), Actual_Medical_PMPM_Change.ToString(), "Dashboard", "Medical PMPM Change(active) Percentages", "Expected PMPM  change shold be equal to actual PMPM change");
-               //Assert.IsTrue(Actual_Medical_PMPM_Change == Expected_Medical_PMPM_Change);
                 _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM_Change.ToString(), Actual_Pharmacy_PMPM_Change.ToString(), "Dashboard", "Pharmacy PMPM Change(active) Percentages", "Expected PMPM change shold be equal to actual PMPM change");
-               //Assert.IsTrue(Actual_Pharmacy_PMPM_Change == Expected_Pharmacy_PMPM_Change);
+                Assert.IsTrue(Actual_Medical_PMPM_Change == Expected_Medical_PMPM_Change);
+                Assert.IsTrue(Actual_Pharmacy_PMPM_Change == Expected_Pharmacy_PMPM_Change);
                 
             }
             catch (Exception ex)
             {
-                Browser.ScreenShot("Active_PMPM_Change_Percentages");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM_Change_Percentages", _commonFunction.RemoveUnicode(ex.Message));
+                Browser.ScreenShot("Active_PMPM_Change_Percentages_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM_Change_Percentages", _commonFunction.RemoveUnicode(ex.Message));
                 Console.Out.WriteLine(ex);
             }
         }
@@ -161,16 +164,15 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Medical PMPM Change Percentages(All) from UI:" + Actual_Medical_PMPM_Change.ToString());
                 decimal Actual_Pharmacy_PMPM_Change = _dashboard.PMPM_Change(false);
                 Console.WriteLine("Pharmacy PMPM Change Percentages(All) from UI: " + Actual_Pharmacy_PMPM_Change.ToString());
-                
                 _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Medical_PMPM_Change), string.Format("{0:0.##}", Actual_Medical_PMPM_Change), "Dashboard", "Medical PMPM Change(all) Percentages", "Expected PMPM  change shold be equal to actual PMPM change");
-               //Assert.IsTrue(String.Format("{0:0.##}", Expected_Medical_PMPM_Change)== string.Format("{0:0.##}", Actual_Medical_PMPM_Change));
                 _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Pharmacy_PMPM_Change), string.Format("{0:0.##}", Actual_Pharmacy_PMPM_Change), "Dashboard", "Pharmacy PMPM Change(all) Percentages", "Expected PMPM change shold be equal to actual PMPM change");
-               //Assert.IsTrue( String.Format("{0:0.##}", Expected_Pharmacy_PMPM_Change) == string.Format("{0:0.##}", Actual_Pharmacy_PMPM_Change));
+                Assert.IsTrue(String.Format("{0:0.##}", Expected_Medical_PMPM_Change)== string.Format("{0:0.##}", Actual_Medical_PMPM_Change));
+                Assert.IsTrue( String.Format("{0:0.##}", Expected_Pharmacy_PMPM_Change) == string.Format("{0:0.##}", Actual_Pharmacy_PMPM_Change));
             }
             catch (Exception ex)
             {
-                Browser.ScreenShot("PMPM_Change_Percenatges");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM_Change_Percenatges", _commonFunction.RemoveUnicode(ex.Message));
+                Browser.ScreenShot("PMPM_Change_Percenatges_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM_Change_Percenatges", _commonFunction.RemoveUnicode(ex.Message));
                 Console.Out.WriteLine(ex);
             }
         }
@@ -189,20 +191,18 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Mediacal PMPM(active) from UI: " + Actual_Medical_PMPM.ToString());
                 decimal Actual_Pharmacy_PMPM = _dashboard.Spend_PMPM(false);
                 Console.WriteLine("Mediacal PMPM(active) from UI: " + Actual_Pharmacy_PMPM.ToString());
-
                 _saveToCsv.SaveTestCase(Expected_Medical_PMPM.ToString(), Actual_Medical_PMPM.ToString(), "Dashboard", "Medical PMPM(active)", "Expected PMPM shold be equal to actual PMPM");
-               //Assert.IsTrue(Expected_Medical_PMPM.ToString() == Actual_Medical_PMPM.ToString());
                 _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM.ToString(), Actual_Pharmacy_PMPM.ToString(), "Dashboard", "Pharmacy PMPM(active)", "Expected PMPM shold be equal to actual PMPM");
-               //Assert.IsTrue(Expected_Pharmacy_PMPM.ToString()== Actual_Pharmacy_PMPM.ToString());
+                Assert.IsTrue(Expected_Medical_PMPM.ToString() == Actual_Medical_PMPM.ToString());
+                Assert.IsTrue(Expected_Pharmacy_PMPM.ToString()== Actual_Pharmacy_PMPM.ToString());
             }
             catch (Exception ex)
             {
-                Browser.ScreenShot("Active_PMPM");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM", _commonFunction.RemoveUnicode(ex.Message));
+                Browser.ScreenShot("Active_PMPM_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM", _commonFunction.RemoveUnicode(ex.Message));
                 Console.Out.WriteLine(ex);
             }
         }
-
         [Test, Category("PMPM")]
         public void PMPM()
         {
@@ -218,20 +218,18 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Mediacal PMPM(all) from UI: " + Actual_Medical_PMPM.ToString());
                 decimal Actual_Pharmacy_PMPM = _dashboard.Spend_PMPM(false);
                 Console.WriteLine("Mediacal PMPM(all) from UI: " + Actual_Pharmacy_PMPM.ToString());
-
                 _saveToCsv.SaveTestCase(Expected_Medical_PMPM.ToString(), Actual_Medical_PMPM.ToString(), "Dashboard", "Medical PMPM(all)", "Expected PMPM shold be equal to actual PMPM");
-               //Assert.IsTrue(Expected_Medical_PMPM.ToString() == Actual_Medical_PMPM.ToString());
                 _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM.ToString(), Actual_Pharmacy_PMPM.ToString(), "Dashboard", "Pharmacy PMPM(all)", "Expected PMPM shold be equal to actual PMPM");
-               //Assert.IsTrue(Expected_Pharmacy_PMPM.ToString() == Actual_Pharmacy_PMPM.ToString());
+                Assert.IsTrue(Expected_Medical_PMPM.ToString() == Actual_Medical_PMPM.ToString());
+                Assert.IsTrue(Expected_Pharmacy_PMPM.ToString() == Actual_Pharmacy_PMPM.ToString());
             }
             catch (Exception ex)
             {
-                Browser.ScreenShot("PMPM");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM", _commonFunction.RemoveUnicode(ex.Message));
+                Browser.ScreenShot("PMPM_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM", _commonFunction.RemoveUnicode(ex.Message));
                 Console.Out.WriteLine(ex);
             }
         }
-
         [Test, Category("Active Medical Pharmacy Spend Change Percentages")]
         public void Active_Medical_Pharmacy_Spend_Change_Percentages()
         {
@@ -252,14 +250,14 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Pharmacy Change(all) from UI: " + Actual_Pharmacy_Change_Spend);
 
                 _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Medical_Change_spend), String.Format("{0:0.##}", Actula_Medical_Change_Spend), "Dashboard", " Medical Spend Change(active) ", "Expected medical change spend should be equal to actual medical change spend");
-               //Assert.IsTrue(String.Format("{0:0.##}", Expected_Medical_Change_spend)== String.Format("{0:0.##}", Actula_Medical_Change_Spend));
                 _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Pharmacy_Change_spend), String.Format("{0:0.##}", Actual_Pharmacy_Change_Spend), "Dashboard", "Pharmacy Spend Change(active)", "Expected pharmacy change spend should be equal to actual pharmacy change spend");
-               //Assert.IsTrue(String.Format("{0:0.##}", Expected_Pharmacy_Change_spend) == String.Format("{0:0.##}", Actual_Pharmacy_Change_Spend));
+                Assert.IsTrue(String.Format("{0:0.##}", Expected_Medical_Change_spend)== String.Format("{0:0.##}", Actula_Medical_Change_Spend));
+                Assert.IsTrue(String.Format("{0:0.##}", Expected_Pharmacy_Change_spend) == String.Format("{0:0.##}", Actual_Pharmacy_Change_Spend));
             }
             catch (Exception ex)
             {
-                Browser.ScreenShot("Active_Medical_Pharmacy_Spend_Change_Percentages");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Medical_Pharmacy_Spend_Change_Percentages", _commonFunction.RemoveUnicode(ex.Message));
+                Browser.ScreenShot("Active_Medical_Pharmacy_Spend_Change_Percentages_Shot");
+              //  _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Medical_Pharmacy_Spend_Change_Percentages", _commonFunction.RemoveUnicode(ex.Message));
                 Console.Out.WriteLine(ex);
             }
         }
@@ -280,15 +278,15 @@ namespace Zakipoint.Tests.Tests
                 decimal Actual_Pharmacy_Change_Spend = _dashboard.Spend_Change(false); //false for Pharmacy
                 Console.WriteLine("Pharmacy change(all)  from UI: " + Actual_Pharmacy_Change_Spend);
                 _saveToCsv.SaveTestCase(Expected_Medical_Change_spend.ToString(), Actula_Medical_Change_Spend.ToString(), "Dashboard", " Medical Spend Change(all)", "Expected medical change spend should be equal to actual medical change spend");
-               //Assert.IsTrue(Expected_Medical_Change_spend == Actula_Medical_Change_Spend);
                 _saveToCsv.SaveTestCase(Expected_Pharmacy_Change_spend.ToString(), Actual_Pharmacy_Change_Spend.ToString(), "Dashboard", "Pharmacy Spend Change(all)", "Expected pharmacy change spend should be equal to actual pharmacy change spend");
-               //Assert.IsTrue(Expected_Pharmacy_Change_spend == Actual_Pharmacy_Change_Spend);
+                Assert.IsTrue(Expected_Medical_Change_spend == Actula_Medical_Change_Spend);
+                Assert.IsTrue(Expected_Pharmacy_Change_spend == Actual_Pharmacy_Change_Spend);
             }
             catch (Exception ex)
             {
 
-                Browser.ScreenShot("Medical_Pharmacy_Spend_Change_Percentages");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", _commonFunction.RemoveUnicode(ex.Message));
+                Browser.ScreenShot("Medical_Pharmacy_Spend_Change_Percentages_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", _commonFunction.RemoveUnicode(ex.Message));
                 Console.Out.WriteLine(ex);
             }
 
@@ -313,18 +311,17 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Total Pharmacy spend(active) from UI: " + Actual_Active_Total_Pharmacy_Spend);
                 string Actual_Active_Total_Spend = _dashboard.TotalSpend();
                 Console.WriteLine("Total Spend(active) from UI: " + Actual_Active_Total_Spend);
-
-                _saveToCsv.SaveTestCase(Expected_Active_Total_Medical_Spend, Actual_Active_Total_Medical_Spend, "Dashboard", "Total Medical Spend(active)", "Expected total active medical spend should be equal to actual total active medical spend ");
-               //Assert.IsTrue(Expected_Active_Total_Medical_Spend== Actual_Active_Total_Medical_Spend);
-                _saveToCsv.SaveTestCase(Expected_Active_Total_Pharmacy_Spend, Actual_Active_Total_Pharmacy_Spend, "Dashboard", "Total Pharmacy Spend(active)", "Expected total active pharmacy spend should be equal to actual total active pharmacy spend ");
-               //Assert.AreEqual(Expected_Active_Total_Pharmacy_Spend, Actual_Active_Total_Pharmacy_Spend);
-                _saveToCsv.SaveTestCase(Expected_Active_Total_Spend, Actual_Active_Total_Spend, "Dashboard", "Total Spend(active)", "Expected total active spend should be equal to actual total active spend ");
-               //Assert.AreEqual(Expected_Active_Total_Spend, Actual_Active_Total_Spend);
+                 _saveToCsv.SaveTestCase(Expected_Active_Total_Medical_Spend, Actual_Active_Total_Medical_Spend, "Dashboard", "Total Medical Spend(active)", "Expected total active medical spend should be equal to actual total active medical spend ");
+                 _saveToCsv.SaveTestCase(Expected_Active_Total_Pharmacy_Spend, Actual_Active_Total_Pharmacy_Spend, "Dashboard", "Total Pharmacy Spend(active)", "Expected total active pharmacy spend should be equal to actual total active pharmacy spend ");
+                 _saveToCsv.SaveTestCase(Expected_Active_Total_Spend, Actual_Active_Total_Spend, "Dashboard", "Total Spend(active)", "Expected total active spend should be equal to actual total active spend ");
+                Assert.AreEqual(Expected_Active_Total_Pharmacy_Spend, Actual_Active_Total_Pharmacy_Spend);
+                Assert.IsTrue(Expected_Active_Total_Medical_Spend == Actual_Active_Total_Medical_Spend);
+                Assert.AreEqual(Expected_Active_Total_Spend, Actual_Active_Total_Spend);
             }
             catch (Exception e)
             {
-                Browser.ScreenShot("Total_Active_Medical_Pharmacy_Spend");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Active_Medical_Pharmacy_Spend", _commonFunction.RemoveUnicode(e.Message));
+                Browser.ScreenShot("Total_Active_Medical_Pharmacy_Spend_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Active_Medical_Pharmacy_Spend", _commonFunction.RemoveUnicode(e.Message));
                 Console.Out.WriteLine(e);
             }
 
@@ -351,17 +348,17 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Total spend (all) from UI: " + Actual_Total_Spend);
 
                 _saveToCsv.SaveTestCase(Expected_Total_Medical_Spend, Actual_Total_Medical_Spend, "Dashboard", "Total Medical Spend(all)", "Expected total medical spend should be equal to total actual medical spend ");
-               //Assert.IsTrue(Expected_Total_Medical_Spend == Actual_Total_Medical_Spend);
                 _saveToCsv.SaveTestCase(Expected_Total_Pharmacy_Spend, Actual_Total_Pharmacy_Spend, "Dashboard", "Total Pharmacy Spend(all)", "Expected total pharmacy spend should be equal to actual total pharmacy spend ");
-               //Assert.IsTrue(Expected_Total_Pharmacy_Spend == Actual_Total_Pharmacy_Spend);
                 _saveToCsv.SaveTestCase(Expected_Total_Spend, Actual_Total_Spend, "Dashboard", "Total  Spend(all)", "Expected total spend should be equal to actual total spend ");
-              //Assert.IsTrue(Expected_Total_Spend== Actual_Total_Spend);
+                Assert.IsTrue(Expected_Total_Pharmacy_Spend == Actual_Total_Pharmacy_Spend);
+                Assert.IsTrue(Expected_Total_Medical_Spend == Actual_Total_Medical_Spend);
+                Assert.IsTrue(Expected_Total_Spend== Actual_Total_Spend);
                
             }
             catch (Exception e)
             {
-                Browser.ScreenShot("Total_Medical_Pharmacy_Spend");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Medical_Pharmacy_Spend", _commonFunction.RemoveUnicode(e.Message));
+                Browser.ScreenShot("Total_Medical_Pharmacy_Spend_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Medical_Pharmacy_Spend", _commonFunction.RemoveUnicode(e.Message));
                 Console.Out.WriteLine(e);
             }
         }
@@ -374,21 +371,19 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Total member(all) from database: " + ExpectedTotalMember);
                 string ExpectedTotalEmployee = _dashboard.ExpectedTotalEmployee();
                 Console.WriteLine("Total employee(all) from database: " + ExpectedTotalEmployee);
-
                 string ActualTotalMember = _dashboard.TotalMember(false);
                 Console.WriteLine("Total member(all) from UI: " + ActualTotalMember);
                 string ActualTotalEmployee = _dashboard.TotalEmployee(false);
                 Console.WriteLine("Total employee(all) from UI: " + ActualTotalEmployee);
-
                 _saveToCsv.SaveTestCase(ExpectedTotalMember, ActualTotalMember, "Dashboard", "Toatal Member(all)", "Acutal toatl member shoud be equal to expected total member");
-               //Assert.IsTrue(ExpectedTotalMember == ActualTotalMember);
                 _saveToCsv.SaveTestCase(ExpectedTotalEmployee, ActualTotalEmployee, "DashBoard", "Total employee(all)", "Actual toal employee shoud be equal to expected total employee");
-              // Assert.IsTrue(ExpectedTotalEmployee== ActualTotalEmployee);
+                Assert.IsTrue(ExpectedTotalMember == ActualTotalMember);
+                Assert.IsTrue(ExpectedTotalEmployee== ActualTotalEmployee);
             }
             catch (Exception ex)
             {
-                Browser.ScreenShot("Total_Member_Total_Employee");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Member_Total_Employee", _commonFunction.RemoveUnicode(ex.Message));
+                Browser.ScreenShot("Total_Member_Total_Employee_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Member_Total_Employee", _commonFunction.RemoveUnicode(ex.Message));
                 Console.Out.WriteLine(ex);
             }
         }
@@ -408,14 +403,14 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Total employee(active) from UI:" + ActualActiveEmployee);
 
                 _saveToCsv.SaveTestCase(ExpectedActiveMember, ActualActiveMember, "DashBoard", "Member(active)", "Acutal active member shoud be equal to expected active member");
-               //Assert.IsTrue(ExpectedActiveMember == ActualActiveMember);
                 _saveToCsv.SaveTestCase(ExpectedActiveEmployee, ActualActiveEmployee, "DashBoard", "Employee(active)", "Acutal active employee shoud be equal to expected active employee");
-               //Assert.IsTrue(ExpectedActiveEmployee== ActualActiveEmployee);
+                Assert.IsTrue(ExpectedActiveMember == ActualActiveMember);
+                Assert.IsTrue(ExpectedActiveEmployee== ActualActiveEmployee);
             }
             catch (Exception e)
             {
-                Browser.ScreenShot("Active_Member_Active_Employee");
-                _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Member_Active_Employee", _commonFunction.RemoveUnicode(e.Message));
+                Browser.ScreenShot("Active_Member_Active_Employee_Shot");
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Member_Active_Employee", _commonFunction.RemoveUnicode(e.Message));
                 Console.Out.WriteLine(e);
             }
         }

@@ -330,14 +330,14 @@ namespace Zakipoint.Framework.Driver
 
         public static void Open(string url)
         {
-            WebDriver.Navigate().GoToUrl(url);
+            WebDriver.Navigate().GoToUrl(url);            
             WebDriver.Manage().Window.Maximize();
         }
 
         #endregion
 
         #region Browser Services      
-
+       
         public static void Reload()
         {
             WebDriver.Navigate().Refresh();

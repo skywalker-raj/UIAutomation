@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium.Support.PageObjects;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading;
 using Zakipoint.Framework.Driver;
 using Zakipoint.UIAutomation.PageObjects;
 using static System.String;
@@ -13,6 +15,7 @@ namespace Zakipoint.UIAutomation.Common
         #region Private Properties
 
         private readonly DashboardPageObjects _dashboardPage = new DashboardPageObjects();
+       
 
         #endregion
 
@@ -84,6 +87,18 @@ namespace Zakipoint.UIAutomation.Common
         public string RemoveUnicode(string messsage)
         {
             return Regex.Replace(messsage, @"[^\u0000-\u007F]+", string.Empty).Replace(",", "");
+        }
+
+        public void Logout()
+        {
+            if (Browser.IsElementPresent(How.CssSelector, _dashboardPage.UserLinkDropdownCssSelector))
+            {
+                Browser.FindElement(How.CssSelector, _dashboardPage.UserLinkDropdownCssSelector).Click();
+                Console.WriteLine("Click on UserLink Dropdown");
+                Browser.FindElement(How.CssSelector, Format(_dashboardPage.UserLinkDropdownListCssSelector, "(2)")).Click();
+                Console.WriteLine("Click on  logout Dropdown link");
+                Thread.Sleep(3000);
+            }
         }
         #endregion
     }

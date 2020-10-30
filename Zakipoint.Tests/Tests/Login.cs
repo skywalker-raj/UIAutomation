@@ -7,15 +7,19 @@ using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.PageServices;
 using static System.String;
 using Zakipoint.Tests.Base;
+using Zakipoint.UIAutomation.Common;
+
 namespace Zakipoint.Tests.Tests
 {
+   
     public class Login : AbstractBase
     {
         #region Private Methods
 
         private readonly LoginPageObjects _loginPage;
         private readonly LoginPage _login;
-
+        private readonly CommonFunction _commonFunction;
+    
         #endregion
 
         #region Constructor
@@ -24,26 +28,32 @@ namespace Zakipoint.Tests.Tests
         {
             _loginPage = new LoginPageObjects();
             _login = new LoginPage();
+            _commonFunction = new CommonFunction();
+           
         }
 
         #endregion
 
         #region Base Methods
 
-        //[SetUp]
+      
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
+            
+
         }
 
-        //[TearDown]
+        [TearDown]
         public override void Dispose()
         {
-            //Browser.Dispose();
+
+            _commonFunction.Logout();
+
         }
 
         #endregion
-        
+
         #region TestMethods
 
         [Test, Category("Login_Page_Verification")]
