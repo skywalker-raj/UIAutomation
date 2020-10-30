@@ -41,7 +41,7 @@ namespace Zakipoint.Tests.Tests
 
         #region Base Methods
 
-        //[SetUp]
+        //SetUp
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
@@ -51,7 +51,7 @@ namespace Zakipoint.Tests.Tests
             _dashboard.DashboardPageLoad();
         }
 
-        [TearDown]
+       // TearDown
         public override void Dispose()
         {
             _commonFunction.Logout();
@@ -287,6 +287,7 @@ namespace Zakipoint.Tests.Tests
 
                 Browser.ScreenShot("Medical_Pharmacy_Spend_Change_Percentages_Shot");
                // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", _commonFunction.RemoveUnicode(ex.Message));
+                
                 Console.Out.WriteLine(ex);
             }
 

@@ -40,16 +40,13 @@ namespace Zakipoint.Tests.Tests
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
-            
-
         }
 
-        [TearDown]
+       // TearDown
         public override void Dispose()
         {
 
             _commonFunction.Logout();
-
         }
 
         #endregion
