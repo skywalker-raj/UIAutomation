@@ -32,8 +32,6 @@ namespace Zakipoint.Tests.Tests
             _setClient = new SetClientPage();
             _login = new LoginPage();
             _commonFunction = new CommonFunction();
-
-
     }
 
         #endregion
@@ -48,12 +46,10 @@ namespace Zakipoint.Tests.Tests
         }
 
         //[TearDown]
-        //public override void Dispose()
-        //{
-        //    //_commonFunction.Logout();
-           
-            
-        //}
+        public override void Dispose()
+        {
+            _commonFunction.Logout();
+        }
 
         #endregion
 
