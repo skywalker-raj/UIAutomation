@@ -42,7 +42,8 @@ namespace Zakipoint.UIAutomation.Common
         public void WriteCSVFile(TestCase data)
         {
             string date = DateTime.Now.ToString("yyyyMMdd");
-            string filePath = @"../../../CSVFile/";
+            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = baseDir + "../../../CSVFile/";
             string fileName = filePath + "Testcase" + date + ".csv";
             FileStream fs = new FileStream(fileName, FileMode.Append, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
