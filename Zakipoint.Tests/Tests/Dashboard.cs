@@ -60,7 +60,6 @@ namespace Zakipoint.Tests.Tests
 
         #endregion
 
-
         #region TestMethods
 
         //[Test, Category("Dashboard Page Verification")]
@@ -103,8 +102,7 @@ namespace Zakipoint.Tests.Tests
                     _saveToCsv.SaveTestCase(String.Format("{0:0.##}",Expected_Result[i].P_Spend), String.Format("{0:0.##}",Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value shold be equal to actual value");
                      _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend", "Expected value shold be equal to actual value");
                     _saveToCsv.SaveTestCase(String.Format("{0:0.##}",Expected_Result[i].P_Change), String.Format("{0:0.##}",Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(all)", "Expected value shold be equal to actual value");
-                   
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(all)", "Expected value shold be equal to actual value");                   
                 }
                   for (int i = 0; i < objectLength; i++)
                    {
@@ -139,13 +137,12 @@ namespace Zakipoint.Tests.Tests
                 _saveToCsv.SaveTestCase(Expected_Medical_PMPM_Change.ToString(), Actual_Medical_PMPM_Change.ToString(), "Dashboard", "Medical PMPM Change(active) Percentages", "Expected PMPM  change shold be equal to actual PMPM change");
                 _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM_Change.ToString(), Actual_Pharmacy_PMPM_Change.ToString(), "Dashboard", "Pharmacy PMPM Change(active) Percentages", "Expected PMPM change shold be equal to actual PMPM change");
                 Assert.IsTrue(Actual_Medical_PMPM_Change == Expected_Medical_PMPM_Change);
-                Assert.IsTrue(Actual_Pharmacy_PMPM_Change == Expected_Pharmacy_PMPM_Change);
-                
+                Assert.IsTrue(Actual_Pharmacy_PMPM_Change == Expected_Pharmacy_PMPM_Change);               
             }
             catch (Exception ex)
             {
                 Browser.ScreenShot("Active_PMPM_Change_Percentages_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM_Change_Percentages", _commonFunction.RemoveUnicode(ex.Message));
+                //_saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM_Change_Percentages", _commonFunction.RemoveUnicode(ex.Message));
                 Console.Out.WriteLine(ex);
             }
         }
@@ -248,7 +245,6 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Medical Change(all) from UI: " + Actula_Medical_Change_Spend);
                 decimal Actual_Pharmacy_Change_Spend = _dashboard.Spend_Change(false); //false for Pharmacy
                 Console.WriteLine("Pharmacy Change(all) from UI: " + Actual_Pharmacy_Change_Spend);
-
                 _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Medical_Change_spend), String.Format("{0:0.##}", Actula_Medical_Change_Spend), "Dashboard", " Medical Spend Change(active) ", "Expected medical change spend should be equal to actual medical change spend");
                 _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Pharmacy_Change_spend), String.Format("{0:0.##}", Actual_Pharmacy_Change_Spend), "Dashboard", "Pharmacy Spend Change(active)", "Expected pharmacy change spend should be equal to actual pharmacy change spend");
                 Assert.IsTrue(String.Format("{0:0.##}", Expected_Medical_Change_spend)== String.Format("{0:0.##}", Actula_Medical_Change_Spend));
@@ -283,14 +279,11 @@ namespace Zakipoint.Tests.Tests
                 Assert.IsTrue(Expected_Pharmacy_Change_spend == Actual_Pharmacy_Change_Spend);
             }
             catch (Exception ex)
-            {
-
+            { 
                 Browser.ScreenShot("Medical_Pharmacy_Spend_Change_Percentages_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", _commonFunction.RemoveUnicode(ex.Message));
-                
+               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", _commonFunction.RemoveUnicode(ex.Message));              
                 Console.Out.WriteLine(ex);
             }
-
         }
         [Test, Category("Total Active Spend , Total Active Medical Spend and Total Active Pharmacy Spend")]
         public void Total_Active_Medical_Pharmacy_Spend()
@@ -347,7 +340,6 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Total pharmacy spend (all) from UI: " + Actual_Total_Pharmacy_Spend);
                 string Actual_Total_Spend = _dashboard.TotalSpend();
                 Console.WriteLine("Total spend (all) from UI: " + Actual_Total_Spend);
-
                 _saveToCsv.SaveTestCase(Expected_Total_Medical_Spend, Actual_Total_Medical_Spend, "Dashboard", "Total Medical Spend(all)", "Expected total medical spend should be equal to total actual medical spend ");
                 _saveToCsv.SaveTestCase(Expected_Total_Pharmacy_Spend, Actual_Total_Pharmacy_Spend, "Dashboard", "Total Pharmacy Spend(all)", "Expected total pharmacy spend should be equal to actual total pharmacy spend ");
                 _saveToCsv.SaveTestCase(Expected_Total_Spend, Actual_Total_Spend, "Dashboard", "Total  Spend(all)", "Expected total spend should be equal to actual total spend ");
@@ -396,13 +388,11 @@ namespace Zakipoint.Tests.Tests
                 string ExpectedActiveMember = _dashboard.ExpectedTotalActiveMember();
                 Console.WriteLine("Total member(active) from database: " + ExpectedActiveMember);
                 string ExpectedActiveEmployee = _dashboard.ExpectedTotalActiveEmployee();
-                Console.WriteLine("Total employee (active) from database: " + ExpectedActiveEmployee);
-                
+                Console.WriteLine("Total employee (active) from database: " + ExpectedActiveEmployee);             
                 string ActualActiveMember = _dashboard.TotalMember(true);
                 Console.WriteLine("Total member(active) from UI:" + ActualActiveMember);
                 string ActualActiveEmployee = _dashboard.TotalEmployee(true);
                 Console.WriteLine("Total employee(active) from UI:" + ActualActiveEmployee);
-
                 _saveToCsv.SaveTestCase(ExpectedActiveMember, ActualActiveMember, "DashBoard", "Member(active)", "Acutal active member shoud be equal to expected active member");
                 _saveToCsv.SaveTestCase(ExpectedActiveEmployee, ActualActiveEmployee, "DashBoard", "Employee(active)", "Acutal active employee shoud be equal to expected active employee");
                 Assert.IsTrue(ExpectedActiveMember == ActualActiveMember);

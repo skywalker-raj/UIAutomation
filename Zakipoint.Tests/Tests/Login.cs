@@ -28,24 +28,21 @@ namespace Zakipoint.Tests.Tests
         {
             _loginPage = new LoginPageObjects();
             _login = new LoginPage();
-            _commonFunction = new CommonFunction();
-           
+            _commonFunction = new CommonFunction();          
         }
 
         #endregion
 
         #region Base Methods
-
-      
+        //[Setup]
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
         }
 
-       // TearDown
+       //[TearDown]
         public override void Dispose()
         {
-
             _commonFunction.Logout();
         }
 

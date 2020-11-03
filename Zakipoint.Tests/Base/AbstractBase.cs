@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Zakipoint.Framework.Driver;
-
 namespace Zakipoint.Tests.Base
 {
     public abstract class AbstractBase
@@ -20,10 +19,9 @@ namespace Zakipoint.Tests.Base
             CleanupBrowserDriver();
             Browser.Dispose();
         }
-
         private static void CleanupBrowserDriver()
         {
-            IList<string> processes = new List<string>() { "IEDRIVERSERVER", "CHROMEDRIVER", "IEXPLORE", "CHROME" };
+            IList<string> processes = new List<string>() { "IEDRIVERSERVER", "CHROMEDRIVER", "IEXPLORE" };
             try
             {
                 foreach (var processName in processes)

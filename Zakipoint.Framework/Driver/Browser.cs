@@ -35,7 +35,7 @@ namespace Zakipoint.Framework.Driver
         private static bool IsInitalized { get; set; }
         private static IWebDriver _primaryWebDriver;
         private const string PATH = @"Executables/";
-
+       
         #endregion
 
         #region Public Properties
@@ -298,20 +298,21 @@ namespace Zakipoint.Framework.Driver
         public static IWebDriver GetWebDriver(string browser = "Chrome")
         {
             IWebDriver webDriver;
+            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             switch (browser)
             {
                 case "Firefox":
-                    webDriver = new FirefoxDriver(@"Executables/");
+                    webDriver = new FirefoxDriver(baseDir + "Executables/");
                     break;
                 case "IE":
-                    webDriver = new InternetExplorerDriver(@"Executables/");
+                    webDriver = new InternetExplorerDriver(baseDir + "Executables/");
                     break;
                 case "Safari":
-                    webDriver = new SafariDriver(@"Executables/");
+                    webDriver = new SafariDriver(baseDir + "Executables/");
                     break;
                 case "Chrome":
                 default:
-                    webDriver = new ChromeDriver(@"Executables/");
+                    webDriver = new ChromeDriver(baseDir + "Executables/");
                     break;
             }
             return webDriver;
