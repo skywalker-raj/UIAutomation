@@ -34,13 +34,13 @@ namespace Zakipoint.Tests.Tests
         #endregion
 
         #region Base Methods
-   
+        //[Setup]
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
         }
 
-       // TearDown
+       //[TearDown]
         public override void Dispose()
         {
             _commonFunction.Logout();

@@ -21,7 +21,7 @@ namespace Zakipoint.Tests.Base
         }
         private static void CleanupBrowserDriver()
         {
-            IList<string> processes = new List<string>() { "IEDRIVERSERVER", "CHROMEDRIVER", "IEXPLORE", "CHROME" };
+            IList<string> processes = new List<string>() { "IEDRIVERSERVER", "CHROMEDRIVER", "IEXPLORE" };
             try
             {
                 foreach (var processName in processes)
