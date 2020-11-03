@@ -34,7 +34,7 @@ namespace Zakipoint.Framework.Driver
         private static Uri _remoteAddress;
         private static bool IsInitalized { get; set; }
         private static IWebDriver _primaryWebDriver;
-        private const string PATH = @"Executables/";
+       
        
         #endregion
 

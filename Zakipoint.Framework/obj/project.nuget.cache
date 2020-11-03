@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/xCYPtlF0XyERJiG1C5QykS1jN5uflNq5iH/3MNPPgNQ2Nnumnjko2LZEFz7HSwG5GG3Z/kl0bLuD0v03qtqYQ==",
+  "dgSpecHash": "G1reB39DLnyCP1WyEird+ESryf0VkqYTfS+GCWZfqWGkrTz8SY3Av+T8g++VOzBEktlwFS3esRbpsRrhSLTolw==",
   "success": true,
   "projectFilePath": "D:\\Zakipoint.Framework\\Zakipoint.Framework\\Zakipoint.Framework.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\DELL\\.nuget\\packages\\log4net\\2.0.11\\log4net.2.0.11.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.9\\microsoft.extensions.configuration.3.1.9.nupkg.sha512",

@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "uZQslq/D4+6YjqfERHafZk2msvZUur3h7mjgvmKE14CjV8jAL87onFah3F4EJf6CzmjGacgSDcqlWYwvVLy7fQ==",
+  "dgSpecHash": "qs4xPPYhsfGNesRxAAIg3mhGjHBJy5m0G1cQK0X5GvDqfpWh1wzFZK7kQYluHHg1B5uzYLAOUTlA7ZgtdRRB2Q==",
   "success": true,
   "projectFilePath": "D:\\Zakipoint.Framework\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\dotnetseleniumextras.waithelpers\\3.11.0\\dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\log4net\\2.0.11\\log4net.2.0.11.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.9\\microsoft.extensions.configuration.3.1.9.nupkg.sha512",

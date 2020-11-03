@@ -1,0 +1,154 @@
+Page Name,	Method Name,	Expected Result,	Actual Result,	Status,	Remarks
+Dashboard,	Active_Medical_Pharmacy_Spend_Change_Percentages,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (173 193). Other element would receive the click: <div class="aap-info">...</div>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Active_Medical_Pharmacy_Spend_Change_Percentages,	Error,	Error,	Unknown,	element not interactable
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	 Active Medical Spend Change ,	37.67,	17.31,	Fail,	Expected medical change spend should be equal to actual medical change spend
+Dashboard,	Active Pharmacy Spend Change,	25.45,	19.3,	Fail,	Expected pharmacy change spend should be equal to actual pharmacy change spend
+DashBoard,	Active member,	0,	965,	Fail,	Acutal active member shoud be equal to expected active member
+DashBoard,	Active employee,	0,	576,	Fail,	Acutal active employee shoud be equal to expected active employee
+Dashboard,	Active medical PMPM,	307,	307,	Pass,	Expected PMPM shold be equal to actual PMPM
+Dashboard,	Active pharmacy PMPM,	85,	85,	Pass,	Expected PMPM shold be equal to actual PMPM
+Dashboard,	Active Medical PMPM Change Percentages,	35.72,	35.72,	Pass,	Expected PMPM  change shold be equal to actual PMPM change
+Dashboard,	Active Pharmacy PMPM Change Percentages,	23.16,	23.16,	Pass,	Expected PMPM change shold be equal to actual PMPM change
+Dashboard,	Medical_Pharmacy_Spend_Change_Percentage,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (227 193). Other element would receive the click: <div class="aap-info">...</div>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	PMPM Change Percentages,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (168 193). Other element would receive the click: <section class="overall-info zph-dashboard" style="padding: 0px 0px 30px;">...</section>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Total Active Medical Spend,	$3155K,	,	Fail,	Expected total active medical spend should be equal to actual total active medical spend 
+Dashboard,	Total Active Pharmacy Spend,	$876K,	,	Fail,	Expected total active pharmacy spend should be equal to actual total active pharmacy spend 
+Dashboard,	Total Active Spend,	$4031K,	$4031K,	Pass,	Expected total active spend should be equal to actual total active spend 
+Medical Pharmacy Spend,	Medical Pharmacy Spend,	Error,	Dashboard,	Fail,	element not interactable
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Total Member and Total Employee,	 ,	 ,	Pass,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (344 193). Other element would receive the click: <span>...</span>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Active_Medical_Pharmacy_Spend_Change_Percentages,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (273 193). Other element would receive the click: <div class="aap-info">...</div>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Active Member and Active Employee,	 ,	 ,	Pass,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (37 193). Other element would receive the click: <img src="/assets/quick-links-4457808e4242350b3b614a696c3de5d2.svg" alt="svg-menu">
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Active_PMPM,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (312 193). Other element would receive the click: <div class="aap-info">...</div>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Active_PMPM_Change_Percentages,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (166 193). Other element would receive the click: <section class="overall-info zph-dashboard" style="padding: 0px 0px 30px;">...</section>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	 Medical Spend Change,	17.30,	17.31,	Fail,	Expected medical change spend should be equal to actual medical change spend
+Dashboard,	Pharmacy Spend Change,	19.35,	19.3,	Fail,	Expected pharmacy change spend should be equal to actual pharmacy change spend
+Dashboard,	Medical PMPM Change Percentages,	15.98,	15.98,	Pass,	Expected PMPM  change shold be equal to actual PMPM change
+Dashboard,	Pharmacy PMPM Change Percentages,	18.01,	18.01,	Pass,	Expected PMPM change shold be equal to actual PMPM change
+Dashboard,	Conditions,	Covid-19,	Covid-19,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	29,	29,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1706,	1706,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	2.89,	2.89,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	160,	160,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Anxiety disorders,	Anxiety Disorders,	Fail,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	29,	29,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1697,	1697,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	14.93,	14.93,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	97,	97,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Blood Disorders,	Blood Disorders,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	28,	28,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1638,	1638,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	51.96,	51.96,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	26,	26,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Liver Diseases,	Liver Diseases,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	25,	25,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1460,	1460,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	63.22,	63.22,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	18,	18,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Moderate Risk Pregnancy,	Moderate Risk Pregnancy,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	25,	25,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1423,	1423,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	26.59,	26.59,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	41,	41,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Diabetes,	Diabetes,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	21,	21,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1196,	1196,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	26.77,	26.77,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	38,	38,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Depression,	Depression,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	20,	20,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1143,	1143,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	-1.08,	-1.08,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	48,	48,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Substance-related disorders,	Substance-related disorders,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	19,	19,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1079,	1079,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	22.30,	22.3,	Fail,	Expected value shold be equal to actual value
+Dashboard,	Members,	20,	20,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions,	Back Pain,	Back Pain,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend,	18,	18,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1048,	1048,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change (Spend),	92.39,	92.39,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members,	98,	98,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Total_Active_Medical_Pharmacy_Spend,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (371 193). Other element would receive the click: <span>...</span>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Total Medical Spend,	$4732K,	,	Fail,	Expected total medical spend should be equal to total actual medical spend 
+Dashboard,	Total Pharmacy Spend,	$1059K,	,	Fail,	Expected total pharmacy spend should be equal to actual total pharmacy spend 
+Dashboard,	Total  Spend,	$5791K,	$5791K,	Pass,	Expected total spend should be equal to actual total spend 
+Dashboard,	Toatal Member,	0,	1495,	Fail,	Acutal toatl member shoud be equal to expected total member
+DashBoard,	Total employee,	0,	907,	Fail,	Actual toal employee shoud be equal to expected total employee
+Dashboard,	Active_Medical_Pharmacy_Spend_Change_Percentages,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (274 193). Other element would receive the click: <div class="aap-info">...</div>
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Active_Member_Active_Employee,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (24 193). Other element would receive the click: <img src="/assets/quick-links-4457808e4242350b3b614a696c3de5d2.svg" alt="svg-menu">
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	Active_PMPM,	Error,	Error,	Unknown,	Timed out after 60 seconds
+Dashboard,	Active_PMPM_Change_Percentages,	Error,	Error,	Unknown,	element click intercepted: Element <span onclick="showHideDiv('zp-report01')" class="zp-edit">...</span> is not clickable at point (45 193). Other element would receive the click: <img src="/assets/quick-links-4457808e4242350b3b614a696c3de5d2.svg" alt="svg-menu">
+  (Session info: chrome=86.0.4240.111)
+Dashboard,	 Medical Spend Change(all),	17.30,	17.31,	Fail,	Expected medical change spend should be equal to actual medical change spend
+Dashboard,	Pharmacy Spend Change(all),	19.35,	19.3,	Fail,	Expected pharmacy change spend should be equal to actual pharmacy change spend
+Dashboard,	Medical PMPM(all),	372,	372,	Pass,	Expected PMPM shold be equal to actual PMPM
+Dashboard,	Pharmacy PMPM(all),	83,	83,	Pass,	Expected PMPM shold be equal to actual PMPM
+Dashboard,	Medical PMPM Change(all) Percentages,	15.98,	15.98,	Pass,	Expected PMPM  change shold be equal to actual PMPM change
+Dashboard,	Pharmacy PMPM Change(all) Percentages,	18.01,	18.01,	Pass,	Expected PMPM change shold be equal to actual PMPM change
+Dashboard,	Conditions(all),	Covid-19,	Covid-19,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	29,	29,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1706,	1706,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	2.89,	2.89,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	160,	160,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions(all),	Anxiety disorders,	Anxiety Disorders,	Fail,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	29,	29,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1697,	1697,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	14.93,	14.93,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	97,	97,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions(all),	Blood Disorders,	Blood Disorders,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	28,	28,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1638,	1638,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	51.96,	51.96,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	26,	26,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions(all),	Liver Diseases,	Liver Diseases,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	25,	25,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1460,	1460,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	63.22,	63.22,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	18,	18,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions(all),	Moderate Risk Pregnancy,	Moderate Risk Pregnancy,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	25,	25,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1423,	1423,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	26.59,	26.59,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	41,	41,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions(all),	Diabetes,	Diabetes,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	21,	21,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1196,	1196,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	26.77,	26.77,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	38,	38,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions(all),	Depression,	Depression,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	20,	20,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1143,	1143,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	-1.08,	-1.08,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	48,	48,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions(all),	Substance-related disorders,	Substance-related disorders,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	19,	19,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1079,	1079,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	22.30,	22.3,	Fail,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	20,	20,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Conditions(all),	Back Pain,	Back Pain,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Spend(all),	18,	18,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Spend,	1048,	1048,	Pass,	Expected value shold be equal to actual value
+Dashboard,	% Change Spend(all),	92.39,	92.39,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Members(all),	98,	98,	Pass,	Expected value shold be equal to actual value
+Dashboard,	Total Medical Spend(active),	$3155K,	$3155K,	Pass,	Expected total active medical spend should be equal to actual total active medical spend 
+Dashboard,	Total Pharmacy Spend(active),	$876K,	$876K,	Pass,	Expected total active pharmacy spend should be equal to actual total active pharmacy spend 
+Dashboard,	Total Spend(active),	$4031K,	$4031K,	Pass,	Expected total active spend should be equal to actual total active spend 
+Dashboard,	Total Medical Spend(all),	$4732K,	$4732K,	Pass,	Expected total medical spend should be equal to total actual medical spend 
+Dashboard,	Total Pharmacy Spend(all),	$1059K,	$1059K,	Pass,	Expected total pharmacy spend should be equal to actual total pharmacy spend 
+Dashboard,	Total  Spend(all),	$5791K,	$5791K,	Pass,	Expected total spend should be equal to actual total spend 
+Dashboard,	Toatal Member(all),	1495,	1495,	Pass,	Acutal toatl member shoud be equal to expected total member
+DashBoard,	Total employee(all),	907,	907,	Pass,	Actual toal employee shoud be equal to expected total employee

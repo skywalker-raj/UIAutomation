@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-
 namespace Zakipoint.Tests.Common
 {
     public static class JsonDataReader
