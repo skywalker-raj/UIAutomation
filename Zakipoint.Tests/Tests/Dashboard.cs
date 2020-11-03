@@ -117,7 +117,10 @@ namespace Zakipoint.Tests.Tests
             }
             catch (Exception ex)
             {
+                
                 Browser.ScreenShot("Top_Condition_By_Total_Spend_Shot");
+                if(!ex.Message.Contains("Expected: True"))
+               _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Condition_By_Total_Spend", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
@@ -145,7 +148,8 @@ namespace Zakipoint.Tests.Tests
             catch (Exception ex)
             {
                 Browser.ScreenShot("Active_PMPM_Change_Percentages_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM_Change_Percentages", _commonFunction.RemoveUnicode(ex.Message));
+                if (!ex.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM_Change_Percentages", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
@@ -172,7 +176,8 @@ namespace Zakipoint.Tests.Tests
             catch (Exception ex)
             {
                 Browser.ScreenShot("PMPM_Change_Percenatges_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM_Change_Percenatges", _commonFunction.RemoveUnicode(ex.Message));
+                if (!ex.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM_Change_Percenatges", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
@@ -199,7 +204,8 @@ namespace Zakipoint.Tests.Tests
             catch (Exception ex)
             {
                 Browser.ScreenShot("Active_PMPM_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM", _commonFunction.RemoveUnicode(ex.Message));
+                if (!ex.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
@@ -226,7 +232,8 @@ namespace Zakipoint.Tests.Tests
             catch (Exception ex)
             {
                 Browser.ScreenShot("PMPM_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM", _commonFunction.RemoveUnicode(ex.Message));
+                if (!ex.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
@@ -257,7 +264,8 @@ namespace Zakipoint.Tests.Tests
             catch (Exception ex)
             {
                 Browser.ScreenShot("Active_Medical_Pharmacy_Spend_Change_Percentages_Shot");
-              //  _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Medical_Pharmacy_Spend_Change_Percentages", _commonFunction.RemoveUnicode(ex.Message));
+                if (!ex.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Medical_Pharmacy_Spend_Change_Percentages", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
@@ -286,8 +294,8 @@ namespace Zakipoint.Tests.Tests
             {
 
                 Browser.ScreenShot("Medical_Pharmacy_Spend_Change_Percentages_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", _commonFunction.RemoveUnicode(ex.Message));
-                
+                if (!ex.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
 
@@ -322,7 +330,8 @@ namespace Zakipoint.Tests.Tests
             catch (Exception e)
             {
                 Browser.ScreenShot("Total_Active_Medical_Pharmacy_Spend_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Active_Medical_Pharmacy_Spend", _commonFunction.RemoveUnicode(e.Message));
+                if (!e.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Active_Medical_Pharmacy_Spend", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(e);
             }
 
@@ -359,7 +368,8 @@ namespace Zakipoint.Tests.Tests
             catch (Exception e)
             {
                 Browser.ScreenShot("Total_Medical_Pharmacy_Spend_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Medical_Pharmacy_Spend", _commonFunction.RemoveUnicode(e.Message));
+                if (!e.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Medical_Pharmacy_Spend", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(e);
             }
         }
@@ -384,7 +394,8 @@ namespace Zakipoint.Tests.Tests
             catch (Exception ex)
             {
                 Browser.ScreenShot("Total_Member_Total_Employee_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Member_Total_Employee", _commonFunction.RemoveUnicode(ex.Message));
+                if (!ex.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Member_Total_Employee", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
@@ -411,8 +422,10 @@ namespace Zakipoint.Tests.Tests
             catch (Exception e)
             {
                 Browser.ScreenShot("Active_Member_Active_Employee_Shot");
-               // _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Member_Active_Employee", _commonFunction.RemoveUnicode(e.Message));
+                if (!e.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Member_Active_Employee", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(e);
+               
             }
         }
         #endregion
