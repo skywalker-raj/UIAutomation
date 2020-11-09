@@ -18,7 +18,7 @@ namespace Zakipoint.UIAutomation.SqlScripts
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1 And p1_active_flag=1", CommonObject.DefaultClientSuffix);
-    }
+        }
 
         public string Expected_Total_Employee() { 
             return string.Format(@"SELECT
@@ -26,7 +26,7 @@ namespace Zakipoint.UIAutomation.SqlScripts
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1 
             AND mbr_relationship_class = 'Employee'", CommonObject.DefaultClientSuffix);
-    }
+        }
 
         public string Expected_Total_Member() {
             return string.Format(@"SELECT
@@ -113,34 +113,76 @@ namespace Zakipoint.UIAutomation.SqlScripts
             WHERE period = {2}  {1});", CommonObject.DefaultClientSuffix, SubString1, period);
         }
 
-        public string Top_Condition_By_Total_Spend(string StartDate, string EndDate)
+        public string Top_Condition_By_Total_Spend(string StartDate, string EndDate, string memberStatus)
         {
-            return string.Format(@" SELECT
-            disease_name,
-             round(SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END)/1000,0) Spend,
-            round(SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END) *100/
-            (select sum(t.p1_total_paid) from tbl_member_paid_and_risk_summary_{0} t where t.exists_in_p1= TRUE),0) P_spend,
-            ROUND((SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END) 
-            -SUM(CASE WHEN member.exists_in_p2 = TRUE THEN member.p2_total_paid ELSE 0 END))*100
-            /SUM(CASE WHEN member.exists_in_p2 = TRUE THEN member.p2_total_paid ELSE 0 END),2) as P_chnage,
-            COUNT(member.member_id) Members
-            FROM tbl_member_paid_and_risk_summary_{0} member 
-            JOIN (SELECT DISTINCT
-                group_id,
-                member_id,
-                t1.disease_name
-                FROM chronic_conditions_by_member_{0} t1
-                WHERE 1 = 1
-                AND t1.group_id = '{0}'
-                AND DATE_FORMAT(t1.most_recent_date, '%Y%m') BETWEEN '{1}' AND '{2}') disease
-             ON member.group_id = disease.group_id
-             AND member.member_id = disease.member_id
-             WHERE 1 = 1
-             AND member.group_id = '{0}'
-            group by disease_name
-            order by 
-            SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END) 
-            desc limit 10;", CommonObject.DefaultClientSuffix, StartDate, EndDate);
+            if (memberStatus.ToLower() == "all")
+            {
+                return string.Format(@" SELECT
+                    disease_name,
+                    round(SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END)/1000,0) Spend,
+                    round(SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END) *100/
+                    (select sum(t.p1_total_paid) from tbl_member_paid_and_risk_summary_{0} t where t.exists_in_p1= TRUE),0) P_spend,
+                    ROUND((SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END) 
+                    -SUM(CASE WHEN member.exists_in_p2 = TRUE THEN member.p2_total_paid ELSE 0 END))*100
+                    /SUM(CASE WHEN member.exists_in_p2 = TRUE THEN member.p2_total_paid ELSE 0 END),2) as P_chnage,
+                    COUNT(member.member_id) Members
+                    FROM tbl_member_paid_and_risk_summary_{0} member 
+                    JOIN (SELECT DISTINCT
+                        group_id,
+                        member_id,
+                        t1.disease_name
+                        FROM chronic_conditions_by_member_{0} t1
+                        WHERE 1 = 1
+                        AND t1.group_id = '{0}'
+                        AND DATE_FORMAT(t1.most_recent_date, '%Y%m') BETWEEN '{1}' AND '{2}'
+                    ) disease
+                    ON member.group_id = disease.group_id
+                    AND member.member_id = disease.member_id
+                    WHERE 1 = 1
+                    AND member.group_id = '{0}'
+                    group by disease_name
+                    order by 
+                    SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END) 
+                    desc limit 10;", CommonObject.DefaultClientSuffix, StartDate, EndDate);
+            } 
+            else
+            {
+                return  string.Format(@"SELECT
+                    disease_name,
+                    ROUND(SUM(CASE WHEN (member.exists_in_p1 = TRUE AND
+                    member.p1_active_flag = TRUE) THEN member.p1_total_paid ELSE 0 END) / 1000, 0) Spend,
+                    ROUND(SUM(CASE WHEN (member.exists_in_p1 = TRUE AND
+                    member.p1_active_flag = TRUE) THEN member.p1_total_paid ELSE 0 END) * 100 / (SELECT
+                    SUM(t.p1_total_paid)
+                    FROM tbl_member_paid_and_risk_summary_{0} t
+                    WHERE t.exists_in_p1 = TRUE
+                    AND t.p1_active_flag = TRUE), 0) P_spend,
+                    ROUND((SUM(CASE WHEN (member.exists_in_p1 = TRUE AND
+                    member.p1_active_flag = TRUE) THEN member.p1_total_paid ELSE 0 END)
+                    - SUM(CASE WHEN (member.exists_in_p2 = TRUE AND
+                    member.p2_active_flag = TRUE) THEN member.p2_total_paid ELSE 0 END)) * 100
+                    / SUM(CASE WHEN (member.exists_in_p2 = TRUE AND
+                    member.p2_active_flag = TRUE) THEN member.p2_total_paid ELSE 0 END), 2) AS P_chnage,
+                    COUNT(CASE WHEN member.p1_active_flag = TRUE THEN member.member_id ELSE NULL END) Members
+                    FROM tbl_member_paid_and_risk_summary_{0} member
+                    JOIN (SELECT DISTINCT
+                    group_id,
+                        member_id,
+                        t1.disease_name
+                        FROM chronic_conditions_by_member_{0} t1
+                        WHERE 1 = 1
+                        AND t1.group_id = '{0}'
+                        AND DATE_FORMAT(t1.most_recent_date, '%Y%m') BETWEEN '{1}' AND '{2}'
+                    ) disease
+                    ON member.group_id = disease.group_id
+                    AND member.member_id = disease.member_id
+                    WHERE 1 = 1
+                    AND member.group_id = '{0}'
+                    GROUP BY disease_name
+                    ORDER BY SUM(CASE WHEN (member.exists_in_p1 = TRUE AND
+                    member.p1_active_flag = TRUE) THEN member.p1_total_paid ELSE 0 END)
+                    DESC LIMIT 10;", CommonObject.DefaultClientSuffix, StartDate, EndDate);
+            }
         }
     }
 }

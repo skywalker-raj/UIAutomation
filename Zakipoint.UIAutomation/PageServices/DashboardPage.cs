@@ -104,10 +104,10 @@ namespace Zakipoint.UIAutomation.PageServices
             decimal LastYearvale = Math.Round(Convert.ToDecimal(Expected_PMPM(memberType, active_flag, 2)), 2);
             return Percentages(CurrentYearvale, LastYearvale);
         }
-        public List<Top_Condtion_By_Total_spend> Expected_Top_Condition_By_Total_Spend()
+        public List<Top_Condtion_By_Total_spend> Expected_Top_Condition_By_Total_Spend(string memberStatus)
         {
             List<Top_Condtion_By_Total_spend> objList = new List<Top_Condtion_By_Total_spend>();
-            var dt = _executor.GetDataTable(_dashboardSqlScripts.Top_Condition_By_Total_Spend(StartDate(), EndDate()));
+            var dt = _executor.GetDataTable(_dashboardSqlScripts.Top_Condition_By_Total_Spend(StartDate(), EndDate(), memberStatus));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Top_Condtion_By_Total_spend obj = new Top_Condtion_By_Total_spend

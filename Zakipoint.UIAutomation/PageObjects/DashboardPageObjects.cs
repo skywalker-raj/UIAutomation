@@ -35,12 +35,13 @@
         public string TopConditionDetailsByColCssSelector = "div.medical-box table.table tbody tr td:nth-child({0})";
         public string TopConditionDetailsByRowCssSelector = "div.medical-box table.table tbody tr:nth-child({0}) td";
         public string ReportingPeriodByCssSelector = "div.zph-reporting p span:nth-child({0})"; // 2 for reporting period
-        public string RadioMemberByCssSelector = "input#{0}"; // termed01: Active Members || termed02 : All Members
+        public string RadioMemberByCssSelector = "input#{0}"; // termed01: Active Members || termed02 : All Members 
+       //#z5dsbmlc005=Top Service By Total Spend  z5dsbmlc001 =Prospective Population Risk Stratification
+        public string TopServiceAndRiskStratificationDetailsByCssSelector = "{0}> g.table.row-group.dynamic-table > g:nth-child({1}) > text > tspan:nth-child({2}) > tspan";
 
         #endregion
 
         #region XPath
-
         public string NavBarLinksByTextXPath = "//span[text()='{0}']";
         public string ChangeLinkByLabelXPath = "//div[text()='{0}: ']/span[text()='Change']";
         public string MemberRadioButtonByTextXPath = "//label[text()='{0}']/../input";
@@ -53,9 +54,10 @@
         public string ClientBoxLabelTextByXPath = "//div[@class='media-body']/h5";
         public string PMPMByLabelXPath = "//div[@id='pills-pmpm']//span[text()='{0}']/../p"; // Medical  || Pharmacy
         public string SpendByLabelXPath = "//div[@id='pills-paid']//span[text()='{0}']/../p"; // Medical  || Pharmacy
-
         #endregion
 
         #endregion
     }
+
 }
+

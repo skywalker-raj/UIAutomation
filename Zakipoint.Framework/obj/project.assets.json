@@ -4184,30 +4184,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\sachin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Zakipoint.Framework\\Zakipoint.Framework\\Zakipoint.Framework.csproj",
+      "projectUniqueName": "C:\\Zakipoint.UIAutomation\\Zakipoint.Framework\\Zakipoint.Framework.csproj",
       "projectName": "Zakipoint.Framework",
-      "projectPath": "D:\\Zakipoint.Framework\\Zakipoint.Framework\\Zakipoint.Framework.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\Zakipoint.Framework\\Zakipoint.Framework\\obj\\",
+      "projectPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.Framework\\Zakipoint.Framework.csproj",
+      "packagesPath": "C:\\Users\\sachin\\.nuget\\packages\\",
+      "outputPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.Framework\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\sachin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4281,7 +4275,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -54,8 +54,8 @@ namespace Zakipoint.Tests.Tests
         // TearDown
         public override void Dispose()
         {
-            _commonFunction.Logout();
-            //Browser.Dispose();
+            //_commonFunction.Logout();
+            Browser.Dispose();
         }
 
         #endregion
@@ -90,7 +90,7 @@ namespace Zakipoint.Tests.Tests
         {
             try
             {
-                var Expected_Result = _dashboard.Expected_Top_Condition_By_Total_Spend();
+                var Expected_Result = _dashboard.Expected_Top_Condition_By_Total_Spend("all");
                 Console.WriteLine("Top Condition By Total Spend(all) from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 _dashboard.ChooseAllMember();
                 var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector);
@@ -101,7 +101,7 @@ namespace Zakipoint.Tests.Tests
                 {
                     _saveToCsv.SaveTestCase(Expected_Result[i].Conditions, Actual_Result[i].Conditions, "Dashboard", "Conditions(all)", "Expected value shold be equal to actual value");
                     _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Spend), String.Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend", "Expected value shold be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend(all)", "Expected value shold be equal to actual value");
                     _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Change), String.Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value shold be equal to actual value");
                     _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(all)", "Expected value shold be equal to actual value");
 
@@ -121,6 +121,45 @@ namespace Zakipoint.Tests.Tests
                 Browser.ScreenShot("Top_Condition_By_Total_Spend_Shot");
                 if (!ex.Message.Contains("Expected: True"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Condition_By_Total_Spend", "Exception occure:  Please verify manually");
+                Console.Out.WriteLine(ex);
+            }
+        }
+        [Test, Category("Top Condition By Total Spend")]
+        public void Top_Condition_By_Total_Spend_Active()
+        {
+            try
+            {
+                var Expected_Result = _dashboard.Expected_Top_Condition_By_Total_Spend("active");
+                Console.WriteLine("Top Condition By Total Spend(active) from database:" + CommonMethods.ObjectToXml(Expected_Result));
+                _dashboard.ChooseActiveMember();
+                var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector);
+                var Actual_Result = _dashboard.Map_Object(tableDetails);
+                Console.WriteLine("Top Condition(active) By Total Spend from UI:" + CommonMethods.ObjectToXml(Actual_Result));
+                var objectLength = Actual_Result.Count - 1;
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Conditions, Actual_Result[i].Conditions, "Dashboard", "Conditions(active)", "Expected value shold be equal to actual value");
+                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Spend), String.Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(active)", "Expected value shold be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend(active)", "Expected value shold be equal to actual value");
+                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Change), String.Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(active)", "Expected value shold be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(active)", "Expected value shold be equal to actual value");
+
+                }
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.IsTrue(String.Format("{0:0.##}", Expected_Result[i].P_Change) == String.Format("{0:0.##}", Actual_Result[i].P_Change));
+                    Assert.IsTrue(Expected_Result[i].Spend == Actual_Result[i].Spend);
+                    Assert.IsTrue(String.Format("{0:0.##}", Expected_Result[i].P_Spend) == String.Format("{0:0.##}", Actual_Result[i].P_Spend));
+                    Assert.IsTrue(Expected_Result[i].Conditions == Actual_Result[i].Conditions);
+                    Assert.IsTrue(Expected_Result[i].Members == Actual_Result[i].Members);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Browser.ScreenShot("Top_Condition_By_Total_Spend_Active_Shot");
+                if (!ex.Message.Contains("Expected: True"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Condition_By_Total_Spend_Active", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }

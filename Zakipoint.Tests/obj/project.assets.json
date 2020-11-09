@@ -586,6 +586,12 @@
           "build/netcoreapp2.1/NUnit3TestAdapter.props": {}
         }
       },
+      "NunitXml.TestLogger/2.1.80": {
+        "type": "package",
+        "build": {
+          "build/netstandard1.0/NUnitXml.TestLogger.props": {}
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2439,6 +2445,22 @@
         "build/netcoreapp2.1/nunit.engine.dll",
         "nunit3testadapter.3.17.0.nupkg.sha512",
         "nunit3testadapter.nuspec"
+      ]
+    },
+    "NunitXml.TestLogger/2.1.80": {
+      "sha512": "YUwoF9aVH9jJm0zKex9IjiWMDBBaNMVkIq9e+jpKVzHs7Zf6IbF4LTyzBIIXf3sxkbA89mAeIkyUn+AWg7D/jQ==",
+      "type": "package",
+      "path": "nunitxml.testlogger/2.1.80",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/_common/Microsoft.VisualStudio.TestPlatform.Extension.NUnit.Xml.TestAdapter.dll",
+        "build/_common/Microsoft.VisualStudio.TestPlatform.Extension.NUnit.Xml.TestLogger.dll",
+        "build/net45/NUnitXml.TestLogger.props",
+        "build/netstandard1.0/NUnitXml.TestLogger.props",
+        "nunitxml.testlogger.2.1.80.nupkg.sha512",
+        "nunitxml.testlogger.nuspec",
+        "packageIcon.png"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -5439,45 +5461,40 @@
       "Microsoft.NET.Test.Sdk >= 16.7.1",
       "NUnit >= 3.12.0",
       "NUnit3TestAdapter >= 3.17.0",
+      "NunitXml.TestLogger >= 2.1.80",
       "Zakipoint.Framework >= 1.0.0",
       "Zakipoint.UIAutomation >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\sachin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Zakipoint.Framework\\Zakipoint.Tests\\Zakipoint.Tests.csproj",
+      "projectUniqueName": "C:\\Zakipoint.UIAutomation\\Zakipoint.Tests\\Zakipoint.Tests.csproj",
       "projectName": "Zakipoint.Tests",
-      "projectPath": "D:\\Zakipoint.Framework\\Zakipoint.Tests\\Zakipoint.Tests.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\Zakipoint.Framework\\Zakipoint.Tests\\obj\\",
+      "projectPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.Tests\\Zakipoint.Tests.csproj",
+      "packagesPath": "C:\\Users\\sachin\\.nuget\\packages\\",
+      "outputPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.Tests\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\sachin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Zakipoint.Framework\\Zakipoint.Framework\\Zakipoint.Framework.csproj": {
-              "projectPath": "D:\\Zakipoint.Framework\\Zakipoint.Framework\\Zakipoint.Framework.csproj"
+            "C:\\Zakipoint.UIAutomation\\Zakipoint.Framework\\Zakipoint.Framework.csproj": {
+              "projectPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.Framework\\Zakipoint.Framework.csproj"
             },
-            "D:\\Zakipoint.Framework\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj": {
-              "projectPath": "D:\\Zakipoint.Framework\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj"
+            "C:\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj": {
+              "projectPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj"
             }
           }
         }
@@ -5504,6 +5521,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[3.17.0, )"
+          },
+          "NunitXml.TestLogger": {
+            "target": "Package",
+            "version": "[2.1.80, )"
           }
         },
         "imports": [
@@ -5521,7 +5542,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
