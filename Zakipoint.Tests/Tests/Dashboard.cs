@@ -41,7 +41,7 @@ namespace Zakipoint.Tests.Tests
 
         #region Base Methods
 
-        //SetUp
+       
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
@@ -51,11 +51,12 @@ namespace Zakipoint.Tests.Tests
             _dashboard.DashboardPageLoad();
         }
 
-        // TearDown
+      
         public override void Dispose()
         {
-            //_commonFunction.Logout();
-            Browser.Dispose();
+            _commonFunction.Logout();
+            //Browser.Dispose();
+           
         }
 
         #endregion
@@ -77,7 +78,7 @@ namespace Zakipoint.Tests.Tests
                 //_dashboard.ClickDownloadReport();
                 //CommonMethods.CheckFileDownloaded(_dashboard.GetDownloadReportName());
                 //Assert.AreEqual(_dashboard.GetTableHeaderList(How.CssSelector, _dashboardPage.TopConditionTableHeaderCssSelector), expectedConditionSpendTableHeaderList);
-                var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector);
+               // var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector);
             }
             catch (Exception e)
             {
@@ -93,17 +94,17 @@ namespace Zakipoint.Tests.Tests
                 var Expected_Result = _dashboard.Expected_Top_Condition_By_Total_Spend("all");
                 Console.WriteLine("Top Condition By Total Spend(all) from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 _dashboard.ChooseAllMember();
-                var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector);
+                var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector, How.CssSelector , _dashboardPage.TopConditionDetailsByRowCssSelector);
                 var Actual_Result = _dashboard.Map_Object(tableDetails);
                 Console.WriteLine("Top Condition(all) By Total Spend from UI:" + CommonMethods.ObjectToXml(Actual_Result));
-                var objectLength = Actual_Result.Count - 1;
+                var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Conditions, Actual_Result[i].Conditions, "Dashboard", "Conditions(all)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Spend), String.Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend(all)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Change), String.Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(all)", "Expected value shold be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Conditions, Actual_Result[i].Conditions, "Dashboard", "Conditions(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Spend), String.Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Change), String.Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(all)", "Expected value should be equal to actual value");
 
                 }
                 for (int i = 0; i < objectLength; i++)
@@ -119,7 +120,7 @@ namespace Zakipoint.Tests.Tests
             {
 
                 Browser.ScreenShot("Top_Condition_By_Total_Spend_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected:"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Condition_By_Total_Spend", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -132,17 +133,17 @@ namespace Zakipoint.Tests.Tests
                 var Expected_Result = _dashboard.Expected_Top_Condition_By_Total_Spend("active");
                 Console.WriteLine("Top Condition By Total Spend(active) from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 _dashboard.ChooseActiveMember();
-                var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector);
+                var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _dashboardPage.TopConditionRowCssSelector, How.CssSelector , _dashboardPage.TopConditionDetailsByRowCssSelector);
                 var Actual_Result = _dashboard.Map_Object(tableDetails);
                 Console.WriteLine("Top Condition(active) By Total Spend from UI:" + CommonMethods.ObjectToXml(Actual_Result));
-                var objectLength = Actual_Result.Count - 1;
+                var objectLength = Actual_Result.Count ;
                 for (int i = 0; i < objectLength; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Conditions, Actual_Result[i].Conditions, "Dashboard", "Conditions(active)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Spend), String.Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(active)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend(active)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Change), String.Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(active)", "Expected value shold be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(active)", "Expected value shold be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Conditions, Actual_Result[i].Conditions, "Dashboard", "Conditions(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Spend), String.Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Spend(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Result[i].P_Change), String.Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Members(active)", "Expected value should be equal to actual value");
 
                 }
                 for (int i = 0; i < objectLength; i++)
@@ -158,7 +159,7 @@ namespace Zakipoint.Tests.Tests
             {
 
                 Browser.ScreenShot("Top_Condition_By_Total_Spend_Active_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Condition_By_Total_Spend_Active", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -178,8 +179,8 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Medical PMPM Change(active) % from UI: " + Actual_Medical_PMPM_Change.ToString());
                 decimal Actual_Pharmacy_PMPM_Change = _dashboard.PMPM_Change(false); //false for pharmacy pmpm tile
                 Console.WriteLine("Pharmacy PMPM Change(active) % from UI: " + Actual_Pharmacy_PMPM_Change.ToString());
-                _saveToCsv.SaveTestCase(Expected_Medical_PMPM_Change.ToString(), Actual_Medical_PMPM_Change.ToString(), "Dashboard", "Medical PMPM Change(active) Percentages", "Expected PMPM  change shold be equal to actual PMPM change");
-                _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM_Change.ToString(), Actual_Pharmacy_PMPM_Change.ToString(), "Dashboard", "Pharmacy PMPM Change(active) Percentages", "Expected PMPM change shold be equal to actual PMPM change");
+                _saveToCsv.SaveTestCase(Expected_Medical_PMPM_Change.ToString(), Actual_Medical_PMPM_Change.ToString(), "Dashboard", "Medical PMPM Change(active) Percentages", "Expected PMPM  change should be equal to actual PMPM change");
+                _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM_Change.ToString(), Actual_Pharmacy_PMPM_Change.ToString(), "Dashboard", "Pharmacy PMPM Change(active) Percentages", "Expected PMPM change should be equal to actual PMPM change");
                 Assert.IsTrue(Actual_Medical_PMPM_Change == Expected_Medical_PMPM_Change);
                 Assert.IsTrue(Actual_Pharmacy_PMPM_Change == Expected_Pharmacy_PMPM_Change);
 
@@ -187,7 +188,7 @@ namespace Zakipoint.Tests.Tests
             catch (Exception ex)
             {
                 Browser.ScreenShot("Active_PMPM_Change_Percentages_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM_Change_Percentages", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -207,15 +208,15 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Medical PMPM Change Percentages(All) from UI:" + Actual_Medical_PMPM_Change.ToString());
                 decimal Actual_Pharmacy_PMPM_Change = _dashboard.PMPM_Change(false);
                 Console.WriteLine("Pharmacy PMPM Change Percentages(All) from UI: " + Actual_Pharmacy_PMPM_Change.ToString());
-                _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Medical_PMPM_Change), string.Format("{0:0.##}", Actual_Medical_PMPM_Change), "Dashboard", "Medical PMPM Change(all) Percentages", "Expected PMPM  change shold be equal to actual PMPM change");
-                _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Pharmacy_PMPM_Change), string.Format("{0:0.##}", Actual_Pharmacy_PMPM_Change), "Dashboard", "Pharmacy PMPM Change(all) Percentages", "Expected PMPM change shold be equal to actual PMPM change");
+                _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Medical_PMPM_Change), string.Format("{0:0.##}", Actual_Medical_PMPM_Change), "Dashboard", "Medical PMPM Change(all) Percentages", "Expected PMPM  change should be equal to actual PMPM change");
+                _saveToCsv.SaveTestCase(String.Format("{0:0.##}", Expected_Pharmacy_PMPM_Change), string.Format("{0:0.##}", Actual_Pharmacy_PMPM_Change), "Dashboard", "Pharmacy PMPM Change(all) Percentages", "Expected PMPM change should be equal to actual PMPM change");
                 Assert.IsTrue(String.Format("{0:0.##}", Expected_Medical_PMPM_Change) == string.Format("{0:0.##}", Actual_Medical_PMPM_Change));
                 Assert.IsTrue(String.Format("{0:0.##}", Expected_Pharmacy_PMPM_Change) == string.Format("{0:0.##}", Actual_Pharmacy_PMPM_Change));
             }
             catch (Exception ex)
             {
                 Browser.ScreenShot("PMPM_Change_Percenatges_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM_Change_Percenatges", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -235,15 +236,15 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Mediacal PMPM(active) from UI: " + Actual_Medical_PMPM.ToString());
                 decimal Actual_Pharmacy_PMPM = _dashboard.Spend_PMPM(false);
                 Console.WriteLine("Mediacal PMPM(active) from UI: " + Actual_Pharmacy_PMPM.ToString());
-                _saveToCsv.SaveTestCase(Expected_Medical_PMPM.ToString(), Actual_Medical_PMPM.ToString(), "Dashboard", "Medical PMPM(active)", "Expected PMPM shold be equal to actual PMPM");
-                _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM.ToString(), Actual_Pharmacy_PMPM.ToString(), "Dashboard", "Pharmacy PMPM(active)", "Expected PMPM shold be equal to actual PMPM");
+                _saveToCsv.SaveTestCase(Expected_Medical_PMPM.ToString(), Actual_Medical_PMPM.ToString(), "Dashboard", "Medical PMPM(active)", "Expected PMPM should be equal to actual PMPM");
+                _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM.ToString(), Actual_Pharmacy_PMPM.ToString(), "Dashboard", "Pharmacy PMPM(active)", "Expected PMPM should be equal to actual PMPM");
                 Assert.IsTrue(Expected_Medical_PMPM.ToString() == Actual_Medical_PMPM.ToString());
                 Assert.IsTrue(Expected_Pharmacy_PMPM.ToString() == Actual_Pharmacy_PMPM.ToString());
             }
             catch (Exception ex)
             {
                 Browser.ScreenShot("Active_PMPM_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -263,15 +264,15 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Mediacal PMPM(all) from UI: " + Actual_Medical_PMPM.ToString());
                 decimal Actual_Pharmacy_PMPM = _dashboard.Spend_PMPM(false);
                 Console.WriteLine("Mediacal PMPM(all) from UI: " + Actual_Pharmacy_PMPM.ToString());
-                _saveToCsv.SaveTestCase(Expected_Medical_PMPM.ToString(), Actual_Medical_PMPM.ToString(), "Dashboard", "Medical PMPM(all)", "Expected PMPM shold be equal to actual PMPM");
-                _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM.ToString(), Actual_Pharmacy_PMPM.ToString(), "Dashboard", "Pharmacy PMPM(all)", "Expected PMPM shold be equal to actual PMPM");
+                _saveToCsv.SaveTestCase(Expected_Medical_PMPM.ToString(), Actual_Medical_PMPM.ToString(), "Dashboard", "Medical PMPM(all)", "Expected PMPM should be equal to actual PMPM");
+                _saveToCsv.SaveTestCase(Expected_Pharmacy_PMPM.ToString(), Actual_Pharmacy_PMPM.ToString(), "Dashboard", "Pharmacy PMPM(all)", "Expected PMPM should be equal to actual PMPM");
                 Assert.IsTrue(Expected_Medical_PMPM.ToString() == Actual_Medical_PMPM.ToString());
                 Assert.IsTrue(Expected_Pharmacy_PMPM.ToString() == Actual_Pharmacy_PMPM.ToString());
             }
             catch (Exception ex)
             {
                 Browser.ScreenShot("PMPM_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -303,7 +304,7 @@ namespace Zakipoint.Tests.Tests
             catch (Exception ex)
             {
                 Browser.ScreenShot("Active_Medical_Pharmacy_Spend_Change_Percentages_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Medical_Pharmacy_Spend_Change_Percentages", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -333,7 +334,7 @@ namespace Zakipoint.Tests.Tests
             {
 
                 Browser.ScreenShot("Medical_Pharmacy_Spend_Change_Percentages_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -369,7 +370,7 @@ namespace Zakipoint.Tests.Tests
             catch (Exception e)
             {
                 Browser.ScreenShot("Total_Active_Medical_Pharmacy_Spend_Shot");
-                if (!e.Message.Contains("Expected: True"))
+                if (!e.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Active_Medical_Pharmacy_Spend", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(e);
             }
@@ -407,7 +408,7 @@ namespace Zakipoint.Tests.Tests
             catch (Exception e)
             {
                 Browser.ScreenShot("Total_Medical_Pharmacy_Spend_Shot");
-                if (!e.Message.Contains("Expected: True"))
+                if (!e.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Medical_Pharmacy_Spend", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(e);
             }
@@ -425,15 +426,15 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Total member(all) from UI: " + ActualTotalMember);
                 string ActualTotalEmployee = _dashboard.TotalEmployee(false);
                 Console.WriteLine("Total employee(all) from UI: " + ActualTotalEmployee);
-                _saveToCsv.SaveTestCase(ExpectedTotalMember, ActualTotalMember, "Dashboard", "Toatal Member(all)", "Acutal toatl member shoud be equal to expected total member");
-                _saveToCsv.SaveTestCase(ExpectedTotalEmployee, ActualTotalEmployee, "DashBoard", "Total employee(all)", "Actual toal employee shoud be equal to expected total employee");
+                _saveToCsv.SaveTestCase(ExpectedTotalMember, ActualTotalMember, "Dashboard", "Toatal Member(all)", "Acutal toatl member should be equal to expected total member");
+                _saveToCsv.SaveTestCase(ExpectedTotalEmployee, ActualTotalEmployee, "DashBoard", "Total employee(all)", "Actual toal employee should be equal to expected total employee");
                 Assert.IsTrue(ExpectedTotalMember == ActualTotalMember);
                 Assert.IsTrue(ExpectedTotalEmployee == ActualTotalEmployee);
             }
             catch (Exception ex)
             {
                 Browser.ScreenShot("Total_Member_Total_Employee_Shot");
-                if (!ex.Message.Contains("Expected: True"))
+                if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Member_Total_Employee", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
@@ -453,19 +454,280 @@ namespace Zakipoint.Tests.Tests
                 string ActualActiveEmployee = _dashboard.TotalEmployee(true);
                 Console.WriteLine("Total employee(active) from UI:" + ActualActiveEmployee);
 
-                _saveToCsv.SaveTestCase(ExpectedActiveMember, ActualActiveMember, "DashBoard", "Member(active)", "Acutal active member shoud be equal to expected active member");
-                _saveToCsv.SaveTestCase(ExpectedActiveEmployee, ActualActiveEmployee, "DashBoard", "Employee(active)", "Acutal active employee shoud be equal to expected active employee");
+                _saveToCsv.SaveTestCase(ExpectedActiveMember, ActualActiveMember, "DashBoard", "Member(active)", "Acutal active member should be equal to expected active member");
+                _saveToCsv.SaveTestCase(ExpectedActiveEmployee, ActualActiveEmployee, "DashBoard", "Employee(active)", "Acutal active employee should be equal to expected active employee");
                 Assert.IsTrue(ExpectedActiveMember == ActualActiveMember);
                 Assert.IsTrue(ExpectedActiveEmployee == ActualActiveEmployee);
             }
             catch (Exception e)
             {
                 Browser.ScreenShot("Active_Member_Active_Employee_Shot");
-                if (!e.Message.Contains("Expected: True"))
+                if (!e.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Member_Active_Employee", "Exception occure:  Please verify manually");
                 Console.Out.WriteLine(e);
 
             }
+        }
+
+        [Test, Category("Prospective_Population_Risk_Stratification")]
+       public void Prospective_Population_Risk_Stratification()
+        {
+            try
+            {
+                var Expected_Result = _dashboard.Expected_Prospective_Population_Risk_Stratification("all");
+                Console.WriteLine(CommonMethods.ObjectToXml(Expected_Result));
+                _dashboard.ChooseAllMember();
+                var Actual_Result = _dashboard.Map_Prospective_Population_Risk_Stratification( _dashboard.Prospective_Population_Risk_Stratification());
+               Console.WriteLine( CommonMethods.ObjectToXml(Actual_Result));
+                int objectLength = Expected_Result.Count;
+                Console.WriteLine("Start  CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Risk_Type, Actual_Result[i].Risk_Type, "Dashboard", "Prospective_Population_Risk_Stratification_Risk_type(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Prospective_Population_Risk_Stratification_Risk_Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Percentages_Spend, Actual_Result[i].Percentages_Spend, "Dashboard", "Prospective_Population_Risk_Stratification_Percentages_Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Prospective_Population_Risk_Stratification_Percentages_Members(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Percentages_Member, Actual_Result[i].Percentages_Member, "Dashboard", "Prospective_Population_Risk_Stratification_Percentages_Percentages_Members(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].PMPM, Actual_Result[i].PMPM, "Dashboard", "Prospective_Population_Risk_Stratification_Percentages_PMPM(all)", "Expected value should be equal to actual value");
+
+                }
+                Console.WriteLine("End CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.AreEqual(Expected_Result[i].Risk_Type, Actual_Result[i].Risk_Type);
+                    Assert.AreEqual(Expected_Result[i].Spend, Actual_Result[i].Spend);
+                    Assert.AreEqual(Expected_Result[i].Percentages_Spend, Actual_Result[i].Percentages_Spend);
+                    Assert.AreEqual(Expected_Result[i].Members, Actual_Result[i].Members);
+                    Assert.AreEqual(Expected_Result[i].Percentages_Member, Actual_Result[i].Percentages_Member);
+                    Assert.AreEqual(Expected_Result[i].PMPM, Actual_Result[i].PMPM);
+
+                }
+
+            }
+            catch (Exception ex )
+            {
+
+                if (!ex.Message.Contains("Expected"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Prospective_Population_Risk_Stratification", "Exception occure:  Please verify manually");
+                Console.Out.WriteLine(ex);
+            }
+
+        }
+
+        [Test, Category("Prospective_Population_Risk_Stratification")]
+        public void Prospective_Population_Risk_Stratification_Active()
+        {
+            try
+            {
+                var Expected_Result = _dashboard.Expected_Prospective_Population_Risk_Stratification("active");
+                Console.WriteLine(Expected_Result);
+                _dashboard.ChooseActiveMember();
+                var Actual_Result = _dashboard.Map_Prospective_Population_Risk_Stratification(_dashboard.Prospective_Population_Risk_Stratification());
+                Console.WriteLine(CommonMethods.ObjectToXml(Actual_Result));
+                int objectLength = Expected_Result.Count;
+                Console.WriteLine("Start  CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Risk_Type, Actual_Result[i].Risk_Type, "Dashboard", "Prospective_Population_Risk_Stratification_Risk_type(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Prospective_Population_Risk_Stratification_Risk_Spend(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Percentages_Spend, Actual_Result[i].Percentages_Spend, "Dashboard", "Prospective_Population_Risk_Stratification_Percentages_Spend(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Prospective_Population_Risk_Stratification_Percentages_Members(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Percentages_Member, Actual_Result[i].Percentages_Member, "Dashboard", "Prospective_Population_Risk_Stratification_Percentages_Percentages_Members(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].PMPM, Actual_Result[i].PMPM, "Dashboard", "Prospective_Population_Risk_Stratification_Percentages_PMPM(active)", "Expected value should be equal to actual value");
+
+                }
+                Console.WriteLine("End CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.AreEqual(Expected_Result[i].Risk_Type, Actual_Result[i].Risk_Type);
+                    Assert.AreEqual(Expected_Result[i].Spend, Actual_Result[i].Spend);
+                    Assert.AreEqual(Expected_Result[i].Percentages_Spend, Actual_Result[i].Percentages_Spend);
+                    Assert.AreEqual(Expected_Result[i].Members, Actual_Result[i].Members);
+                    Assert.AreEqual(Expected_Result[i].Percentages_Member, Actual_Result[i].Percentages_Member);
+                    Assert.AreEqual(Expected_Result[i].PMPM, Actual_Result[i].PMPM);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                if (!ex.Message.Contains("Expected"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Prospective_Population_Risk_Stratification", "Exception occure:  Please verify manually");
+                Console.Out.WriteLine(ex);
+            }
+
+        }
+
+        [Test, Category("Top_Service_By_Total_Spend")]
+        public void Top_Service_By_Total_Spend()
+        {
+            try
+            {
+                var Expected_Result = _dashboard.Expected_Top_Service_By_Total_Spend("all");
+                Console.WriteLine(CommonMethods.ObjectToXml(Expected_Result));
+                _dashboard.ChooseAllMember();
+                _dashboard.Click_Condition_Service_Link(false);
+                var Actual_value = _dashboard.Top_Service_By_Total_Spend();
+                var Actual_Result = _dashboard.Map_Top_Service_By_Total_Spend(Actual_value);
+                Console.WriteLine(CommonMethods.ObjectToXml(Actual_Result));
+                int objectLength = Expected_Result.Count;
+                Console.WriteLine("Start  CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Services, Actual_Result[i].Services, "Dashboard", "Top_Service_By_Total_Spend_Services(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Top_Service_By_Total_Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Top_Service_By_Total_Spend_Member(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].UtilizationPerThousand, Actual_Result[i].UtilizationPerThousand, "Dashboard", "Top_Service_By_Total_Spend_UtilizationPerThousand(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].PMPM, Actual_Result[i].PMPM, "Dashboard", "Top_Service_By_Total_Spend_PMPM(all)", "Expected value should be equal to actual value");
+
+                }
+                Console.WriteLine("End CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.AreEqual(Expected_Result[i].Services, Actual_Result[i].Services);
+                    Assert.AreEqual(Expected_Result[i].Spend, Actual_Result[i].Spend);
+                    Assert.AreEqual(Expected_Result[i].Members, Actual_Result[i].Members);
+                    Assert.AreEqual(Expected_Result[i].UtilizationPerThousand, Actual_Result[i].UtilizationPerThousand);
+                    Assert.AreEqual(Expected_Result[i].PMPM, Actual_Result[i].PMPM);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Browser.ScreenShot("Top_Service_By_Total_Spend");
+                if (!ex.Message.Contains("Expected"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Service_By_Total_Spend", "Exception occure:  Please verify manually");
+
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        [Test, Category("Top_Service_By_Total_Spend")]
+        public void Top_Service_By_Total_Spend_Active()
+        {
+            try
+            {
+                var Expected_Result = _dashboard.Expected_Top_Service_By_Total_Spend("active");
+                Console.WriteLine("Calculate expected value");
+                Console.WriteLine(CommonMethods.ObjectToXml(Expected_Result));
+                _dashboard.ChooseAllMember();
+                _dashboard.Click_Condition_Service_Link(false);
+                var Actual_value = _dashboard.Top_Service_By_Total_Spend();
+                var Actual_Result = _dashboard.Map_Top_Service_By_Total_Spend(Actual_value);
+                Console.WriteLine("Calculate actual value");
+                Console.WriteLine(CommonMethods.ObjectToXml(Actual_Result));
+                int objectLength = Expected_Result.Count;
+                Console.WriteLine("Start  CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Services, Actual_Result[i].Services, "Dashboard", "Top_Service_By_Total_Spend_Services(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Top_Service_By_Total_Spend(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Top_Service_By_Total_Spend_Member(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].UtilizationPerThousand, Actual_Result[i].UtilizationPerThousand, "Dashboard", "Top_Service_By_Total_Spend_UtilizationPerThousand(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].PMPM, Actual_Result[i].PMPM, "Dashboard", "Top_Service_By_Total_Spend_PMPM(active)", "Expected value should be equal to actual value");
+
+                }
+                Console.WriteLine("End CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.AreEqual(Expected_Result[i].Services, Actual_Result[i].Services);
+                    Assert.AreEqual(Expected_Result[i].Spend, Actual_Result[i].Spend);
+                    Assert.AreEqual(Expected_Result[i].Members, Actual_Result[i].Members);
+                    Assert.AreEqual(Expected_Result[i].UtilizationPerThousand, Actual_Result[i].UtilizationPerThousand);
+                    Assert.AreEqual(Expected_Result[i].PMPM, Actual_Result[i].PMPM);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Browser.ScreenShot("Top_Service_By_Total_Spend_Active");
+                if (!ex.Message.Contains("Expected"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Service_By_Total_Spend_Active", "Exception occure:  Please verify manually");
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+        [Test, Category("Cost_Matrix")]
+        public void Cost_Matrix()
+        {
+            try
+            {
+                var Expected_Result = _dashboard.Expected_Cost_Matrix("all");
+                Console.WriteLine(CommonMethods.ObjectToXml(Expected_Result));
+                _dashboard.ChooseAllMember();
+                var Actual_Result = _dashboard.Map_Cost_Matrix(_dashboard.Cost_Matrix());
+                Console.WriteLine(CommonMethods.ObjectToXml(Actual_Result));
+                int objectLength = Expected_Result.Count;
+                Console.WriteLine("Start  CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Cost_Categories, Actual_Result[i].Cost_Categories, "Dashboard", "Cost_Matrix_Categories(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].P_Spend, Actual_Result[i].P_Spend, "Dashboard", "Cost_Matrix_P_Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Cost_Matrix_Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Cost_Matrix_Members(all)", "Expected value should be equal to actual value");
+
+                }
+                Console.WriteLine("End CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.AreEqual(Expected_Result[i].Cost_Categories, Actual_Result[i].Cost_Categories);
+                    Assert.AreEqual(Expected_Result[i].P_Spend, Actual_Result[i].P_Spend);
+                    Assert.AreEqual(Expected_Result[i].Spend, Actual_Result[i].Spend);
+                    Assert.AreEqual(Expected_Result[i].Members, Actual_Result[i].Members);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Browser.ScreenShot("Cost_Matrix");
+                if (!ex.Message.Contains("Expected"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Cost_Matrix", "Exception occure:  Please verify manually");
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+        [Test, Category("Cost_Matrix")]
+        public void Cost_Matrix_Active()
+        {
+            try
+            {
+                var Expected_Result = _dashboard.Expected_Cost_Matrix("active");
+                Console.WriteLine(CommonMethods.ObjectToXml(Expected_Result));
+                _dashboard.ChooseActiveMember();
+                var Actual_Result = _dashboard.Map_Cost_Matrix(_dashboard.Cost_Matrix());
+                Console.WriteLine(CommonMethods.ObjectToXml(Actual_Result));
+                int objectLength = Expected_Result.Count;
+                Console.WriteLine("Start  CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Cost_Categories, Actual_Result[i].Cost_Categories, "Dashboard", "Cost_Matrix_Categories(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].P_Spend, Actual_Result[i].P_Spend, "Dashboard", "Cost_Matrix_P_Spend(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Spend, Actual_Result[i].Spend, "Dashboard", "Cost_Matrix_Spend(active)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].Members, Actual_Result[i].Members, "Dashboard", "Cost_Matrix_Members(active)", "Expected value should be equal to actual value");
+
+                }
+                Console.WriteLine("End CSV");
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.AreEqual(Expected_Result[i].Cost_Categories, Actual_Result[i].Cost_Categories);
+                    Assert.AreEqual(Expected_Result[i].P_Spend, Actual_Result[i].P_Spend);
+                    Assert.AreEqual(Expected_Result[i].Spend, Actual_Result[i].Spend);
+                    Assert.AreEqual(Expected_Result[i].Members, Actual_Result[i].Members);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Browser.ScreenShot("Cost_Matrix");
+                if (!ex.Message.Contains("Expected"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Cost_Matrix_Active", "Exception occure:  Please verify manually");
+                Console.WriteLine(ex.Message);
+            }
+
         }
         #endregion
     }

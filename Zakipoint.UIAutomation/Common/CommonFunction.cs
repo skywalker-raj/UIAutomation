@@ -58,10 +58,10 @@ namespace Zakipoint.UIAutomation.Common
             return valueList;
         }
 
-        public List<string> GetTableValuesListByRow(int row = 1)
+        public List<string> GetTableValuesListByRow( How rowDetailsLocator, string rowDetailsValue, int row = 1)
         {
             List<string> valueList = new List<string>();
-            var rowvalue = Browser.FindElements(How.CssSelector, Format(_dashboardPage.TopConditionDetailsByRowCssSelector, row));
+            var rowvalue = Browser.FindElements(rowDetailsLocator, Format(rowDetailsValue, row));
             foreach (var value in rowvalue)
             {
                 if (value.Text != "")
@@ -72,18 +72,19 @@ namespace Zakipoint.UIAutomation.Common
             return valueList;
         }
 
-        public List<List<string>> GetTableValues(How locator, string value)
+        public List<List<string>> GetTableValues(How RowLocator, string RowValue, How rowDetailsLocator, string rowDetailsValue)
         {
             var tableDetails = new List<List<string>>();
-            int rowCount = Browser.FindElements(locator, value).Count;
+            int rowCount = Browser.FindElements(RowLocator, RowValue).Count;
             for (int i = 1; i <= rowCount; i++)
             {
-                var rowDetails = GetTableValuesListByRow(i);
+                var rowDetails = GetTableValuesListByRow(rowDetailsLocator, rowDetailsValue, i);
                 tableDetails.Add(rowDetails);
             }
             return tableDetails;
         }
 
+      
         public string RemoveUnicode(string messsage)
         {
             return Regex.Replace(messsage, @"[^\u0000-\u007F]+", string.Empty).Replace(",", "");

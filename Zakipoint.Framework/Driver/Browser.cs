@@ -15,6 +15,7 @@ using System.Configuration;
 using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using Zakipoint.Framework.Common.Constants;
+using System.Threading;
 
 namespace Zakipoint.Framework.Driver
 {
@@ -829,6 +830,17 @@ namespace Zakipoint.Framework.Driver
         public static string GetScreenshotFilename()
         {
             return ScreenshotRemoteWebDriver.FullQualifiedFileName;
+        }
+
+        public static void PageScroll (int x , int y)
+        {
+           
+            IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
+            Thread.Sleep(5000);
+            js.ExecuteScript(string.Format( "window.scrollBy({0},{1});", x, y));
+            Console.WriteLine("page Scroll");
+
+
         }
 
         #endregion

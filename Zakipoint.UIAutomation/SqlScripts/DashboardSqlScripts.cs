@@ -184,5 +184,136 @@ namespace Zakipoint.UIAutomation.SqlScripts
                     DESC LIMIT 10;", CommonObject.DefaultClientSuffix, StartDate, EndDate);
             }
         }
+    
+        public string Top_Service_By_Total_Spend(string memberStatus)
+        {
+            string Substring = string.Empty;
+            if (memberStatus.ToLower() == "all")
+                Substring = " and 1=1 ";
+            else
+                Substring = " And  active_flag=1 ";
+
+            return string.Format(@"SELECT
+            metric_id Services,
+            ROUND(paid_amount / 1000, 1) Spend,
+            member_count Members,
+            ROUND((event_Count * 12 * 1000) / member_month, 2) UtilizationPerThousand,
+            ROUND(paid_amount / member_month, 0) PMPM
+            FROM (SELECT
+            metric_id,
+            SUM(paid_amount) paid_amount,
+            COUNT(DISTINCT member_id) member_count,
+            SUM(unit_count) event_Count,
+            (SELECT
+             SUM(membermonth)
+            FROM member_by_mm_by_month_{0} 
+            WHERE period = 1 and group_id = '{0}' ) member_month
+            FROM member_utilization_metrics_summary_{0} 
+            WHERE metric_id IN ('INPATIENT', 'OFFICEVISIT', 'OUTPATIENT', 'ER')
+            AND group_id = '{0}'
+            AND  period = 1 
+            GROUP BY metric_id) AS A
+            ORDER BY FIELD(metric_id, 'INPATIENT', 'OFFICEVISIT', 'OUTPATIENT', 'ER')", CommonObject.DefaultClientSuffix,Substring);
+        }
+
+        public string Cost_Matrix(string memberStatus)
+        {
+            string Substring = string.Empty;
+            if (memberStatus.ToLower() == "all")
+                memberStatus = " 1=1 ";
+            else
+                memberStatus = " active_flag=1 ";
+
+            return string.Format(@"SELECT  a.Cost_Categories,round( (a.spend/(SELECT SUM(p1_total_paid) FROM member_summary_encr_{0} where p1_exists_flag = 1 and group_id='{0}' and{1}))*100 ,0)as 'P_Spend'  ,  round(a.spend/1000,0) as spend ,a.Members from (
+           SELECT SUM(p1_total_paid) spend  , 'No Cost'  AS Cost_Categories, count(1) AS Members FROM member_summary_encr_{0}  WHERE p1_total_paid=0  and p1_exists_flag = 1 and group_id='{0}'and{1}
+           UNION ALL 
+           SELECT sum(p1_total_paid) AS spend , 'Less than $500' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 0 and p1_total_paid <= 500  and p1_exists_flag = 1 and group_id='{0}'and{1}
+           UNION ALL 
+           SELECT SUM(p1_total_paid) AS spend,  '$500 to $5k' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 500 and p1_total_paid <= 5000  and p1_exists_flag = 1 and group_id='{0}'and{1}
+           UNION ALL
+           SELECT SUM(p1_total_paid) AS spend , '$5k to $50k' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 5000 and p1_total_paid <= 50000 and p1_exists_flag = 1 and group_id='{0}' and{1}
+           UNION ALL
+           SELECT SUM(p1_total_paid) AS spend, '$50k to $75k' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 50000 and p1_total_paid <= 75000 and p1_exists_flag = 1 and group_id='{0}' and{1}
+           UNION ALL
+           SELECT SUM(p1_total_paid) AS spend, '$75k to $100k' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 75000 and p1_total_paid <= 100000 and p1_exists_flag = 1 and group_id='{0}'and{1}
+           UNION ALL
+           SELECT SUM(p1_total_paid) AS spend, '$100k to $200k' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 100000 and p1_total_paid <= 200000 and p1_exists_flag = 1  and group_id='{0}'and{1}
+           UNION ALL
+           SELECT SUM(p1_total_paid) AS spend, 'More than $200k' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 200000  and p1_exists_flag = 1 and group_id='{0}' and{1}) AS A ", CommonObject.DefaultClientSuffix,memberStatus);
+        }
+
+        public string Prospective_Population_Risk_Stratification(string memberStatus)
+        {
+            string Substring = string.Empty;
+            if (memberStatus.ToLower() == "all")
+            {
+              return string.Format(@"SELECT
+            RiskType 'Risk_Type',
+            ROUND(Spend / 1000, 1) Spend,
+            ROUND((Spend / Total_spend) * 100, 1) 'Percentages_Spend',
+            Members,
+            ROUND((Members / total_member) * 100, 1) 'Percentages_Member',
+            ROUND((Spend / member_month), 1) PMPM
+            FROM (SELECT
+            (SELECT
+            SUM(p1_total_paid)
+            FROM tbl_member_paid_and_risk_summary_{0}
+            WHERE exists_in_p1 = TRUE
+            AND group_id = '{0}') Total_spend,
+            CASE WHEN p1_risk_bucket = '0' THEN 'Low' ELSE p1_risk_bucket END 'RiskType',
+            SUM(p1_total_paid) Spend,
+            (SELECT
+            COUNT(DISTINCT member_id)
+            FROM tbl_member_paid_and_risk_summary_{0}
+            WHERE exists_in_p1 = TRUE 
+            AND group_id = '{0}') total_member,
+            COUNT(DISTINCT member_id) Members,
+            (SELECT
+            SUM(membermonth)
+            FROM member_by_mm_by_month_{0}
+            WHERE period = 1
+            AND group_id = '{0}' ) member_month
+            FROM tbl_member_paid_and_risk_summary_{0}
+            WHERE exists_in_p1 = TRUE 
+            AND group_id = '{0}'
+            GROUP BY CASE WHEN p1_risk_bucket = '0' THEN 'Low' ELSE p1_risk_bucket END) A
+            ORDER BY FIELD(RiskType, 'High', 'Medium', 'Normal', 'Low') ", CommonObject.DefaultClientSuffix);
+            }
+            else
+            {
+             return string.Format(@"SELECT
+            RiskType 'Risk_Type',
+            ROUND(Spend / 1000, 1) Spend,
+            ROUND((Spend / Total_spend) * 100, 1) 'Percentages_Spend',
+            Members,
+            ROUND((Members / total_member) * 100, 1) 'Percentages_Member',
+            ROUND((Spend / member_month), 1) PMPM
+            FROM (SELECT
+            (SELECT
+            SUM(p1_total_paid)
+            FROM tbl_member_paid_and_risk_summary_{0}
+            WHERE exists_in_p1 = TRUE and P1_active_flag=TRUE
+            AND group_id = '{0}') Total_spend,
+            CASE WHEN p1_risk_bucket = '0' THEN 'Low' ELSE p1_risk_bucket END 'RiskType',
+            SUM(p1_total_paid) Spend,
+            (SELECT
+            COUNT(DISTINCT member_id)
+            FROM tbl_member_paid_and_risk_summary_{0}
+            WHERE exists_in_p1 = TRUE and P1_active_flag=TRUE
+            AND group_id = '{0}') total_member,
+            COUNT(DISTINCT member_id) Members,
+            (SELECT
+            SUM(membermonth)
+            FROM member_by_mm_by_month_{0}
+            WHERE period = 1
+            AND group_id = '{0}' and active_flag=TRUE) member_month
+            FROM tbl_member_paid_and_risk_summary_{0}
+            WHERE exists_in_p1 = TRUE and P1_active_flag=TRUE
+            AND group_id = '{0}'
+            GROUP BY CASE WHEN p1_risk_bucket = '0' THEN 'Low' ELSE p1_risk_bucket END) A
+            ORDER BY FIELD(RiskType, 'High', 'Medium', 'Normal', 'Low') ", CommonObject.DefaultClientSuffix);
+            }
+        }
+
     }
 }

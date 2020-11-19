@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Zakipoint.Framework.Common;
 using Zakipoint.Framework.Database;
 using Zakipoint.Framework.Driver;
@@ -117,6 +118,62 @@ namespace Zakipoint.UIAutomation.PageServices
                     Spend = dt.Rows[i]["Spend"].ToString(),
                     P_Change = dt.Rows[i]["P_chnage"].ToString(),
                     Members = dt.Rows[i]["Members"].ToString()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+        public List<Top_Service_By_Total_Spend> Expected_Top_Service_By_Total_Spend(string memberStatus)
+        {
+            List<Top_Service_By_Total_Spend> objList = new List<Top_Service_By_Total_Spend>();
+            var dt = _executor.GetDataTable(_dashboardSqlScripts.Top_Service_By_Total_Spend(memberStatus));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Top_Service_By_Total_Spend obj = new Top_Service_By_Total_Spend
+                {
+                    Members = dt.Rows[i]["Members"].ToString(),
+                    Services= dt.Rows[i]["Services"].ToString().ToUpper(),
+                    UtilizationPerThousand= dt.Rows[i]["UtilizationPerThousand"].ToString(),
+                    Spend= dt.Rows[i]["Spend"].ToString(),
+                    PMPM= dt.Rows[i]["PMPM"].ToString()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+        public List<Cost_Matrix> Expected_Cost_Matrix(string memberStatus)
+        {
+            List<Cost_Matrix> objList = new List<Cost_Matrix>();
+            var dt = _executor.GetDataTable(_dashboardSqlScripts.Cost_Matrix(memberStatus));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Cost_Matrix obj = new Cost_Matrix
+                {
+                    Members = dt.Rows[i]["Members"].ToString(),
+                    Cost_Categories= dt.Rows[i]["Cost_Categories"].ToString(),
+                    P_Spend= dt.Rows[i]["P_Spend"].ToString(),
+                    Spend= dt.Rows[i]["Spend"].ToString()
+
+                };
+                objList.Add(obj);
+             }
+            return objList;
+        }
+       public List<Prospective_Population_Risk_Stratification> Expected_Prospective_Population_Risk_Stratification(string memberStatus)
+        {
+
+            List<Prospective_Population_Risk_Stratification> objList = new List<Prospective_Population_Risk_Stratification>();
+            var dt = _executor.GetDataTable(_dashboardSqlScripts.Prospective_Population_Risk_Stratification(memberStatus));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Prospective_Population_Risk_Stratification obj = new Prospective_Population_Risk_Stratification
+                {
+                    Percentages_Member= dt.Rows[i]["Percentages_Member"].ToString(),
+                    Members = dt.Rows[i]["Members"].ToString(),
+                    Risk_Type = dt.Rows[i]["Risk_Type"].ToString().ToUpper(),
+                    Percentages_Spend = dt.Rows[i]["Percentages_Spend"].ToString(),
+                    Spend = dt.Rows[i]["Spend"].ToString(),
+                    PMPM = dt.Rows[i]["PMPM"].ToString()
                 };
                 objList.Add(obj);
             }
@@ -288,6 +345,31 @@ namespace Zakipoint.UIAutomation.PageServices
                 }
             }           
         }
+        public void Click_Condition_Service_Link(bool condition)
+        {
+            if (condition)
+            {
+                if (Browser.FindElement(How.LinkText, "CONDITION").GetAttribute("class").Contains("inactive"))
+                {
+                    Browser.FindElement(How.LinkText, "CONDITION").Click();
+                    Console.WriteLine("Click on CONDITION link");
+                    // Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.SpendByLabelXPath, "Medical"))));
+                    Thread.Sleep(20000);
+                    
+                }
+            }
+            else
+            {
+                if (Browser.FindElement(How.LinkText, "SERVICE").GetAttribute("class").Contains("inactive"))
+                {
+                    Browser.FindElement(How.LinkText, "SERVICE").Click();
+                    Console.WriteLine("click on  SERVICE  link");
+                    Thread.Sleep(20000);
+                    //Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.PMPMByLabelXPath, "Medical"))));
+                    // Console.WriteLine("Conditional wait");
+                }
+            }
+        }
         public string TotalSpend(bool Medical)
         {
             if (Medical)
@@ -351,6 +433,7 @@ namespace Zakipoint.UIAutomation.PageServices
                 return Math.Round(Convert.ToDecimal(CommonMethods.RemoveComma(lines[1]).Split('%')[0]), 2);
             }
         }
+        #region object map
         public List<Top_Condtion_By_Total_spend> Map_Object(List<List<string>> tableDetails)
         {
             List<Top_Condtion_By_Total_spend> objList = new List<Top_Condtion_By_Total_spend>();
@@ -367,8 +450,88 @@ namespace Zakipoint.UIAutomation.PageServices
                 objList.Add(obj);
             }
             return objList;
+            
+        }
+        public List<Top_Service_By_Total_Spend> Map_Top_Service_By_Total_Spend(List<List<string>> tableDetails)
+        {
+            List<Top_Service_By_Total_Spend> objList = new List<Top_Service_By_Total_Spend>();
+            foreach (var item in tableDetails)
+            {
+                Top_Service_By_Total_Spend obj = new Top_Service_By_Total_Spend
+                {
+                    Services = item[0].ToString().Replace(",", "").ToUpper().Trim(),
+                    Spend = item[1].ToString().Replace(",", "").Replace("$", "").Replace("K","").Trim(),
+                    Members = item[2].ToString().Replace(",", "").Trim(),
+                    UtilizationPerThousand = item[3].ToString().Replace(",", "").Trim(),
+                    PMPM = item[4].ToString().Replace(",", "").Replace("$","").Trim()
+                };
+                objList.Add(obj);
+            }
+            objList.RemoveAt(0);
+            return objList;
+
+        }
+        public List<Prospective_Population_Risk_Stratification> Map_Prospective_Population_Risk_Stratification(List<List<string>> tableDetails)
+        {
+            List<Prospective_Population_Risk_Stratification> objList = new List<Prospective_Population_Risk_Stratification>();
+            int objlength = tableDetails.Count;
+            for (int i = 1; i < objlength; i++)
+            {
+                Prospective_Population_Risk_Stratification obj = new Prospective_Population_Risk_Stratification
+                {
+                    Risk_Type= tableDetails[i][0].ToString().Replace(",", "").ToUpper().Trim(),
+                    Spend = tableDetails[i][1].Split('K')[0].Replace(",", "").Replace("$","").Trim(),
+                    Percentages_Spend= tableDetails[i][1].ToString().Split('K')[1].Replace("(", "").Replace(")","").Replace("%","").Trim(),
+                    Members = tableDetails[i][2].ToString().Split('(')[0].Replace(",", "").Trim(),
+                    Percentages_Member= tableDetails[i][2].ToString().Split('(')[1].Replace(")", "").Replace("%","").Trim(),
+                    PMPM = tableDetails[i][3].ToString().Replace(",", "").Replace("$","").Trim()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+
+        }
+        public List<Cost_Matrix> Map_Cost_Matrix(List<List<string>> tableDetails)
+        {
+            List<Cost_Matrix> objList = new List<Cost_Matrix>();
+            foreach (var item in tableDetails)
+            {
+                Cost_Matrix obj = new Cost_Matrix
+                {
+                    Cost_Categories= item[0].ToString().Replace(",","").Trim(),
+                    P_Spend = item[1].ToString().Replace(",", "").Replace("%","").Trim(),
+                    Spend = item[2].ToString().Replace(",", "").Replace("$","").Replace("K","").Trim(),
+                    Members = item[3].ToString().Replace(",", "").Trim()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+
         }
 
+        #endregion
+        public List<List<string>> Prospective_Population_Risk_Stratification()
+        {
+           // Browser.PageScroll(0, 950); // cordinate 
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.ProspectivePopulationRiskStratificationRowByCssSelector, How.CssSelector, _dashboardPage.ProspectivePopulationRiskStratificationDetailsByRowCssSelector);
+          //  Browser.PageScroll(0, 0);
+            return tableData;
+
+        }
+        public List<List<string>> Top_Service_By_Total_Spend()
+        {
+            
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.TopServiceByTotalSpendRowByCssSelector, How.CssSelector, _dashboardPage.TopServiceByTotalSpendDetailsByRowCssSelector);
+
+            return tableData;
+        }
+        public List<List<string>> Cost_Matrix()
+        {
+
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.CostMatrixRowByRowCssSelector, How.CssSelector, _dashboardPage.CostMatrixDetailsByRowCssSelector);
+
+            return tableData;
+        }
         public void DashboardPageLoad()
         {
             Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(Format(_dashboardPage.ReportingPeriodByCssSelector, 2))));

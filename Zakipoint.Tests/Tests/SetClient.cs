@@ -38,17 +38,18 @@ namespace Zakipoint.Tests.Tests
 
         #region Base Methods
 
-        //[SetUp]
+        
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
             _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
         }
 
-        //[TearDown]
+      
         public override void Dispose()
         {
             _commonFunction.Logout();
+           
         }
 
         #endregion

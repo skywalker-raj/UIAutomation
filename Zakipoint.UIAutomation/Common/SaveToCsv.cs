@@ -41,10 +41,10 @@ namespace Zakipoint.UIAutomation.Common
         }
         public void WriteCSVFile(TestCase data)
         {
-            string date = DateTime.Now.ToString("yyyyMMdd");
+            string date = DateTime.Now.ToString("MM-dd-yyyy");
             var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             string filePath = baseDir + "../../../CSVFile/";
-            string fileName = filePath + "Testcase" + date + ".csv";
+            string fileName = filePath + "Testcase_" + date + ".csv";
             FileStream fs = new FileStream(fileName, FileMode.Append, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             StringBuilder str = new StringBuilder();

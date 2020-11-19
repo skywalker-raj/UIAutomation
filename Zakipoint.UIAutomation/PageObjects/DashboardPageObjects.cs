@@ -36,8 +36,12 @@
         public string TopConditionDetailsByRowCssSelector = "div.medical-box table.table tbody tr:nth-child({0}) td";
         public string ReportingPeriodByCssSelector = "div.zph-reporting p span:nth-child({0})"; // 2 for reporting period
         public string RadioMemberByCssSelector = "input#{0}"; // termed01: Active Members || termed02 : All Members 
-       //#z5dsbmlc005=Top Service By Total Spend  z5dsbmlc001 =Prospective Population Risk Stratification
-        public string TopServiceAndRiskStratificationDetailsByCssSelector = "{0}> g.table.row-group.dynamic-table > g:nth-child({1}) > text > tspan:nth-child({2}) > tspan";
+        public string ProspectivePopulationRiskStratificationRowByCssSelector = "#z5dsbmlc001 > g.table.row-group.dynamic-table > g";
+        public string ProspectivePopulationRiskStratificationDetailsByRowCssSelector = "#z5dsbmlc001 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+        public string TopServiceByTotalSpendRowByCssSelector = "#z5dsbmlc005 > g.table.row-group.dynamic-table > g";
+        public string TopServiceByTotalSpendDetailsByRowCssSelector = "#z5dsbmlc005 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+        public string CostMatrixRowByRowCssSelector = "div#z5dsbtbc005 div.table-responsive.custom-scroll >table.table tbody tr";
+        public string CostMatrixDetailsByRowCssSelector = "div#z5dsbtbc005 div.table-responsive.custom-scroll >table.table tbody tr:nth-child({0}) td";
 
         #endregion
 

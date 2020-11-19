@@ -184,6 +184,7 @@ namespace Zakipoint.Framework.Database
 
         public DataTable GetDataTable(string sqlstring)
         {
+            Console.WriteLine(sqlstring);
             _objData = new DataSet();
             try
             {

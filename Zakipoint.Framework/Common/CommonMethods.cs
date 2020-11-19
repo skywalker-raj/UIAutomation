@@ -128,6 +128,33 @@ namespace Zakipoint.Framework.Common
             xmlSerializer.Serialize(xmlWriter, obj);
             return stringWriter.ToString();
         }
+
+        public static List<string> GetTableValuesListByRow(How rowDetailsLocator, string rowDetailsValue, int row = 1)
+        {
+            List<string> valueList = new List<string>();
+            var rowvalue = Browser.FindElements(rowDetailsLocator,string.Format(rowDetailsValue, row));
+            foreach (var value in rowvalue)
+            {
+                if (value.Text != "")
+                {
+                    valueList.Add(value.Text);
+                }
+            }
+            return valueList;
+        }
+
+        public static List<List<string>> GetTableValues(How RowLocator, string RowValue, How rowDetailsLocator, string rowDetailsValue)
+        {
+            var tableDetails = new List<List<string>>();
+            int rowCount = Browser.FindElements(RowLocator, RowValue).Count;
+            for (int i = 1; i <= rowCount; i++)
+            {
+                var rowDetails = GetTableValuesListByRow(rowDetailsLocator, rowDetailsValue, i);
+                tableDetails.Add(rowDetails);
+            }
+            return tableDetails;
+        }
+
         #endregion
     }
 }
