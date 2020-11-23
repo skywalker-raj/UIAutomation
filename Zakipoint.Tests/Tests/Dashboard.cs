@@ -10,6 +10,7 @@ using Zakipoint.UIAutomation.Model;
 using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.PageServices;
 using Zakipoint.Tests.Base;
+
 namespace Zakipoint.Tests.Tests
 {
     public class Dashboard : AbstractBase
@@ -55,7 +56,7 @@ namespace Zakipoint.Tests.Tests
         public override void Dispose()
         {
             _commonFunction.Logout();
-            //Browser.Dispose();
+             //Browser.Dispose();
            
         }
 
@@ -86,7 +87,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(e);
             }
         }
-        [Test, Category("Top Condition By Total Spend")]
+        [Test,Order(11), Category("Top Condition By Total Spend")]
         public void Top_Condition_By_Total_Spend()
         {
             try
@@ -125,7 +126,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-        [Test, Category("Top Condition By Total Spend")]
+        [Test, Order(15), Category("Top Condition By Total Spend")]
         public void Top_Condition_By_Total_Spend_Active()
         {
             try
@@ -164,7 +165,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-        [Test, Category("%PMPM change Form Last year(Medical,pharmacy) for active member")]
+        [Test,Order(10), Category("%PMPM change Form Last year(Medical,pharmacy) for active member")]
         public void Active_PMPM_Change_Percentages()
         {
             try
@@ -193,7 +194,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-        [Test, Category("%PMPM Change Form Last year(Medical,pharmacy)")]
+        [Test,Order(5), Category("%PMPM Change Form Last year(Medical,pharmacy)")]
         public void PMPM_Change_Percenatges()
         {
             try
@@ -221,7 +222,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-        [Test, Category("Active PMPM")]
+        [Test,Order(9), Category("Active PMPM")]
         public void Active_PMPM()
         {
             try
@@ -249,7 +250,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-        [Test, Category("PMPM")]
+        [Test,Order(4), Category("PMPM")]
         public void PMPM()
         {
             try
@@ -277,7 +278,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-        [Test, Category("Active Medical Pharmacy Spend Change Percentages")]
+        [Test,Order(8), Category("Active Medical Pharmacy Spend Change Percentages")]
         public void Active_Medical_Pharmacy_Spend_Change_Percentages()
         {
             try
@@ -309,7 +310,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-        [Test, Category("Spend change percentages")]
+        [Test, Order(3), Category("Spend change percentages")]
         public void Medical_Pharmacy_Spend_Change_Percentages()
         {
             try
@@ -340,7 +341,7 @@ namespace Zakipoint.Tests.Tests
             }
 
         }
-        [Test, Category("Total Active Spend , Total Active Medical Spend and Total Active Pharmacy Spend")]
+        [Test, Order(7), Category("Total Active Spend , Total Active Medical Spend and Total Active Pharmacy Spend")]
         public void Total_Active_Medical_Pharmacy_Spend()
         {
             try
@@ -376,7 +377,7 @@ namespace Zakipoint.Tests.Tests
             }
 
         }
-        [Test, Category("Total Spend , Medical Spend,Pharmacy Spend")]
+        [Test, Order(2), Category("Total Spend , Medical Spend,Pharmacy Spend")]
         public void Total_Medical_Pharmacy_Spend()
         {
             try
@@ -413,7 +414,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(e);
             }
         }
-        [Test, Category("Total Member and Total Employee")]
+        [Test, Order(1), Category("Total Member and Total Employee")]
         public void Total_Member_Total_Employee()
         {
             try
@@ -439,7 +440,7 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-        [Test, Category("Active Member and Active Employee")]
+        [Test, Order(6), Category("Active Member and Active Employee")]
         public void Active_Member_Active_Employee()
         {
             try
@@ -469,7 +470,7 @@ namespace Zakipoint.Tests.Tests
             }
         }
 
-        [Test, Category("Prospective_Population_Risk_Stratification")]
+        [Test,Order(12),  Category("Prospective_Population_Risk_Stratification")]
        public void Prospective_Population_Risk_Stratification()
         {
             try
@@ -514,7 +515,7 @@ namespace Zakipoint.Tests.Tests
 
         }
 
-        [Test, Category("Prospective_Population_Risk_Stratification")]
+        [Test,Order(16), Category("Prospective_Population_Risk_Stratification")]
         public void Prospective_Population_Risk_Stratification_Active()
         {
             try
@@ -559,7 +560,7 @@ namespace Zakipoint.Tests.Tests
 
         }
 
-        [Test, Category("Top_Service_By_Total_Spend")]
+        [Test, Order(13), Category("Top_Service_By_Total_Spend")]
         public void Top_Service_By_Total_Spend()
         {
             try
@@ -605,7 +606,7 @@ namespace Zakipoint.Tests.Tests
 
         }
 
-        [Test, Category("Top_Service_By_Total_Spend")]
+        [Test,Order(17), Category("Top_Service_By_Total_Spend")]
         public void Top_Service_By_Total_Spend_Active()
         {
             try
@@ -613,7 +614,7 @@ namespace Zakipoint.Tests.Tests
                 var Expected_Result = _dashboard.Expected_Top_Service_By_Total_Spend("active");
                 Console.WriteLine("Calculate expected value");
                 Console.WriteLine(CommonMethods.ObjectToXml(Expected_Result));
-                _dashboard.ChooseAllMember();
+                _dashboard.ChooseActiveMember();
                 _dashboard.Click_Condition_Service_Link(false);
                 var Actual_value = _dashboard.Top_Service_By_Total_Spend();
                 var Actual_Result = _dashboard.Map_Top_Service_By_Total_Spend(Actual_value);
@@ -650,7 +651,7 @@ namespace Zakipoint.Tests.Tests
             }
 
         }
-        [Test, Category("Cost_Matrix")]
+        [Test, Order(14), Category("Cost_Matrix")]
         public void Cost_Matrix()
         {
             try
@@ -689,7 +690,7 @@ namespace Zakipoint.Tests.Tests
             }
 
         }
-        [Test, Category("Cost_Matrix")]
+        [Test, Order(18),Category("Cost_Matrix")]
         public void Cost_Matrix_Active()
         {
             try
@@ -729,6 +730,7 @@ namespace Zakipoint.Tests.Tests
             }
 
         }
+        
         #endregion
     }
 }

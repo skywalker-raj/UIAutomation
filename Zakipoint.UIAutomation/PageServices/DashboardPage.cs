@@ -258,15 +258,15 @@ namespace Zakipoint.UIAutomation.PageServices
             {
                 Browser.FindElement(How.XPath, _dashboardPage.ApplicationSettinsgByXPath).Click();
                 Console.WriteLine("Click setting icon");
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
                 Console.WriteLine("conditional wait");
                 Browser.FindElement(How.XPath, _dashboardPage.MemberStatusChangeXPath).Click();
                 Console.WriteLine("Member status: change link text ");
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed01"))));
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed01"))));
                 Console.WriteLine("Conditional wait");
                 Browser.FindElement(How.CssSelector, Format(_dashboardPage.RadioMemberByCssSelector, "termed01")).Click();
                 Console.WriteLine("Choose radio button Active Members ");
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ApplySettingXPath)));
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.ApplySettingXPath)));
                 Console.WriteLine("conditional wait");
                 Browser.FindElement(How.XPath, _dashboardPage.ApplySettingXPath).Click();
                 Console.WriteLine("Click on Apply Setting button");
@@ -281,14 +281,14 @@ namespace Zakipoint.UIAutomation.PageServices
                 Browser.FindElement(How.XPath, _dashboardPage.ApplicationSettinsgByXPath).Click();
                 Console.WriteLine("Click setting icon");
                 Console.WriteLine("conditional wait");
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
                 Browser.FindElement(How.XPath,_dashboardPage.MemberStatusChangeXPath).Click();
                 Console.WriteLine("Member status: change link text ");
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed02"))));
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed02"))));
                 Console.WriteLine("conditional wait");
                 Browser.FindElement(How.CssSelector,Format(_dashboardPage.RadioMemberByCssSelector, "termed02")).Click();
                 Console.WriteLine("Choose radio button All Members ");
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ApplySettingXPath)));
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.ApplySettingXPath)));
                 Console.WriteLine("conditional wait");
                 Browser.FindElement(How.XPath, _dashboardPage.ApplySettingXPath).Click();
                 Console.WriteLine("Click on Apply Setting button");

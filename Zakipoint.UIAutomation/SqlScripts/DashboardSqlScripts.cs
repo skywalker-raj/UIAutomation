@@ -187,11 +187,11 @@ namespace Zakipoint.UIAutomation.SqlScripts
     
         public string Top_Service_By_Total_Spend(string memberStatus)
         {
-            string Substring = string.Empty;
+          
             if (memberStatus.ToLower() == "all")
-                Substring = " and 1=1 ";
+                memberStatus = " 1=1 ";
             else
-                Substring = " And  active_flag=1 ";
+                memberStatus = " active_flag=1 ";
 
             return string.Format(@"SELECT
             metric_id Services,
@@ -207,18 +207,18 @@ namespace Zakipoint.UIAutomation.SqlScripts
             (SELECT
              SUM(membermonth)
             FROM member_by_mm_by_month_{0} 
-            WHERE period = 1 and group_id = '{0}' ) member_month
+            WHERE period = 1   and group_id = '{0}' and{1} ) member_month
             FROM member_utilization_metrics_summary_{0} 
             WHERE metric_id IN ('INPATIENT', 'OFFICEVISIT', 'OUTPATIENT', 'ER')
             AND group_id = '{0}'
-            AND  period = 1 
+            AND  period = 1 and{1}
             GROUP BY metric_id) AS A
-            ORDER BY FIELD(metric_id, 'INPATIENT', 'OFFICEVISIT', 'OUTPATIENT', 'ER')", CommonObject.DefaultClientSuffix,Substring);
+            ORDER BY FIELD(metric_id, 'INPATIENT', 'OFFICEVISIT', 'OUTPATIENT', 'ER')", CommonObject.DefaultClientSuffix, memberStatus);
         }
 
         public string Cost_Matrix(string memberStatus)
         {
-            string Substring = string.Empty;
+           
             if (memberStatus.ToLower() == "all")
                 memberStatus = " 1=1 ";
             else
@@ -244,7 +244,7 @@ namespace Zakipoint.UIAutomation.SqlScripts
 
         public string Prospective_Population_Risk_Stratification(string memberStatus)
         {
-            string Substring = string.Empty;
+         
             if (memberStatus.ToLower() == "all")
             {
               return string.Format(@"SELECT
