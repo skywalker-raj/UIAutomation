@@ -51,13 +51,11 @@ namespace Zakipoint.Tests.Tests
             CommonObject.DefaultClientSuffix = JsonDataReader.Data["DefaultClientSuffix"];
             _dashboard.DashboardPageLoad();
         }
-
       
         public override void Dispose()
         {
             _commonFunction.Logout();
-             //Browser.Dispose();
-           
+             //Browser.Dispose();        
         }
 
         #endregion
@@ -110,6 +108,7 @@ namespace Zakipoint.Tests.Tests
                 }
                 for (int i = 0; i < objectLength; i++)
                 {
+                    
                     Assert.IsTrue(String.Format("{0:0.##}", Expected_Result[i].P_Change) == String.Format("{0:0.##}", Actual_Result[i].P_Change));
                     Assert.IsTrue(Expected_Result[i].Spend == Actual_Result[i].Spend);
                     Assert.IsTrue(String.Format("{0:0.##}", Expected_Result[i].P_Spend) == String.Format("{0:0.##}", Actual_Result[i].P_Spend));

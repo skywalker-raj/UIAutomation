@@ -5,9 +5,9 @@ D:\Zakipoint.Framework\Zakipoint.Framework\bin\Debug\netstandard2.0\Executables\
 D:\Zakipoint.Framework\Zakipoint.Framework\bin\Debug\netstandard2.0\Zakipoint.Framework.deps.json
 D:\Zakipoint.Framework\Zakipoint.Framework\bin\Debug\netstandard2.0\Zakipoint.Framework.dll
 D:\Zakipoint.Framework\Zakipoint.Framework\bin\Debug\netstandard2.0\Zakipoint.Framework.pdb
-D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.csprojAssemblyReference.cache
 D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.AssemblyInfoInputs.cache
 D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.AssemblyInfo.cs
 D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.csproj.CoreCompileInputs.cache
 D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.dll
 D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.pdb
+D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.csprojAssemblyReference.cache

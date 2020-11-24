@@ -11,6 +11,7 @@
           "Microsoft.NET.Test.Sdk": "16.7.1",
           "NUnit": "3.12.0",
           "NUnit3TestAdapter": "3.17.0",
+          "NunitXml.TestLogger": "2.1.80",
           "Zakipoint.Framework": "1.0.0",
           "Zakipoint.UIAutomation": "1.0.0"
         },
@@ -524,6 +525,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "NunitXml.TestLogger/2.1.80": {},
       "runtime.native.System/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -553,7 +555,7 @@
           }
         }
       },
-      "Selenium.WebDriver.ChromeDriver/86.0.4240.2200": {},
+      "Selenium.WebDriver.ChromeDriver/87.0.4280.2000": {},
       "Selenium.WebDriver.IEDriver/3.150.1.2": {},
       "System.AppContext/4.1.0": {
         "dependencies": {
@@ -1095,7 +1097,7 @@
           "Selenium.Mozilla.Firefox.Webdriver": "0.6.0.1",
           "Selenium.Support": "3.141.0",
           "Selenium.WebDriver": "3.141.0",
-          "Selenium.WebDriver.ChromeDriver": "86.0.4240.2200",
+          "Selenium.WebDriver.ChromeDriver": "87.0.4280.2000",
           "Selenium.WebDriver.IEDriver": "3.150.1.2",
           "System.Configuration.ConfigurationManager": "4.7.0",
           "log4net": "2.0.12"
@@ -1310,6 +1312,13 @@
       "path": "nunit3testadapter/3.17.0",
       "hashPath": "nunit3testadapter.3.17.0.nupkg.sha512"
     },
+    "NunitXml.TestLogger/2.1.80": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YUwoF9aVH9jJm0zKex9IjiWMDBBaNMVkIq9e+jpKVzHs7Zf6IbF4LTyzBIIXf3sxkbA89mAeIkyUn+AWg7D/jQ==",
+      "path": "nunitxml.testlogger/2.1.80",
+      "hashPath": "nunitxml.testlogger.2.1.80.nupkg.sha512"
+    },
     "runtime.native.System/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1338,12 +1347,12 @@
       "path": "selenium.webdriver/3.141.0",
       "hashPath": "selenium.webdriver.3.141.0.nupkg.sha512"
     },
-    "Selenium.WebDriver.ChromeDriver/86.0.4240.2200": {
+    "Selenium.WebDriver.ChromeDriver/87.0.4280.2000": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OBsGSOQtxwycxlH2PC/OjJf+9FS+XMaGDDuLVzUVx1dDYnXSh5HY8C4iZSTPjDemsLtB3ggJvCsWf7k2wD1+Jg==",
-      "path": "selenium.webdriver.chromedriver/86.0.4240.2200",
-      "hashPath": "selenium.webdriver.chromedriver.86.0.4240.2200.nupkg.sha512"
+      "sha512": "sha512-jq1wC5pUz5Ov2CydyeIBEwdQ6tQ5IRy08mTjBM2OOca72fXLSLuGtEc4qVTjmNJ/LpTzWRrh7klSpBn1Lt4Raw==",
+      "path": "selenium.webdriver.chromedriver/87.0.4280.2000",
+      "hashPath": "selenium.webdriver.chromedriver.87.0.4280.2000.nupkg.sha512"
     },
     "Selenium.WebDriver.IEDriver/3.150.1.2": {
       "type": "package",

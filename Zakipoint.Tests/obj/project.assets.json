@@ -632,7 +632,7 @@
           "lib/netstandard2.0/WebDriver.dll": {}
         }
       },
-      "Selenium.WebDriver.ChromeDriver/86.0.4240.2200": {
+      "Selenium.WebDriver.ChromeDriver/87.0.4280.2000": {
         "type": "package",
         "build": {
           "build/_._": {}
@@ -1510,7 +1510,7 @@
           "Selenium.Mozilla.Firefox.Webdriver": "0.6.0.1",
           "Selenium.Support": "3.141.0",
           "Selenium.WebDriver": "3.141.0",
-          "Selenium.WebDriver.ChromeDriver": "86.0.4240.2200",
+          "Selenium.WebDriver.ChromeDriver": "87.0.4280.2000",
           "Selenium.WebDriver.IEDriver": "3.150.1.2",
           "System.Configuration.ConfigurationManager": "4.7.0",
           "log4net": "2.0.12"
@@ -2531,10 +2531,10 @@
         "selenium.webdriver.nuspec"
       ]
     },
-    "Selenium.WebDriver.ChromeDriver/86.0.4240.2200": {
-      "sha512": "OBsGSOQtxwycxlH2PC/OjJf+9FS+XMaGDDuLVzUVx1dDYnXSh5HY8C4iZSTPjDemsLtB3ggJvCsWf7k2wD1+Jg==",
+    "Selenium.WebDriver.ChromeDriver/87.0.4280.2000": {
+      "sha512": "jq1wC5pUz5Ov2CydyeIBEwdQ6tQ5IRy08mTjBM2OOca72fXLSLuGtEc4qVTjmNJ/LpTzWRrh7klSpBn1Lt4Raw==",
       "type": "package",
-      "path": "selenium.webdriver.chromedriver/86.0.4240.2200",
+      "path": "selenium.webdriver.chromedriver/87.0.4280.2000",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2544,7 +2544,7 @@
         "driver/mac64/chromedriver",
         "driver/win32/chromedriver.exe",
         "nupkg-icon.png",
-        "selenium.webdriver.chromedriver.86.0.4240.2200.nupkg.sha512",
+        "selenium.webdriver.chromedriver.87.0.4280.2000.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
       ]
     },
@@ -5467,34 +5467,40 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sachin\\.nuget\\packages\\": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Zakipoint.UIAutomation\\Zakipoint.Tests\\Zakipoint.Tests.csproj",
+      "projectUniqueName": "D:\\Zakipoint.Framework\\Zakipoint.Tests\\Zakipoint.Tests.csproj",
       "projectName": "Zakipoint.Tests",
-      "projectPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.Tests\\Zakipoint.Tests.csproj",
-      "packagesPath": "C:\\Users\\sachin\\.nuget\\packages\\",
-      "outputPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.Tests\\obj\\",
+      "projectPath": "D:\\Zakipoint.Framework\\Zakipoint.Tests\\Zakipoint.Tests.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "D:\\Zakipoint.Framework\\Zakipoint.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\sachin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Zakipoint.UIAutomation\\Zakipoint.Framework\\Zakipoint.Framework.csproj": {
-              "projectPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.Framework\\Zakipoint.Framework.csproj"
+            "D:\\Zakipoint.Framework\\Zakipoint.Framework\\Zakipoint.Framework.csproj": {
+              "projectPath": "D:\\Zakipoint.Framework\\Zakipoint.Framework\\Zakipoint.Framework.csproj"
             },
-            "C:\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj": {
-              "projectPath": "C:\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj"
+            "D:\\Zakipoint.Framework\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj": {
+              "projectPath": "D:\\Zakipoint.Framework\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj"
             }
           }
         }
@@ -5542,7 +5548,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
