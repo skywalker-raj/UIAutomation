@@ -48,8 +48,7 @@ namespace Zakipoint.Tests.Tests
       
         public override void Dispose()
         {
-            _commonFunction.Logout();
-           
+            _commonFunction.Logout();         
         }
 
         #endregion

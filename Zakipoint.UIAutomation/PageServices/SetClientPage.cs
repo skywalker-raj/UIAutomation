@@ -69,7 +69,8 @@ namespace Zakipoint.UIAutomation.PageServices
         public void GoToUserManagement()
         {
             Browser.FindElement(How.CssSelector, _setClientPage.UserManagementLinkCssSelector).Click();
-            Browser.WaitForPageToLoad();
+            Browser.WaitToLoadNew(3000);
+            //Browser.WaitForPageToLoad();
         }
 
         #endregion     

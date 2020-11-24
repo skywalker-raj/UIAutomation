@@ -61,16 +61,16 @@ namespace Zakipoint.Tests.Tests
                 Assert.AreEqual(Browser.GetAttribute(How.CssSelector, Format(_loginPage.TextBoxCssSelector, "password"), "placeholder"), JsonDataReader.Data["passwordplaceholder"]);
                 Assert.IsTrue(Browser.IsElementPresent(How.XPath, _loginPage.ForgotPasswordXPath), "Forgot Password link should be present.");
                 Assert.IsTrue(Browser.IsElementPresent(How.CssSelector, _loginPage.LoginButtonCssSelector), "Login Button should be present.");
-                //_login.Login("", "");
-                //if(Browser.IsElementDisplayed(How.CssSelector, _loginPage.ErrorMessageCssSelector))
-                //{
-                //    Assert.AreEqual(Browser.GetElementText(How.CssSelector, _loginPage.ErrorMessageCssSelector), CommonFunction.Data["invalidusernamepassword"]);
-                //}
-                //_login.Login("", CommonFunction.Data["password"]);
-                //if (Browser.IsElementDisplayed(How.CssSelector, _loginPage.ErrorMessageCssSelector))
-                //{
-                //    Assert.AreEqual(Browser.GetElementText(How.CssSelector, _loginPage.ErrorMessageCssSelector), CommonFunction.Data["invalidusername"]);
-                //}
+                _login.Login("", "");
+                if (Browser.IsElementDisplayed(How.CssSelector, _loginPage.ErrorMessageCssSelector))
+                {
+                    Assert.AreEqual(Browser.GetElementText(How.CssSelector, _loginPage.ErrorMessageCssSelector), JsonDataReader.Data["invalidusernamepassword"]);
+                }
+                _login.Login("", JsonDataReader.Data["password"]);
+                if (Browser.IsElementDisplayed(How.CssSelector, _loginPage.ErrorMessageCssSelector))
+                {
+                    Assert.AreEqual(Browser.GetElementText(How.CssSelector, _loginPage.ErrorMessageCssSelector), JsonDataReader.Data["invalidusername"]);
+                }
                 _login.Login(JsonDataReader.Data["username"], "");
                 if (Browser.IsElementDisplayed(How.CssSelector, _loginPage.ErrorMessageCssSelector))
                 {
