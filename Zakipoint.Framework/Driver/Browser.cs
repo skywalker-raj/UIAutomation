@@ -313,7 +313,14 @@ namespace Zakipoint.Framework.Driver
                     break;
                 case "Chrome":
                 default:
-                    webDriver = new ChromeDriver(baseDir + @"Executables/");
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("start-maximized"); // open Browser in maximized mode
+                    options.AddArguments("disable-infobars"); // disabling infobars
+                    options.AddArguments("--disable-extensions"); // disabling extensions
+                    options.AddArguments("--disable-gpu"); // applicable to windows os only
+                    options.AddArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+                    options.AddArguments("--no-sandbox"); // Bypass OS security model
+                    webDriver = new ChromeDriver(baseDir + @"Executables/", options);
                     break;
             }
             return webDriver;
