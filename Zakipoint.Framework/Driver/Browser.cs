@@ -303,17 +303,17 @@ namespace Zakipoint.Framework.Driver
             switch (browser)
             {
                 case "Firefox":
-                    webDriver = new FirefoxDriver(baseDir + "Executables/");
+                    webDriver = new FirefoxDriver(baseDir + @"Executables/");
                     break;
                 case "IE":
-                    webDriver = new InternetExplorerDriver(baseDir + "Executables/");
+                    webDriver = new InternetExplorerDriver(baseDir + @"Executables/");
                     break;
                 case "Safari":
-                    webDriver = new SafariDriver(baseDir + "Executables/");
+                    webDriver = new SafariDriver(baseDir + @"Executables/");
                     break;
                 case "Chrome":
                 default:
-                    webDriver = new ChromeDriver(baseDir + "Executables/");
+                    webDriver = new ChromeDriver(baseDir + @"Executables/");
                     break;
             }
             return webDriver;
