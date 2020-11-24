@@ -315,7 +315,6 @@ namespace Zakipoint.Framework.Driver
                 default:
                     ChromeOptions options = new ChromeOptions();
                     options.AddArguments("--no-sandbox"); // Bypass OS security model
-                    options.AddArguments("--headless");
                     options.AddArguments("start-maximized"); // open Browser in maximized mode
                     options.AddArguments("disable-infobars"); // disabling infobars
                     options.AddArguments("--disable-extensions"); // disabling extensions
