@@ -45,8 +45,8 @@ namespace Zakipoint.Framework.Driver
         public static void WaitForAjaxLoad(string library)
         {
             string jScript = "";
-            switch (library)
-            {
+            switch (library) 
+            { 
                 case ScriptConstants.Jquery:
                     jScript = "return Boolean($.active);";
                     break;
@@ -324,7 +324,7 @@ namespace Zakipoint.Framework.Driver
                     options.AddArguments("--disable-extensions"); // disabling extensions
                     options.AddArguments("--disable-dev-shm-usage"); // overcome limited resource problems      
                     webDriver = new ChromeDriver(baseDir + @"Executables/", options);
-                    //webDriver.Manage().Window.Size = new Size(1920, 1080);
+                    
                     break;
             }
             return webDriver;
@@ -853,7 +853,14 @@ namespace Zakipoint.Framework.Driver
 
 
         }
-
+        public static void JavaScriptOnclick(IWebElement element)
+        {
+            Thread.Sleep(3000);
+            IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
+            String javascript = "arguments[0].click();";
+            js.ExecuteScript(javascript, element);
+           
+        }
         #endregion
 
         #region Internal methods
