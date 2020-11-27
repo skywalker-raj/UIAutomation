@@ -44,14 +44,15 @@ namespace Zakipoint.UIAutomation.PageServices
 
         public void SelectClient(string client)
         {
-            Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector).Click();
-            Browser.FindElement(How.XPath, Format(_setClientPage.ClientByTextXPath, client)).Click();
+
+            Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector));
+            Browser.JavaScriptOnclick(Browser.FindElement(How.XPath, Format(_setClientPage.ClientByTextXPath, client)));
             ClickGoButton();
         }
 
         public void ClickGoButton()
         {
-            Browser.FindElement(How.CssSelector, _setClientPage.GoButtonCssSelector).Click();
+            Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.GoButtonCssSelector));
         }
 
         public List<string> GetClientList()
