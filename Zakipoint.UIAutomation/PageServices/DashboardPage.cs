@@ -212,7 +212,8 @@ namespace Zakipoint.UIAutomation.PageServices
 
         public void ClickDownloadReport()
         {
-            Browser.FindElement(How.CssSelector, _dashboardPage.DownloadReportLinkCssSelector).Click();
+            Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _dashboardPage.DownloadReportLinkCssSelector));
+            //Browser.FindElement(How.CssSelector, _dashboardPage.DownloadReportLinkCssSelector).Click();
         }
 
         public List<string> GetTableHeaderList(How locator, string value)

@@ -65,7 +65,8 @@ namespace Zakipoint.Tests.Tests
             Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.GoButtonCssSelector));
             if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
             {
-                Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector).Click();
+                //Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector).Click();
+                Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector));
                 Assert.AreEqual(Browser.FindElement(How.CssSelector, _setClientPage.DropDownSelectedCssSelector).Text, "Select One");                
                 var clientListElements = Browser.FindElements(How.XPath, _setClientPage.ClientListXPath);
                 foreach(var client in clientListElements)
