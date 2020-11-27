@@ -94,9 +94,9 @@ namespace Zakipoint.UIAutomation.Common
         {
             if (Browser.IsElementPresent(How.CssSelector, _dashboardPage.UserLinkDropdownCssSelector))
             {
-                Browser.FindElement(How.CssSelector, _dashboardPage.UserLinkDropdownCssSelector).Click();
+              Browser.JavaScriptOnclick(  Browser.FindElement(How.CssSelector, _dashboardPage.UserLinkDropdownCssSelector));
                 Console.WriteLine("Click on UserLink Dropdown");
-                Browser.FindElement(How.CssSelector, Format(_dashboardPage.UserLinkDropdownListCssSelector, "(2)")).Click();
+               Browser.JavaScriptOnclick( Browser.FindElement(How.CssSelector, Format(_dashboardPage.UserLinkDropdownListCssSelector, "(2)")));
                 Console.WriteLine("Click on  logout Dropdown link");
                 Thread.Sleep(3000);
             }
