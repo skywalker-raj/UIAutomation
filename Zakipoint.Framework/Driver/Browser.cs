@@ -16,6 +16,7 @@ using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using Zakipoint.Framework.Common.Constants;
 using System.Threading;
+using System.Drawing;
 
 namespace Zakipoint.Framework.Driver
 {
@@ -314,14 +315,16 @@ namespace Zakipoint.Framework.Driver
                 case "Chrome":
                 default:
                     ChromeOptions options = new ChromeOptions();
-                    options.AddArguments("--headless");
+                    options.AddArguments("--window-size=1920,1080");
                     options.AddArguments("--no-sandbox"); // Bypass OS security model
                     options.AddArguments("start-maximized"); // open Browser in maximized mode
+                    options.AddArguments("--headless");
+                    options.AddArguments("--disable-gpu"); // applicable to windows os only
                     options.AddArguments("disable-infobars"); // disabling infobars
                     options.AddArguments("--disable-extensions"); // disabling extensions
-                    options.AddArguments("--disable-gpu"); // applicable to windows os only
-                    options.AddArguments("--disable-dev-shm-usage"); // overcome limited resource problems                   
+                    options.AddArguments("--disable-dev-shm-usage"); // overcome limited resource problems      
                     webDriver = new ChromeDriver(baseDir + @"Executables/", options);
+                    //webDriver.Manage().Window.Size = new Size(1920, 1080);
                     break;
             }
             return webDriver;
@@ -341,7 +344,7 @@ namespace Zakipoint.Framework.Driver
         public static void Open(string url)
         {
             WebDriver.Navigate().GoToUrl(url);            
-            WebDriver.Manage().Window.Maximize();
+            //WebDriver.Manage().Window.Maximize();
         }
 
         #endregion

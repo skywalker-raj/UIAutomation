@@ -47,7 +47,6 @@ namespace Zakipoint.Tests.Tests
         {
             Browser.Open(Browser.Config["url"]);
             _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
-            Browser.WaitToLoadNew(3000);
             _setClient.SelectClient(JsonDataReader.Data["DefaultClient"]);
             CommonObject.DefaultClientSuffix = JsonDataReader.Data["DefaultClientSuffix"];
             _dashboard.DashboardPageLoad();
@@ -55,7 +54,7 @@ namespace Zakipoint.Tests.Tests
       
         public override void Dispose()
         {
-            _commonFunction.Logout();
+              //_commonFunction.Logout();
              //Browser.Dispose();        
         }
 

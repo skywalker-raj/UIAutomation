@@ -12,5 +12,6 @@
   "ConditionBySpend": "Conditions;% Spend;Spend;% Change (Spend);Members",
   "DefaultClient": "Blackhawk Mining, LLC",
   "DefaultClientSuffix": "Blackhawk",
-  "clientList": "Select One;Arc Administrators;Asbury University;Beacon Health Options;Big Ass Fans;Blackhawk Mining, LLC;Cabarrus County;Cape Associates;City of Asheboro;City of Sanford;Cleveland County;DentaQuest;Edgecombe;Feeney Brothers;Halifax County;Harlan Bakeries;MacLellan;Mitsui & Co.;Mom's Organic Market;Onslow County;Price Chopper Supermarkets;RJ Corman;RogersGray;Rue Gilt Groupe;Z5 Demo B"
+  "clientList": "Select One;Arc Administrators;Asbury University;Beacon Health Options;Benefit Management, Inc.;Benefit Management, LLC;Big Ass Fans;Blackhawk Mining, LLC;BML-City of Pasco;BML-J.F. Sobieski Mechanical;BML-New Mexico Medical Insurance;Cabarrus County;Cape Associates;Childers Oil;City of Asheboro;City Of Lynn;City of Salisbury;City of Sanford;Cleveland County;DentaQuest;Ebix;Edgecombe;Fabmetal;Feeney Brothers;Halifax County;Harlan Bakeries;Haywood County;KGHM;Lincoln County;Lyon County School District;MacLellan;Mitsui & Co.;Mom's Organic Market;Mountville Mills;MS Demo;New Vista;Onslow County;Price Chopper Supermarkets;Pricechopper Beta;Prince George County;RJ Corman;RogersGray;Rowan County;Rue Gilt Groupe;Showa Glove;Universal Health Services;University of Pikeville;Wayne County;Z5 Demo B;Z5 Demo C;Z5 Demo D;Z5 Demo E",
+  "setClientUrl": "https://z5-uat.zakipointhealth.com/setclient"
 }
