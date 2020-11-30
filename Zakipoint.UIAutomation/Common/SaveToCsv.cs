@@ -25,8 +25,8 @@ namespace Zakipoint.UIAutomation.Common
         {
             _testCase.PageName = _PageName;
             _testCase.MethodName = _MethodName;
-            _testCase.ExpectedResult = ExpectedVale;
-            _testCase.ActualResult = ActualValue;
+            _testCase.ExpectedResult = ExpectedVale.Replace(","," ");
+            _testCase.ActualResult = ActualValue.Replace(",", " ");
             if (ExpectedVale == "Error" && ActualValue == "Error")
             {
                 _testCase.Status = "Unknown";
@@ -44,7 +44,7 @@ namespace Zakipoint.UIAutomation.Common
             string date = DateTime.Now.ToString("MM-dd-yyyy");
             var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             string filePath = baseDir + "../../../CSVFile/";
-            string fileName = filePath + "Testcase_" + date + ".csv";
+            string fileName = filePath + "Testcase_" +data.PageName+ "_" + date + ".csv";
             FileStream fs = new FileStream(fileName, FileMode.Append, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             StringBuilder str = new StringBuilder();

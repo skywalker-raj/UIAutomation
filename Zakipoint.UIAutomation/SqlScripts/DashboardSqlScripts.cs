@@ -104,7 +104,7 @@ namespace Zakipoint.UIAutomation.SqlScripts
             }
             return string.Format(@"SELECT
             (SELECT
-             SUM(rev_paid_amt) medical_paid_amount
+             SUM(rev_paid_amt) pharmacy_paid_amount
             FROM member_by_paid_rx_by_month_{0} member
             WHERE member.period = {2}
             AND member.group_id = '{0}' {1}) / (SELECT
