@@ -52,6 +52,7 @@ namespace Zakipoint.Framework.Database
 
         public long GetSingleValue(string sqlstring)
         {
+            Console.WriteLine(sqlstring);
             long count = 0;
             try
             {
@@ -71,6 +72,7 @@ namespace Zakipoint.Framework.Database
 
         public string GetSingleStringValue(string sqlstring)
         {
+            Console.WriteLine(sqlstring);
             string value = "";
             try
             {
@@ -90,6 +92,7 @@ namespace Zakipoint.Framework.Database
 
         public IEnumerable<DataRow> GetCompleteTable(string sqlstring)
         {
+            Console.WriteLine(sqlstring);
             _objData = new DataSet();
             try
             {

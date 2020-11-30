@@ -384,14 +384,14 @@ namespace Zakipoint.Tests.Tests
                 var Total_Spend = _dashboard.Expected_Total_Medical_Pharmacy_Spend("all", 1);
                 Console.WriteLine("Toatal Medical Pharmacy spand  from database: " + CommonMethods.ObjectToXml(Total_Spend));
                 string Expected_Total_Medical_Spend = "$" + Total_Spend[0].ToString() + "K";
-                Console.WriteLine("Total medaical spend(all) from databse: " + Expected_Total_Medical_Spend);
+                Console.WriteLine("Total medical spend(all) from databse: " + Expected_Total_Medical_Spend);
                 string Expected_Total_Pharmacy_Spend = "$" + Total_Spend[1].ToString() + "K";
                 Console.WriteLine("Total pharmacy spend(all) from database: " + Expected_Total_Pharmacy_Spend);
                 string Expected_Total_Spend = "$" + (Total_Spend[0] + Total_Spend[1]).ToString() + "K";
                 Console.WriteLine("Total spend(all) from database: " + Expected_Total_Spend);
                 _dashboard.ChooseAllMember();
                 string Actual_Total_Medical_Spend = _dashboard.TotalSpend(true);
-                Console.WriteLine("Total medaical spend (all) from UI: " + Actual_Total_Medical_Spend);
+                Console.WriteLine("Total medical spend (all) from UI: " + Actual_Total_Medical_Spend);
                 string Actual_Total_Pharmacy_Spend = _dashboard.TotalSpend(false);
                 Console.WriteLine("Total pharmacy spend (all) from UI: " + Actual_Total_Pharmacy_Spend);
                 string Actual_Total_Spend = _dashboard.TotalSpend();
