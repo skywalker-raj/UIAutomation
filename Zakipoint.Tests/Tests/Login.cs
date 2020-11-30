@@ -77,7 +77,7 @@ namespace Zakipoint.Tests.Tests
                     Assert.AreEqual(Browser.GetElementText(How.CssSelector, _loginPage.ErrorMessageCssSelector), JsonDataReader.Data["invalidusernamepassword"]);
                 }
                 _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
-                Browser.WaitToLoadNew(3000);
+                //Browser.WaitToLoadNew(3000);
                 //Assert.IsTrue(Browser.IsElementPresent(How.CssSelector, _loginPage.LoginButtonCssSelector), "Login Button should be present.");
             }
             catch (Exception e)

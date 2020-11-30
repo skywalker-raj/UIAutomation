@@ -59,6 +59,8 @@ namespace Zakipoint.Tests.Tests
 
         #endregion
 
+        #region SMOKE TESTS
+
         [Test, Category("Smoke Test")]
         public void Verify_Arc_Administrators()
         {
@@ -67,8 +69,11 @@ namespace Zakipoint.Tests.Tests
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
                     _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[1]);
+
                     _dashboard.DashboardPageLoad();
+
                     Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[1]);
+
                 }
             }
             catch(Exception ex)
@@ -81,5 +86,33 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
+
+        [Test, Category("Smoke Test")]
+        public void Verify_Asbury_University()
+        {
+            try
+            {
+                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
+                {
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[2]);
+
+                    _dashboard.DashboardPageLoad();
+
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[2]);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Browser.ScreenShot("Verify_Asbury_University_Shot");
+                Console.Out.WriteLine(ex);
+            }
+            finally
+            {
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+            }
+        }
+
+        #endregion
     }
 }
