@@ -61,7 +61,7 @@ namespace Zakipoint.Tests.Tests
 
         #region SMOKE TESTS
 
-        [Test, Category("Smoke Test")]
+        [Test, Category("SmokeTest")]
         public void Verify_Arc_Administrators()
         {
             try
@@ -87,7 +87,7 @@ namespace Zakipoint.Tests.Tests
             }
         }
 
-        [Test, Category("Smoke Test")]
+        [Test, Category("SmokeTest")]
         public void Verify_Asbury_University()
         {
             try
