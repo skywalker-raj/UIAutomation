@@ -68,7 +68,6 @@ namespace Zakipoint.Tests.Tests
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    
                     _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[1]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
@@ -107,7 +106,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[2], _dashboard.GetClientName(), "SmokeTest", "Verify_Asbury_University", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Asbury_University");
-
                 }
             }
             catch (Exception ex)
@@ -138,7 +136,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[3], _dashboard.GetClientName(), "SmokeTest", "Verify_Beacon_Health_Options", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Beacon_Health_Options");
-
                 }
             }
             catch (Exception ex)
@@ -169,7 +166,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[4], _dashboard.GetClientName(), "SmokeTest", "Verify_Benefit_Management_Inc", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Benefit_Management_LLC");
-
                 }
             }
             catch (Exception ex)
@@ -200,7 +196,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[5], _dashboard.GetClientName(), "SmokeTest", "Verify_Benefit_Management_LLC", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Benefit_Management_LLC");
-
                 }
             }
             catch (Exception ex)
@@ -230,7 +225,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[6], _dashboard.GetClientName(), "SmokeTest", "Verify_Big_Ass_Fans", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Big_Ass_Fans");
-
                 }
             }
             catch (Exception ex)
@@ -260,7 +254,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[7], _dashboard.GetClientName(), "SmokeTest", "Verify_Blackhawk_Mining", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Blackhawk_Mining");
-
                 }
             }
             catch (Exception ex)
@@ -290,7 +283,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[8], _dashboard.GetClientName(), "SmokeTest", "Verify_BML_City_of_Pasco", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_BML_City_of_Pasco");
-
                 }
             }
             catch (Exception ex)
@@ -320,7 +312,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[9], _dashboard.GetClientName(), "SmokeTest", "Verify_BML_JF_Sobieski_Mechanical", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_BML_JF_Sobieski_Mechanical");
-
                 }
             }
             catch (Exception ex)
@@ -350,7 +341,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[10], _dashboard.GetClientName(), "SmokeTest", "Verify_BML_New_Mexico_Medical_Insurance", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_BML_New_Mexico_Medical_Insurance");
-
                 }
             }
             catch (Exception ex)
@@ -380,7 +370,6 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[11], _dashboard.GetClientName(), "SmokeTest", "Verify_Cabarrus_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Cabarrus_County");
-
                 }
             }
             catch (Exception ex)
@@ -396,7 +385,7 @@ namespace Zakipoint.Tests.Tests
             }
         }
         [Test, Order(12), Category("SmokeTest")]
-        public void Verify_Cape_Associates()
+        public void Verify_Childers_Oil()
         {
             try
             {
@@ -408,39 +397,8 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[12]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[12], _dashboard.GetClientName(), "SmokeTest", "Cape Associates", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Cape_Associates");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Cape_Associates_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Cape_Associates", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(13), Category("SmokeTest")]
-        public void Verify_Childers_Oil()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[13]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[13]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[13], _dashboard.GetClientName(), "SmokeTest", "Verify_Childers_Oil", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[12], _dashboard.GetClientName(), "SmokeTest", "Verify_Childers_Oil", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Childers_Oil");
-
                 }
             }
             catch (Exception ex)
@@ -455,22 +413,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(14), Category("SmokeTest")]
+        [Test, Order(13), Category("SmokeTest")]
         public void Verify_City_of_Asheboro()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[14]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[13]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[14]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[13]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[14], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Asheboro", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[13], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Asheboro", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_City_of_Asheboro");
-
                 }
             }
             catch (Exception ex)
@@ -485,52 +442,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test,Order(15), Category("SmokeTest")]
-        public void Verify_City_Of_Lynn()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[15]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[15]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[15], _dashboard.GetClientName(), "SmokeTest", "Verify_City_Of_Lynn", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_City_Of_Lynn");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_City_Of_Lynn_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_City_Of_Lynn", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(16), Category("SmokeTest")]
+        [Test, Order(14), Category("SmokeTest")]
         public void Verify_City_of_Salisbury()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[16]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[14]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[16]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[14]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[16], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Salisbury", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[14], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Salisbury", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_City_of_Salisbury");
-
                 }
             }
             catch (Exception ex)
@@ -545,22 +471,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(17), Category("SmokeTest")]
+        [Test, Order(15), Category("SmokeTest")]
         public void Verify_City_of_Sanford()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[17]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[15]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[17]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[15]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[17], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Sanford", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[15], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Sanford", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_City_of_Sanford");
-
                 }
             }
             catch (Exception ex)
@@ -575,22 +500,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(18), Category("SmokeTest")]
+        [Test, Order(16), Category("SmokeTest")]
         public void Verify_Cleveland_County()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[18]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[16]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[18]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[16]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[18], _dashboard.GetClientName(), "SmokeTest", "Verify_Cleveland_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[16], _dashboard.GetClientName(), "SmokeTest", "Verify_Cleveland_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Cleveland_County");
-
                 }
             }
             catch (Exception ex)
@@ -605,22 +529,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test,Order(19), Category("SmokeTest")]
+        [Test,Order(17), Category("SmokeTest")]
         public void Verify_DentaQuest()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[19]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[17]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[19]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[17]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[19], _dashboard.GetClientName(), "SmokeTest", "Verify_DentaQuest", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[17], _dashboard.GetClientName(), "SmokeTest", "Verify_DentaQuest", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_DentaQuest");
-
                 }
             }
             catch (Exception ex)
@@ -634,53 +557,22 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
-        }
-        [Test, Order(20), Category("SmokeTest")]
-        public void Verify_Ebix()
+        }       
+        [Test,Order(18), Category("SmokeTest")]
+        public void Verify_Edgecombe_County()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[20]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[18]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[20]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[18]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[20], _dashboard.GetClientName(), "SmokeTest", "Verify_Ebix", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Ebix");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Ebix_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Ebix", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test,Order(21), Category("SmokeTest")]
-        public void Verify_Edgecombe()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[21]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[21]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[21], _dashboard.GetClientName(), "SmokeTest", "Verify_Edgecombe", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[18], _dashboard.GetClientName(), "SmokeTest", "Verify_Edgecombe", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Edgecombe");
-
                 }
             }
             catch (Exception ex)
@@ -695,82 +587,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(22), Category("SmokeTest")]
-        public void Verify_Fabmetal()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[22]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[22]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[22], _dashboard.GetClientName(), "SmokeTest", "Verify_Fabmetal", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Fabmetal");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Fabmetal_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Fabmetal", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test,Order(23), Category("SmokeTest")]
-        public void Verify_Feeney_Brothers()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[23]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[23]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[23], _dashboard.GetClientName(), "SmokeTest", "Verify_Feeney_Brothers", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Feeney_Brothers");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Feeney_Brothers_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Feeney_Brothers", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Category("SmokeTest")]
+        [Test, Order(19), Category("SmokeTest")]
         public void Verify_Halifax_County()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[24]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[19]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[24]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[19]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[24], _dashboard.GetClientName(), "SmokeTest", "Verify_Halifax_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[19], _dashboard.GetClientName(), "SmokeTest", "Verify_Halifax_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Halifax_County");
-
                 }
             }
             catch (Exception ex)
@@ -785,22 +616,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test,Order(25), Category("SmokeTest")]
+        [Test, Order(20), Category("SmokeTest")]
         public void Verify_Harlan_Bakeries()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[25]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[20]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[25]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[20]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[25], _dashboard.GetClientName(), "SmokeTest", "Harlan Bakeries", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[20], _dashboard.GetClientName(), "SmokeTest", "Harlan Bakeries", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Harlan Bakeries");
-
                 }
             }
             catch (Exception ex)
@@ -815,22 +645,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(26), Category("SmokeTest")]
+        [Test, Order(21), Category("SmokeTest")]
         public void Verify_Haywood_County()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[26]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[21]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[26]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[21]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[26], _dashboard.GetClientName(), "SmokeTest", "Verify_Halifax_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[21], _dashboard.GetClientName(), "SmokeTest", "Verify_Halifax_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Haywood_County");
-
                 }
             }
             catch (Exception ex)
@@ -845,22 +674,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test,Order(27), Category("SmokeTest")]
+        [Test,Order(22), Category("SmokeTest")]
         public void Verify_KGHM()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[27]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[22]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[27]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[22]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[27], _dashboard.GetClientName(), "SmokeTest", "Verify_Halifax_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[22], _dashboard.GetClientName(), "SmokeTest", "Verify_Halifax_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_KGHM");
-
                 }
             }
             catch (Exception ex)
@@ -875,22 +703,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test,Order(28), Category("SmokeTest")]
+        [Test,Order(23), Category("SmokeTest")]
         public void Verify_Lincoln_County()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[28]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[23]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[28]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[23]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[28], _dashboard.GetClientName(), "SmokeTest", "Verify_Lincoln_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[23], _dashboard.GetClientName(), "SmokeTest", "Verify_Lincoln_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Lincoln_County");
-
                 }
             }
             catch (Exception ex)
@@ -905,82 +732,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(29), Category("SmokeTest")]
-        public void Verify_Lyon_County_School_District()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[29]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[29]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[29], _dashboard.GetClientName(), "SmokeTest", "Verify_Lyon_County_School_District", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Lyon_County_School_District");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Lyon_County_School_District_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Lyon_County_School_District", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(30), Category("SmokeTest")]
-        public void Verify_MacLellan()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[30]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[30]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[30], _dashboard.GetClientName(), "SmokeTest", "Verify_MacLellan", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_MacLellan");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_MacLellan_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_MacLellan", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(31), Category("SmokeTest")]
+        [Test, Order(24), Category("SmokeTest")]
         public void Verify_Mitsui_Co()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[31]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[24]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[31]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[24]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[31], _dashboard.GetClientName(), "SmokeTest", "Verify_Mitsui_Co", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[24], _dashboard.GetClientName(), "SmokeTest", "Verify_Mitsui_Co", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Mitsui_Co");
-
                 }
             }
             catch (Exception ex)
@@ -995,52 +761,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test,Order(32), Category("SmokeTest")]
-        public void Verify_Moms_Organic_Market()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[32]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[32]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[32], _dashboard.GetClientName(), "SmokeTest", "Verify_Moms_Organic_Market", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Moms_Organic_Market");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Moms_Organic_Market");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Moms_Organic_Market", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(33), Category("SmokeTest")]
+        [Test, Order(25), Category("SmokeTest")]
         public void Verify_Mountville_Mills()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[33]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[25]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[33]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[25]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[33], _dashboard.GetClientName(), "SmokeTest", "Verify_Mountville_Mills", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[25], _dashboard.GetClientName(), "SmokeTest", "Verify_Mountville_Mills", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Mountville_Mills");
-
                 }
             }
             catch (Exception ex)
@@ -1055,52 +790,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(34), Category("SmokeTest")]
-        public void Verify_MS_Demo()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[34]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[34]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[34], _dashboard.GetClientName(), "SmokeTest", "Verify_MS_Demo", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_MS_Demo");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_MS_Demo_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_MS_Demo", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test,Order(35), Category("SmokeTest")]
+        [Test,Order(26), Category("SmokeTest")]
         public void Verify_New_Vista()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[35]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[26]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[35]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[26]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[35], _dashboard.GetClientName(), "SmokeTest", "Verify_New_Vista", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[26], _dashboard.GetClientName(), "SmokeTest", "Verify_New_Vista", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_New_Vista");
-
                 }
             }
             catch (Exception ex)
@@ -1115,52 +819,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(36), Category("SmokeTest")]
-        public void Verify_Onslow_County()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[36]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[36]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[36], _dashboard.GetClientName(), "SmokeTest", "Verify_Onslow_County", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Onslow_County");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Onslow_County_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Onslow_County", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(37), Category("SmokeTest")]
+        [Test, Order(27), Category("SmokeTest")]
         public void Verify_Price_Chopper_Supermarkets()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[37]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[27]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[37]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[27]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[37], _dashboard.GetClientName(), "SmokeTest", "Verify_Price_Chopper_Supermarkets", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[27], _dashboard.GetClientName(), "SmokeTest", "Verify_Price_Chopper_Supermarkets", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Price_Chopper_Supermarkets");
-
                 }
             }
             catch (Exception ex)
@@ -1175,22 +848,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(38), Category("SmokeTest")]
+        [Test, Order(28), Category("SmokeTest")]
         public void Verify_Pricechopper_Beta()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[38]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[28]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[38]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[28]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[38], _dashboard.GetClientName(), "SmokeTest", "Verify_Pricechopper_Beta", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[28], _dashboard.GetClientName(), "SmokeTest", "Verify_Pricechopper_Beta", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Pricechopper_Beta");
-
                 }
             }
             catch (Exception ex)
@@ -1205,22 +877,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(39) ,Category("SmokeTest")]
+        [Test, Order(29) ,Category("SmokeTest")]
         public void Verify_Prince_George_County()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[39]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[29]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[39]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[29]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[39], _dashboard.GetClientName(), "SmokeTest", "Verify_Prince_George_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[29], _dashboard.GetClientName(), "SmokeTest", "Verify_Prince_George_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Prince_George_County");
-
                 }
             }
             catch (Exception ex)
@@ -1235,22 +906,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(40), Category("SmokeTest")]
+        [Test, Order(30), Category("SmokeTest")]
         public void Verify_RJ_Corman()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[40]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[30]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[40]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[30]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[40], _dashboard.GetClientName(), "SmokeTest", "Verify_RJ_Corman", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[30], _dashboard.GetClientName(), "SmokeTest", "Verify_RJ_Corman", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_RJ_Corman");
-
                 }
             }
             catch (Exception ex)
@@ -1264,54 +934,22 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
-        }
-        
-        [Test, Order(41), Category("SmokeTest")]
-        public void Verify_RogersGray()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[41]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[41]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[41], _dashboard.GetClientName(), "SmokeTest", "Verify_RogersGray", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Verify_RogersGray");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Prince_George_County_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_RogersGray", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(42), Category("SmokeTest")]
+        }       
+        [Test, Order(31), Category("SmokeTest")]
         public void Verify_Rowan_County()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[42]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[31]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[42]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[31]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[42], _dashboard.GetClientName(), "SmokeTest", "Verify_Rowan_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[31], _dashboard.GetClientName(), "SmokeTest", "Verify_Rowan_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Rowan_County");
-
                 }
             }
             catch (Exception ex)
@@ -1326,22 +964,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(43), Category("SmokeTest")]
+        [Test, Order(32), Category("SmokeTest")]
         public void Verify_Rue_Gilt_Groupe()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[43]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[32]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[43]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[32]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[43], _dashboard.GetClientName(), "SmokeTest", "Verify_Rue_Gilt_Groupe", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[32], _dashboard.GetClientName(), "SmokeTest", "Verify_Rue_Gilt_Groupe", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Rue_Gilt_Groupe");
-
                 }
             }
             catch (Exception ex)
@@ -1356,82 +993,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(44), Category("SmokeTest")]
-        public void Verify_Showa_Glove()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[44]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[44]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[44], _dashboard.GetClientName(), "SmokeTest", "Verify_Showa_Glove", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Showa_Glove");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Showa_Glove_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Showa_Glove", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(45), Category("SmokeTest")]
-        public void Verify_Universal_Health_Services()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[45]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[45]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[45], _dashboard.GetClientName(), "SmokeTest", "Verify_Universal_Health_Services", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Universal_Health_Services");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Universal_Health_Services_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Universal_Health_Services", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(46), Category("SmokeTest")]
+        [Test, Order(33), Category("SmokeTest")]
         public void Verify_University_of_Pikeville()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[46]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[33]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[46]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[33]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[46], _dashboard.GetClientName(), "SmokeTest", "Verify_University_of_Pikeville", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[33], _dashboard.GetClientName(), "SmokeTest", "Verify_University_of_Pikeville", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_University_of_Pikeville");
-
                 }
             }
             catch (Exception ex)
@@ -1446,22 +1022,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test, Order(47), Category("SmokeTest")]
+        [Test, Order(34), Category("SmokeTest")]
         public void Verify_Wayne_County()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[47]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[34]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[47]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[34]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[47], _dashboard.GetClientName(), "SmokeTest", "Verify_Wayne_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[34], _dashboard.GetClientName(), "SmokeTest", "Verify_Wayne_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Wayne_County");
-
                 }
             }
             catch (Exception ex)
@@ -1476,22 +1051,21 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test,Order(48), Category("SmokeTest")]
+        [Test,Order(35), Category("SmokeTest")]
         public void Verify_Z5_Demo_B()
         {
             try
             {
                 if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[48]);
+                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[35]);
                     Console.WriteLine("Read Cilent Name from json file");
                     _dashboard.DashboardPageLoad();
                     Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[48]);
+                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[35]);
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[48], _dashboard.GetClientName(), "SmokeTest", "Verify_Z5_Demo_B", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[35], _dashboard.GetClientName(), "SmokeTest", "Verify_Z5_Demo_B", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Z5_Demo_B");
-
                 }
             }
             catch (Exception ex)
@@ -1506,97 +1080,6 @@ namespace Zakipoint.Tests.Tests
                 Browser.Open(JsonDataReader.Data["setClientUrl"]);
             }
         }
-        [Test,Order(49), Category("SmokeTest")]
-        public void Verify_Z5_Demo_C()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[49]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[49]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[49], _dashboard.GetClientName(), "SmokeTest", "Verify_Z5_Demo_C", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Z5_Demo_C");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Z5_Demo_C_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Z5_Demo_C", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(50), Category("SmokeTest")]
-        public void Verify_Z5_Demo_D()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[50]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[50]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[50], _dashboard.GetClientName(), "SmokeTest", "Verify_Z5_Demo_D_County", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Verify_Prince_George_County");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Z5_Demo_D_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Z5_Demo_D", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        [Test, Order(51), Category("SmokeTest")]
-        public void Verify_Z5_Demo_E()
-        {
-            try
-            {
-                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
-                {
-                    _setClient.SelectClient(JsonDataReader.Data["clientList"].Split(';')[51]);
-                    Console.WriteLine("Read Cilent Name from json file");
-                    _dashboard.DashboardPageLoad();
-                    Console.WriteLine("Load Dashboard Page");
-                    Assert.AreEqual(_dashboard.GetClientName(), JsonDataReader.Data["clientList"].Split(';')[51]);
-                    Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[51], _dashboard.GetClientName(), "SmokeTest", "Verify_Z5_Demo_E", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Z5_Demo_E");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Browser.ScreenShot("Verify_Prince_George_County_Shot");
-                if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Prince_George_County", "Exception occured:  Please verify manually");
-                Console.Out.WriteLine(ex);
-            }
-            finally
-            {
-                Browser.Open(JsonDataReader.Data["setClientUrl"]);
-            }
-        }
-        
         #endregion
     }
 }
