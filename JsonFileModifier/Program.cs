@@ -15,8 +15,33 @@ namespace JsonFileModifier
 {
     public  class Program
     {
-        #region private property
+        #region Private properties
         private static string FileName;
+		//change value by key from command
+        private static void ChangeJsonValue(string[] args, dynamic obj)
+        {
+            foreach (var item in args)
+            {
+                if (item.Contains("=") && !item.StartsWith("path="))
+                {
+                    string key = item.Split('=')[0].Trim();
+                    string value = item.Split('=')[1].Trim();
+                    obj[key] = value;
+                }
+            }
+            WriteJsonFile(JsonConvert.SerializeObject(obj, Formatting.Indented));
+        }
+        //update existing json file.
+        private static void WriteJsonFile(string jsonString)
+        {
+            File.WriteAllText(FileName, jsonString);
+        }
+        //Read data from json file and convert it to object
+        private static dynamic JsonToObject()
+        {
+            string json = File.ReadAllText(FileName);
+            return JsonConvert.DeserializeObject(json);
+        }
         #endregion
         static void Main(string[] args)
         {
@@ -30,47 +55,13 @@ namespace JsonFileModifier
                         FileName = item.TrimStart("path=".ToCharArray()).Trim();
                     }
                 }
-
                 var Object = JsonToObject();
                 ChangeJsonValue(args, Object);
-
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
         }
-        #region private Method
-        // chnage value by key from command
-        private static void ChangeJsonValue(string[] args, dynamic obj)
-        {
-
-            foreach (var item in args)
-            {
-                if (item.Contains("=") && !item.StartsWith("path="))
-                {
-                    string key = item.Split('=')[0].Trim();
-                    string value = item.Split('=')[1].Trim();
-                    obj[key] = value;
-                }
-            }
-            WriteJsonFile(JsonConvert.SerializeObject(obj, Formatting.Indented));
-        }
-
-        // update existing json file.
-        private static void WriteJsonFile(string jsonString)
-        {
-            File.WriteAllText(FileName, jsonString);
-        }
-        //  Read data from json file and convert it to object
-        private static dynamic JsonToObject()
-        {
-            string json = File.ReadAllText(FileName);
-            return JsonConvert.DeserializeObject(json);
-        }
-       
-        #endregion
     }
 }
-
