@@ -2,7 +2,6 @@
 using Zakipoint.Framework.Driver;
 using static System.String;
 using OpenQA.Selenium.Support.PageObjects;
-
 namespace Zakipoint.UIAutomation.PageServices
 {
     public class LoginPage

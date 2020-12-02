@@ -1,6 +1,6 @@
 {
-  "url": "https://ssouat.zakipointhealth.com/login/auth",
-  "adminurl": "https://admin-uat.zakipointhealth.com/",
+  "url": "https://sso.zakipointhealth.com/login/auth",
+  "adminurl": "https://admin.zakipointhealth.com/",
   "username": "testuser1@zakipoint.com",
   "password": "Test123$",
   "Server": "172.19.0.70",

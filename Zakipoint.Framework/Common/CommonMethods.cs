@@ -6,7 +6,7 @@ using System.IO;
 using OpenQA.Selenium.Support.PageObjects;
 using System.Xml.Serialization;
 using System.Xml;
-
+using static System.String;
 namespace Zakipoint.Framework.Common
 {
     public static class CommonMethods
@@ -30,7 +30,6 @@ namespace Zakipoint.Framework.Common
             }
             return urls;
         }
-
         public static List<string> CheckBrokenLinks(List<string> urls)
         {
             List<string> brokenlinks = new List<string>();
@@ -59,7 +58,6 @@ namespace Zakipoint.Framework.Common
             }
             return brokenlinks;
         }
-
         public static bool CheckFileDownloaded(string filename)
         {
             bool exist = false;
@@ -82,7 +80,6 @@ namespace Zakipoint.Framework.Common
             }
             return exist;
         }
-
         public static void GenereatetUniqueRndNumbers(int minValue, int maxValue)
         {
             int range = maxValue - minValue;
@@ -94,24 +91,20 @@ namespace Zakipoint.Framework.Common
                 LstRndNumbers.Add(rangeNumbersArr[count]);
             }
         }
-
         public static string RemoveComma(string value)
         {
             return value.Replace(",", "").Trim();
         }
         public static decimal CurrencyIntermOfThousandWithRoudValue(decimal value)
         {
-
             return Math.Round(value / 1000, 0);
         }
         public static string[] SplitByNewLine(string textLine)
         {
-
             return textLine.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
         }
         public static string[] SplitByString(string SplitFor, string SplitBy)
         {
-
             return SplitFor.Split(new string[] { SplitBy }, StringSplitOptions.None);
         }
         public static decimal Percentages(decimal CurrentYearvale, decimal LastYearvale)
@@ -128,11 +121,10 @@ namespace Zakipoint.Framework.Common
             xmlSerializer.Serialize(xmlWriter, obj);
             return stringWriter.ToString();
         }
-
         public static List<string> GetTableValuesListByRow(How rowDetailsLocator, string rowDetailsValue, int row = 1)
         {
             List<string> valueList = new List<string>();
-            var rowvalue = Browser.FindElements(rowDetailsLocator,string.Format(rowDetailsValue, row));
+            var rowvalue = Browser.FindElements(rowDetailsLocator,Format(rowDetailsValue, row));
             foreach (var value in rowvalue)
             {
                 if (value.Text != "")

@@ -11,7 +11,6 @@ using Zakipoint.UIAutomation.Model;
 using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.SqlScripts;
 using static System.String;
-
 namespace Zakipoint.UIAutomation.PageServices
 {
     public class DashboardPage
@@ -83,7 +82,6 @@ namespace Zakipoint.UIAutomation.PageServices
                 .FirstOrDefault()
                 .ItemArray.Select(x => CommonMethods.CurrencyIntermOfThousandWithRoudValue(Convert.ToDecimal(x)))
                 .ToList();
-
             return listItems;
         }
         public string Expected_PMPM(string spendType, string active_flag, int period)
@@ -153,7 +151,6 @@ namespace Zakipoint.UIAutomation.PageServices
                     Cost_Categories= dt.Rows[i]["Cost_Categories"].ToString(),
                     P_Spend= dt.Rows[i]["P_Spend"].ToString(),
                     Spend= dt.Rows[i]["Spend"].ToString()
-
                 };
                 objList.Add(obj);
              }
@@ -161,7 +158,6 @@ namespace Zakipoint.UIAutomation.PageServices
         }
        public List<Prospective_Population_Risk_Stratification> Expected_Prospective_Population_Risk_Stratification(string memberStatus)
         {
-
             List<Prospective_Population_Risk_Stratification> objList = new List<Prospective_Population_Risk_Stratification>();
             var dt = _executor.GetDataTable(_dashboardSqlScripts.Prospective_Population_Risk_Stratification(memberStatus));
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -198,24 +194,20 @@ namespace Zakipoint.UIAutomation.PageServices
             }
             return MenuList;
         }
-
         public string GetClientName()
         {
             return Browser.FindElement(How.CssSelector, _dashboardPage.ClientTitleCssSelector).Text;
         }
-
         public string GetDownloadReportName()
         {
             var clientReportName = GetClientName().ToLower().Replace(" ", "-") + ("-report-" + DateTime.Now.ToString("yyyy-MM-dd") + ".pdf");
             return clientReportName;
         }
-
         public void ClickDownloadReport()
         {
             Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _dashboardPage.DownloadReportLinkCssSelector));
             //Browser.FindElement(How.CssSelector, _dashboardPage.DownloadReportLinkCssSelector).Click();
         }
-
         public List<string> GetTableHeaderList(How locator, string value)
         {
             var headersList = new List<string>();
@@ -355,8 +347,7 @@ namespace Zakipoint.UIAutomation.PageServices
                     Browser.FindElement(How.LinkText, "CONDITION").Click();
                     Console.WriteLine("Click on CONDITION link");
                     // Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.SpendByLabelXPath, "Medical"))));
-                    Thread.Sleep(20000);
-                    
+                    Browser.WaitToLoadNew(20000);                       
                 }
             }
             else
@@ -365,7 +356,7 @@ namespace Zakipoint.UIAutomation.PageServices
                 {
                     Browser.FindElement(How.LinkText, "SERVICE").Click();
                     Console.WriteLine("click on  SERVICE  link");
-                    Thread.Sleep(20000);
+                    Browser.WaitToLoadNew(20000);
                     //Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.PMPMByLabelXPath, "Medical"))));
                     // Console.WriteLine("Conditional wait");
                 }
@@ -395,7 +386,6 @@ namespace Zakipoint.UIAutomation.PageServices
                 string totalMedicalPMPMText = Browser.FindElement(How.XPath, Format(_dashboardPage.PMPMByLabelXPath, "Medical")).Text;
                 string[] lines = CommonMethods.SplitByNewLine(totalMedicalPMPMText);
                 return Convert.ToDecimal(CommonMethods.RemoveComma(lines[0]).Replace("$", ""));
-
             }
             else
             {
@@ -450,8 +440,7 @@ namespace Zakipoint.UIAutomation.PageServices
                 };
                 objList.Add(obj);
             }
-            return objList;
-            
+            return objList;          
         }
         public List<Top_Service_By_Total_Spend> Map_Top_Service_By_Total_Spend(List<List<string>> tableDetails)
         {
@@ -470,7 +459,6 @@ namespace Zakipoint.UIAutomation.PageServices
             }
             objList.RemoveAt(0);
             return objList;
-
         }
         public List<Prospective_Population_Risk_Stratification> Map_Prospective_Population_Risk_Stratification(List<List<string>> tableDetails)
         {
@@ -490,7 +478,6 @@ namespace Zakipoint.UIAutomation.PageServices
                 objList.Add(obj);
             }
             return objList;
-
         }
         public List<Cost_Matrix> Map_Cost_Matrix(List<List<string>> tableDetails)
         {
@@ -507,7 +494,6 @@ namespace Zakipoint.UIAutomation.PageServices
                 objList.Add(obj);
             }
             return objList;
-
         }
 
         #endregion
@@ -517,20 +503,17 @@ namespace Zakipoint.UIAutomation.PageServices
             var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.ProspectivePopulationRiskStratificationRowByCssSelector, How.CssSelector, _dashboardPage.ProspectivePopulationRiskStratificationDetailsByRowCssSelector);
           //  Browser.PageScroll(0, 0);
             return tableData;
-
         }
         public List<List<string>> Top_Service_By_Total_Spend()
         {
             
             var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.TopServiceByTotalSpendRowByCssSelector, How.CssSelector, _dashboardPage.TopServiceByTotalSpendDetailsByRowCssSelector);
-
             return tableData;
         }
         public List<List<string>> Cost_Matrix()
         {
 
             var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.CostMatrixRowByRowCssSelector, How.CssSelector, _dashboardPage.CostMatrixDetailsByRowCssSelector);
-
             return tableData;
         }
         public void DashboardPageLoad()
@@ -545,13 +528,12 @@ namespace Zakipoint.UIAutomation.PageServices
         public string StartDate()
         {
             string[] Period = CommonMethods.SplitByString(Browser.FindElement(How.CssSelector, Format(_dashboardPage.ReportingPeriodByCssSelector, 2)).Text, " to"); //2 for reporting period
-            return String.Format("{0:yyyyMM}", Convert.ToDateTime(Period[0]));
+            return Format("{0:yyyyMM}", Convert.ToDateTime(Period[0]));
         }
-
         public string EndDate()
         {
             string[] Period = CommonMethods.SplitByString(Browser.FindElement(How.CssSelector, Format(_dashboardPage.ReportingPeriodByCssSelector, 2)).Text, " to"); //2 for reporting period
-            return String.Format("{0:yyyyMM}", Convert.ToDateTime(Period[1]));
+            return Format("{0:yyyyMM}", Convert.ToDateTime(Period[1]));
         }
 
         #endregion

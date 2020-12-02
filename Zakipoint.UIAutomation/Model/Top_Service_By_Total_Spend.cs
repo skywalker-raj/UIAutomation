@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Zakipoint.UIAutomation.Model
+﻿namespace Zakipoint.UIAutomation.Model
 {
     public class Top_Service_By_Total_Spend
     {

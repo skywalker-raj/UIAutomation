@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-
 using Zakipoint.Framework.Driver;
-
 namespace Zakipoint.UIAutomation.Environment
 {
     [Serializable]
@@ -18,6 +15,7 @@ namespace Zakipoint.UIAutomation.Environment
         public static string Username;
 
         #endregion
+
         #region PUBIC PROPERTIES
 
         public static EnvironmentManager Instance
@@ -30,24 +28,21 @@ namespace Zakipoint.UIAutomation.Environment
         }
 
         #endregion
+
         #region PUBLIC METHODS
 
         public static void CaptureScreenShot(string testName)
         {
             Browser.CaptureScreenShot(testName);
         }
-
         public static void CaptureScreenShot(string dirPath, string testName)
         {
             Browser.CaptureScreenShot(dirPath, testName);
         }
-
         public static void PageRefresh()
         {
             Browser.Reload();
         }
-
-
         /// <summary>
         /// Genereate unique random numbers
         /// </summary>
@@ -64,7 +59,6 @@ namespace Zakipoint.UIAutomation.Environment
                 LstRndNumbers.Add(rangeNumbersArr[count]);
             }
         }
-
         /// <summary>
         /// Get a new random number
         /// </summary>
@@ -82,7 +76,6 @@ namespace Zakipoint.UIAutomation.Environment
             }
             throw new InvalidOperationException("All numbers are used");
         }
-
 
         #endregion
     }

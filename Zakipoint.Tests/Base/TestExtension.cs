@@ -4,10 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Zakipoint.UIAutomation.Environment;
+using static System.String;
 namespace Zakipoint.Tests.Base
 {
     public static class TestExtension
     {
+        #region Public Properties
         public static string TestName { get; set; }
         public static T ShouldNotNull<T>(this T obj)
         {
@@ -214,7 +216,7 @@ namespace Zakipoint.Tests.Base
         {
             if (!string.Equals(actual, expected, StringComparison.InvariantCultureIgnoreCase))
             {
-                var message = string.Format("Expected {0} but was {1}", expected, actual);
+                var message = Format("Expected {0} but was {1}", expected, actual);
                 throw new AssertionException(message);
             }
         }
@@ -228,10 +230,11 @@ namespace Zakipoint.Tests.Base
             {
                 EnvironmentManager.CaptureScreenShot(TestName);
                 throw new AssertionException(
-                    String.Format("Test fail due to :\n{0}\n{1}\nTest failure screenshot location : \n{2}",
+                    Format("Test fail due to :\n{0}\n{1}\nTest failure screenshot location : \n{2}",
                                   verificationElement, ex.Message, EnvironmentManager.ScreenshotFileName), ex);
             }
-            throw new AssertionException(String.Format("Test fail due to :\n{0}\n{1}", verificationElement, ex.Message), ex);
+            throw new AssertionException(Format("Test fail due to :\n{0}\n{1}", verificationElement, ex.Message), ex);
         }
+        #endregion
     }
 }

@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.ComponentModel;
-
 namespace Zakipoint.Framework.Common
 {
     /// <summary>
@@ -15,12 +14,10 @@ namespace Zakipoint.Framework.Common
         /// </summary>
         [DefaultValue(How.Id)]
         public How How { get; set; }
-
         /// <summary>
         /// Gets or set the value to look up by (i.e for How.Name, the actual name to look up)
         /// </summary>
         public string Using { get; set; }
-
         /// <summary>
         /// Gets or sets the value indicating where this attribute should be evaluated relative to other instances
         /// of this attribute decorating the same class member

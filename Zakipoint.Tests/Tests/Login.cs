@@ -8,10 +8,8 @@ using Zakipoint.UIAutomation.PageServices;
 using static System.String;
 using Zakipoint.Tests.Base;
 using Zakipoint.UIAutomation.Common;
-
 namespace Zakipoint.Tests.Tests
 {
-   
     public class Login : AbstractBase
     {
         #region Private Methods
@@ -46,10 +44,8 @@ namespace Zakipoint.Tests.Tests
         }
 
         #endregion
-
         #region TestMethods
-
-        [Test, Category("Login_Page_Verification")]
+        [Test, Category("Login")]
         public void Verify_Login_Page()
         {
             try

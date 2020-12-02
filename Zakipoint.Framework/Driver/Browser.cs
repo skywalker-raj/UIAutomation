@@ -10,14 +10,14 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Interactions;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
-using System.Net;
-using System.Configuration;
-using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using Zakipoint.Framework.Common.Constants;
 using System.Threading;
+using static System.String;
+using System.Net;
+using System.Configuration;
+using System.Text;
 using System.Drawing;
-
 namespace Zakipoint.Framework.Driver
 {
     public class Browser
@@ -34,9 +34,8 @@ namespace Zakipoint.Framework.Driver
         private static ScreenshotRemoteWebDriver _screenshotRemoteWebDriver;
         private static ICapabilities _capabilities;
         private static Uri _remoteAddress;
-        private static bool IsInitalized { get; set; }
         private static IWebDriver _primaryWebDriver;
-       
+        private static bool IsInitalized { get; set; }            
        
         #endregion
 
@@ -323,8 +322,7 @@ namespace Zakipoint.Framework.Driver
                     options.AddArguments("disable-infobars"); // disabling infobars
                     options.AddArguments("--disable-extensions"); // disabling extensions
                     options.AddArguments("--disable-dev-shm-usage"); // overcome limited resource problems      
-                    webDriver = new ChromeDriver(baseDir + @"Executables/", options);
-                    
+                    webDriver = new ChromeDriver(baseDir + @"Executables/", options);            
                     break;
             }
             return webDriver;
@@ -344,7 +342,7 @@ namespace Zakipoint.Framework.Driver
         public static void Open(string url)
         {
             WebDriver.Navigate().GoToUrl(url);            
-            //WebDriver.Manage().Window.Maximize();
+            WebDriver.Manage().Window.Maximize();
         }
 
         #endregion
@@ -425,7 +423,7 @@ namespace Zakipoint.Framework.Driver
         }
         public static void WaitForAjaxToLoad(string ajaxLibrary)
         {
-            string script = string.Format("return {0};", ajaxLibrary);
+            string script = Format("return {0};", ajaxLibrary);
             int count = 0;
             _waitAjaxLoad.Until((d) =>
             {
@@ -848,7 +846,7 @@ namespace Zakipoint.Framework.Driver
            
             IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
             Thread.Sleep(5000);
-            js.ExecuteScript(string.Format( "window.scrollBy({0},{1});", x, y));
+            js.ExecuteScript(Format( "window.scrollBy({0},{1});", x, y));
             Console.WriteLine("page Scroll");
 
 
@@ -894,7 +892,7 @@ namespace Zakipoint.Framework.Driver
                 case How.XPath:
                     return WaitandReturnElementsExists(By.XPath(select), context, elementTimeOut);
             }
-            throw new NotSupportedException(string.Format("Selector \"{0}\" is not supported.", selector));
+            throw new NotSupportedException(Format("Selector \"{0}\" is not supported.", selector));
         }
 
         /// <summary>
@@ -961,7 +959,7 @@ namespace Zakipoint.Framework.Driver
                 case How.XPath:
                     return WaitandReturnElementExists(By.XPath(select), context, elementTimeOut);
             }
-            throw new NotSupportedException(string.Format("Selector \"{0}\" is not supported.", selector));
+            throw new NotSupportedException(Format("Selector \"{0}\" is not supported.", selector));
         }
 
         #endregion

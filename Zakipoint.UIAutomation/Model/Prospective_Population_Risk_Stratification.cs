@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Zakipoint.UIAutomation.Model
+﻿namespace Zakipoint.UIAutomation.Model
 {
    public  class Prospective_Population_Risk_Stratification
     {
@@ -12,6 +8,5 @@ namespace Zakipoint.UIAutomation.Model
         public string Members { get; set; }
         public string Percentages_Member { get; set; }
         public string PMPM { get; set; }
-       
     }
 }

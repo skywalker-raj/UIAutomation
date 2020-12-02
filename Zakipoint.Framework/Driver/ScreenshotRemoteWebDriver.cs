@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Remote;
 using System;
 using System.IO;
-
+using static System.String;
 namespace Zakipoint.Framework.Driver
 {
     /// <summary>
@@ -14,7 +14,6 @@ namespace Zakipoint.Framework.Driver
         /// Path of current application directory.
         /// </summary>
         private static string _dirPath;
-
         /// <summary>
         /// Base directory of an application in current domain.
         /// </summary>
@@ -23,12 +22,10 @@ namespace Zakipoint.Framework.Driver
             get { return _dirPath ?? AppDomain.CurrentDomain.BaseDirectory; }
             set { _dirPath = value; }
         }
-
         /// <summary>
         /// Get or set name for current screenshot file.
         /// </summary>
         public static string FullQualifiedFileName { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the ScreenshotRemoteWebDriver class.
         /// </summary>
@@ -37,7 +34,6 @@ namespace Zakipoint.Framework.Driver
             : base(capabilities)
         {
         }
-
         /// <summary>
         /// Initializes a new instance of the ScreenshotRemoteWebDriver class.
         /// </summary>
@@ -47,7 +43,6 @@ namespace Zakipoint.Framework.Driver
             : base(remoteAddress, capabilities)
         {
         }
-
         /// <summary>
         /// Initializes a new instance of the ScreenshotRemoteWebDriver class.
         /// </summary>
@@ -57,7 +52,6 @@ namespace Zakipoint.Framework.Driver
             : base(commandExecutor, capabilities)
         {
         }
-
         /// <summary>
         /// Captures an object representing the image of the page on the screen.
         /// </summary>
@@ -68,7 +62,6 @@ namespace Zakipoint.Framework.Driver
             BaseDirPath = dirPath;
             CaptureScreenShot(name);
         }
-
         /// <summary>
         /// Captures an object representing the image of the page on the screen.
         /// </summary>
@@ -83,7 +76,6 @@ namespace Zakipoint.Framework.Driver
             var screenshot = GetScreenshot();
             screenshot.SaveAsFile(FullQualifiedFileName, ScreenshotImageFormat.Png);
         }
-
         /// <summary>
         /// Gets a <see cref="Screenshot"/> object representing the image of the page on the screen.
         /// </summary>
@@ -94,7 +86,6 @@ namespace Zakipoint.Framework.Driver
             string base64 = screenshotRespnose.Value.ToString();
             return new Screenshot(base64);
         }
-
         /// <summary>
         /// Gets a value in the form of datetime for a directory name.
         /// </summary>
@@ -104,7 +95,6 @@ namespace Zakipoint.Framework.Driver
         {
             return dateTime.ToString("yyyy-MM-dd");
         }
-
         /// <summary>
         /// Gets a file name for an object with following parameters.
         /// </summary>
@@ -115,16 +105,16 @@ namespace Zakipoint.Framework.Driver
         private string GetFileName(string dirPath, string fileNamePart, DateTime dateTime)
         {
             var dateString = dateTime.ToString("yyyy-MM-dd-HH-mm-ss");
-            var fileName = string.Format("{0}\\{1}-{2}.png", dirPath, fileNamePart, dateString);
+            var fileName = Format("{0}\\{1}-{2}.png", dirPath, fileNamePart, dateString);
             if (fileName.Length > 259)
             {
                 fileNamePart = fileNamePart.Substring(0, fileNamePart.Length - (fileName.Length - 259));
-                fileName = string.Format("{0}\\{1}-{2}.png", dirPath, fileNamePart, dateString);
+                fileName = Format("{0}\\{1}-{2}.png", dirPath, fileNamePart, dateString);
             }
             var count = 1;
             while (File.Exists(fileName))
             {
-                fileName = string.Format("{0}\\{1}-{2}-({3}).png", dirPath, fileNamePart, dateString, ++count);
+                fileName = Format("{0}\\{1}-{2}-({3}).png", dirPath, fileNamePart, dateString, ++count);
             }
             return fileName;
         }

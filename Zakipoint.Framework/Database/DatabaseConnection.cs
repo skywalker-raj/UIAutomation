@@ -9,7 +9,6 @@ namespace Zakipoint.Framework.Database
         #region Private Members
 
         private static readonly MySqlConnection Connection;
-
         private static void OpenConnection()
         {
             try

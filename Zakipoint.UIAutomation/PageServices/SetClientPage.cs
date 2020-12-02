@@ -7,7 +7,6 @@ using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.SqlScripts;
 using OpenQA.Selenium.Support.PageObjects;
 using static System.String;
-
 namespace Zakipoint.UIAutomation.PageServices
 {
     public class SetClientPage
@@ -49,12 +48,10 @@ namespace Zakipoint.UIAutomation.PageServices
             Browser.JavaScriptOnclick(Browser.FindElement(How.XPath, Format(_setClientPage.ClientByTextXPath, client)));
             ClickGoButton();
         }
-
         public void ClickGoButton()
         {
             Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.GoButtonCssSelector));
         }
-
         public List<string> GetClientList()
         {
             List<string> clientList = new List<string>();
@@ -66,7 +63,6 @@ namespace Zakipoint.UIAutomation.PageServices
             clientList.Remove("Select One");
             return clientList;
         }
-
         public void GoToUserManagement()
         {
             //Browser.FindElement(How.CssSelector, _setClientPage.UserManagementLinkCssSelector).Click();

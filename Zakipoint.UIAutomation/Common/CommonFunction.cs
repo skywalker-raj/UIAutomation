@@ -7,18 +7,15 @@ using System.Threading;
 using Zakipoint.Framework.Driver;
 using Zakipoint.UIAutomation.PageObjects;
 using static System.String;
-
 namespace Zakipoint.UIAutomation.Common
 {
     public class CommonFunction
     {
         #region Private Properties
 
-        private readonly DashboardPageObjects _dashboardPage = new DashboardPageObjects();
-       
+        private readonly DashboardPageObjects _dashboardPage = new DashboardPageObjects();     
 
         #endregion
-
 
         #region Public Properties
         //public readonly IConfiguration Data = new ConfigurationBuilder().AddJsonFile(@"Data/Data.json").Build();
@@ -26,7 +23,6 @@ namespace Zakipoint.UIAutomation.Common
         {
             Browser.FindElement(How.CssSelector, _dashboardPage.QuickLinkCssSelector).Click();
         }
-
         public List<string> GetNavBarQuickLinks()
         {
             List<string> QuickLinkList = new List<string>();
@@ -38,12 +34,10 @@ namespace Zakipoint.UIAutomation.Common
             }
             return QuickLinkList;
         }
-
         public string GetTableValueByRowCol(int row = 1, int col = 2)
         {
             return Browser.FindElement(How.CssSelector, Format(_dashboardPage.TopConditionDetailsCssSelector, row, col)).Text;
         }
-
         public List<string> GetTableValuesListByCol(int col = 2)
         {
             List<string> valueList = new List<string>();
@@ -57,7 +51,6 @@ namespace Zakipoint.UIAutomation.Common
             }
             return valueList;
         }
-
         public List<string> GetTableValuesListByRow( How rowDetailsLocator, string rowDetailsValue, int row = 1)
         {
             List<string> valueList = new List<string>();
@@ -71,7 +64,6 @@ namespace Zakipoint.UIAutomation.Common
             }
             return valueList;
         }
-
         public List<List<string>> GetTableValues(How RowLocator, string RowValue, How rowDetailsLocator, string rowDetailsValue)
         {
             var tableDetails = new List<List<string>>();
@@ -82,14 +74,11 @@ namespace Zakipoint.UIAutomation.Common
                 tableDetails.Add(rowDetails);
             }
             return tableDetails;
-        }
-
-      
+        }  
         public string RemoveUnicode(string messsage)
         {
             return Regex.Replace(messsage, @"[^\u0000-\u007F]+", string.Empty).Replace(",", "");
         }
-
         public void Logout()
         {
             if (Browser.IsElementPresent(How.CssSelector, _dashboardPage.UserLinkDropdownCssSelector))

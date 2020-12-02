@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MySqlConnector;
-
 namespace Zakipoint.Framework.Database
 {
     public class MySqlStatementExecutor
@@ -49,7 +48,6 @@ namespace Zakipoint.Framework.Database
             return (_objData.Tables[0]).Select().Where(x => !x.IsNull(0)).AsEnumerable()
                     .Select(x => x[col].ToString()).ToList();
         }
-
         public long GetSingleValue(string sqlstring)
         {
             Console.WriteLine(sqlstring);
@@ -69,7 +67,6 @@ namespace Zakipoint.Framework.Database
             }
             return count;
         }
-
         public string GetSingleStringValue(string sqlstring)
         {
             Console.WriteLine(sqlstring);
@@ -89,7 +86,6 @@ namespace Zakipoint.Framework.Database
             }
             return value;
         }
-
         public IEnumerable<DataRow> GetCompleteTable(string sqlstring)
         {
             Console.WriteLine(sqlstring);
@@ -112,7 +108,6 @@ namespace Zakipoint.Framework.Database
                 return (_objData.Tables["TableObject"]).Select().Where(x => !x.IsNull(0)).AsEnumerable().ToList();
             return null;
         }
-
         public void ExecuteQuery(string sqlstring)
         {
             try
@@ -128,7 +123,6 @@ namespace Zakipoint.Framework.Database
                 command.CommandType = CommandType.Text;
                 try
                 {
-
                     command.ExecuteNonQuery();
                     transaction.Commit();
                 }
@@ -137,12 +131,9 @@ namespace Zakipoint.Framework.Database
                     transaction.Rollback();
                     Console.WriteLine(ex.Message);
                 }
-
             }
-
             catch (Exception ex)
             {
-
                 Console.WriteLine(ex.Message);
             }
             finally
@@ -150,7 +141,6 @@ namespace Zakipoint.Framework.Database
                 _connection.CloseConnection();
             }
         }
-
         public void ExecuteQueryAsync(string sqlstring)
         {
             Task.Factory.StartNew(
@@ -184,7 +174,6 @@ namespace Zakipoint.Framework.Database
                     }
                 });
         }
-
         public DataTable GetDataTable(string sqlstring)
         {
             Console.WriteLine(sqlstring);
@@ -198,7 +187,6 @@ namespace Zakipoint.Framework.Database
                 };
                 var dataAdapter = new MySqlDataAdapter(command);
                 dataAdapter.Fill(_objData);
-
             }
             catch (Exception ex)
             {
@@ -208,7 +196,6 @@ namespace Zakipoint.Framework.Database
                 return _objData.Tables[0];
             else return null;
         }
-
         public void CloseConnection()
         {
             _connection.CloseConnection();

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-
 namespace Zakipoint.UIAutomation.Common
 {
     public class TestCase
@@ -12,7 +11,6 @@ namespace Zakipoint.UIAutomation.Common
         public string ActualResult { get; set; }
         public string Status { get; set; }
         public string Remarks { get; set; }
-
     }
     public class SaveToCSV
     {

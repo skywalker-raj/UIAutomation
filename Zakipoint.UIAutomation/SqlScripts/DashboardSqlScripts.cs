@@ -1,43 +1,39 @@
 ﻿using Zakipoint.UIAutomation.Model;
-
+using static System.String;
 namespace Zakipoint.UIAutomation.SqlScripts
 {
     public class DashboardSqlScripts
     {
         public string GetAppGroupsValueList = @"select * from app_groups";
-
         public string Expected_Total_Active_Employee() {  
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1 And p1_active_flag=1 
             AND mbr_relationship_class = 'Employee'", CommonObject.DefaultClientSuffix);
         }
         public string Expected_Total_Active_Member() {  
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1 And p1_active_flag=1", CommonObject.DefaultClientSuffix);
         }
-
         public string Expected_Total_Employee() { 
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1 
             AND mbr_relationship_class = 'Employee'", CommonObject.DefaultClientSuffix);
         }
-
         public string Expected_Total_Member() {
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             COUNT(DISTINCT member_id)
             FROM member_summary_encr_{0}
             WHERE p1_exists_flag = 1", CommonObject.DefaultClientSuffix);
         }
-
         public string Expected_Total_Medical_Pharmacy_Sepnd(int period)
         {
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             medical_paid_amount  , pharmacy_paid_amount 
             FROM (SELECT
             SUM(rev_paid_amt) medical_paid_amount
@@ -50,10 +46,9 @@ namespace Zakipoint.UIAutomation.SqlScripts
             WHERE member.period = {1}
             AND member.group_id = '{0}') b", CommonObject.DefaultClientSuffix, period);
         }
-
         public string Expected_Total_Active_Medical_Pharmacy_Spend(int period)
         {
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             medical_paid_amount  , pharmacy_paid_amount 
             FROM (SELECT
             SUM(rev_paid_amt) medical_paid_amount
@@ -68,7 +63,6 @@ namespace Zakipoint.UIAutomation.SqlScripts
             AND member.group_id = '{0}'
             AND member.active_flag = TRUE) b", CommonObject.DefaultClientSuffix, period);
         }
-
         public string Medical_PMPM(string active_flag, int period)
         {
             string SubString1;
@@ -80,7 +74,7 @@ namespace Zakipoint.UIAutomation.SqlScripts
             {
                 SubString1 = "AND active_flag = 1";
             }
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             (SELECT
             SUM(rev_paid_amt) medical_paid_amount
             FROM member_by_paid_medical_by_month_{0} member
@@ -90,7 +84,6 @@ namespace Zakipoint.UIAutomation.SqlScripts
             FROM member_by_mm_by_month_{0}
             WHERE period = {2} {1});", CommonObject.DefaultClientSuffix, SubString1, period);
         }
-
         public string Pharmacy_PMPM(string active_flag, int period)
         {
             string SubString1;
@@ -102,7 +95,7 @@ namespace Zakipoint.UIAutomation.SqlScripts
             {
                 SubString1 = "AND active_flag = 1";
             }
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             (SELECT
              SUM(rev_paid_amt) pharmacy_paid_amount
             FROM member_by_paid_rx_by_month_{0} member
@@ -112,12 +105,11 @@ namespace Zakipoint.UIAutomation.SqlScripts
             FROM member_by_mm_by_month_{0}
             WHERE period = {2}  {1});", CommonObject.DefaultClientSuffix, SubString1, period);
         }
-
         public string Top_Condition_By_Total_Spend(string StartDate, string EndDate, string memberStatus)
         {
             if (memberStatus.ToLower() == "all")
             {
-                return string.Format(@" SELECT
+                return Format(@" SELECT
                     disease_name,
                     round(SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END)/1000,0) Spend,
                     round(SUM(CASE WHEN member.exists_in_p1 = TRUE THEN member.p1_total_paid ELSE 0 END) *100/
@@ -147,7 +139,7 @@ namespace Zakipoint.UIAutomation.SqlScripts
             } 
             else
             {
-                return  string.Format(@"SELECT
+                return  Format(@"SELECT
                     disease_name,
                     ROUND(SUM(CASE WHEN (member.exists_in_p1 = TRUE AND
                     member.p1_active_flag = TRUE) THEN member.p1_total_paid ELSE 0 END) / 1000, 0) Spend,
@@ -186,14 +178,12 @@ namespace Zakipoint.UIAutomation.SqlScripts
         }
     
         public string Top_Service_By_Total_Spend(string memberStatus)
-        {
-          
+        {        
             if (memberStatus.ToLower() == "all")
                 memberStatus = " 1=1 ";
             else
                 memberStatus = " active_flag=1 ";
-
-            return string.Format(@"SELECT
+            return Format(@"SELECT
             metric_id Services,
             ROUND(paid_amount / 1000, 1) Spend,
             member_count Members,
@@ -215,16 +205,13 @@ namespace Zakipoint.UIAutomation.SqlScripts
             GROUP BY metric_id) AS A
             ORDER BY FIELD(metric_id, 'INPATIENT', 'OFFICEVISIT', 'OUTPATIENT', 'ER')", CommonObject.DefaultClientSuffix, memberStatus);
         }
-
         public string Cost_Matrix(string memberStatus)
-        {
-           
+        {      
             if (memberStatus.ToLower() == "all")
                 memberStatus = " 1=1 ";
             else
                 memberStatus = " active_flag=1 ";
-
-            return string.Format(@"SELECT  a.Cost_Categories,round( (a.spend/(SELECT SUM(p1_total_paid) FROM member_summary_encr_{0} where p1_exists_flag = 1 and group_id='{0}' and{1}))*100 ,0)as 'P_Spend'  ,  round(a.spend/1000,0) as spend ,a.Members from (
+            return Format(@"SELECT  a.Cost_Categories,round( (a.spend/(SELECT SUM(p1_total_paid) FROM member_summary_encr_{0} where p1_exists_flag = 1 and group_id='{0}' and{1}))*100 ,0)as 'P_Spend'  ,  round(a.spend/1000,0) as spend ,a.Members from (
            SELECT SUM(p1_total_paid) spend  , 'No Cost'  AS Cost_Categories, count(1) AS Members FROM member_summary_encr_{0}  WHERE p1_total_paid=0  and p1_exists_flag = 1 and group_id='{0}'and{1}
            UNION ALL 
            SELECT sum(p1_total_paid) AS spend , 'Less than $500' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 0 and p1_total_paid <= 500  and p1_exists_flag = 1 and group_id='{0}'and{1}
@@ -241,13 +228,11 @@ namespace Zakipoint.UIAutomation.SqlScripts
            UNION ALL
            SELECT SUM(p1_total_paid) AS spend, 'More than $200k' AS Cost_Categories, COUNT(1) AS Members  FROM member_summary_encr_{0}  WHERE p1_total_paid > 200000  and p1_exists_flag = 1 and group_id='{0}' and{1}) AS A ", CommonObject.DefaultClientSuffix,memberStatus);
         }
-
         public string Prospective_Population_Risk_Stratification(string memberStatus)
         {
-         
             if (memberStatus.ToLower() == "all")
             {
-              return string.Format(@"SELECT
+              return Format(@"SELECT
             RiskType 'Risk_Type',
             ROUND(Spend / 1000, 1) Spend,
             ROUND((Spend / Total_spend) * 100, 1) 'Percentages_Spend',
@@ -281,7 +266,7 @@ namespace Zakipoint.UIAutomation.SqlScripts
             }
             else
             {
-             return string.Format(@"SELECT
+             return Format(@"SELECT
             RiskType 'Risk_Type',
             ROUND(Spend / 1000, 1) Spend,
             ROUND((Spend / Total_spend) * 100, 1) 'Percentages_Spend',
@@ -314,6 +299,5 @@ namespace Zakipoint.UIAutomation.SqlScripts
             ORDER BY FIELD(RiskType, 'High', 'Medium', 'Normal', 'Low') ", CommonObject.DefaultClientSuffix);
             }
         }
-
     }
 }

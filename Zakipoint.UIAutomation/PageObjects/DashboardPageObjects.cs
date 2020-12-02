@@ -46,6 +46,7 @@
         #endregion
 
         #region XPath
+
         public string NavBarLinksByTextXPath = "//span[text()='{0}']";
         public string ChangeLinkByLabelXPath = "//div[text()='{0}: ']/span[text()='Change']";
         public string MemberRadioButtonByTextXPath = "//label[text()='{0}']/../input";
@@ -58,10 +59,9 @@
         public string ClientBoxLabelTextByXPath = "//div[@class='media-body']/h5";
         public string PMPMByLabelXPath = "//div[@id='pills-pmpm']//span[text()='{0}']/../p"; // Medical  || Pharmacy
         public string SpendByLabelXPath = "//div[@id='pills-paid']//span[text()='{0}']/../p"; // Medical  || Pharmacy
+        
         #endregion
 
         #endregion
     }
-
 }
-

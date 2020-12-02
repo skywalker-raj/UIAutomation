@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
-
 namespace Zakipoint.Framework.Driver
 {
     /// <summary>
@@ -8,6 +7,8 @@ namespace Zakipoint.Framework.Driver
     /// </summary>
     public class BrowserOptions : IBrowserOptions
     {
+        #region Private Properties
+
         private const string ApplicationUrlKey = "ApplicationUrl";
         private const string BrowserKey = "TestBrowser";
         private const string PageTimeoutKey = "PageTimeout";
@@ -15,12 +16,15 @@ namespace Zakipoint.Framework.Driver
         private const string BrowserArgumentsKey = "BrowserArguments";
         private const string ElementTimeoutKey = "ElementTimeout";
         private const string SleepIntervalKey = "SleepInterval";
-
         private const int DefaultElementTimeout = 2000;
         private const int DefaultSleepInterval = 2000;
         private const double DefaultPageTimeout = 60D;
         private const double DefaultAjaxTimeout = 30D;
         private static readonly char[] Separator = new[] { ' ' };
+
+        #endregion
+
+        #region Public Properties
 
         public virtual string ApplicationUrl { get; private set; }
         public virtual string Browser { get; private set; }
@@ -29,7 +33,6 @@ namespace Zakipoint.Framework.Driver
         public virtual int ElementLoadTimeout { get; private set; }
         public virtual int SleepInterval { get; private set; }
         public virtual string[] BrowserArguments { get; private set; }
-
         /// <summary>
         /// Creates an options related to browser.
         /// </summary>
@@ -49,5 +52,7 @@ namespace Zakipoint.Framework.Driver
             options.SleepInterval = envVars.ContainsKey(SleepIntervalKey) ? (int.TryParse(envVars[SleepIntervalKey], out tmp1) ? tmp1 : DefaultSleepInterval) : DefaultSleepInterval;
             return options;
         }
+
+        #endregion
     }
 }
