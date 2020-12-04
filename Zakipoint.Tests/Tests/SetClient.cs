@@ -57,7 +57,7 @@ namespace Zakipoint.Tests.Tests
             var clientListFromDb = JsonDataReader.Data["clientList"].Split(";");
             var clientList = new List<string>();
             Assert.True(Browser.IsElementPresent(How.XPath, Format(_setClientPage.LabelByTextXPath, "Select Client To View") ));
-            Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.UserManagementLinkCssSelector));
+            //Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.UserManagementLinkCssSelector));
             Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.GoButtonCssSelector));
             if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
             {
