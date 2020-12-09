@@ -83,9 +83,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
 
@@ -115,9 +115,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
 
@@ -147,9 +147,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(4), Category("SmokeTest")]
@@ -178,9 +178,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(5),Category("SmokeTest")]
@@ -209,9 +209,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(6), Category("SmokeTest")]
@@ -240,9 +240,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(7), Category("SmokeTest")]
@@ -271,9 +271,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(8), Category("SmokeTest")]
@@ -302,9 +302,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(9), Category("SmokeTest")]
@@ -333,9 +333,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(10), Category("SmokeTest")]
@@ -364,9 +364,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test,Order(11), Category("SmokeTest")]
@@ -395,9 +395,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(12), Category("SmokeTest")]
@@ -426,9 +426,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(13), Category("SmokeTest")]
@@ -457,9 +457,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(14), Category("SmokeTest")]
@@ -488,9 +488,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(15), Category("SmokeTest")]
@@ -519,9 +519,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(16), Category("SmokeTest")]
@@ -550,9 +550,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(17), Category("SmokeTest")]
@@ -581,9 +581,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test,Order(18), Category("SmokeTest")]
@@ -612,9 +612,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }       
         [Test,Order(19), Category("SmokeTest")]
@@ -643,9 +643,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(20), Category("SmokeTest")]
@@ -674,9 +674,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(21), Category("SmokeTest")]
@@ -705,9 +705,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(22), Category("SmokeTest")]
@@ -736,9 +736,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test,Order(23), Category("SmokeTest")]
@@ -767,9 +767,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test,Order(24), Category("SmokeTest")]
@@ -798,9 +798,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(25), Category("SmokeTest")]
@@ -829,9 +829,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(26), Category("SmokeTest")]
@@ -860,9 +860,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test,Order(27), Category("SmokeTest")]
@@ -891,9 +891,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(28), Category("SmokeTest")]
@@ -922,9 +922,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(29), Category("SmokeTest")]
@@ -953,9 +953,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(30) ,Category("SmokeTest")]
@@ -984,9 +984,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(31), Category("SmokeTest")]
@@ -1015,9 +1015,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }       
         [Test, Order(32), Category("SmokeTest")]
@@ -1046,9 +1046,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(33), Category("SmokeTest")]
@@ -1077,9 +1077,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(34), Category("SmokeTest")]
@@ -1108,9 +1108,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test, Order(35), Category("SmokeTest")]
@@ -1139,9 +1139,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+                //_commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+                //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         [Test,Order(36), Category("SmokeTest")]
@@ -1170,9 +1170,9 @@ namespace Zakipoint.Tests.Tests
             }
             finally
             {
-                _commonFunction.Logout();
-                Browser.Open(JsonDataReader.Data["url"]);
-                _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
+               // _commonFunction.Logout();
+                Browser.Open(JsonDataReader.Data["setClientUrl"]);
+               // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
         #endregion
