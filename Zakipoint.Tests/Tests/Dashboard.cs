@@ -80,6 +80,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Dashboard_Verification_Shot");
                 Console.Out.WriteLine(e);
+                Assert.IsTrue(false);
             }
         }
         [Test,Order(11), Category("Top Condition By Total Spend")]
@@ -117,6 +118,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected:"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Condition_By_Total_Spend", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test, Order(15), Category("Top Condition By Total Spend")]
@@ -154,6 +156,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Condition_By_Total_Spend_Active", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test,Order(10), Category("%PMPM change Form Last year(Medical,pharmacy) for active member")]
@@ -182,6 +185,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM_Change_Percentages", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test,Order(5), Category("%PMPM Change Form Last year(Medical,pharmacy)")]
@@ -210,6 +214,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM_Change_Percenatges", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test,Order(9), Category("Active PMPM")]
@@ -238,6 +243,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_PMPM", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test,Order(4), Category("PMPM")]
@@ -266,6 +272,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "PMPM", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test,Order(8), Category("Active Medical Pharmacy Spend Change Percentages")]
@@ -297,6 +304,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Medical_Pharmacy_Spend_Change_Percentages", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test, Order(3), Category("Spend change percentages")]
@@ -326,6 +334,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Medical_Pharmacy_Spend_Change_Percentage", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test, Order(7), Category("Total Active Spend , Total Active Medical Spend and Total Active Pharmacy Spend")]
@@ -361,6 +370,7 @@ namespace Zakipoint.Tests.Tests
                 if (!e.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Active_Medical_Pharmacy_Spend", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(e);
+                Assert.IsTrue(false);
             }
         }
         [Test, Order(2), Category("Total Spend , Medical Spend,Pharmacy Spend")]
@@ -396,6 +406,7 @@ namespace Zakipoint.Tests.Tests
                 if (!e.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Medical_Pharmacy_Spend", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(e);
+                Assert.IsTrue(false);
             }
         }
         [Test, Order(1), Category("Total Member and Total Employee")]
@@ -422,6 +433,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Total_Member_Total_Employee", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test, Order(6), Category("Active Member and Active Employee")]
@@ -448,6 +460,7 @@ namespace Zakipoint.Tests.Tests
                 if (!e.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Active_Member_Active_Employee", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(e);
+                Assert.IsTrue(false);
             }
         }
 
@@ -488,6 +501,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Prospective_Population_Risk_Stratification", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test,Order(16), Category("Prospective_Population_Risk_Stratification")]
@@ -527,6 +541,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Prospective_Population_Risk_Stratification", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
         }
         [Test, Order(13), Category("Top_Service_By_Total_Spend")]
@@ -567,6 +582,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Service_By_Total_Spend", "Exception occured:  Please verify manually");
                 Console.WriteLine(ex.Message);
+                Assert.IsTrue(false);
             }
         }
         [Test,Order(17), Category("Top_Service_By_Total_Spend")]
@@ -609,6 +625,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Top_Service_By_Total_Spend_Active", "Exception occured:  Please verify manually");
                 Console.WriteLine(ex.Message);
+                Assert.IsTrue(false);
             }
 
         }
@@ -646,6 +663,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Cost_Matrix", "Exception occured:  Please verify manually");
                 Console.WriteLine(ex.Message);
+                Assert.IsTrue(false);
             }
         }
         [Test, Order(18),Category("Cost_Matrix")]
@@ -682,6 +700,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Dashboard", "Cost_Matrix_Active", "Exception occured:  Please verify manually");
                 Console.WriteLine(ex.Message);
+                Assert.IsTrue(false);
             }
         }
        
