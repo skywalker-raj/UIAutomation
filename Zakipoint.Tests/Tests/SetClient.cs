@@ -53,24 +53,34 @@ namespace Zakipoint.Tests.Tests
 
         [Test, Category("Set Client Page Verification")]
         public void Verify_SetClient_Page()
-        {           
-            var clientListFromDb = JsonDataReader.Data["clientList"].Split(";");
-            var clientList = new List<string>();
-            Assert.True(Browser.IsElementPresent(How.XPath, Format(_setClientPage.LabelByTextXPath, "Select Client To View") ));
-            //Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.UserManagementLinkCssSelector));
-            Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.GoButtonCssSelector));
-            if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
+        {
+            try
             {
-                //Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector).Click();
-                Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector));
-                Assert.AreEqual(Browser.FindElement(How.CssSelector, _setClientPage.DropDownSelectedCssSelector).Text, "Select One");                
-                var clientListElements = Browser.FindElements(How.XPath, _setClientPage.ClientListXPath);
-                foreach(var client in clientListElements)
+                var clientListFromDb = JsonDataReader.Data["clientList"].Split(";");
+                var clientList = new List<string>();
+                Assert.True(Browser.IsElementPresent(How.XPath, Format(_setClientPage.LabelByTextXPath, "Select Client To View")));
+                //Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.UserManagementLinkCssSelector));
+                Assert.True(Browser.IsElementPresent(How.CssSelector, _setClientPage.GoButtonCssSelector));
+                if (Browser.IsElementPresent(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector))
                 {
-                    clientList.Add(client.Text);
+                    //Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector).Click();
+                    Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector));
+                    Assert.AreEqual(Browser.FindElement(How.CssSelector, _setClientPage.DropDownSelectedCssSelector).Text, "Select One");
+                    var clientListElements = Browser.FindElements(How.XPath, _setClientPage.ClientListXPath);
+                    foreach (var client in clientListElements)
+                    {
+                        clientList.Add(client.Text);
+                    }
+                    Assert.AreEqual(clientListFromDb, clientList);
                 }
-                Assert.AreEqual(clientListFromDb,clientList);
             }
+            catch (Exception e)
+            {
+                Browser.ScreenShot("SetClient_Verification_Shot");
+                Console.Out.WriteLine(e);
+                Assert.IsTrue(false);
+            }
+           
         }
       
         #endregion

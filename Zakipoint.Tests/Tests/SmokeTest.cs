@@ -53,6 +53,7 @@ namespace Zakipoint.Tests.Tests
             _commonFunction.Logout();
         }
 
+        
         #endregion
 
         #region SMOKE TESTS
@@ -80,6 +81,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Arc_Administrators", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -112,6 +114,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Asbury_University", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -144,6 +147,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Beacon_Health_Options", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -175,6 +179,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Benefit_Management_Inc", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -206,6 +211,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Benefit_Management_LLC", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -237,6 +243,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Big_Ass_Fans", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -268,6 +275,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Blackhawk_Mining", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -299,6 +307,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_BML_City_of_Pasco", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -330,6 +339,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_BML_JF_Sobieski_Mechanical", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -361,6 +371,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_BML_New_Mexico_Medical_Insurance", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -392,6 +403,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Cabarrus_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -423,6 +435,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Childers_Oil", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -454,6 +467,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_City_of_Asheboro", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -485,6 +499,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_City_of_Salisbury", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -516,6 +531,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_City_of_Sanford", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -547,6 +563,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Cleveland_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -578,6 +595,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Demo_B_Beta", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -609,6 +627,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_DentaQuest", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -640,6 +659,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Edgecombe_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -671,6 +691,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Halifax_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -702,6 +723,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Harlan_Bakeries", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -733,6 +755,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Haywood_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -764,6 +787,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_KGHM", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -795,6 +819,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Lincoln_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -826,6 +851,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Mitsui_Co", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -857,6 +883,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Mountville_Mills", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -888,6 +915,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_New_Vista", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -919,6 +947,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Price_Chopper_Supermarkets", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -950,6 +979,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Pricechopper_Beta", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -981,6 +1011,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Prince_George_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -1012,6 +1043,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_RJ_Corman", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -1043,6 +1075,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Rowan_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -1074,6 +1107,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Showa_Glove", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -1105,6 +1139,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_University_of_Pikeville", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -1136,6 +1171,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Wayne_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {
@@ -1167,6 +1203,7 @@ namespace Zakipoint.Tests.Tests
                 if (!ex.Message.Contains("Expected"))
                     _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Z5_Demo_B", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
+                Assert.IsTrue(false);
             }
             finally
             {

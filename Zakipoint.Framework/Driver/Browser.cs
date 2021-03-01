@@ -118,7 +118,7 @@ namespace Zakipoint.Framework.Driver
         {
             get { return WebDriver.WindowHandles.ToList(); }
         }
-        public static WebDriverWait WaitForExpectedConditions(int second = 120)
+        public static WebDriverWait WaitForExpectedConditions(int second = 70)
         {
             WebDriverWait wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(second));
             return wait;

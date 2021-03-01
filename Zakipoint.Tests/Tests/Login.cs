@@ -80,6 +80,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Login_Verification_Shot");
                 Console.Out.WriteLine(e);
+                Assert.IsTrue(false);
             }
         }
         #endregion

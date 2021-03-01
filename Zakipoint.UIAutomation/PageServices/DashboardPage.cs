@@ -196,7 +196,14 @@ namespace Zakipoint.UIAutomation.PageServices
         }
         public string GetClientName()
         {
-            return Browser.FindElement(How.CssSelector, _dashboardPage.ClientTitleCssSelector).Text;
+            try
+            {
+                return Browser.FindElement(How.CssSelector, _dashboardPage.ClientTitleCssSelector).Text;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }            
         }
         public string GetDownloadReportName()
         {
