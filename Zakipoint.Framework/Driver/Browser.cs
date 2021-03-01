@@ -859,6 +859,35 @@ namespace Zakipoint.Framework.Driver
             js.ExecuteScript(javascript, element);
            
         }
+
+        //function to set text in div element
+        public static void setAttribute(string startPath,string startDate, string endPath, string endDate)
+        {
+            Thread.Sleep(3000);
+            IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
+            string startDatePicker = "document.querySelector( '" + startPath + "').innerHTML = '" + startDate+ "'";
+            string endDatePicker = "document.querySelector( '" + endPath + "').innerHTML = '" + endDate + "'";
+            // js.ExecuteScript("document.querySelector('#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel > div.ui-rangeSlider-label-value').innerHTML = '2020-10'");
+            js.ExecuteScript(startDatePicker);
+            js.ExecuteScript(endDatePicker);
+        }
+
+
+        public static void setDateRange(int value)
+        {
+            /* IWebElement slider = WebDriver.FindElement(By.CssSelector("#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel"));
+             Actions act = new Actions(WebDriver);
+            act.DragAndDropToOffset(slider, 20, 0).Release().Build().Perform();*/
+            IWebElement Slider = WebDriver.FindElement(By.CssSelector("#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel"));
+Actions SliderAction = new Actions(WebDriver);
+            SliderAction.ClickAndHold(Slider)
+                .MoveByOffset((-(int)Slider.Size.Width / 2), 0)
+                .MoveByOffset(1, 0).Release().Perform();
+
+        }
+
+      
+
         #endregion
 
         #region Internal methods
