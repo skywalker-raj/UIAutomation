@@ -878,10 +878,14 @@ namespace Zakipoint.Framework.Driver
             /* IWebElement slider = WebDriver.FindElement(By.CssSelector("#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel"));
              Actions act = new Actions(WebDriver);
             act.DragAndDropToOffset(slider, 20, 0).Release().Build().Perform();*/
-            IWebElement Slider = WebDriver.FindElement(By.CssSelector("#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel"));
-Actions SliderAction = new Actions(WebDriver);
-            SliderAction.ClickAndHold(Slider)
-                .MoveByOffset((-(int)Slider.Size.Width / 2), 0)
+            IWebElement LeftSlider = WebDriver.FindElement(By.CssSelector("div.ui-rangeSlider-leftHandle"));
+            IWebElement RightSlider = WebDriver.FindElement(By.CssSelector("div.ui-rangeSlider-rightHandle"));
+            Actions SliderAction = new Actions(WebDriver);
+            SliderAction.ClickAndHold(LeftSlider)
+                .MoveByOffset((-(int)LeftSlider.Size.Width / 2), 0)
+                .MoveByOffset(1, 0).Release().Perform();
+            SliderAction.ClickAndHold(RightSlider)
+                .MoveByOffset((-(int)RightSlider.Size.Width / 2), 0)
                 .MoveByOffset(1, 0).Release().Perform();
 
         }
