@@ -875,15 +875,15 @@ namespace Zakipoint.Framework.Driver
 
         public static void setDateRange(int value)
         {
-            /* IWebElement slider = WebDriver.FindElement(By.CssSelector("#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel"));
+            /*IWebElement slider = WebDriver.FindElement(By.CssSelector("#analysis_date_slider > div.ui-rangeSlider-container > div.ui-rangeSlider-handle.ui-rangeSlider-leftHandle"));
              Actions act = new Actions(WebDriver);
-            act.DragAndDropToOffset(slider, 20, 0).Release().Build().Perform();*/
-            IWebElement Slider = WebDriver.FindElement(By.CssSelector("#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel"));
+            act.DragAndDropToOffset(slider, 1, 0).Release().Build().Perform();*/
+
+            IWebElement Slider = WebDriver.FindElement(By.CssSelector("#analysis_date_slider > div.ui-rangeSlider-container > div.ui-rangeSlider-handle.ui-rangeSlider-leftHandle"));
 Actions SliderAction = new Actions(WebDriver);
             SliderAction.ClickAndHold(Slider)
                 .MoveByOffset((-(int)Slider.Size.Width / 2), 0)
-                .MoveByOffset(1, 0).Release().Perform();
-
+                .MoveByOffset(1, 0).Release().Perform();       
         }
 
       
