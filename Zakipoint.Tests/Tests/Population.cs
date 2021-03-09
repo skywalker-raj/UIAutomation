@@ -1,8 +1,10 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Zakipoint.Framework.Common;
 using Zakipoint.Framework.Driver;
 using Zakipoint.Tests.Base;
@@ -25,6 +27,7 @@ namespace Zakipoint.Tests.Tests
     private readonly SaveToCSV _saveToCsv;
     private readonly PopulationPage _populationService;
         private readonly populationPageObjects _populationpageObj;
+        private readonly DashboardPage _dashboard;
 
         public Population()
     {
@@ -36,7 +39,8 @@ namespace Zakipoint.Tests.Tests
         _saveToCsv = new SaveToCSV();
          _populationService = new PopulationPage();
            _populationpageObj = new populationPageObjects();
-    }
+            _dashboard = new DashboardPage();
+        }
     public override void Init()
     {
         Browser.Open(Browser.Config["url"]);
@@ -44,54 +48,53 @@ namespace Zakipoint.Tests.Tests
         
             _setClient.SelectClient(JsonDataReader.Data["DefaultClient"]);
         CommonObject.DefaultClientSuffix = JsonDataReader.Data["DefaultClientSuffix"];
-       /* _dashboard.DashboardPageLoad(); // assumed page load function is common for all pages*/
-    }
+            _populationService.goToCustomDateRangeSetter();
+            Thread.Sleep(3000);
+            _populationService.GotoPopulationSection();
+          //  Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='z5popmlc001']")));
+            Thread.Sleep(3000);
+        }
     public override void Dispose()
     {
         _commonFunction.Logout();
         //Browser.Dispose();        
     }
-        public string getCustomStartDate()
+       /* public string getCustomStartDate()
         {
             return JsonDataReader.Data["startDate"];
         }
         public string getCustomEndDate()
         {
             return JsonDataReader.Data["endDate"];
-        }
+        }*/
 
-        [Test, Order(20), Category("Age Tile Details")]
-        public void AgeTileDetails()
+        [Test, Order(1), Category("Demographics-Age Tile Details-Members-All")]
+        public void Demographics_Age_Members_All()
         {
             try
             {
-                //  var Expected_Result = _populationService.Expected_Population_Age(getCustomStartDate(), getCustomEndDate());
-                //  Console.WriteLine("Details of Age from database:" + CommonMethods.ObjectToXml(Expected_Result));
-                 //  _populationService.goToCustomDateRangeSetter(getCustomStartDate(),getCustomEndDate());
-                       
-                Browser.setDateRange(10);
-                _populationService.Goto_Demographic_section();
+                _populationService.goToDemographicsSection();
+                Thread.Sleep(3000);
+             //   Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='z5popmlc001']")));
                 var Actual_Result = _populationService.Map_AgeTile(_populationService.Age_Tile());
+                var Expected_Result = _populationService.Expected_Population_Age(_dashboard.StartDate(), _dashboard.EndDate());
                 
-                
-                // var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _populationpageObj.ageSvgBoxcssSelector, How.CssSelector, _populationpageObj.TopConditionDetailsByRowCssSelector);
-              //  var Actual_Result = _populationService.Map_Object(tableDetails);
                 Console.WriteLine("Age details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-               /* for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength; i++)
                 {
                     _saveToCsv.SaveTestCase(Expected_Result[i].age, Actual_Result[i].age, "Population", "Age", "Expected value should be equal to actual value");
-                  //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
                     _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                   // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
                     _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
-                }*/
-               /* for (int i = 0; i < objectLength; i++)
+                }
+                for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i+1].age);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
-                }*/
+                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i].age);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                }
             }
             catch (Exception ex)
             {
@@ -102,17 +105,19 @@ namespace Zakipoint.Tests.Tests
             }
         }
 
-        [Test, Order(21), Category("Age Tile Details-PMPM")]
-        public void AgeTilePmpmDetails()
+        [Test, Order(6), Category("Demographics-Age Tile Details-Members-PMPM")]
+        public void Demographics_Age_Pmpm_All()
         {
             try
             {
-                var Expected_Result = _populationService.Expected_Population_Age_Pmpm();
-                Console.WriteLine("Details of Age from database:" + CommonMethods.ObjectToXml(Expected_Result));
-                
+                _populationService.goToDemographicsSection();
                 _populationService.Goto_Pmpm_section();
+                Thread.Sleep(3000);
                 var Actual_Result = _populationService.Map_AgeTile_Pmpm(_populationService.Age_Tile_Pmpm());
+                var Expected_Result = _populationService.Expected_Population_Age_Pmpm(_dashboard.StartDate(), _dashboard.EndDate());
 
+                Console.WriteLine("Age details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
+                Console.WriteLine("Details of Age from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 Console.WriteLine("Age details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength; i++)
@@ -126,10 +131,10 @@ namespace Zakipoint.Tests.Tests
                 }
                 for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i + 1].age);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i + 1].pmpm);
+                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i].age);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
                 }
             }
             catch (Exception ex)
@@ -142,19 +147,16 @@ namespace Zakipoint.Tests.Tests
         }
 
         // gender Tile 
-        [Test, Order(22), Category("Gender Tile Details")]
+        [Test, Order(2), Category("Demographics-Gender Tile Details-Members-All")]
         public void GenderTileDetails()
         {
             try
             {
-                var Expected_Result = _populationService.Expected_Population_Gender();
-                Console.WriteLine("Details of Gender from database:" + CommonMethods.ObjectToXml(Expected_Result));
-                //  _dashboard.ChooseAllMember();
-                _populationService.Goto_Demographic_section();
+                _populationService.goToDemographicsSection();
                 var Actual_Result = _populationService.Map_GenderTile(_populationService.Gender_Tile());
+                var Expected_Result = _populationService.Expected_Population_Gender(_dashboard.StartDate(), _dashboard.EndDate());
+                Console.WriteLine("Details of Gender from database:" + CommonMethods.ObjectToXml(Expected_Result));
 
-                // var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _populationpageObj.ageSvgBoxcssSelector, How.CssSelector, _populationpageObj.TopConditionDetailsByRowCssSelector);
-                //  var Actual_Result = _populationService.Map_Object(tableDetails);
                 Console.WriteLine("Gender details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength; i++)
@@ -167,9 +169,9 @@ namespace Zakipoint.Tests.Tests
                 }
                 for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].gender == Actual_Result[i + 1].gender);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
+                    Assert.IsTrue(Expected_Result[i].gender == Actual_Result[i].gender);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
                 }
             }
             catch (Exception ex)
@@ -181,12 +183,13 @@ namespace Zakipoint.Tests.Tests
             }
         }
         //gender tile pmpm
-        [Test, Order(23), Category("Gender Tile Details-PMPM")]
-        public void GenderTilePmpmDetails()
+        [Test, Order(7), Category("Demographics-Gender Tile Details-Members-PMPM")]
+        public void Demographics_Gender_Pmpm_All()
         {
             try
             {
-                var Expected_Result = _populationService.Expected_Population_Gender_Pmpm();
+                _populationService.goToDemographicsSection();
+                var Expected_Result = _populationService.Expected_Population_Gender_Pmpm(_dashboard.StartDate(), _dashboard.EndDate());
                 Console.WriteLine("Details of Gender-pmpm from database:" + CommonMethods.ObjectToXml(Expected_Result));
 
                 _populationService.Goto_Pmpm_section();
@@ -196,41 +199,45 @@ namespace Zakipoint.Tests.Tests
                 var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].gender, Actual_Result[i].gender, "Population", "Age", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].gender, Actual_Result[i].gender, "Population", "Gender-PMPM", "Expected value should be equal to actual value");
                     //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend-PMPM", "Expected value should be equal to actual value");
                     // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members-PMPM", "Expected value should be equal to actual value");
                     _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
                 }
                 for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].gender == Actual_Result[i + 1].gender);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i + 1].pmpm);
+                    Assert.IsTrue(Expected_Result[i].gender == Actual_Result[i].gender);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
                 }
             }
             catch (Exception ex)
             {
                 Browser.ScreenShot("Gender Details");
                 if (!ex.Message.Contains("Expected:"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "Population", "Gender", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "Population", "Gender-PMPM", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
 
         //relationship members
-        [Test, Order(20), Category("Relation Tile Details")]
-        public void RelationTileDetails()
+        [Test, Order(3), Category("Demographics-Relation Tile Details-Members-All")]
+        public void Demographics_Relation_Members_All()
         {
             try
             {
-                var Expected_Result = _populationService.Expected_Population_Relation();
+                _populationService.goToDemographicsSection();
+                var Actual_Result = _populationService.Map_RelationTile(_populationService.Relation_Tile());
+                var Expected_Result = _populationService.Expected_Population_Relation(_dashboard.StartDate(), _dashboard.EndDate());
+                Console.WriteLine("Details of Gender from database:" + CommonMethods.ObjectToXml(Expected_Result));
+
                 Console.WriteLine("Details of Relation from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 /*  _dashboard.ChooseAllMember();*/
-                _populationService.Goto_Demographic_section();
-                var Actual_Result = _populationService.Map_RelationTile(_populationService.Relation_Tile());
+                /*_populationService.Goto_Demographic_section();*/
+              
 
 
                 // var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _populationpageObj.ageSvgBoxcssSelector, How.CssSelector, _populationpageObj.TopConditionDetailsByRowCssSelector);
@@ -239,7 +246,7 @@ namespace Zakipoint.Tests.Tests
                 var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].relation, Actual_Result[i].relation, "Population", "Age", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].relation, Actual_Result[i].relation, "Population", "Relation", "Expected value should be equal to actual value");
                     //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
                     _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
                     // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
@@ -247,9 +254,9 @@ namespace Zakipoint.Tests.Tests
                 }
                 for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].relation == Actual_Result[i + 1].relation);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
+                    Assert.IsTrue(Expected_Result[i].relation == Actual_Result[i].relation);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i ].members);
                 }
             }
             catch (Exception ex)
@@ -263,12 +270,13 @@ namespace Zakipoint.Tests.Tests
 
         //relationship pmpm
 
-        [Test, Order(24), Category("Relation Tile Details-PMPM")]
-        public void RelationTilePmpmDetails()
+        [Test, Order(8), Category("Demographics-Relation Tile Details-Members-PmPm")]
+        public void Demographics_Relation_Pmpm_All()
         {
             try
             {
-                var Expected_Result = _populationService.Expected_Population_Relation_Pmpm();
+                _populationService.goToDemographicsSection();
+                var Expected_Result = _populationService.Expected_Population_Relation_Pmpm(_dashboard.StartDate(), _dashboard.EndDate());
                 Console.WriteLine("Details of Relation-pmpm from database:" + CommonMethods.ObjectToXml(Expected_Result));
 
                 _populationService.Goto_Pmpm_section();
@@ -287,36 +295,34 @@ namespace Zakipoint.Tests.Tests
                 }
                 for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].relation == Actual_Result[i + 1].relation);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i + 1].pmpm);
+                    Assert.IsTrue(Expected_Result[i].relation == Actual_Result[i].relation);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
                 }
             }
             catch (Exception ex)
             {
                 Browser.ScreenShot("Age Details");
                 if (!ex.Message.Contains("Expected:"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "Population", "Age", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "Population", "Relationship-Pmpm", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
             }
         }
 
         //plan members
-        [Test, Order(25), Category("Plan Tile Details")]
-        public void PlanTileDetails()
+        [Test, Order(4), Category("Demographics-Plan Tile Details-Members-All")]
+        public void Demographics_Plan_Members_All()
         {
             try
             {
-                var Expected_Result = _populationService.Expected_Population_Plan();
-                Console.WriteLine("Details of Plan from database:" + CommonMethods.ObjectToXml(Expected_Result));
-                /*  _dashboard.ChooseAllMember();*/
-                _populationService.Goto_Demographic_section();
+                _populationService.goToDemographicsSection();
+                Thread.Sleep(3000);
                 var Actual_Result = _populationService.Map_PlanTile(_populationService.Plan_Tile());
+                var Expected_Result = _populationService.Expected_Population_Plan(_dashboard.StartDate(), _dashboard.EndDate());
+                Console.WriteLine("Details of Gender from database:" + CommonMethods.ObjectToXml(Expected_Result));
 
-
-                // var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _populationpageObj.ageSvgBoxcssSelector, How.CssSelector, _populationpageObj.TopConditionDetailsByRowCssSelector);
-                //  var Actual_Result = _populationService.Map_Object(tableDetails);
+               /* Console.WriteLine("Plan details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));*/
                 Console.WriteLine("Plan details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength; i++)
@@ -329,9 +335,9 @@ namespace Zakipoint.Tests.Tests
                 }
                 for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].plan == Actual_Result[i + 1].plan);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
+                    Assert.IsTrue(Expected_Result[i].plan == Actual_Result[i].plan);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
                 }
             }
             catch (Exception ex)
@@ -344,12 +350,13 @@ namespace Zakipoint.Tests.Tests
         }
 
         //plan pmpm
-        [Test, Order(24), Category("Plan Tile Details-PMPM")]
-        public void PlanTilePmpmDetails()
+        [Test, Order(9), Category("Demographics-Plan Tile Details-Members-Pmpm")]
+        public void Demographics_Plan_Pmpm_All()
         {
             try
             {
-                var Expected_Result = _populationService.Expected_Population_Plan_Pmpm();
+                _populationService.goToDemographicsSection();
+                var Expected_Result = _populationService.Expected_Population_Plan_Pmpm(_dashboard.StartDate(), _dashboard.EndDate());
                 Console.WriteLine("Details of Plan-pmpm from database:" + CommonMethods.ObjectToXml(Expected_Result));
 
                 _populationService.Goto_Pmpm_section();
@@ -359,7 +366,7 @@ namespace Zakipoint.Tests.Tests
                 var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].plan, Actual_Result[i].plan, "Population", "Plan", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].plan, Actual_Result[i].plan, "Population", "Plan-Pmpm", "Expected value should be equal to actual value");
                     //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
                     _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
                     // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
@@ -368,10 +375,10 @@ namespace Zakipoint.Tests.Tests
                 }
                 for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].plan == Actual_Result[i + 1].plan);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i + 1].pmpm);
+                    Assert.IsTrue(Expected_Result[i].plan == Actual_Result[i].plan);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
                 }
             }
             catch (Exception ex)
@@ -384,37 +391,31 @@ namespace Zakipoint.Tests.Tests
         }
 
         //div members
-        [Test, Order(25), Category("Division Tile Details")]
-        public void divTileDetails()
+        [Test, Order(5), Category("Demographics-Plan Tile Details-Members-All")]
+        public void Demographics_Division_Members_All()
         {
             try
             {
-              //  var Expected_Result = _populationService.Expected_Population_Age();
-             //   Console.WriteLine("Details of Age from database:" + CommonMethods.ObjectToXml(Expected_Result));
-                /*  _dashboard.ChooseAllMember();*/
-                _populationService.Goto_Demographic_section();
-                Browser.FindElement(How.XPath, _populationpageObj.divisionViewAllBtnCssSelector).Click();
+                _populationService.goToDemographicsSection();
                 var Actual_Result = _populationService.Map_DivisionTile(_populationService.division_Tile());
-
-
-                // var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _populationpageObj.ageSvgBoxcssSelector, How.CssSelector, _populationpageObj.TopConditionDetailsByRowCssSelector);
-                //  var Actual_Result = _populationService.Map_Object(tableDetails);
-                Console.WriteLine("Age details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
+                var Expected_Result = _populationService.Expected_Population_Division(_dashboard.StartDate(), _dashboard.EndDate());
+                Console.WriteLine("Details of Division from database:" + CommonMethods.ObjectToXml(Expected_Result));
+                Console.WriteLine("DIvision details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-              /*  for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].age, Actual_Result[i].age, "Population", "Age", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].division, Actual_Result[i].division, "Population", "division", "Expected value should be equal to actual value");
                     //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
                     _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
                     // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
                     _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
-                }*/
-               /* for (int i = 0; i < objectLength; i++)
+                }
+                for (int i = 0; i < objectLength; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i + 1].age);
+                    Assert.IsTrue(Expected_Result[i].division == Actual_Result[i + 1].division);
                     Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
                     Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
-                }*/
+                }
             }
             catch (Exception ex)
             {

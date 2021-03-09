@@ -873,25 +873,27 @@ namespace Zakipoint.Framework.Driver
         }
 
 
-        public static void setDateRange(int value)
+        public static void setMinRange(int value)
         {
-          
-
-         
+            Thread.Sleep(3000);
             IWebElement LeftSlider = WebDriver.FindElement(By.CssSelector("div.ui-rangeSlider-leftHandle"));
-            IWebElement RightSlider = WebDriver.FindElement(By.CssSelector("div.ui-rangeSlider-rightHandle"));
+
             Actions SliderAction = new Actions(WebDriver);
             SliderAction.ClickAndHold(LeftSlider)
-                .MoveByOffset((-(int)LeftSlider.Size.Width / 2), 0)
-                .MoveByOffset(1, 0).Release().Perform();
+                           .MoveByOffset((-(int)LeftSlider.Size.Width / 2), 0)
+                           .MoveByOffset(20, 0).Release().Perform();
+        }
+
+        public static void setMaxRange(int value)
+        {
+            Thread.Sleep(2000);
+            IWebElement RightSlider = WebDriver.FindElement(By.CssSelector("div.ui-rangeSlider-rightHandle"));
+            Actions SliderAction = new Actions(WebDriver);
             SliderAction.ClickAndHold(RightSlider)
                 .MoveByOffset((-(int)RightSlider.Size.Width / 2), 0)
                 .MoveByOffset(1, 0).Release().Perform();
-
-
         }
 
-      
 
         #endregion
 

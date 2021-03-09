@@ -35,9 +35,29 @@ namespace Zakipoint.UIAutomation.PageObjects
         public string genderSvgBoxcssSelector = "#z5popmlc005> g.table.row-group.dynamic-table>g";
         public string genderSvgBoxDetailsByRowCssSelector = "#z5popmlc005 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
 
-        public string relationTileCssSelector = "#z5popmlc005";
-        public string relationSvgBoxcssSelector = "#z5popmlc005> g.table.row-group.dynamic-table>g";
-        public string relationSvgBoxDetailsByRowCssSelector = "#z5popmlc005 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+        public string genderPmpmButtonCssSelector = "#demographics > div > div > div:nth-child(1) > div.disease-box.age-box > ul > li:nth-child(2) > a";
+        public string genderPmpmSvgBoxCssSelector = "#z5popmlc006 > g.table.row-group.dynamic-table>g";
+        public string genderPmpmSvgBoxDetailsByRowCssSelector = "#z5popmlc006 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+        public string relationTileCssSelector = "#z5popmlc015";
+        public string relationSvgBoxcssSelector = "#z5popmlc015> g.table.row-group.dynamic-table>g";
+        public string relationSvgBoxDetailsByRowCssSelector = "#z5popmlc015 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+        public string relationPmpmTileCssSelector = "#z5popmlc016";
+        public string relationPmpmSvgBoxcssSelector = "#z5popmlc016> g.table.row-group.dynamic-table>g";
+        public string relationPmpmSvgBoxDetailsByRowCssSelector = "#z5popmlc016 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+        public string planTileCssSelector = "#z5popmlc045";
+        public string planSvgBoxcssSelector = "#z5popmlc045> g.table.row-group.dynamic-table>g";
+        public string planSvgBoxDetailsByRowCssSelector = "#z5popmlc045 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+        public string planPmpmTileCssSelector = "#z5popmlc046";
+        public string planPmpmSvgBoxcssSelector = "#z5popmlc046> g.table.row-group.dynamic-table>g";
+        public string planPmpmSvgBoxDetailsByRowCssSelector = "#z5popmlc046 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+        public string divisionTileCssSelector = "#z5popmlc010";
+        public string divisionSvgBoxcssSelector = "#z5popmlc010> g.table.row-group.dynamic-table>g";
+        public string divisionSvgBoxDetailsByRowCssSelector = "#z5popmlc010 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
 
         //xpath
         public string divisionmodalXPath = "//*[@id='z5popmlc010modal-dialog']/div/div/div[1]/table/tbody/tr";

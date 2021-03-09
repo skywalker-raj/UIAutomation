@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using Zakipoint.Framework.Common;
 using Zakipoint.Framework.Database;
 using Zakipoint.Framework.Driver;
@@ -73,7 +74,7 @@ namespace Zakipoint.UIAutomation.PageServices
             }
             return objList;
         }
-        public void Goto_Demographic_section()
+        public void GotoPopulationSection()
         {
             Browser.FindElement(How.CssSelector, _populationPage.QuickLinkCssSelector).Click();
             Console.WriteLine("Click Quick link icon");
@@ -84,6 +85,11 @@ namespace Zakipoint.UIAutomation.PageServices
 
             //Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector(Format(_populationPage.DemographicsButton))));
             Console.WriteLine("conditional wait");
+           
+
+        }
+        public void goToDemographicsSection()
+        {
             var element = Browser.FindElement(How.CssSelector, _populationPage.DemographicsButton);
             //Browser.FindElement(How.CssSelector,_populationPage.DemographicsButton).Click();
             Browser.JavaScriptOnclick(element);
@@ -91,29 +97,32 @@ namespace Zakipoint.UIAutomation.PageServices
 
             //Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_populationPage.DemographicsButton)));
             Console.WriteLine("conditional wait");
-
+            Thread.Sleep(3000);
         }
 
-        public void goToCustomDateRangeSetter(string customStartDate, string customEndDate)
+        public void goToCustomDateRangeSetter()
         {
+            Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("#dropdownMenuButton")));
             Browser.FindElement(How.XPath, _dashboardPage.ApplicationSettinsgByXPath).Click();
             Console.WriteLine("Click setting icon");
-            Console.WriteLine("conditional wait");
             Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
+            Console.WriteLine("conditional wait");
+            Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.ApplySettingXPath)));
+            Thread.Sleep(2000);
             Browser.FindElement(How.XPath, _populationPage.reportingDateRangeStatusChangeXPath).Click();
             Console.WriteLine("Member status: change link text ");
-          //  Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed02"))));
+            Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector(Format(_populationPage.RadioMemberByCssSelector, "analysis04"))));
             Console.WriteLine("conditional wait");
             Browser.FindElement(How.CssSelector, Format(_populationPage.RadioMemberByCssSelector, "analysis04")).Click();
-            Console.WriteLine("Choose radio button All Members ");
-           // Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.ApplySettingXPath)));
+            //  Console.WriteLine("Choose radio button All Members ");
+            Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.ApplySettingXPath)));
             Console.WriteLine("conditional wait");
             //set date range
-            // Browser.setAttribute(_populationPage.leftrangeSliderLabelCssSelector, customStartDate,_populationPage.rightrangeSliderLabelCssSelector, customEndDate);
-            Browser.setDateRange(10);
+            Browser.setMinRange(10);
+            Browser.setMaxRange(10);
             Browser.FindElement(How.XPath, _dashboardPage.ApplySettingXPath).Click();
             Console.WriteLine("Click on Apply Setting button");
-          //  Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ClientBoxLabelTextByXPath + "[contains(text(),'All Employees')]")));
+            //  Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ClientBoxLabelTextByXPath + "[contains(text(),'All Employees')]")));
             Console.WriteLine("conditional wait");
         }
         public List<List<string>> Age_Tile()
@@ -124,10 +133,10 @@ namespace Zakipoint.UIAutomation.PageServices
             return tableData;
         }
 
-        public List<Population_Age_Pmpm> Expected_Population_Age_Pmpm()
+        public List<Population_Age_Pmpm> Expected_Population_Age_Pmpm(string customStartDate, string customEndDate)
         {
             List<Population_Age_Pmpm> objList = new List<Population_Age_Pmpm>();
-            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedAgePmpmDetails());
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedAgePmpmDetails( customStartDate,  customEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Population_Age_Pmpm obj = new Population_Age_Pmpm
@@ -135,7 +144,7 @@ namespace Zakipoint.UIAutomation.PageServices
                     age = dt.Rows[i]["age_band"].ToString(),
                     spend = dt.Rows[i]["p1_total_paid"].ToString().ToUpper(),
                     members = dt.Rows[i]["p1_member_count"].ToString(),
-                    pmpm = dt.Rows[i]["p1_mm"].ToString()
+                    pmpm = dt.Rows[i]["pm"].ToString()
                 };
                 objList.Add(obj);
             }
@@ -143,10 +152,11 @@ namespace Zakipoint.UIAutomation.PageServices
         }
         public void Goto_Pmpm_section()
         {
-            Goto_Demographic_section();
+            //Goto_Demographic_section();
             var element = Browser.FindElement(How.CssSelector, _populationPage.agePmpmButtonCssSelector);
             //Browser.FindElement(How.CssSelector,_populationPage.DemographicsButton).Click();
             Browser.JavaScriptOnclick(element);
+            Thread.Sleep(3000);
 
         }
 
@@ -177,10 +187,10 @@ namespace Zakipoint.UIAutomation.PageServices
 
 
         //gender details
-        public List<populationGender> Expected_Population_Gender()
+        public List<populationGender> Expected_Population_Gender(string customStartDate, string customEndDate)
         {
             List<populationGender> objList = new List<populationGender>();
-            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedGenderDetails());
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedGenderDetails(customStartDate, customEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 populationGender obj = new populationGender
@@ -217,10 +227,10 @@ namespace Zakipoint.UIAutomation.PageServices
             return objList;
         }
 
-        public List<populationGenderPmpm> Expected_Population_Gender_Pmpm()
+        public List<populationGenderPmpm> Expected_Population_Gender_Pmpm(string customStartDate, String CustomEndDate)
         {
             List<populationGenderPmpm> objList = new List<populationGenderPmpm>();
-            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedGenderPmpmDetails());
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedGenderPmpmDetails(customStartDate,  CustomEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 populationGenderPmpm obj = new populationGenderPmpm
@@ -238,7 +248,7 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<List<String>> Gender_Tile_Pmpm()
         {
             // Browser.PageScroll(0, 950); // cordinate 
-            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.agePmpmSvgBoxCssSelector, How.CssSelector, _populationPage.agePmpmSvgBoxDetailsByRowCssSelector);
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.genderPmpmSvgBoxCssSelector, How.CssSelector, _populationPage.genderPmpmSvgBoxDetailsByRowCssSelector);
             //  Browser.PageScroll(0, 0);
             return tableData;
         }
@@ -262,11 +272,11 @@ namespace Zakipoint.UIAutomation.PageServices
         }
 
         //relationship
-        public List<PopulationRelation> Expected_Population_Relation()
+        public List<PopulationRelation> Expected_Population_Relation(string customStartDate, string customEndDate)
         {
             List<PopulationRelation> objList = new List<PopulationRelation>();
             
-            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedRelationDetails());
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedRelationDetails(customStartDate,customEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 PopulationRelation obj = new PopulationRelation
@@ -283,7 +293,7 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<List<string>> Relation_Tile()
         {
             // Browser.PageScroll(0, 950); // cordinate 
-            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.genderSvgBoxcssSelector, How.CssSelector, _populationPage.genderSvgBoxDetailsByRowCssSelector);
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.relationSvgBoxcssSelector, How.CssSelector, _populationPage.relationSvgBoxDetailsByRowCssSelector);
             //  Browser.PageScroll(0, 0);
             return tableData;
         }
@@ -303,10 +313,10 @@ namespace Zakipoint.UIAutomation.PageServices
             return objList;
         }
 
-        public List<PopulationRelationPmpm> Expected_Population_Relation_Pmpm()
+        public List<PopulationRelationPmpm> Expected_Population_Relation_Pmpm(string customStartDate,string customEndDate)
         {
             List<PopulationRelationPmpm> objList = new List<PopulationRelationPmpm>();
-            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedRelationPmpmDetails());
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedRelationPmpmDetails(customStartDate,  customEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 PopulationRelationPmpm obj = new PopulationRelationPmpm
@@ -324,7 +334,7 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<List<String>> Relation_Tile_Pmpm()
         {
             // Browser.PageScroll(0, 950); // cordinate 
-            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.agePmpmSvgBoxCssSelector, How.CssSelector, _populationPage.agePmpmSvgBoxDetailsByRowCssSelector);
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.relationPmpmSvgBoxcssSelector, How.CssSelector, _populationPage.relationPmpmSvgBoxDetailsByRowCssSelector);
             //  Browser.PageScroll(0, 0);
             return tableData;
         }
@@ -348,10 +358,10 @@ namespace Zakipoint.UIAutomation.PageServices
         }
 
         //plan
-        public List<PopulationPlan> Expected_Population_Plan()
+        public List<PopulationPlan> Expected_Population_Plan(string customStartDate,string customEndDate)
         {
             List<PopulationPlan> objList = new List<PopulationPlan>();
-            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedPlanDetails());
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedPlanDetails(customStartDate, customEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 PopulationPlan obj = new PopulationPlan
@@ -368,7 +378,7 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<List<string>> Plan_Tile()
         {
             // Browser.PageScroll(0, 950); // cordinate 
-            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.genderSvgBoxcssSelector, How.CssSelector, _populationPage.genderSvgBoxDetailsByRowCssSelector);
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.planSvgBoxcssSelector, How.CssSelector, _populationPage.planSvgBoxDetailsByRowCssSelector);
             //  Browser.PageScroll(0, 0);
             return tableData;
         }
@@ -388,15 +398,15 @@ namespace Zakipoint.UIAutomation.PageServices
             return objList;
         }
 
-        public List<PopulationPlanPmpm> Expected_Population_Plan_Pmpm()
+        public List<PopulationPlanPmpm> Expected_Population_Plan_Pmpm(string customStartDate, string customEndDate)
         {
             List<PopulationPlanPmpm> objList = new List<PopulationPlanPmpm>();
-            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedPlanPmpmDetails());
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedPlanPmpmDetails(customStartDate,customEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 PopulationPlanPmpm obj = new PopulationPlanPmpm
                 {
-                    plan = dt.Rows[i]["mbr_gender"].ToString(),
+                    plan = dt.Rows[i]["plan_desc"].ToString(),
                     spend = dt.Rows[i]["p1_total_paid"].ToString().ToUpper(),
                     members = dt.Rows[i]["P1_member_count"].ToString(),
                     pmpm = dt.Rows[i]["pm"].ToString()
@@ -409,7 +419,7 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<List<String>> Plan_Tile_Pmpm()
         {
             // Browser.PageScroll(0, 950); // cordinate 
-            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.agePmpmSvgBoxCssSelector, How.CssSelector, _populationPage.agePmpmSvgBoxDetailsByRowCssSelector);
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.planPmpmSvgBoxcssSelector, How.CssSelector, _populationPage.planPmpmSvgBoxDetailsByRowCssSelector);
             //  Browser.PageScroll(0, 0);
             return tableData;
         }
@@ -435,12 +445,12 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<List<string>> division_Tile()
         {
             // Browser.PageScroll(0, 950); // cordinate 
-            var tableData = CommonMethods.GetTableValues(How.XPath, _populationPage.divisionmodalXPath, How.CssSelector, _populationPage.divisionModalDetailsByRowXPath);
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.divisionSvgBoxcssSelector, How.CssSelector, _populationPage.divisionSvgBoxDetailsByRowCssSelector);
             //  Browser.PageScroll(0, 0);
             return tableData;
         }
 
-     
+
             public List<populationDivision> Map_DivisionTile(List<List<string>> tableDetails)
             {
                 List<populationDivision> objList = new List<populationDivision>();
@@ -457,7 +467,26 @@ namespace Zakipoint.UIAutomation.PageServices
                 return objList;
             }
 
-      
+     
+
+
+        public List<populationDivision> Expected_Population_Division(string customStartDate, string customEndDate)
+        {
+            List<populationDivision> objList = new List<populationDivision>();
+
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedDivisionDetails(customStartDate, customEndDate));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                populationDivision obj = new populationDivision
+                {
+                    division = dt.Rows[i]["division_name"].ToString(),
+                    spend = dt.Rows[i]["p1_total_paid"].ToString().ToUpper(),
+                    members = dt.Rows[i]["p1_member_count"].ToString()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
     }
 
 
