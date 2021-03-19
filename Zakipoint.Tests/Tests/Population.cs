@@ -59,15 +59,10 @@ namespace Zakipoint.Tests.Tests
         _commonFunction.Logout();
         //Browser.Dispose();        
     }
-       /* public string getCustomStartDate()
-        {
-            return JsonDataReader.Data["startDate"];
-        }
-        public string getCustomEndDate()
-        {
-            return JsonDataReader.Data["endDate"];
-        }*/
 
+
+
+        #region TestMethods
         [Test, Order(1), Category("Demographics-Age Tile Details-Members-All")]
         public void Demographics_Age_Members_All()
         {
@@ -105,7 +100,7 @@ namespace Zakipoint.Tests.Tests
             }
         }
 
-        [Test, Order(6), Category("Demographics-Age Tile Details-Members-PMPM")]
+        [Test, Order(8), Category("Demographics-Age Tile Details-Members-PMPM")]
         public void Demographics_Age_Pmpm_All()
         {
             try
@@ -183,7 +178,7 @@ namespace Zakipoint.Tests.Tests
             }
         }
         //gender tile pmpm
-        [Test, Order(7), Category("Demographics-Gender Tile Details-Members-PMPM")]
+        [Test, Order(9), Category("Demographics-Gender Tile Details-Members-PMPM")]
         public void Demographics_Gender_Pmpm_All()
         {
             try
@@ -270,7 +265,7 @@ namespace Zakipoint.Tests.Tests
 
         //relationship pmpm
 
-        [Test, Order(8), Category("Demographics-Relation Tile Details-Members-PmPm")]
+        [Test, Order(10), Category("Demographics-Relation Tile Details-Members-PmPm")]
         public void Demographics_Relation_Pmpm_All()
         {
             try
@@ -350,7 +345,7 @@ namespace Zakipoint.Tests.Tests
         }
 
         //plan pmpm
-        [Test, Order(9), Category("Demographics-Plan Tile Details-Members-Pmpm")]
+        [Test, Order(11), Category("Demographics-Plan Tile Details-Members-Pmpm")]
         public void Demographics_Plan_Pmpm_All()
         {
             try
@@ -390,8 +385,91 @@ namespace Zakipoint.Tests.Tests
             }
         }
 
+
+        //plan type
+
+        [Test, Order(5), Category("Demographics-PlanType Tile Details-Members-All")]
+        public void Demographics_PlanType_Members_All()
+        {
+            try
+            {
+                _populationService.goToDemographicsSection();
+                Thread.Sleep(3000);
+                var Actual_Result = _populationService.Map_PlanTypeTile(_populationService.PlanType_Tile());
+                var Expected_Result = _populationService.Expected_Population_PlanType(_dashboard.StartDate(), _dashboard.EndDate());
+                Console.WriteLine("Details of PlanType from database:" + CommonMethods.ObjectToXml(Expected_Result));
+
+                /* Console.WriteLine("Plan details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));*/
+                Console.WriteLine("PlanType details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
+                var objectLength = Actual_Result.Count;
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i].planType, "Population", "PlanType", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                }
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i].planType);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                }
+            }
+            catch (Exception ex)
+            {
+                Browser.ScreenShot("Plan Details");
+                if (!ex.Message.Contains("Expected:"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Population", "PlanType", "Exception occured:  Please verify manually");
+                Console.Out.WriteLine(ex);
+            }
+        }
+
+        //plantypedesc pmpm
+        [Test, Order(12), Category("Demographics-PlanType Tile Details-Members-All")]
+        public void Demographics_PlanType_Pmpm_All()
+        {
+            try
+            {
+                _populationService.goToDemographicsSection();
+                var Expected_Result = _populationService.Expected_Population_PlanType_Pmpm(_dashboard.StartDate(), _dashboard.EndDate());
+                Console.WriteLine("Details of PlanType-pmpm from database:" + CommonMethods.ObjectToXml(Expected_Result));
+
+                _populationService.Goto_Pmpm_section();
+                var Actual_Result = _populationService.Map_PlanTypeTile_Pmpm(_populationService.PlanType_Tile_Pmpm());
+
+                Console.WriteLine("PlanType details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
+                var objectLength = Actual_Result.Count;
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i].planType, "Population", "PlanType-Pmpm", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
+                }
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i].planType);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
+                }
+            }
+            catch (Exception ex)
+            {
+                Browser.ScreenShot("Plan Details");
+                if (!ex.Message.Contains("Expected:"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Population", "Plan", "Exception occured:  Please verify manually");
+                Console.Out.WriteLine(ex);
+            }
+        }
+
+
         //div members
-        [Test, Order(5), Category("Demographics-Plan Tile Details-Members-All")]
+        [Test, Order(6), Category("Demographics-Division Tile Details-Members-All")]
         public void Demographics_Division_Members_All()
         {
             try
@@ -426,6 +504,87 @@ namespace Zakipoint.Tests.Tests
             }
         }
 
+
+        //location members
+
+  
+        [Test, Order(7), Category("Demographics-Division Tile Details-Members-All")]
+        public void Demographics_Location_Members_All()
+        {
+            try
+            {
+                _populationService.goToDemographicsSection();
+                var Actual_Result = _populationService.Map_LocationTile(_populationService.location_Tile());
+                var Expected_Result = _populationService.Expected_Population_Location(_dashboard.StartDate(), _dashboard.EndDate());
+                Console.WriteLine("Details of Location from database:" + CommonMethods.ObjectToXml(Expected_Result));
+                Console.WriteLine("Location details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
+                var objectLength = Actual_Result.Count;
+                for (int i = 0; i < objectLength; i++)
+                {
+                    _saveToCsv.SaveTestCase(Expected_Result[i].mbrState, Actual_Result[i].mbrState, "Population", "Location", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                }
+                for (int i = 0; i < objectLength; i++)
+                {
+                    Assert.IsTrue(Expected_Result[i].mbrState == Actual_Result[i + 1].mbrState);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
+                }
+            }
+            catch (Exception ex)
+            {
+                Browser.ScreenShot("Age Details");
+                if (!ex.Message.Contains("Expected:"))
+                    _saveToCsv.SaveTestCase("Error", "Error", "Population", "Location", "Exception occured:  Please verify manually");
+                Console.Out.WriteLine(ex);
+            }
+        }
+
+
+        /*[Test, Order(4), Category("Demographics-Location Tile Details-Members-All")]
+                public void Demographics_Location_Pmpm_All()
+                {
+                    try
+                    {
+                        _populationService.goToDemographicsSection();
+                        var Expected_Result = _populationService.Expected_Population_Location_Pmpm(_dashboard.StartDate(), _dashboard.EndDate());
+                        Console.WriteLine("Details of PlanType-pmpm from database:" + CommonMethods.ObjectToXml(Expected_Result));
+
+                        _populationService.Goto_Pmpm_section();
+                        var Actual_Result = _populationService.Map_LocationTile_Pmpm(_populationService.location_Tile_Pmpm());
+
+                        Console.WriteLine("PlanType details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
+                        var objectLength = Actual_Result.Count;
+                        for (int i = 0; i < objectLength; i++)
+                        {
+                            _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i].planType, "Population", "PlanType-Pmpm", "Expected value should be equal to actual value");
+                            //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                            _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                            // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                            _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                            _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
+                        }
+                        for (int i = 0; i < objectLength; i++)
+                        {
+                            Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i].planType);
+                            Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
+                            Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                            Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Browser.ScreenShot("Plan Details");
+                        if (!ex.Message.Contains("Expected:"))
+                            _saveToCsv.SaveTestCase("Error", "Error", "Population", "Plan", "Exception occured:  Please verify manually");
+                        Console.Out.WriteLine(ex);
+                    }
+                }*/
+
+        #endregion
 
     }
 
