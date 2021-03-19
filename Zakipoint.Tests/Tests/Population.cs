@@ -63,7 +63,7 @@ namespace Zakipoint.Tests.Tests
 
 
         #region TestMethods
-        [Test, Order(1), Category("Demographics-Age Tile Details-Members-All")]
+        [Test, Order(1), Category("Population")]
         public void Demographics_Age_Members_All()
         {
             try

@@ -487,11 +487,155 @@ namespace Zakipoint.UIAutomation.PageServices
             }
             return objList;
         }
+
+
+        //plantype
+        public List<PopulationPlanType> Expected_Population_PlanType(string customStartDate, string customEndDate)
+        {
+            List<PopulationPlanType> objList = new List<PopulationPlanType>();
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedPlanTypeDetails(customStartDate, customEndDate));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                PopulationPlanType obj = new PopulationPlanType
+                {
+                    planType = dt.Rows[i]["plan_type_desc"].ToString(),
+                    spend = dt.Rows[i]["p1_total_paid"].ToString().ToUpper(),
+                    members = dt.Rows[i]["p1_member_count"].ToString()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+
+        public List<List<string>> PlanType_Tile()
+        {
+            // Browser.PageScroll(0, 950); // cordinate 
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.planTypeSvgBoxcssSelector, How.CssSelector, _populationPage.planTypeSvgBoxDetailsByRowCssSelector);
+            //  Browser.PageScroll(0, 0);
+            return tableData;
+        }
+
+
+        public List<PopulationPlanType> Map_PlanTypeTile(List<List<string>> tableDetails)
+        {
+            List<PopulationPlanType> objList = new List<PopulationPlanType>();
+            foreach (var item in tableDetails)
+            {
+                PopulationPlanType obj = new PopulationPlanType
+                {
+                    planType = item[0].ToString(),
+                    spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
+                    members = item[2].ToString().Replace(",", "").Trim()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+
+        //PLANTYPEPMPM
+
+        public List<PopulationPlanTypePmpm> Expected_Population_PlanType_Pmpm(string customStartDate, string customEndDate)
+        {
+            List<PopulationPlanTypePmpm> objList = new List<PopulationPlanTypePmpm>();
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedPlanTypePmpmDetails(customStartDate, customEndDate));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                PopulationPlanTypePmpm obj = new PopulationPlanTypePmpm
+                {
+                    planType = dt.Rows[i]["plan_type_desc"].ToString(),
+                    spend = dt.Rows[i]["p1_total_paid"].ToString().ToUpper(),
+                    members = dt.Rows[i]["P1_member_count"].ToString(),
+                    pmpm = dt.Rows[i]["pm"].ToString()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+        public List<List<String>> PlanType_Tile_Pmpm()
+        {
+            // Browser.PageScroll(0, 950); // cordinate 
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.planTypePmpmSvgBoxcssSelector, How.CssSelector, _populationPage.planTypePmpmSvgBoxDetailsByRowCssSelector);
+            //  Browser.PageScroll(0, 0);
+            return tableData;
+        }
+        public List<PopulationPlanTypePmpm> Map_PlanTypeTile_Pmpm(List<List<string>> tableDetails)
+        {
+            List<PopulationPlanTypePmpm> objList = new List<PopulationPlanTypePmpm>();
+            foreach (var item in tableDetails)
+            {
+                PopulationPlanTypePmpm obj = new PopulationPlanTypePmpm
+                {
+                    planType = item[0].ToString(),
+                    spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
+                    members = item[2].ToString().Replace(",", "").Trim(),
+                    pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Trim()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+
+
+        //LOCATION
+        public List<populationLocation> Expected_Population_Location(string customStartDate, string customEndDate)
+        {
+            List<populationLocation> objList = new List<populationLocation>();
+            var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedLocationDetails(customStartDate, customEndDate));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                populationLocation obj = new populationLocation
+                {
+                    mbrState = dt.Rows[i]["plan_type_desc"].ToString(),
+                    spend = dt.Rows[i]["p1_total_paid"].ToString().ToUpper(),
+                    members = dt.Rows[i]["p1_member_count"].ToString()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+
+        public List<List<string>> location_Tile()
+        {
+            // Browser.PageScroll(0, 950); // cordinate 
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _populationPage.locationSvgBoxcssSelector, How.CssSelector, _populationPage.locationSvgBoxDetailsByRowCssSelector);
+            //  Browser.PageScroll(0, 0);
+            return tableData;
+        }
+
+
+        public List<populationLocation> Map_LocationTile(List<List<string>> tableDetails)
+        {
+            List<populationLocation> objList = new List<populationLocation>();
+            foreach (var item in tableDetails)
+            {
+                populationLocation obj = new populationLocation
+                {
+                    mbrState = item[0].ToString(),
+                    spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
+                    members = item[2].ToString().Replace(",", "").Trim()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+
+
+
     }
 
 
 
+
+
+
+
+
+
 }
+
+
+
+
        
 
        

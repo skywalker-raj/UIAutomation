@@ -55,6 +55,26 @@ namespace Zakipoint.UIAutomation.PageObjects
         public string planPmpmSvgBoxcssSelector = "#z5popmlc046> g.table.row-group.dynamic-table>g";
         public string planPmpmSvgBoxDetailsByRowCssSelector = "#z5popmlc046 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
 
+        
+
+         public string planTypeTileCssSelector = "#z5popmlc055";
+        public string planTypeSvgBoxcssSelector = "#z5popmlc055> g.table.row-group.dynamic-table>g";
+        public string planTypeSvgBoxDetailsByRowCssSelector = "#z5popmlc055 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+        public string planTypePmpmTileCssSelector = "#z5popmlc056";
+        public string planTypePmpmSvgBoxcssSelector = "#z5popmlc056> g.table.row-group.dynamic-table>g";
+        public string planTypePmpmSvgBoxDetailsByRowCssSelector = "#z5popmlc056 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+        //location
+        public string locationTileCssSelector = "#z5popmlc050";
+        public string locationSvgBoxcssSelector = "#z5popmlc050> g.table.row-group.dynamic-table>g";
+        public string locationSvgBoxDetailsByRowCssSelector = "#z5popmlc050 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+        public string locationPmpmTileCssSelector = "#z5popmlc051";
+        public string locationPmpmSvgBoxcssSelector = "#z5popmlc051> g.table.row-group.dynamic-table>g";
+        public string locationPmpmSvgBoxDetailsByRowCssSelector = "#z5popmlc051 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+
+
         public string divisionTileCssSelector = "#z5popmlc010";
         public string divisionSvgBoxcssSelector = "#z5popmlc010> g.table.row-group.dynamic-table>g";
         public string divisionSvgBoxDetailsByRowCssSelector = "#z5popmlc010 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
