@@ -139,9 +139,9 @@ namespace Zakipoint.Framework.Common
         {
             var tableDetails = new List<List<string>>();
             int rowCount = Browser.FindElements(RowLocator, RowValue).Count;
-            for (int i = 1; i <= rowCount; i++)
+            for (int i = 1; i <= rowCount-1; i++)
             {
-                var rowDetails = GetTableValuesListByRow(rowDetailsLocator, rowDetailsValue, i);
+                var rowDetails = GetTableValuesListByRow(rowDetailsLocator, rowDetailsValue, i+1);
                 tableDetails.Add(rowDetails);
             }
             return tableDetails;
