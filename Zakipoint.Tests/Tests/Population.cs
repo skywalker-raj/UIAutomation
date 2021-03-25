@@ -63,7 +63,7 @@ namespace Zakipoint.Tests.Tests
 
 
         #region TestMethods
-        [Test, Order(1), Category("Population")]
+        [Test, Order(1), Category("Demographics-Age Tile Details-Members-All")]
         public void Demographics_Age_Members_All()
         {
             try
@@ -76,24 +76,25 @@ namespace Zakipoint.Tests.Tests
                 
                 Console.WriteLine("Age details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].age, Actual_Result[i].age, "Population", "Age", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].age, Actual_Result[i+1].age, "Population", "Age", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i].age);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i+1].age);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
                 }
             }
             catch (Exception ex)
             {
                 Browser.ScreenShot("Age Details");
+               
                 if (!ex.Message.Contains("Expected:"))
                     _saveToCsv.SaveTestCase("Error", "Error", "Population", "Age", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
@@ -115,21 +116,21 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Details of Age from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 Console.WriteLine("Age details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].age, Actual_Result[i].age, "Population", "Age", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].age, Actual_Result[i+1].age, "Population", "Age", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i+1].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i].age);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
+                    Assert.IsTrue(Expected_Result[i].age == Actual_Result[i+1].age);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i+1].pmpm);
                 }
             }
             catch (Exception ex)
@@ -154,19 +155,19 @@ namespace Zakipoint.Tests.Tests
 
                 Console.WriteLine("Gender details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].gender, Actual_Result[i].gender, "Population", "Gender", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].gender, Actual_Result[i+1].gender, "Population", "Gender", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].gender == Actual_Result[i].gender);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].gender == Actual_Result[i+1].gender);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
                 }
             }
             catch (Exception ex)
@@ -192,21 +193,21 @@ namespace Zakipoint.Tests.Tests
 
                 Console.WriteLine("Gender details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].gender, Actual_Result[i].gender, "Population", "Gender-PMPM", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend-PMPM", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members-PMPM", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].gender, Actual_Result[i+1].gender, "Population", "Gender-PMPM", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend-PMPM", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members-PMPM", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i+1].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].gender == Actual_Result[i].gender);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
+                    Assert.IsTrue(Expected_Result[i].gender == Actual_Result[i+1].gender);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i+1].pmpm);
                 }
             }
             catch (Exception ex)
@@ -239,19 +240,19 @@ namespace Zakipoint.Tests.Tests
                 //  var Actual_Result = _populationService.Map_Object(tableDetails);
                 Console.WriteLine("Relation details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].relation, Actual_Result[i].relation, "Population", "Relation", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].relation, Actual_Result[i+1].relation, "Population", "Relation", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].relation == Actual_Result[i].relation);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i ].members);
+                    Assert.IsTrue(Expected_Result[i].relation == Actual_Result[i+1].relation);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
                 }
             }
             catch (Exception ex)
@@ -279,21 +280,21 @@ namespace Zakipoint.Tests.Tests
 
                 Console.WriteLine("Relation details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].relation, Actual_Result[i].relation, "Population", "Relation", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].relation, Actual_Result[i+1].relation, "Population", "Relation", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i+1].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].relation == Actual_Result[i].relation);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
+                    Assert.IsTrue(Expected_Result[i].relation == Actual_Result[i+1].relation);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i+1].pmpm);
                 }
             }
             catch (Exception ex)
@@ -320,19 +321,19 @@ namespace Zakipoint.Tests.Tests
                /* Console.WriteLine("Plan details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));*/
                 Console.WriteLine("Plan details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].plan, Actual_Result[i].plan, "Population", "Plan", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].plan, Actual_Result[i+1].plan, "Population", "Plan", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].plan == Actual_Result[i].plan);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].plan == Actual_Result[i+1].plan);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
                 }
             }
             catch (Exception ex)
@@ -359,21 +360,21 @@ namespace Zakipoint.Tests.Tests
 
                 Console.WriteLine("Plan details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].plan, Actual_Result[i].plan, "Population", "Plan-Pmpm", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].plan, Actual_Result[i+1].plan, "Population", "Plan-Pmpm", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i+1].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].plan == Actual_Result[i].plan);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
+                    Assert.IsTrue(Expected_Result[i].plan == Actual_Result[i+1].plan);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i+1].pmpm);
                 }
             }
             catch (Exception ex)
@@ -384,7 +385,6 @@ namespace Zakipoint.Tests.Tests
                 Console.Out.WriteLine(ex);
             }
         }
-
 
         //plan type
 
@@ -402,19 +402,19 @@ namespace Zakipoint.Tests.Tests
                 /* Console.WriteLine("Plan details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));*/
                 Console.WriteLine("PlanType details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i].planType, "Population", "PlanType", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i+1].planType, "Population", "PlanType", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i].planType);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
+                    Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i+1].planType);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
                 }
             }
             catch (Exception ex)
@@ -441,21 +441,21 @@ namespace Zakipoint.Tests.Tests
 
                 Console.WriteLine("PlanType details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i].planType, "Population", "PlanType-Pmpm", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i+1].planType, "Population", "PlanType-Pmpm", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i+1].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i].planType);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
-                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
+                    Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i+1].planType);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
+                    Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i+1].pmpm);
                 }
             }
             catch (Exception ex)
@@ -480,19 +480,19 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Details of Division from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 Console.WriteLine("DIvision details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].division, Actual_Result[i].division, "Population", "division", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].division, Actual_Result[i+1].division, "Population", "division", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    Assert.IsTrue(Expected_Result[i].division == Actual_Result[i + 1].division);
-                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
-                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i + 1].members);
+                    Assert.IsTrue(Expected_Result[i].division == Actual_Result[i+1].division);
+                    Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                    Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
                 }
             }
             catch (Exception ex)
@@ -519,15 +519,15 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Details of Location from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 Console.WriteLine("Location details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
-                    _saveToCsv.SaveTestCase(Expected_Result[i].mbrState, Actual_Result[i].mbrState, "Population", "Location", "Expected value should be equal to actual value");
-                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].mbrState, Actual_Result[i+1].mbrState, "Population", "Location", "Expected value should be equal to actual value");
+                    //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                    // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
                 }
-                for (int i = 0; i < objectLength; i++)
+                for (int i = 0; i < objectLength-1; i++)
                 {
                     Assert.IsTrue(Expected_Result[i].mbrState == Actual_Result[i + 1].mbrState);
                     Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i + 1].spend);
@@ -558,21 +558,21 @@ namespace Zakipoint.Tests.Tests
 
                         Console.WriteLine("PlanType details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                         var objectLength = Actual_Result.Count;
-                        for (int i = 0; i < objectLength; i++)
+                        for (int i = 0; i < objectLength-1; i++)
                         {
-                            _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i].planType, "Population", "PlanType-Pmpm", "Expected value should be equal to actual value");
-                            //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
-                            _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i].spend, "Population", "Spend", "Expected value should be equal to actual value");
-                            // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
-                            _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i].members, "Population", "Members", "Expected value should be equal to actual value");
-                            _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
+                            _saveToCsv.SaveTestCase(Expected_Result[i].planType, Actual_Result[i+1].planType, "Population", "PlanType-Pmpm", "Expected value should be equal to actual value");
+                            //  _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Spend), Format("{0:0.##}", Actual_Result[i+1].P_Spend), "Dashboard", "% Spend(all)", "Expected value should be equal to actual value");
+                            _saveToCsv.SaveTestCase(Expected_Result[i].spend, Actual_Result[i+1].spend, "Population", "Spend", "Expected value should be equal to actual value");
+                            // _saveToCsv.SaveTestCase(Format("{0:0.##}", Expected_Result[i].P_Change), Format("{0:0.##}", Actual_Result[i+1].P_Change), "Dashboard", "% Change Spend(all)", "Expected value should be equal to actual value");
+                            _saveToCsv.SaveTestCase(Expected_Result[i].members, Actual_Result[i+1].members, "Population", "Members", "Expected value should be equal to actual value");
+                            _saveToCsv.SaveTestCase(Expected_Result[i].pmpm, Actual_Result[i+1].pmpm, "Population", "PMPM", "Expected value should be equal to actual value");
                         }
-                        for (int i = 0; i < objectLength; i++)
+                        for (int i = 0; i < objectLength-1; i++)
                         {
-                            Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i].planType);
-                            Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i].spend);
-                            Assert.IsTrue(Expected_Result[i].members == Actual_Result[i].members);
-                            Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i].pmpm);
+                            Assert.IsTrue(Expected_Result[i].planType == Actual_Result[i+1].planType);
+                            Assert.IsTrue(Expected_Result[i].spend == Actual_Result[i+1].spend);
+                            Assert.IsTrue(Expected_Result[i].members == Actual_Result[i+1].members);
+                            Assert.IsTrue(Expected_Result[i].pmpm == Actual_Result[i+1].pmpm);
                         }
                     }
                     catch (Exception ex)

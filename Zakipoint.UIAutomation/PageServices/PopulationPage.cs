@@ -170,7 +170,7 @@ namespace Zakipoint.UIAutomation.PageServices
                     age = item[0].ToString(),
                     spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
                     members = item[2].ToString().Replace(",", "").Trim(),
-                    pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Trim()
+                    pmpm = item[3].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim()
                 };
                 objList.Add(obj);
             }
@@ -190,12 +190,13 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<populationGender> Expected_Population_Gender(string customStartDate, string customEndDate)
         {
             List<populationGender> objList = new List<populationGender>();
+            string testString = _populationSqlScripts.ExpectedGenderDetails(customStartDate, customEndDate);
             var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedGenderDetails(customStartDate, customEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 populationGender obj = new populationGender
                 {
-                    gender = dt.Rows[i]["mbr_gender"].ToString(),
+                    gender = dt.Rows[i]["gender"].ToString(),
                     spend = dt.Rows[i]["p1_total_paid"].ToString().ToUpper(),
                     members = dt.Rows[i]["p1_member_count"].ToString()
                 };
@@ -230,15 +231,17 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<populationGenderPmpm> Expected_Population_Gender_Pmpm(string customStartDate, String CustomEndDate)
         {
             List<populationGenderPmpm> objList = new List<populationGenderPmpm>();
+            string testString = _populationSqlScripts.ExpectedGenderPmpmDetails(customStartDate, CustomEndDate);
             var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedGenderPmpmDetails(customStartDate,  CustomEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 populationGenderPmpm obj = new populationGenderPmpm
                 {
-                    gender = dt.Rows[i]["mbr_gender"].ToString(),
+                    gender = dt.Rows[i]["gender"].ToString(),
                     spend = dt.Rows[i]["p1_total_paid"].ToString().ToUpper(),
                     members = dt.Rows[i]["P1_member_count"].ToString(),
                     pmpm = dt.Rows[i]["pm"].ToString()
+
                 };
                 objList.Add(obj);
             }
@@ -264,7 +267,11 @@ namespace Zakipoint.UIAutomation.PageServices
                     gender = item[0].ToString(),
                     spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
                     members = item[2].ToString().Replace(",", "").Trim(),
-                    pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Trim()
+                    /* pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Trim(),*/
+                    pmpm = item[3].Replace("K","*1000")
+
+
+
                 };
                 objList.Add(obj);
             }
@@ -350,7 +357,7 @@ namespace Zakipoint.UIAutomation.PageServices
                     relation = item[0].ToString(),
                     spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
                     members = item[2].ToString().Replace(",", "").Trim(),
-                    pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Trim()
+                    pmpm = item[3].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim()
                 };
                 objList.Add(obj);
             }
