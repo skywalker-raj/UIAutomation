@@ -46,7 +46,9 @@ GROUP BY member.age_band", CommonObject.DefaultClientSuffix, customStartDate, cu
  round(SUM(a.p1_total_paid)/1000,1) p1_total_paid,
   COUNT(a.p1_member_count) P1_member_count,
  -- SUM(b.mm) member_month,
-  ROUND(SUM(a.p1_total_paid) / SUM(b.mm)) pm
+ CASE WHEN (SUM(a.p1_total_paid) / SUM(b.mm))>1000 THEN ROUND(( SUM(a.p1_total_paid) / SUM(b.mm))/1000)
+ ELSE  round(SUM(a.p1_total_paid) / SUM(b.mm)) 
+ END AS pm
 FROM (SELECT
     member.age_band,
     member.int_mbr_id,
@@ -203,7 +205,9 @@ select gen.gender,IFNULL(p1_total_paid,0) as p1_total_paid,IFNULL(p1_member_coun
  round( SUM(a.p1_total_paid)/1000,1) p1_total_paid,
   COUNT(a.p1_member_count) P1_member_count,
  -- SUM(b.mm) member_month,
-  ROUND( SUM(a.p1_total_paid) / SUM(b.mm)) pm
+   CASE WHEN (SUM(a.p1_total_paid) / SUM(b.mm))>1000 THEN ROUND(( SUM(a.p1_total_paid) / SUM(b.mm))/1000)
+ ELSE  round(SUM(a.p1_total_paid) / SUM(b.mm))
+ END AS pm
 FROM (SELECT
     member.mbr_gender,
     member.int_mbr_id,
@@ -258,7 +262,9 @@ order by FIELD(gen.gender ,'M','F','U');", CommonObject.DefaultClientSuffix, cus
   COUNT(a.p1_member_count) P1_member_count,
  -- SUM(b.mm) member_month,
   -- SUM(a.p1_total_paid) / SUM(b.mm) pm
-ROUND(SUM(a.p1_total_paid) / SUM(b.mm)) pm
+CASE WHEN (SUM(a.p1_total_paid) / SUM(b.mm))>1000 THEN ROUND(( SUM(a.p1_total_paid) / SUM(b.mm))/1000)
+ ELSE  round(SUM(a.p1_total_paid) / SUM(b.mm)) 
+ END AS pm
 FROM (SELECT
     member.mbr_relationship_desc,
     member.int_mbr_id,

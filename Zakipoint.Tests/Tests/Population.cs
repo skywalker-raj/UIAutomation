@@ -113,7 +113,7 @@ namespace Zakipoint.Tests.Tests
                 var Expected_Result = _populationService.Expected_Population_Age_Pmpm(_dashboard.StartDate(), _dashboard.EndDate());
 
                 Console.WriteLine("Age details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
-                Console.WriteLine("Details of Age from database:" + CommonMethods.ObjectToXml(Expected_Result));
+                Console.WriteLine("Details of Age-PMPM from database:" + CommonMethods.ObjectToXml(Expected_Result));
                 Console.WriteLine("Age details-PMPM  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength-1; i++)
@@ -231,13 +231,7 @@ namespace Zakipoint.Tests.Tests
                 Console.WriteLine("Details of Gender from database:" + CommonMethods.ObjectToXml(Expected_Result));
 
                 Console.WriteLine("Details of Relation from database:" + CommonMethods.ObjectToXml(Expected_Result));
-                /*  _dashboard.ChooseAllMember();*/
-                /*_populationService.Goto_Demographic_section();*/
-              
 
-
-                // var tableDetails = _commonFunction.GetTableValues(How.CssSelector, _populationpageObj.ageSvgBoxcssSelector, How.CssSelector, _populationpageObj.TopConditionDetailsByRowCssSelector);
-                //  var Actual_Result = _populationService.Map_Object(tableDetails);
                 Console.WriteLine("Relation details  from UI:" + CommonMethods.ObjectToXml(Actual_Result));
                 var objectLength = Actual_Result.Count;
                 for (int i = 0; i < objectLength-1; i++)

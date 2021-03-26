@@ -171,7 +171,10 @@ namespace Zakipoint.UIAutomation.PageServices
                     spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
                     members = item[2].ToString().Replace(",", "").Trim(),
                     pmpm = item[3].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim()
+                    // pmpm = item[3].Contains("K") ? (Convert.ToDecimal(item[3].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim()) * 1000).ToString() : item[3].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim()
+
                 };
+               
                 objList.Add(obj);
             }
             return objList;
@@ -267,8 +270,8 @@ namespace Zakipoint.UIAutomation.PageServices
                     gender = item[0].ToString(),
                     spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
                     members = item[2].ToString().Replace(",", "").Trim(),
-                    /* pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Trim(),*/
-                    pmpm = item[3].Replace("K","*1000")
+                     pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Trim(),
+                    
 
 
 
