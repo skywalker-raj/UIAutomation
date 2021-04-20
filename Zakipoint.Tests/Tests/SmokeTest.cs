@@ -71,7 +71,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[1], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: "+ _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[1], _dashboard.GetClientName(), "SmokeTest", "Verify_Arc_Administrator", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[1], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Arc_Administrator", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Arc_Administrators");
                 }
             }
@@ -79,7 +79,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Arc_Administrators_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Arc_Administrators", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Arc_Administrators", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -104,7 +104,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[2], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[2], _dashboard.GetClientName(), "SmokeTest", "Verify_Asbury_University", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[2], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Asbury_University", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Asbury_University");
                 }
             }
@@ -112,7 +112,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Asbury_University_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Asbury_University", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Asbury_University", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -137,7 +137,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[3], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[3], _dashboard.GetClientName(), "SmokeTest", "Verify_Beacon_Health_Options", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[3], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Beacon_Health_Options", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Beacon_Health_Options");
                 }
             }
@@ -145,7 +145,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Beacon_Health_Options_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Beacon_Health_Options", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Beacon_Health_Options", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -169,7 +169,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[4], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[4], _dashboard.GetClientName(), "SmokeTest", "Verify_Benefit_Management_Inc", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[4], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Benefit_Management_Inc", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Benefit_Management_LLC");
                 }
             }
@@ -177,7 +177,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Benefit_Management_Inc_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Benefit_Management_Inc", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Benefit_Management_Inc", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -201,7 +201,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[5], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[5], _dashboard.GetClientName(), "SmokeTest", "Verify_Benefit_Management_LLC", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[5], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Benefit_Management_LLC", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Benefit_Management_LLC");
                 }
             }
@@ -209,7 +209,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Benefit_Management_LLC_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Benefit_Management_LLC", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Benefit_Management_LLC", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -233,7 +233,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[6], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[6], _dashboard.GetClientName(), "SmokeTest", "Verify_Big_Ass_Fans", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[6], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Big_Ass_Fans", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Big_Ass_Fans");
                 }
             }
@@ -241,7 +241,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Big_Ass_Fans_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Big_Ass_Fans", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Big_Ass_Fans", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -265,7 +265,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[7], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[7], _dashboard.GetClientName(), "SmokeTest", "Verify_Blackhawk_Mining", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[7], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Blackhawk_Mining", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Blackhawk_Mining");
                 }
             }
@@ -273,7 +273,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Blackhawk_Mining_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Blackhawk_Mining", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Blackhawk_Mining", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -297,7 +297,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[8], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[8], _dashboard.GetClientName(), "SmokeTest", "Verify_BML_City_of_Pasco", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[8], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_BML_City_of_Pasco", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_BML_City_of_Pasco");
                 }
             }
@@ -305,7 +305,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_BML_City_of_Pasco_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_BML_City_of_Pasco", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_BML_City_of_Pasco", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -329,7 +329,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[9], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[9], _dashboard.GetClientName(), "SmokeTest", "Verify_BML_JF_Sobieski_Mechanical", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[9], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_BML_JF_Sobieski_Mechanical", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_BML_JF_Sobieski_Mechanical");
                 }
             }
@@ -337,7 +337,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_BML_JF_Sobieski_Mechanical_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_BML_JF_Sobieski_Mechanical", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_BML_JF_Sobieski_Mechanical", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -361,7 +361,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[10], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[10], _dashboard.GetClientName(), "SmokeTest", "Verify_BML_New_Mexico_Medical_Insurance", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[10], _dashboard.GetClientName(),"SmokeTest", "SmokeTest", "Verify_BML_New_Mexico_Medical_Insurance", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_BML_New_Mexico_Medical_Insurance");
                 }
             }
@@ -369,7 +369,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_BML_New_Mexico_Medical_Insurance_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_BML_New_Mexico_Medical_Insurance", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_BML_New_Mexico_Medical_Insurance", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -393,7 +393,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[11].Replace("  ", " "), _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[11], _dashboard.GetClientName(), "SmokeTest", "Verify_Cabarrus_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[11], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Cabarrus_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Cabarrus_County");
                 }
             }
@@ -401,7 +401,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Cabarrus_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Cabarrus_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Cabarrus_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -425,7 +425,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[12], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[12], _dashboard.GetClientName(), "SmokeTest", "Verify_Childers_Oil", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[12], _dashboard.GetClientName(),"SmokeTest", "SmokeTest", "Verify_Childers_Oil", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Childers_Oil");
                 }
             }
@@ -433,7 +433,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Childers_Oil_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Childers_Oil", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Childers_Oil", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -457,7 +457,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[13], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[13], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Asheboro", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[13], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_City_of_Asheboro", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_City_of_Asheboro");
                 }
             }
@@ -465,7 +465,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_City_of_Asheboro_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_City_of_Asheboro", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_City_of_Asheboro", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -489,7 +489,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[14], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[14], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Salisbury", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[14], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_City_of_Salisbury", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_City_of_Salisbury");
                 }
             }
@@ -497,7 +497,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_City_of_Salisbury_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_City_of_Salisbury", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_City_of_Salisbury", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -521,7 +521,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[15], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[15], _dashboard.GetClientName(), "SmokeTest", "Verify_City_of_Sanford", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[15], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_City_of_Sanford", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_City_of_Sanford");
                 }
             }
@@ -529,7 +529,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_City_of_Sanford_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_City_of_Sanford", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_City_of_Sanford", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -553,7 +553,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[16], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[16], _dashboard.GetClientName(), "SmokeTest", "Verify_Cleveland_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[16], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Cleveland_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Cleveland_County");
                 }
             }
@@ -561,7 +561,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Cleveland_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Cleveland_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Cleveland_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -585,7 +585,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[17], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[17], _dashboard.GetClientName(), "SmokeTest", "Verify_Demo_B_Beta", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[17], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Demo_B_Beta", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Demo_B_Beta");
                 }
             }
@@ -593,7 +593,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Demo_B_Beta_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Demo_B_Beta", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest" ,"Verify_Demo_B_Beta", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -617,7 +617,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[18], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[18], _dashboard.GetClientName(), "SmokeTest", "Verify_DentaQuest", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[18], _dashboard.GetClientName(), "SmokeTest","SmokeTest" ,"Verify_DentaQuest", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_DentaQuest");
                 }
             }
@@ -625,7 +625,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_DentaQuest_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_DentaQuest", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_DentaQuest", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -649,7 +649,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[19], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[19], _dashboard.GetClientName(), "SmokeTest", "Verify_Edgecombe_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[19], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Edgecombe_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Edgecombe_County");
                 }
             }
@@ -657,7 +657,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Edgecombe_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Edgecombe_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Edgecombe_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -681,7 +681,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[20], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[20], _dashboard.GetClientName(), "SmokeTest", "Verify_Halifax_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[20], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Halifax_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Halifax_County");
                 }
             }
@@ -689,7 +689,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Halifax_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Halifax_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Halifax_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -713,7 +713,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[21], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[21], _dashboard.GetClientName(), "SmokeTest", "Harlan Bakeries", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[21], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Harlan Bakeries", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Harlan Bakeries");
                 }
             }
@@ -721,7 +721,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Harlan Bakeries_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Harlan_Bakeries", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Harlan_Bakeries", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -745,7 +745,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[22], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[22], _dashboard.GetClientName(), "SmokeTest", "Verify_Haywood_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[22], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Haywood_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Haywood_County");
                 }
             }
@@ -753,7 +753,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Haywood_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Haywood_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Haywood_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -777,7 +777,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[23], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[23], _dashboard.GetClientName(), "SmokeTest", "Verify_KGHM", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[23], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_KGHM", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_KGHM");
                 }
             }
@@ -785,7 +785,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_KGHM_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_KGHM", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_KGHM", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -809,7 +809,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[24].Replace("  ", " "), _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[24], _dashboard.GetClientName(), "SmokeTest", "Verify_Lincoln_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[24], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Lincoln_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Lincoln_County");
                 }
             }
@@ -817,7 +817,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Lincoln_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Lincoln_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Lincoln_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -841,7 +841,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[25], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[25], _dashboard.GetClientName(), "SmokeTest", "Verify_Mitsui_Co", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[25], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Mitsui_Co", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Mitsui_Co");
                 }
             }
@@ -849,7 +849,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Mitsui_Co_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Mitsui_Co", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Mitsui_Co", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -873,7 +873,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[26], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[26], _dashboard.GetClientName(), "SmokeTest", "Verify_Mountville_Mills", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[26], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Mountville_Mills", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Mountville_Mills");
                 }
             }
@@ -881,7 +881,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Mountville_Mills_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Mountville_Mills", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Mountville_Mills", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -905,7 +905,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[27], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[27], _dashboard.GetClientName(), "SmokeTest", "Verify_New_Vista", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[27], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_New_Vista", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_New_Vista");
                 }
             }
@@ -913,7 +913,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_New_Vista_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_New_Vista", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_New_Vista", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -937,7 +937,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[28], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[28], _dashboard.GetClientName(), "SmokeTest", "Verify_Person_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[28], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Person_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Person_County");
                 }
             }
@@ -945,7 +945,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Person_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Person_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Person_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -971,7 +971,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[29], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[29], _dashboard.GetClientName(), "SmokeTest", "Verify_Price_Chopper_Supermarkets", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[29], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Price_Chopper_Supermarkets", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Price_Chopper_Supermarkets");
                 }
             }
@@ -979,7 +979,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Price_Chopper_Supermarkets_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Price_Chopper_Supermarkets", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Price_Chopper_Supermarkets", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1003,7 +1003,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[30], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[30], _dashboard.GetClientName(), "SmokeTest", "Verify_Pricechopper_Beta", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[30], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Pricechopper_Beta", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Pricechopper_Beta");
                 }
             }
@@ -1011,7 +1011,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Pricechopper_Beta_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Pricechopper_Beta", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Pricechopper_Beta", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1035,7 +1035,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[31], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[31], _dashboard.GetClientName(), "SmokeTest", "Verify_Prince_George_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[31], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Prince_George_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Prince_George_County");
                 }
             }
@@ -1043,7 +1043,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Prince_George_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Prince_George_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Prince_George_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1067,7 +1067,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[32], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[32], _dashboard.GetClientName(), "SmokeTest", "Verify_RJ_Corman", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[32], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_RJ_Corman", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_RJ_Corman");
                 }
             }
@@ -1075,7 +1075,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_RJ_Corman_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_RJ_Corman", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_RJ_Corman", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1099,7 +1099,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[33], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[33], _dashboard.GetClientName(), "SmokeTest", "Verify_Robeson_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[33], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Robeson_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Robeson_County");
                 }
             }
@@ -1107,7 +1107,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Robeson_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Robeson_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Robeson_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1131,7 +1131,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[34], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[34], _dashboard.GetClientName(), "SmokeTest", "Verify_Rowan_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[34], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Rowan_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Rowan_County");
                 }
             }
@@ -1139,7 +1139,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Rowan_County_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Rowan_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Rowan_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1163,7 +1163,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[35], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[35], _dashboard.GetClientName(), "SmokeTest", "Verify_Rue_Gilt_Groupe", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[35], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Rue_Gilt_Groupe", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Rue_Gilt_Groupe");
                 }
             }
@@ -1171,7 +1171,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Rue_Gilt_Groupe");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Showa_Glove", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Showa_Glove", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1195,7 +1195,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[36], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[36], _dashboard.GetClientName(), "SmokeTest", "Verify_University_of_Pikeville", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[36], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_University_of_Pikeville", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_University_of_Pikeville");
                 }
             }
@@ -1203,7 +1203,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_University_of_Pikeville_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_University_of_Pikeville", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_University_of_Pikeville", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1227,7 +1227,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[37], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[37], _dashboard.GetClientName(), "SmokeTest", "Verify_WW_Wood", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[37], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_WW_Wood", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_WW_Wood");
                 }
             }
@@ -1235,7 +1235,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_WW_Wood_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_WW_Wood", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_WW_Wood", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1260,7 +1260,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[38], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[38], _dashboard.GetClientName(), "SmokeTest", "Verify_Wayne_County", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[38], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Wayne_County", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Wayne_County");
                 }
             }
@@ -1268,7 +1268,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Wayne_County_shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Wayne_County", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest","SmokeTest", "Verify_Wayne_County", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
@@ -1292,7 +1292,7 @@ namespace Zakipoint.Tests.Tests
                     Console.WriteLine("Load Dashboard Page");
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[39], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
-                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[39], _dashboard.GetClientName(), "SmokeTest", "Verify_Z5_Demo_B", "Expected value should be equal to actual value");
+                    _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[39], _dashboard.GetClientName(), "SmokeTest","SmokeTest", "Verify_Z5_Demo_B", "Expected value should be equal to actual value");
                     Console.WriteLine("End Test case Verify_Z5_Demo_B");
                 }
             }
@@ -1300,7 +1300,7 @@ namespace Zakipoint.Tests.Tests
             {
                 Browser.ScreenShot("Verify_Z5_Demo_B_Shot");
                 if (!ex.Message.Contains("Expected"))
-                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "Verify_Z5_Demo_B", "Exception occured:  Please verify manually");
+                    _saveToCsv.SaveTestCase("Error", "Error", "SmokeTest", "SmokeTest", "Verify_Z5_Demo_B", "Exception occured:  Please verify manually");
                 Console.Out.WriteLine(ex);
                 Assert.IsTrue(false);
             }
