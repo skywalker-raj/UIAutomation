@@ -1,12 +1,12 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-/*using System;
+*//*using System;
 using System.Collections.Generic;
-using System.Text;*/
+using System.Text;*//*
 using System.Threading;
 using Zakipoint.Framework.Common;
 using Zakipoint.Framework.Driver;
@@ -36,7 +36,7 @@ namespace Zakipoint.Tests.Tests
             _login = new LoginPage();
             _setClient = new SetClientPage();
             _commonFunction = new CommonFunction();
-            /*_dashboardPage = new DashboardPageObjects();*/
+            *//*_dashboardPage = new DashboardPageObjects();*//*
             _saveToCsv = new SaveToCSV();
             _populationService = new PopulationPage();
             _populationpageObj = new populationPageObjects();
@@ -149,3 +149,4 @@ namespace Zakipoint.Tests.Tests
 
 
 
+*/
