@@ -11,6 +11,8 @@ namespace Zakipoint.UIAutomation.Common
         public string ActualResult { get; set; }
         public string Status { get; set; }
         public string Remarks { get; set; }
+
+        public string testcase { get; set; }
     }
     public class SaveToCSV
     {
@@ -19,7 +21,7 @@ namespace Zakipoint.UIAutomation.Common
         {
             _testCase = new TestCase();
         }
-        public void SaveTestCase(string ExpectedVale, string ActualValue, string _PageName, string _MethodName, string _Remarks)
+        public void SaveTestCase(string ExpectedVale, string ActualValue, string _PageName, string _TestCase, string _MethodName, string _Remarks)
         {
             _testCase.PageName = _PageName;
             _testCase.MethodName = _MethodName;
@@ -35,6 +37,7 @@ namespace Zakipoint.UIAutomation.Common
                 _testCase.Remarks = _Remarks;
             }
             _testCase.Remarks = _Remarks;
+            _testCase.testcase = _TestCase;
             WriteCSVFile(_testCase);
         }
         public void WriteCSVFile(TestCase data)
@@ -51,6 +54,8 @@ namespace Zakipoint.UIAutomation.Common
                 // CVS Header
                 str.Append("Page Name");
                 str.Append(",\t");
+                str.Append("Test Case");
+                str.Append(",\t");
                 str.Append("Method Name");
                 str.Append(",\t");
                 str.Append("Expected Result");
@@ -64,6 +69,8 @@ namespace Zakipoint.UIAutomation.Common
             }
             // CSV Data
             str.Append(data.PageName);
+            str.Append(",\t");
+            str.Append(data.testcase);
             str.Append(",\t");
             str.Append(data.MethodName);
             str.Append(",\t");

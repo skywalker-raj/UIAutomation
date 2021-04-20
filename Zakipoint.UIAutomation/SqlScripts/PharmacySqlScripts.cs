@@ -6,7 +6,7 @@ using static System.String;
 
 namespace Zakipoint.UIAutomation.SqlScripts
 {
-    class PopulationSqlScripts
+    class PharmacySqlScripts
     {
         public String ExpectedAgeDetails(string customStartDate, string customEndDate)
         {
@@ -89,7 +89,7 @@ FROM (SELECT
     GROUP BY age_band,
              int_mbr_id) b
     ON a.int_mbr_id = b.int_mbr_id
-GROUP BY a.age_band;", CommonObject.DefaultClientSuffix,customStartDate, customEndDate);
+GROUP BY a.age_band;", CommonObject.DefaultClientSuffix, customStartDate, customEndDate);
         }
 
         public String ExpectedGenderDetails(string customStartDate, string customEndDate)
@@ -128,10 +128,10 @@ WHERE 1 = 1
 GROUP BY member.mbr_gender)t
 right JOIN references.ref_gender gen
 ON gen.gender = t.mbr_gender
-order by FIELD(gen.gender ,'M','F','U');", CommonObject.DefaultClientSuffix ,customStartDate, customEndDate);
+order by FIELD(gen.gender ,'M','F','U');", CommonObject.DefaultClientSuffix, customStartDate, customEndDate);
         }
 
-        public string ExpectedRelationDetails(string customStartDate,string customEndDate)
+        public string ExpectedRelationDetails(string customStartDate, string customEndDate)
         {
             return Format(@"SELECT
   member.mbr_relationship_desc,
@@ -305,7 +305,7 @@ FROM (SELECT
     GROUP BY mbr_relationship_desc,
              int_mbr_id) b
     ON a.int_mbr_id = b.int_mbr_id
-GROUP BY a.mbr_relationship_desc order by FIELD(a.mbr_relationship_desc ,'Employee','Spouse','Dependent','Others')", CommonObject.DefaultClientSuffix, customStartDate,  customEndDate);
+GROUP BY a.mbr_relationship_desc order by FIELD(a.mbr_relationship_desc ,'Employee','Spouse','Dependent','Others')", CommonObject.DefaultClientSuffix, customStartDate, customEndDate);
         }
 
         public string ExpectedPlanPmpmDetails(string customStartDate, string customEndDate)
@@ -492,6 +492,6 @@ order by SUM(a.p1_total_paid) desc limit 5", CommonObject.DefaultClientSuffix, c
         }
 
 
-    }
 
+    }
 }
