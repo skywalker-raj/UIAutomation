@@ -41,7 +41,9 @@ namespace Zakipoint.Tests.Tests
            _populationpageObj = new populationPageObjects();
             _dashboard = new DashboardPage();
         }
-    public override void Init()
+
+        [OneTimeSetUp]
+        public override void Init()
     {
         Browser.Open(Browser.Config["url"]);
         _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
@@ -54,12 +56,12 @@ namespace Zakipoint.Tests.Tests
           //  Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='z5popmlc001']")));
             Thread.Sleep(3000);
         }
-    public override void Dispose()
+        [OneTimeTearDown]
+        public override void Dispose()
     {
         _commonFunction.Logout();
         /*Browser.Dispose();  */      
     }
-
 
 
         #region TestMethods

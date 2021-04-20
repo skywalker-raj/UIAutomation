@@ -41,7 +41,7 @@ namespace Zakipoint.Tests.Tests
         #endregion
 
         #region Base Methods   
-
+        [OneTimeSetUp]
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
@@ -49,10 +49,11 @@ namespace Zakipoint.Tests.Tests
             _setClient.SelectClient(JsonDataReader.Data["DefaultClient"]);
             CommonObject.DefaultClientSuffix = JsonDataReader.Data["DefaultClientSuffix"];
             _dashboard.DashboardPageLoad();
-        }  
+        }
+        [OneTimeTearDown]
         public override void Dispose()
         {
-             _commonFunction.Logout();
+             _commonFunction.Logout(); 
              /*Browser.Dispose(); */       
         }
 
