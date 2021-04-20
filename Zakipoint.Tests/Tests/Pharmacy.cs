@@ -43,6 +43,7 @@ namespace Zakipoint.Tests.Tests
             _dashboard = new DashboardPage();
             _pharmacyService = new PharmacyPage();
         }
+        [OneTimeSetUp]
         public override void Init()
         {
             Browser.Open(Browser.Config["url"]);
@@ -56,6 +57,7 @@ namespace Zakipoint.Tests.Tests
             //  Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='z5popmlc001']")));
             Thread.Sleep(3000);
         }
+        [OneTimeTearDown]
         public override void Dispose()
         {
             _commonFunction.Logout();
