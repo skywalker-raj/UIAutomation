@@ -295,6 +295,10 @@ namespace Zakipoint.Framework.Driver
         #endregion
 
         #region Base Methods
+        public static void CloseBrowser()
+        {
+            WebDriver.Quit();
+        }
 
         public static IWebDriver GetWebDriver(string browser = "Chrome")
         {
@@ -894,6 +898,10 @@ namespace Zakipoint.Framework.Driver
                 .MoveByOffset(1, 0).Release().Perform();
         }
 
+        public static string GetCurrentUrl()
+        {
+            return WebDriver.Url;
+        }
 
         #endregion
 
