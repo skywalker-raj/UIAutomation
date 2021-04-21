@@ -131,7 +131,6 @@ ON gen.gender = t.mbr_gender
 order by FIELD(gen.gender ,'M','F','U');", CommonObject.DefaultClientSuffix ,customStartDate, customEndDate);
         }
 
-     
         public string ExpectedRelationDetails(string customStartDate,string customEndDate)
         {
             return Format(@"SELECT
@@ -168,7 +167,8 @@ GROUP BY member.mbr_relationship_desc order by FIELD(member.mbr_relationship_des
         {
             return Format(@"SELECT
   member.plan_desc,
-   round(SUM(t1.total_paid)/1000,1) p1_total_paid,
+CASE WHEN  SUM(t1.total_paid)>1000 THEN round(SUM(t1.total_paid)/1000,1)
+ ELSE round(SUM(t1.total_paid),1) END AS  p1_total_paid,
   COUNT(DISTINCT member.int_mbr_id) p1_member_count
 FROM (SELECT
     int_mbr_id,
@@ -194,7 +194,7 @@ FROM (SELECT
     AND member.period = t1.period
 WHERE 1 = 1
 GROUP BY plan_desc
-order by p1_total_paid desc;", CommonObject.DefaultClientSuffix, customStartDate, customEndDate);
+order by SUM(t1.total_paid) desc;", CommonObject.DefaultClientSuffix, customStartDate, customEndDate);
         }
 
         public string ExpectedGenderPmpmDetails(string customStartDate, String customEndDate)
@@ -313,7 +313,8 @@ GROUP BY a.mbr_relationship_desc order by FIELD(a.mbr_relationship_desc ,'Employ
             return Format(@"
 SELECT
   a.plan_desc plan_desc,
- round( SUM(a.p1_total_paid)/1000,1) p1_total_paid,
+ CASE WHEN  SUM(t1.total_paid)>1000 THEN round(SUM(t1.total_paid)/1000,1)
+ ELSE round(SUM(t1.total_paid),1) END AS  p1_total_paid,
   COUNT(a.p1_member_count) P1_member_count,
  -- SUM(b.mm) member_month,
   ROUND(SUM(a.p1_total_paid) / SUM(b.mm)) pm
@@ -427,17 +428,19 @@ GROUP BY plan_type_desc
 order by p1_total_paid desc limit 5;", CommonObject.DefaultClientSuffix, customStartDate, customEndDate);
         }
 
-
         public string ExpectedPlanTypePmpmDetails(string customStartDate, string customEndDate)
         {
             return Format(@"
 SELECT
   a.plan_type_desc plan_type_desc,
-  SUM(a.p1_total_paid) p1_total_paid,
+   CASE WHEN  SUM(a.p1_total_paid)>1000 THEN round(SUM(a.p1_total_paid)/1000,1)
+ ELSE round(SUM(a.p1_total_paid),1) END AS  p1_total_paid,
+
   COUNT(a.p1_member_count) P1_member_count,
  -- SUM(b.mm) member_month,
  -- SUM(a.p1_total_paid) / SUM(b.mm) pm
-ROUND(SUM(a.p1_total_paid) / SUM(b.mm)) pm
+CASE WHEN (SUM(a.p1_total_paid) / SUM(b.mm)) > 1000 THEN ROUND(SUM(a.p1_total_paid) / SUM(b.mm)/1000)
+ELSE ROUND(SUM(a.p1_total_paid) / SUM(b.mm)) END AS  pm
 FROM (SELECT
     member.plan_type_desc,
     member.int_mbr_id,
@@ -478,7 +481,7 @@ FROM (SELECT
              int_mbr_id) b
     ON a.int_mbr_id = b.int_mbr_id
 GROUP BY a.plan_type_desc
-order by p1_total_paid", CommonObject.DefaultClientSuffix, customStartDate, customEndDate);
+order by SUM(a.p1_total_paid) desc limit 5", CommonObject.DefaultClientSuffix, customStartDate, customEndDate);
 
         }
 

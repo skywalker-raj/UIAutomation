@@ -91,7 +91,10 @@ namespace Zakipoint.UIAutomation.PageObjects
         public string leftrangeSliderLabelCssSelector = "#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel > div.ui-rangeSlider-label-value";
         public string rightrangeSliderLabelCssSelector ="#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-rightLabel > div.ui-rangeSlider-label-value";
         public string RadioMemberByCssSelector = "input#{0}";
-        
+
+
+        public string spendLabelCssSelector = "#z5popsum001 > div:nth-child(3) > div.info-content > header > h4 > span";
+        public string memberLabelCssSelector = "#z5popsum001 > div:nth-child(4) > div.info-content > header > h4 > span";
         
     }
        

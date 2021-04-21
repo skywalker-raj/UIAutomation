@@ -39,7 +39,20 @@ namespace Zakipoint.UIAutomation.PageServices
 
         }
 
-        
+        public string ReadTotalSpend()
+        {
+          string spend =   Browser.FindElement(How.CssSelector, _populationPage.spendLabelCssSelector).Text;
+          spend  = spend.Replace("Analyze", "").Replace("$", "").Replace("K", "").Replace(",", "").Trim();
+
+           return spend;
+        }
+
+        public string ReadTotalMembers()
+        {
+            string spend = Browser.FindElement(How.CssSelector, _populationPage.memberLabelCssSelector).Text;
+            spend = spend.Replace("K", "").Replace(",", "").Trim();
+            return spend;
+        }
         //database part
         public List<populationAge> Expected_Population_Age(string customStartDate, string customEndDate)
         {
@@ -547,6 +560,7 @@ namespace Zakipoint.UIAutomation.PageServices
         public List<PopulationPlanTypePmpm> Expected_Population_PlanType_Pmpm(string customStartDate, string customEndDate)
         {
             List<PopulationPlanTypePmpm> objList = new List<PopulationPlanTypePmpm>();
+            string test = _populationSqlScripts.ExpectedPlanTypePmpmDetails(customStartDate, customEndDate);
             var dt = _executor.GetDataTable(_populationSqlScripts.ExpectedPlanTypePmpmDetails(customStartDate, customEndDate));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -578,7 +592,7 @@ namespace Zakipoint.UIAutomation.PageServices
                     planType = item[0].ToString(),
                     spend = item[1].ToString().Replace(",", "").Replace("K", "").Replace("$", "").Trim(),
                     members = item[2].ToString().Replace(",", "").Trim(),
-                    pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Trim()
+                    pmpm = item[3].ToString().Replace(",", "").Replace("$", "").Replace("K", "").Trim()
                 };
                 objList.Add(obj);
             }
