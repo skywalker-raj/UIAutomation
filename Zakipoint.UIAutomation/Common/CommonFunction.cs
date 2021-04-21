@@ -13,12 +13,16 @@ namespace Zakipoint.UIAutomation.Common
     {
         #region Private Properties
 
-        private readonly DashboardPageObjects _dashboardPage = new DashboardPageObjects();     
+        private readonly DashboardPageObjects _dashboardPage = new DashboardPageObjects();
 
         #endregion
 
         #region Public Properties
         //public readonly IConfiguration Data = new ConfigurationBuilder().AddJsonFile(@"Data/Data.json").Build();
+        public string GetCurrentUrl()
+        {
+            return Browser.GetCurrentUrl();
+        }
         public void ClickQuickLink()
         {
             Browser.FindElement(How.CssSelector, _dashboardPage.QuickLinkCssSelector).Click();
