@@ -170,7 +170,7 @@ namespace Zakipoint.Tests.Tests
                     Assert.AreEqual(JsonDataReader.Data["clientList"].Split(';')[4], _dashboard.GetClientName());
                     Console.WriteLine("Verify Cilent: " + _dashboard.GetClientName());
                     _saveToCsv.SaveTestCase(JsonDataReader.Data["clientList"].Split(';')[4], _dashboard.GetClientName(), "SmokeTest", "SmokeTest", "Verify_Benefit_Management_Inc", "Expected value should be equal to actual value");
-                    Console.WriteLine("End Test case Verify_Benefit_Management_LLC");
+                    Console.WriteLine("End Test case Verify_Benefit_Management_Inc");
                 }
             }
             catch (Exception ex)
