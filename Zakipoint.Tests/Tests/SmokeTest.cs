@@ -93,7 +93,7 @@ namespace Zakipoint.Tests.Tests
             }
         }
 
-        [Test, Order(2), Category("SmokeTest")]
+        //[Test, Order(2), Category("SmokeTest")]
         public void Verify_Asbury_University()
         {
             try
@@ -298,7 +298,7 @@ namespace Zakipoint.Tests.Tests
                // _login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
-        [Test, Order(8), Category("SmokeTest")]
+        //[Test, Order(8), Category("SmokeTest")]
         public void Verify_BML_City_of_Pasco()
         {
             try
@@ -332,7 +332,7 @@ namespace Zakipoint.Tests.Tests
                 //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
-        [Test, Order(9), Category("SmokeTest")]
+        //[Test, Order(9), Category("SmokeTest")]
         public void Verify_BML_JF_Sobieski_Mechanical()
         {
             try
@@ -366,7 +366,7 @@ namespace Zakipoint.Tests.Tests
                 //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
-        [Test, Order(10), Category("SmokeTest")]
+        //[Test, Order(10), Category("SmokeTest")]
         public void Verify_BML_New_Mexico_Medical_Insurance()
         {
             try
@@ -468,7 +468,7 @@ namespace Zakipoint.Tests.Tests
                 //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
-        [Test, Order(13), Category("SmokeTest")]
+        //[Test, Order(13), Category("SmokeTest")]
         public void Verify_City_of_Asheboro()
         {
             try
@@ -944,7 +944,7 @@ namespace Zakipoint.Tests.Tests
                 //_login.Login(JsonDataReader.Data["username"], JsonDataReader.Data["password"]);
             }
         }
-        [Test,Order(27), Category("SmokeTest")]
+        //[Test,Order(27), Category("SmokeTest")]
         public void Verify_New_Vista()
         {
             try
