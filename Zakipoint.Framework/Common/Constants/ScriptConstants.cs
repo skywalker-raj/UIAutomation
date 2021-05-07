@@ -9,12 +9,10 @@
         /// JQuery
         /// </summary>
         public const string Jquery = "jQuery";
-
         /// <summary>
         /// Extended JavaScript
         /// </summary>
         public const string Extjs = "Ext JS";
-
         /// <summary>
         /// Telerik
         /// </summary>

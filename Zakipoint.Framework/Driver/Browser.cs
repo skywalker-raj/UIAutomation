@@ -10,12 +10,14 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Interactions;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
+using OpenQA.Selenium.Support.PageObjects;
+using Zakipoint.Framework.Common.Constants;
+using System.Threading;
+using static System.String;
 using System.Net;
 using System.Configuration;
 using System.Text;
-using OpenQA.Selenium.Support.PageObjects;
-using Zakipoint.Framework.Common.Constants;
-
+using System.Drawing;
 namespace Zakipoint.Framework.Driver
 {
     public class Browser
@@ -32,10 +34,9 @@ namespace Zakipoint.Framework.Driver
         private static ScreenshotRemoteWebDriver _screenshotRemoteWebDriver;
         private static ICapabilities _capabilities;
         private static Uri _remoteAddress;
-        private static bool IsInitalized { get; set; }
         private static IWebDriver _primaryWebDriver;
-        private const string PATH = @"Executables/";
-
+        private static bool IsInitalized { get; set; }            
+       
         #endregion
 
         #region Public Properties
@@ -43,8 +44,8 @@ namespace Zakipoint.Framework.Driver
         public static void WaitForAjaxLoad(string library)
         {
             string jScript = "";
-            switch (library)
-            {
+            switch (library) 
+            { 
                 case ScriptConstants.Jquery:
                     jScript = "return Boolean($.active);";
                     break;
@@ -117,7 +118,7 @@ namespace Zakipoint.Framework.Driver
         {
             get { return WebDriver.WindowHandles.ToList(); }
         }
-        public static WebDriverWait WaitForExpectedConditions(int second = 60)
+        public static WebDriverWait WaitForExpectedConditions(int second = 70)
         {
             WebDriverWait wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(second));
             return wait;
@@ -280,7 +281,7 @@ namespace Zakipoint.Framework.Driver
                 }
                 catch (Exception ex)
                 {
-                    //Console.Out.WriteLine("unhandled exception" + ex.Message);
+                    Console.Out.WriteLine("unhandled exception" + ex.Message);
                     return false;
                 }
             });
@@ -294,24 +295,38 @@ namespace Zakipoint.Framework.Driver
         #endregion
 
         #region Base Methods
+        public static void CloseBrowser()
+        {
+            WebDriver.Quit();
+        }
 
         public static IWebDriver GetWebDriver(string browser = "Chrome")
         {
             IWebDriver webDriver;
+            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             switch (browser)
             {
                 case "Firefox":
-                    webDriver = new FirefoxDriver(@"Executables/");
+                    webDriver = new FirefoxDriver(baseDir + @"Executables/");
                     break;
                 case "IE":
-                    webDriver = new InternetExplorerDriver(@"Executables/");
+                    webDriver = new InternetExplorerDriver(baseDir + @"Executables/");
                     break;
                 case "Safari":
-                    webDriver = new SafariDriver(@"Executables/");
+                    webDriver = new SafariDriver(baseDir + @"Executables/");
                     break;
                 case "Chrome":
                 default:
-                    webDriver = new ChromeDriver(@"Executables/");
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("--window-size=1920,1080");
+                    options.AddArguments("--no-sandbox"); // Bypass OS security model
+                    options.AddArguments("start-maximized"); // open Browser in maximized mode
+                    options.AddArguments("--headless");
+                    options.AddArguments("--disable-gpu"); // applicable to windows os only
+                    options.AddArguments("disable-infobars"); // disabling infobars
+                    options.AddArguments("--disable-extensions"); // disabling extensions
+                    options.AddArguments("--disable-dev-shm-usage"); // overcome limited resource problems      
+                    webDriver = new ChromeDriver(baseDir + @"Executables/", options);            
                     break;
             }
             return webDriver;
@@ -330,14 +345,14 @@ namespace Zakipoint.Framework.Driver
 
         public static void Open(string url)
         {
-            WebDriver.Navigate().GoToUrl(url);
+            WebDriver.Navigate().GoToUrl(url);            
             WebDriver.Manage().Window.Maximize();
         }
 
         #endregion
 
         #region Browser Services      
-
+       
         public static void Reload()
         {
             WebDriver.Navigate().Refresh();
@@ -412,7 +427,7 @@ namespace Zakipoint.Framework.Driver
         }
         public static void WaitForAjaxToLoad(string ajaxLibrary)
         {
-            string script = string.Format("return {0};", ajaxLibrary);
+            string script = Format("return {0};", ajaxLibrary);
             int count = 0;
             _waitAjaxLoad.Until((d) =>
             {
@@ -814,11 +829,78 @@ namespace Zakipoint.Framework.Driver
                 }
                 catch (Exception ex)
                 {
-                    //Console.Out.WriteLine("unhandled exception" + ex.Message);
+                    Console.Out.WriteLine("unhandled exception" + ex.Message);
                     return false;
                 }
             });
             return webElement;
+        }
+
+        /// <summary>
+        /// Gets a screenshot filename.
+        /// </summary>
+        /// <returns>A screenshot file name.</returns>
+        public static string GetScreenshotFilename()
+        {
+            return ScreenshotRemoteWebDriver.FullQualifiedFileName;
+        }
+
+        public static void PageScroll (int x , int y)
+        {
+           
+            IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
+            Thread.Sleep(5000);
+            js.ExecuteScript(Format( "window.scrollBy({0},{1});", x, y));
+            Console.WriteLine("page Scroll");
+
+
+        }
+        public static void JavaScriptOnclick(IWebElement element)
+        {
+            Thread.Sleep(3000);
+            IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
+            String javascript = "arguments[0].click();";
+            js.ExecuteScript(javascript, element);
+           
+        }
+
+        //function to set text in div element
+        public static void setAttribute(string startPath,string startDate, string endPath, string endDate)
+        {
+            Thread.Sleep(3000);
+            IJavaScriptExecutor js = WebDriver as IJavaScriptExecutor;
+            string startDatePicker = "document.querySelector( '" + startPath + "').innerHTML = '" + startDate+ "'";
+            string endDatePicker = "document.querySelector( '" + endPath + "').innerHTML = '" + endDate + "'";
+            // js.ExecuteScript("document.querySelector('#analysis_date_slider > div.ui-rangeSlider-label.ui-rangeSlider-leftLabel > div.ui-rangeSlider-label-value').innerHTML = '2020-10'");
+            js.ExecuteScript(startDatePicker);
+            js.ExecuteScript(endDatePicker);
+        }
+
+
+        public static void setMinRange(int value)
+        {
+            Thread.Sleep(3000);
+            IWebElement LeftSlider = WebDriver.FindElement(By.CssSelector("div.ui-rangeSlider-leftHandle"));
+
+            Actions SliderAction = new Actions(WebDriver);
+            SliderAction.ClickAndHold(LeftSlider)
+                           .MoveByOffset((-(int)LeftSlider.Size.Width / 2), 0)
+                           .MoveByOffset(20, 0).Release().Perform();
+        }
+
+        public static void setMaxRange(int value)
+        {
+            Thread.Sleep(2000);
+            IWebElement RightSlider = WebDriver.FindElement(By.CssSelector("div.ui-rangeSlider-rightHandle"));
+            Actions SliderAction = new Actions(WebDriver);
+            SliderAction.ClickAndHold(RightSlider)
+                .MoveByOffset((-(int)RightSlider.Size.Width / 2), 0)
+                .MoveByOffset(1, 0).Release().Perform();
+        }
+
+        public static string GetCurrentUrl()
+        {
+            return WebDriver.Url;
         }
 
         #endregion
@@ -854,7 +936,7 @@ namespace Zakipoint.Framework.Driver
                 case How.XPath:
                     return WaitandReturnElementsExists(By.XPath(select), context, elementTimeOut);
             }
-            throw new NotSupportedException(string.Format("Selector \"{0}\" is not supported.", selector));
+            throw new NotSupportedException(Format("Selector \"{0}\" is not supported.", selector));
         }
 
         /// <summary>
@@ -921,7 +1003,7 @@ namespace Zakipoint.Framework.Driver
                 case How.XPath:
                     return WaitandReturnElementExists(By.XPath(select), context, elementTimeOut);
             }
-            throw new NotSupportedException(string.Format("Selector \"{0}\" is not supported.", selector));
+            throw new NotSupportedException(Format("Selector \"{0}\" is not supported.", selector));
         }
 
         #endregion

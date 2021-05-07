@@ -7,7 +7,6 @@ using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.SqlScripts;
 using OpenQA.Selenium.Support.PageObjects;
 using static System.String;
-
 namespace Zakipoint.UIAutomation.PageServices
 {
     public class SetClientPage
@@ -44,16 +43,15 @@ namespace Zakipoint.UIAutomation.PageServices
 
         public void SelectClient(string client)
         {
-            Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector).Click();
-            Browser.FindElement(How.XPath, Format(_setClientPage.ClientByTextXPath, client)).Click();
+
+            Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.SelectClientDropdownCssSelector));
+            Browser.JavaScriptOnclick(Browser.FindElement(How.XPath, Format(_setClientPage.ClientByTextXPath, client)));
             ClickGoButton();
         }
-
         public void ClickGoButton()
         {
-            Browser.FindElement(How.CssSelector, _setClientPage.GoButtonCssSelector).Click();
+            Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.GoButtonCssSelector));
         }
-
         public List<string> GetClientList()
         {
             List<string> clientList = new List<string>();
@@ -65,11 +63,12 @@ namespace Zakipoint.UIAutomation.PageServices
             clientList.Remove("Select One");
             return clientList;
         }
-
         public void GoToUserManagement()
         {
-            Browser.FindElement(How.CssSelector, _setClientPage.UserManagementLinkCssSelector).Click();
-            Browser.WaitForPageToLoad();
+            //Browser.FindElement(How.CssSelector, _setClientPage.UserManagementLinkCssSelector).Click();
+            Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _setClientPage.UserManagementLinkCssSelector));
+            Browser.WaitToLoadNew(3000);
+            //Browser.WaitForPageToLoad();
         }
 
         #endregion     

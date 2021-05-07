@@ -7,6 +7,7 @@
         #region CssSelectors
 
         public string UserLinkDropdownCssSelector = "nav.navbar div.m-wrapper a.dropdown-toggle";
+        public string UserLinkDropdownListCssSelector = "nav.navbar div.m-wrapper div.dropdown.user-login div.dropdown-menu > a:nth-child{0}";   //"(1)" :change password || "(2)": logout
         public string UserSettingsCssSelector = "nav.navbar div.m-wrapper a:not(.nav-link)";
         public string LogoImageCssSelector = "nav.navbar img.logo__img";
         public string MenuLinkCssSelector = "nav.navbar ul.navbar-nav li a.nav-link";
@@ -34,7 +35,13 @@
         public string TopConditionDetailsByColCssSelector = "div.medical-box table.table tbody tr td:nth-child({0})";
         public string TopConditionDetailsByRowCssSelector = "div.medical-box table.table tbody tr:nth-child({0}) td";
         public string ReportingPeriodByCssSelector = "div.zph-reporting p span:nth-child({0})"; // 2 for reporting period
-        public string RadioMemberByCssSelector = "input#{0}"; // termed01: Active Members || termed02 : All Members
+        public string RadioMemberByCssSelector = "input#{0}"; // termed01: Active Members || termed02 : All Members 
+        public string ProspectivePopulationRiskStratificationRowByCssSelector = "#z5dsbmlc001 > g.table.row-group.dynamic-table > g";
+        public string ProspectivePopulationRiskStratificationDetailsByRowCssSelector = "#z5dsbmlc001 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+        public string TopServiceByTotalSpendRowByCssSelector = "#z5dsbmlc005 > g.table.row-group.dynamic-table > g";
+        public string TopServiceByTotalSpendDetailsByRowCssSelector = "#z5dsbmlc005 > g.table.row-group.dynamic-table > g:nth-child({0}) > text>tspan";
+        public string CostMatrixRowByRowCssSelector = "div#z5dsbtbc005 div.table-responsive.custom-scroll >table.table tbody tr";
+        public string CostMatrixDetailsByRowCssSelector = "div#z5dsbtbc005 div.table-responsive.custom-scroll >table.table tbody tr:nth-child({0}) td";
 
         #endregion
 
@@ -52,7 +59,7 @@
         public string ClientBoxLabelTextByXPath = "//div[@class='media-body']/h5";
         public string PMPMByLabelXPath = "//div[@id='pills-pmpm']//span[text()='{0}']/../p"; // Medical  || Pharmacy
         public string SpendByLabelXPath = "//div[@id='pills-paid']//span[text()='{0}']/../p"; // Medical  || Pharmacy
-
+        
         #endregion
 
         #endregion

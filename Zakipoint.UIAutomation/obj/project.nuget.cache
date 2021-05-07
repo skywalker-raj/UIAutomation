@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "uZQslq/D4+6YjqfERHafZk2msvZUur3h7mjgvmKE14CjV8jAL87onFah3F4EJf6CzmjGacgSDcqlWYwvVLy7fQ==",
+  "dgSpecHash": "ooaPrqq7Mx0oEKKOIjWnBGWVzNZmPeh0geHxTieJXuGD9AjWG/htzvchRA08FZdCvtdO4HPGCMmb3IP2U9t1nw==",
   "success": true,
   "projectFilePath": "D:\\Zakipoint.Framework\\Zakipoint.UIAutomation\\Zakipoint.UIAutomation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\dotnetseleniumextras.waithelpers\\3.11.0\\dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\log4net\\2.0.11\\log4net.2.0.11.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.9\\microsoft.extensions.configuration.3.1.9.nupkg.sha512",
@@ -24,7 +24,7 @@
     "C:\\Users\\DELL\\.nuget\\packages\\selenium.mozilla.firefox.webdriver\\0.6.0.1\\selenium.mozilla.firefox.webdriver.0.6.0.1.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\selenium.support\\3.141.0\\selenium.support.3.141.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\selenium.webdriver\\3.141.0\\selenium.webdriver.3.141.0.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\selenium.webdriver.chromedriver\\86.0.4240.2200\\selenium.webdriver.chromedriver.86.0.4240.2200.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\selenium.webdriver.chromedriver\\87.0.4280.2000\\selenium.webdriver.chromedriver.87.0.4280.2000.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\selenium.webdriver.iedriver\\3.150.1.2\\selenium.webdriver.iedriver.3.150.1.2.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

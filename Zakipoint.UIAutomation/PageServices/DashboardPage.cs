@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Zakipoint.Framework.Common;
 using Zakipoint.Framework.Database;
 using Zakipoint.Framework.Driver;
@@ -10,7 +11,6 @@ using Zakipoint.UIAutomation.Model;
 using Zakipoint.UIAutomation.PageObjects;
 using Zakipoint.UIAutomation.SqlScripts;
 using static System.String;
-
 namespace Zakipoint.UIAutomation.PageServices
 {
     public class DashboardPage
@@ -49,22 +49,22 @@ namespace Zakipoint.UIAutomation.PageServices
         }
         public string ExpectedTotalEmployee()
         {
-            var _expectedTotalEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Employee);
+            var _expectedTotalEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Employee());
             return _expectedTotalEmployee.ToString();
         }
         public string ExpectedTotalMember()
         {
-            long _expectedTotalEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Member);
+            long _expectedTotalEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Member());
             return _expectedTotalEmployee.ToString();
         }
         public string ExpectedTotalActiveEmployee()
         {
-            long _expectedTotalActiveEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Active_Employee);
+            long _expectedTotalActiveEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Active_Employee());
             return _expectedTotalActiveEmployee.ToString();
         }
         public string ExpectedTotalActiveMember()
         {
-            long _expectedTotalActiveEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Active_Member);
+            long _expectedTotalActiveEmployee = _executor.GetSingleValue(_dashboardSqlScripts.Expected_Total_Active_Member());
             return _expectedTotalActiveEmployee.ToString();
         }
         public List<decimal> Expected_Total_Medical_Pharmacy_Spend(string active_flag, int period)
@@ -82,7 +82,6 @@ namespace Zakipoint.UIAutomation.PageServices
                 .FirstOrDefault()
                 .ItemArray.Select(x => CommonMethods.CurrencyIntermOfThousandWithRoudValue(Convert.ToDecimal(x)))
                 .ToList();
-
             return listItems;
         }
         public string Expected_PMPM(string spendType, string active_flag, int period)
@@ -104,10 +103,10 @@ namespace Zakipoint.UIAutomation.PageServices
             decimal LastYearvale = Math.Round(Convert.ToDecimal(Expected_PMPM(memberType, active_flag, 2)), 2);
             return Percentages(CurrentYearvale, LastYearvale);
         }
-        public List<Top_Condtion_By_Total_spend> Expected_Top_Condition_By_Total_Spend()
+        public List<Top_Condtion_By_Total_spend> Expected_Top_Condition_By_Total_Spend(string memberStatus)
         {
             List<Top_Condtion_By_Total_spend> objList = new List<Top_Condtion_By_Total_spend>();
-            var dt = _executor.GetDataTable(_dashboardSqlScripts.Top_Condition_By_Total_Spend(StartDate(), EndDate()));
+            var dt = _executor.GetDataTable(_dashboardSqlScripts.Top_Condition_By_Total_Spend(StartDate(), EndDate(), memberStatus));
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Top_Condtion_By_Total_spend obj = new Top_Condtion_By_Total_spend
@@ -117,6 +116,60 @@ namespace Zakipoint.UIAutomation.PageServices
                     Spend = dt.Rows[i]["Spend"].ToString(),
                     P_Change = dt.Rows[i]["P_chnage"].ToString(),
                     Members = dt.Rows[i]["Members"].ToString()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+        public List<Top_Service_By_Total_Spend> Expected_Top_Service_By_Total_Spend(string memberStatus)
+        {
+            List<Top_Service_By_Total_Spend> objList = new List<Top_Service_By_Total_Spend>();
+            var dt = _executor.GetDataTable(_dashboardSqlScripts.Top_Service_By_Total_Spend(memberStatus));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Top_Service_By_Total_Spend obj = new Top_Service_By_Total_Spend
+                {
+                    Members = dt.Rows[i]["Members"].ToString(),
+                    Services= dt.Rows[i]["Services"].ToString().ToUpper(),
+                    UtilizationPerThousand= dt.Rows[i]["UtilizationPerThousand"].ToString(),
+                    Spend= dt.Rows[i]["Spend"].ToString(),
+                    PMPM= dt.Rows[i]["PMPM"].ToString()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+        public List<Cost_Matrix> Expected_Cost_Matrix(string memberStatus)
+        {
+            List<Cost_Matrix> objList = new List<Cost_Matrix>();
+            var dt = _executor.GetDataTable(_dashboardSqlScripts.Cost_Matrix(memberStatus));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Cost_Matrix obj = new Cost_Matrix
+                {
+                    Members = dt.Rows[i]["Members"].ToString(),
+                    Cost_Categories= dt.Rows[i]["Cost_Categories"].ToString(),
+                    P_Spend= dt.Rows[i]["P_Spend"].ToString(),
+                    Spend= dt.Rows[i]["Spend"].ToString()
+                };
+                objList.Add(obj);
+             }
+            return objList;
+        }
+       public List<Prospective_Population_Risk_Stratification> Expected_Prospective_Population_Risk_Stratification(string memberStatus)
+        {
+            List<Prospective_Population_Risk_Stratification> objList = new List<Prospective_Population_Risk_Stratification>();
+            var dt = _executor.GetDataTable(_dashboardSqlScripts.Prospective_Population_Risk_Stratification(memberStatus));
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Prospective_Population_Risk_Stratification obj = new Prospective_Population_Risk_Stratification
+                {
+                    Percentages_Member= dt.Rows[i]["Percentages_Member"].ToString(),
+                    Members = dt.Rows[i]["Members"].ToString(),
+                    Risk_Type = dt.Rows[i]["Risk_Type"].ToString().ToUpper(),
+                    Percentages_Spend = dt.Rows[i]["Percentages_Spend"].ToString(),
+                    Spend = dt.Rows[i]["Spend"].ToString(),
+                    PMPM = dt.Rows[i]["PMPM"].ToString()
                 };
                 objList.Add(obj);
             }
@@ -141,23 +194,27 @@ namespace Zakipoint.UIAutomation.PageServices
             }
             return MenuList;
         }
-
         public string GetClientName()
         {
-            return Browser.FindElement(How.CssSelector, _dashboardPage.ClientTitleCssSelector).Text;
+            try
+            {
+                return Browser.FindElement(How.CssSelector, _dashboardPage.ClientTitleCssSelector).Text;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }            
         }
-
         public string GetDownloadReportName()
         {
             var clientReportName = GetClientName().ToLower().Replace(" ", "-") + ("-report-" + DateTime.Now.ToString("yyyy-MM-dd") + ".pdf");
             return clientReportName;
         }
-
         public void ClickDownloadReport()
         {
-            Browser.FindElement(How.CssSelector, _dashboardPage.DownloadReportLinkCssSelector).Click();
+            Browser.JavaScriptOnclick(Browser.FindElement(How.CssSelector, _dashboardPage.DownloadReportLinkCssSelector));
+            //Browser.FindElement(How.CssSelector, _dashboardPage.DownloadReportLinkCssSelector).Click();
         }
-
         public List<string> GetTableHeaderList(How locator, string value)
         {
             var headersList = new List<string>();
@@ -200,11 +257,21 @@ namespace Zakipoint.UIAutomation.PageServices
             if (Browser.FindElements(How.XPath, _dashboardPage.ClientBoxLabelTextByXPath)[1].Text != "Active Members")
             {
                 Browser.FindElement(How.XPath, _dashboardPage.ApplicationSettinsgByXPath).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.MemberStatusChangeXPath))).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed01")))).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ApplySettingXPath)));
+                Console.WriteLine("Click setting icon");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
+                Console.WriteLine("conditional wait");
+                Browser.FindElement(How.XPath, _dashboardPage.MemberStatusChangeXPath).Click();
+                Console.WriteLine("Member status: change link text ");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed01"))));
+                Console.WriteLine("Conditional wait");
+                Browser.FindElement(How.CssSelector, Format(_dashboardPage.RadioMemberByCssSelector, "termed01")).Click();
+                Console.WriteLine("Choose radio button Active Members ");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.ApplySettingXPath)));
+                Console.WriteLine("conditional wait");
                 Browser.FindElement(How.XPath, _dashboardPage.ApplySettingXPath).Click();
-                Browser.FindElements(How.XPath, _dashboardPage.ClientBoxLabelTextByXPath)[1].Text.Equals("Active Members");
+                Console.WriteLine("Click on Apply Setting button");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ClientBoxLabelTextByXPath + "[contains(text(),'Active Employees')]")));
+                Console.WriteLine("conditional wait");
             }
         }
         public void ChooseAllMember()
@@ -212,11 +279,21 @@ namespace Zakipoint.UIAutomation.PageServices
             if (Browser.FindElements(How.XPath, _dashboardPage.ClientBoxLabelTextByXPath)[1].Text != "All Members")
             {
                 Browser.FindElement(How.XPath, _dashboardPage.ApplicationSettinsgByXPath).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.MemberStatusChangeXPath))).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed02")))).Click();
-                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ApplySettingXPath)));
+                Console.WriteLine("Click setting icon");
+                Console.WriteLine("conditional wait");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.MemberStatusChangeXPath)));
+                Browser.FindElement(How.XPath,_dashboardPage.MemberStatusChangeXPath).Click();
+                Console.WriteLine("Member status: change link text ");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector(Format(_dashboardPage.RadioMemberByCssSelector, "termed02"))));
+                Console.WriteLine("conditional wait");
+                Browser.FindElement(How.CssSelector,Format(_dashboardPage.RadioMemberByCssSelector, "termed02")).Click();
+                Console.WriteLine("Choose radio button All Members ");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_dashboardPage.ApplySettingXPath)));
+                Console.WriteLine("conditional wait");
                 Browser.FindElement(How.XPath, _dashboardPage.ApplySettingXPath).Click();
-                Browser.FindElements(How.XPath, _dashboardPage.ClientBoxLabelTextByXPath)[1].Text.Equals("All Members");
+                Console.WriteLine("Click on Apply Setting button");
+                Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(_dashboardPage.ClientBoxLabelTextByXPath + "[contains(text(),'All Employees')]")));
+                Console.WriteLine("conditional wait");
             }
         }
         public string TotalEmployee(bool Active)
@@ -252,7 +329,9 @@ namespace Zakipoint.UIAutomation.PageServices
                 if (Browser.FindElement(How.LinkText, "SPEND").GetAttribute("class").Contains("inactive"))
                 {
                     Browser.FindElement(How.LinkText, "SPEND").Click();
-                    Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(Format(_dashboardPage.SpendByLabelXPath, "Medical"))));
+                    Console.WriteLine("Click on SPEND link");
+                    Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.SpendByLabelXPath, "Medical"))));
+                    Console.WriteLine("Conditional wait");
                 }
             }
             else
@@ -260,9 +339,35 @@ namespace Zakipoint.UIAutomation.PageServices
                 if (Browser.FindElement(How.LinkText, "PMPM").GetAttribute("class").Contains("inactive"))
                 {
                     Browser.FindElement(How.LinkText, "PMPM").Click();
-                    Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(Format(_dashboardPage.PMPMByLabelXPath, "Medical"))));
+                    Console.WriteLine("click on PMPM link");
+                    Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.PMPMByLabelXPath, "Medical"))));
+                    Console.WriteLine("Conditional wait");
                 }
             }           
+        }
+        public void Click_Condition_Service_Link(bool condition)
+        {
+            if (condition)
+            {
+                if (Browser.FindElement(How.LinkText, "CONDITION").GetAttribute("class").Contains("inactive"))
+                {
+                    Browser.FindElement(How.LinkText, "CONDITION").Click();
+                    Console.WriteLine("Click on CONDITION link");
+                    // Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.SpendByLabelXPath, "Medical"))));
+                    Browser.WaitToLoadNew(20000);                       
+                }
+            }
+            else
+            {
+                if (Browser.FindElement(How.LinkText, "SERVICE").GetAttribute("class").Contains("inactive"))
+                {
+                    Browser.FindElement(How.LinkText, "SERVICE").Click();
+                    Console.WriteLine("click on  SERVICE  link");
+                    Browser.WaitToLoadNew(20000);
+                    //Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(Format(_dashboardPage.PMPMByLabelXPath, "Medical"))));
+                    // Console.WriteLine("Conditional wait");
+                }
+            }
         }
         public string TotalSpend(bool Medical)
         {
@@ -288,7 +393,6 @@ namespace Zakipoint.UIAutomation.PageServices
                 string totalMedicalPMPMText = Browser.FindElement(How.XPath, Format(_dashboardPage.PMPMByLabelXPath, "Medical")).Text;
                 string[] lines = CommonMethods.SplitByNewLine(totalMedicalPMPMText);
                 return Convert.ToDecimal(CommonMethods.RemoveComma(lines[0]).Replace("$", ""));
-
             }
             else
             {
@@ -327,6 +431,7 @@ namespace Zakipoint.UIAutomation.PageServices
                 return Math.Round(Convert.ToDecimal(CommonMethods.RemoveComma(lines[1]).Split('%')[0]), 2);
             }
         }
+        #region object map
         public List<Top_Condtion_By_Total_spend> Map_Object(List<List<string>> tableDetails)
         {
             List<Top_Condtion_By_Total_spend> objList = new List<Top_Condtion_By_Total_spend>();
@@ -342,27 +447,100 @@ namespace Zakipoint.UIAutomation.PageServices
                 };
                 objList.Add(obj);
             }
+            return objList;          
+        }
+        public List<Top_Service_By_Total_Spend> Map_Top_Service_By_Total_Spend(List<List<string>> tableDetails)
+        {
+            List<Top_Service_By_Total_Spend> objList = new List<Top_Service_By_Total_Spend>();
+            foreach (var item in tableDetails)
+            {
+                Top_Service_By_Total_Spend obj = new Top_Service_By_Total_Spend
+                {
+                    Services = item[0].ToString().Replace(",", "").ToUpper().Trim(),
+                    Spend = item[1].ToString().Replace(",", "").Replace("$", "").Replace("K","").Trim(),
+                    Members = item[2].ToString().Replace(",", "").Trim(),
+                    UtilizationPerThousand = item[3].ToString().Replace(",", "").Trim(),
+                    PMPM = item[4].ToString().Replace(",", "").Replace("$","").Trim()
+                };
+                objList.Add(obj);
+            }
+            objList.RemoveAt(0);
+            return objList;
+        }
+        public List<Prospective_Population_Risk_Stratification> Map_Prospective_Population_Risk_Stratification(List<List<string>> tableDetails)
+        {
+            List<Prospective_Population_Risk_Stratification> objList = new List<Prospective_Population_Risk_Stratification>();
+            int objlength = tableDetails.Count;
+            for (int i = 1; i < objlength; i++)
+            {
+                Prospective_Population_Risk_Stratification obj = new Prospective_Population_Risk_Stratification
+                {
+                    Risk_Type= tableDetails[i][0].ToString().Replace(",", "").ToUpper().Trim(),
+                    Spend = tableDetails[i][1].Split('K')[0].Replace(",", "").Replace("$","").Trim(),
+                    Percentages_Spend= tableDetails[i][1].ToString().Split('K')[1].Replace("(", "").Replace(")","").Replace("%","").Trim(),
+                    Members = tableDetails[i][2].ToString().Split('(')[0].Replace(",", "").Trim(),
+                    Percentages_Member= tableDetails[i][2].ToString().Split('(')[1].Replace(")", "").Replace("%","").Trim(),
+                    PMPM = tableDetails[i][3].ToString().Replace(",", "").Replace("$","").Trim()
+                };
+                objList.Add(obj);
+            }
+            return objList;
+        }
+        public List<Cost_Matrix> Map_Cost_Matrix(List<List<string>> tableDetails)
+        {
+            List<Cost_Matrix> objList = new List<Cost_Matrix>();
+            foreach (var item in tableDetails)
+            {
+                Cost_Matrix obj = new Cost_Matrix
+                {
+                    Cost_Categories= item[0].ToString().Replace(",","").Trim(),
+                    P_Spend = item[1].ToString().Replace(",", "").Replace("%","").Trim(),
+                    Spend = item[2].ToString().Replace(",", "").Replace("$","").Replace("K","").Trim(),
+                    Members = item[3].ToString().Replace(",", "").Trim()
+                };
+                objList.Add(obj);
+            }
             return objList;
         }
 
+        #endregion
+        public List<List<string>> Prospective_Population_Risk_Stratification()
+        {
+           // Browser.PageScroll(0, 950); // cordinate 
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.ProspectivePopulationRiskStratificationRowByCssSelector, How.CssSelector, _dashboardPage.ProspectivePopulationRiskStratificationDetailsByRowCssSelector);
+          //  Browser.PageScroll(0, 0);
+            return tableData;
+        }
+        public List<List<string>> Top_Service_By_Total_Spend()
+        {
+            
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.TopServiceByTotalSpendRowByCssSelector, How.CssSelector, _dashboardPage.TopServiceByTotalSpendDetailsByRowCssSelector);
+            return tableData;
+        }
+        public List<List<string>> Cost_Matrix()
+        {
+
+            var tableData = CommonMethods.GetTableValues(How.CssSelector, _dashboardPage.CostMatrixRowByRowCssSelector, How.CssSelector, _dashboardPage.CostMatrixDetailsByRowCssSelector);
+            return tableData;
+        }
         public void DashboardPageLoad()
         {
             Browser.WaitForExpectedConditions().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(Format(_dashboardPage.ReportingPeriodByCssSelector, 2))));
         }
 
         #endregion
+
         #region Reporting Period
 
         public string StartDate()
         {
             string[] Period = CommonMethods.SplitByString(Browser.FindElement(How.CssSelector, Format(_dashboardPage.ReportingPeriodByCssSelector, 2)).Text, " to"); //2 for reporting period
-            return String.Format("{0:yyyyMM}", Convert.ToDateTime(Period[0]));
+            return Format("{0:yyyyMM}", Convert.ToDateTime(Period[0]));
         }
-
         public string EndDate()
         {
             string[] Period = CommonMethods.SplitByString(Browser.FindElement(How.CssSelector, Format(_dashboardPage.ReportingPeriodByCssSelector, 2)).Text, " to"); //2 for reporting period
-            return String.Format("{0:yyyyMM}", Convert.ToDateTime(Period[1]));
+            return Format("{0:yyyyMM}", Convert.ToDateTime(Period[1]));
         }
 
         #endregion

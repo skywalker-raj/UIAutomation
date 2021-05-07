@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-
 namespace Zakipoint.Framework.Driver
 {
     internal static class PageFactory

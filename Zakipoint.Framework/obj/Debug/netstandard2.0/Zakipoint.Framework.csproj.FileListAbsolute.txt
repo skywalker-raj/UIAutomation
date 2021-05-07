@@ -10,3 +10,4 @@ D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Fr
 D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.csproj.CoreCompileInputs.cache
 D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.dll
 D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.pdb
+D:\Zakipoint.Framework\Zakipoint.Framework\obj\Debug\netstandard2.0\Zakipoint.Framework.csprojAssemblyReference.cache

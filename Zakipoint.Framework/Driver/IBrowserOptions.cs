@@ -1,5 +1,4 @@
 ﻿using System.Security.Policy;
-
 namespace Zakipoint.Framework.Driver
 {
     /// <summary>
@@ -20,32 +19,26 @@ namespace Zakipoint.Framework.Driver
         /// future calls against this interface will be against the freshly loaded page. 
         /// </remarks>
         string ApplicationUrl { get; }
-
         /// <summary>
         /// Gets the browser to load a page.
         /// </summary>
         string Browser { get; }
-
         /// <summary>
         /// Gets the time till page to display.
         /// </summary>
         double PageLoadTimeout { get; }
-
         /// <summary>
         /// Gets the time till ajax request complete.
         /// </summary>
         double AjaxLoadTimeout { get; }
-
         /// <summary>
         /// Gets the time till ajax request complete.
         /// </summary>
         int ElementLoadTimeout { get; }
-
         /// <summary>
         /// Gets the time till ajax request complete.
         /// </summary>
         int SleepInterval { get; }
-
         /// <summary>
         /// Gets the list of arguments the options and switches to be use in current browser.
         /// </summary>

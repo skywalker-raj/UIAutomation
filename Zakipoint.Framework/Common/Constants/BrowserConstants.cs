@@ -9,12 +9,10 @@
         /// Mozila Firefox
         /// </summary>
         public const string Firefox = "FIREFOX";
-
         /// <summary>
         /// Internet Exporer
         /// </summary>
         public const string Iexplorer = "IE";
-
         /// <summary>
         /// Google Chrome
         /// </summary>

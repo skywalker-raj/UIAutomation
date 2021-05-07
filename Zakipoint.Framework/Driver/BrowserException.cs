@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Zakipoint.Framework.Driver
 {
     public class BrowserException : Exception
@@ -7,7 +6,6 @@ namespace Zakipoint.Framework.Driver
         public BrowserException()
         {
         }
-
         public BrowserException(string message)
             : base(message)
         {

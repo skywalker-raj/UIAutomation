@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/xCYPtlF0XyERJiG1C5QykS1jN5uflNq5iH/3MNPPgNQ2Nnumnjko2LZEFz7HSwG5GG3Z/kl0bLuD0v03qtqYQ==",
+  "dgSpecHash": "OQIKS0D/8G2RA34NAtzpCQcdFunVpP8gJq3OS0OkVo7tZF1yMHO5j5zbUqisHUekuXfEZqG4k8GqH3q7j0A5oQ==",
   "success": true,
   "projectFilePath": "D:\\Zakipoint.Framework\\Zakipoint.Framework\\Zakipoint.Framework.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\DELL\\.nuget\\packages\\log4net\\2.0.11\\log4net.2.0.11.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\log4net\\2.0.12\\log4net.2.0.12.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.9\\microsoft.extensions.configuration.3.1.9.nupkg.sha512",
@@ -23,7 +23,7 @@
     "C:\\Users\\DELL\\.nuget\\packages\\selenium.mozilla.firefox.webdriver\\0.6.0.1\\selenium.mozilla.firefox.webdriver.0.6.0.1.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\selenium.support\\3.141.0\\selenium.support.3.141.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\selenium.webdriver\\3.141.0\\selenium.webdriver.3.141.0.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\selenium.webdriver.chromedriver\\86.0.4240.2200\\selenium.webdriver.chromedriver.86.0.4240.2200.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\selenium.webdriver.chromedriver\\87.0.4280.2000\\selenium.webdriver.chromedriver.87.0.4280.2000.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\selenium.webdriver.iedriver\\3.150.1.2\\selenium.webdriver.iedriver.3.150.1.2.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

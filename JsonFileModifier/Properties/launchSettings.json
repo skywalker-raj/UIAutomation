@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "JsonFileModifier": {
+      "commandName": "Project",
+      "commandLineArgs": "\"path= C:\\Zakipoint.UIAutomation\\JsonFileModifier\\ClientSetUp\\bin\\Debug\\netcoreapp3.1\\..\\..\\..\\..\\..\\Zakipoint.Tests\\Data\\Data.json\"  \"usernameplaceholder= Enter User Name11\"  \"CustomerName= Ganesh Gyawali\" \"Address=  \""
+    }
+  }
+}
